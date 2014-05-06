@@ -69,7 +69,7 @@ char isGPSAlive() {
 void parser_GPS(FIL *fp) {
 	uint8_t answer[80];
 	uint8_t read[80];
-
+	int contador=0;
 	uint16_t parser_idx = 0;
 	uint8_t c;
 	int state = 0;	// 0-5 -> searching for $GPGGA header,  1-> getting data
@@ -175,7 +175,9 @@ void parser_GPS(FIL *fp) {
 		// Enciende un led - espera y apaga
 
 		GPIO_SetBits(LEDS_GPIO_PORT, LEDR_PIN);
-		break;
+		contador++;
+		if (contador>=4)
+			break;
 		state = 0;
 		parser_idx = 0;
 
@@ -184,7 +186,10 @@ void parser_GPS(FIL *fp) {
 	UINT readed;
 	f_close(fp);
 	f_open(fp,"ex1.txt", FA_OPEN_ALWAYS | FA_READ | FA_WRITE);
-	f_read(fp, &read, parser_idx, &readed);
+	while (contador>0){
+		f_read(fp, &read, parser_idx, &readed);
+		contador--;
+	}
 }
 
 void reset_sector_mkfs_openFile_WriteGPS(){
