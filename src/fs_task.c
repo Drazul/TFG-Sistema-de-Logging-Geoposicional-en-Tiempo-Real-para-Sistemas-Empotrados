@@ -9,10 +9,6 @@ static FS fileSystem;
 
 static void FSTaskFunc(void *pParams);
 
-void setupFS() {
-
-}
-
 void FSHardwareInit(void *pParam) {
 	reset_sector(0);
 	f_mount(&fileSystem, 0, 0);
@@ -28,14 +24,13 @@ void FSStartTask(unsigned short nStackDepth, unsigned portBASE_TYPE nPriority,
 void read_file() {
 	FS fileSystem;
 	FIL fp;
-	BYTE buff[40];
-	f_mount(&fileSystem, 0, 1);
+	GPS_MSG msg;
 	f_open(&fp, "ex1.txt", FA_OPEN_ALWAYS | FA_READ | FA_WRITE);
 
 	int i;
 	UINT readed = 0;
-	for (i = 0; i < 4; i++) {
-		f_read(&fp, &buff, 37, &readed);
+	for (i = 0; i < 10; i++) {
+		f_read(&fp, &msg.buffer, 37, &readed);
 	}
 }
 
@@ -99,13 +94,36 @@ void test_FS() {
 	GPIO_SetBits(LEDS_GPIO_PORT, LEDR_PIN);
 }
 
+void ReceiveWriteGPS(){
+	int count =10;
+	UINT writed;
+	GPS_MSG msg;
+	FIL fp;
+	f_open(&fp, "ex1.txt", FA_OPEN_ALWAYS | FA_READ | FA_WRITE);
+
+	while (count >0){
+		Delay(500);
+		GPIO_SetBits(LEDS_GPIO_PORT, LEDR_PIN);
+
+		count--;
+		xQueueReceive(writeQueue, &msg, 10000);
+		f_write(&fp, msg.buffer, msg.count, &writed);
+
+		Delay(500);
+		GPIO_ResetBits(LEDS_GPIO_PORT, LEDR_PIN);
+	}
+	f_close(&fp);
+}
+
 void FSTaskFunc(void *pParams) {
 
 	FSHardwareInit(pParams);
 	Delay(2000);
 
 	while (1) {
-		test_FS();
+		//test_FS();
+		ReceiveWriteGPS();
+		read_file();
 	}
 
 }

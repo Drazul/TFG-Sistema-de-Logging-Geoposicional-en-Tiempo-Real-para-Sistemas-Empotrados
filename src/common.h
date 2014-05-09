@@ -2,7 +2,7 @@
 #include "queue.h"
 #include "stm32f2xx.h"
 
-xQueueHandle WriteQueue;
+xQueueHandle writeQueue;
 
 typedef struct {
 	uint16_t count;

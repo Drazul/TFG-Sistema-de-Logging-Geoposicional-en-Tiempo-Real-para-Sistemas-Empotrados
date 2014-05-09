@@ -13,7 +13,6 @@
 #include "gps_task.h"
 #include "fs_task.h"
 
-
 /*
  * Configure the hardware for the demo.
  */
@@ -33,7 +32,7 @@ void setupTasks() {
 }
 
 void setupQueues(){
-	WriteQueue = xQueueCreate(4, sizeof(GPS_MSG));
+	writeQueue = xQueueCreate(4, sizeof(GPS_MSG));
 }
 
 /*-----------------------------------------------------------*/

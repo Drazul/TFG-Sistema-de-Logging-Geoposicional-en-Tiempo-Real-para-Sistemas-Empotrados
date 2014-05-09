@@ -39,7 +39,8 @@ void parser_GPS() {
 	uint16_t parser_idx = 0;
 	uint8_t c;
 	int state = 0;	// 0-5 -> searching for $GPGGA header,  1-> getting data
-
+	GPS_MSG msg;
+	int i;
 	// Parse for $GPGGA statements
 	// $GPGGA,064951.000,2307.1256,N,12016.4438,E,1,8,0.95,39.9,M,17.8,M,,*65\r
 
@@ -134,7 +135,13 @@ void parser_GPS() {
 		}
 
 		answer[parser_idx] = '\n';
+		for (i=0;i<80;i++){
+			msg.buffer[i]=answer[i];
+		}
+		//msg.buffer=(uint8_t[80])answer;
+		msg.count=parser_idx;
 
+		xQueueSend(writeQueue, &msg, 1000);
 		GPIO_SetBits(LEDS_GPIO_PORT, LEDV_PIN);
 
 		Delay(1000);
