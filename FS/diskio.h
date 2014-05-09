@@ -25,7 +25,7 @@ DSTATUS disk_status(int pdrv);
 DRESULT disk_read(int pdrv, BYTE* buff, DWORD sector, UINT count);
 DRESULT disk_write(int pdrv, const BYTE* buff, DWORD sector, UINT count);
 DRESULT disk_ioctl(int pdrv, BYTE cmd, void* buff);
-
+uint32_t GetSector(uint32_t Address);
 /* Disk Status Bits (DSTATUS) */
 #define STA_NOINIT		0x01	/* Drive not initialized */
 #define STA_NODISK		0x02	/* No medium in the drive */

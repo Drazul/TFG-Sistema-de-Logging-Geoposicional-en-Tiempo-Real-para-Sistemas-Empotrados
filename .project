@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>hello_std</name>
+	<name>hello_RTOS</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -27,27 +27,37 @@
 		<link>
 			<name>BA_bsp</name>
 			<type>2</type>
-			<location>/home/danielaguado/TFG/biker_assistant/src/BA_test/BA_bsp</location>
+			<locationURI>PROJECT_LOC/BA_bsp</locationURI>
 		</link>
 		<link>
 			<name>CoreSupport</name>
 			<type>2</type>
-			<location>/home/danielaguado/TFG/biker_assistant/src/BA_test/CoreSupport</location>
+			<locationURI>PROJECT_LOC/CoreSupport</locationURI>
+		</link>
+		<link>
+			<name>FreeRTOS</name>
+			<type>2</type>
+			<locationURI>PROJECT_LOC/FreeRTOS</locationURI>
+		</link>
+		<link>
+			<name>FreeRTOS_portable</name>
+			<type>2</type>
+			<locationURI>PROJECT_LOC/FreeRTOS_portable</locationURI>
 		</link>
 		<link>
 			<name>STM32F2xx</name>
 			<type>2</type>
-			<location>/home/danielaguado/TFG/biker_assistant/src/BA_test/STM32F2xx</location>
+			<locationURI>PROJECT_LOC/STM32F2xx</locationURI>
 		</link>
 		<link>
 			<name>StdPeriph_Driver</name>
 			<type>2</type>
-			<location>/home/danielaguado/TFG/biker_assistant/src/BA_test/StdPeriph_Driver</location>
+			<locationURI>PROJECT_LOC/StdPeriph_Driver</locationURI>
 		</link>
 		<link>
 			<name>StdPeriph_Driver_inc</name>
 			<type>2</type>
-			<location>/home/danielaguado/TFG/biker_assistant/src/BA_test/StdPeriph_Driver_inc</location>
+			<locationURI>PROJECT_LOC/StdPeriph_Driver_inc</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

@@ -20,7 +20,7 @@
 #include <sys/stat.h>
 
 
-//#include "stm32f2xx.h" /* for _get_PSP() from core_cm3.h*/
+#include "stm32f2xx.h" /* for _get_PSP() from core_cm3.h*/
 
 #undef errno
 extern int errno;
@@ -53,7 +53,7 @@ int _getpid(void)
 
 int _kill(int pid, int sig)
 {
-//	pid = pid; sig = sig; /* avoid warnings */
+	pid = pid; sig = sig; /* avoid warnings */
 	errno = EINVAL;
 	return -1;
 }
@@ -92,7 +92,7 @@ int _write(int file, char *ptr, int len)
 	return len;
 }
 
-// extern char _end; /* Defined by the linker (c'ï¿½ gia' sopra)*/
+// extern char _end; /* Defined by the linker (c'è gia' sopra)*/
 static char *heap_end;
 
 char* get_heap_end(void)

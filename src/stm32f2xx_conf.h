@@ -1,12 +1,12 @@
 /**
   ******************************************************************************
-  * @file    USART/USART_Printf/stm32f2xx_conf.h  
+  * @file    stm32f2xx_conf.h 
   * @author  MCD Application Team
-  * @version V1.0.0
-  * @date    18-April-2011
+  * @version V0.0.4
+  * @date    10/22/2010
   * @brief   Library configuration file.
   ******************************************************************************
-  * @attention
+  * @copy
   *
   * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
   * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
@@ -15,8 +15,7 @@
   * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
   * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
   *
-  * <h2><center>&copy; COPYRIGHT 2011 STMicroelectronics</center></h2>
-  ******************************************************************************
+  * <h2><center>&copy; COPYRIGHT 2010 STMicroelectronics</center></h2>
   */ 
 
 /* Define to prevent recursive inclusion -------------------------------------*/
@@ -25,44 +24,37 @@
 
 /* Includes ------------------------------------------------------------------*/
 /* Uncomment the line below to enable peripheral header file inclusion */
-//#include "stm32f2xx_adc.h"
-//#include "stm32f2xx_can.h"
-//#include "stm32f2xx_crc.h"
-//#include "stm32f2xx_cryp.h"
-//#include "stm32f2xx_dac.h"
-//#include "stm32f2xx_dbgmcu.h"
-//#include "stm32f2xx_dcmi.h"
-//#include "stm32f2xx_dma.h"
-//#include "stm32f2xx_exti.h"
+#include "stm32f2xx_adc.h"
+/* #include "stm32f2xx_can.h" */
+/* #include "stm32f2xx_crc.h" */
+/* #include "stm32f2xx_cryp.h" */
+/* #include "stm32f2xx_dac.h" */
+/* #include "stm32f2xx_dbgmcu.h" */
+/* #include "stm32f2xx_dcmi.h" */
+/* #include "stm32f2xx_dma.h" */
+/* #include "stm32f2xx_exti.h" */
 #include "stm32f2xx_flash.h"
-//#include "stm32f2xx_fsmc.h"
-//#include "stm32f2xx_hash.h"
+/* #include "stm32f2xx_fsmc.h" */
+/* #include "stm32f2xx_hash.h" */
 #include "stm32f2xx_gpio.h"
-//#include "stm32f2xx_i2c.h"
-//#include "stm32f2xx_iwdg.h"
-//#include "stm32f2xx_pwr.h"
+/* #include "stm32f2xx_i2c.h" */
+/* #include "stm32f2xx_iwdg.h" */
+/* #include "stm32f2xx_pwr.h" */
 #include "stm32f2xx_rcc.h"
-//#include "stm32f2xx_rng.h"
-//#include "stm32f2xx_rtc.h"
-//#include "stm32f2xx_sdio.h"
-//#include "stm32f2xx_spi.h"
-//#include "stm32f2xx_syscfg.h"
-//#include "stm32f2xx_tim.h"
+/* #include "stm32f2xx_rng.h" */
+/* #include "stm32f2xx_rtc.h" */
+/* #include "stm32f2xx_sdio.h" */
+/* #include "stm32f2xx_spi.h" */
+/* #include "stm32f2xx_syscfg.h" */
+/* #include "stm32f2xx_tim.h" */
 #include "stm32f2xx_usart.h"
-//#include "stm32f2xx_wwdg.h"
+/* #include "stm32f2xx_wwdg.h" */
 #include "misc.h" /* High level functions for NVIC and SysTick (add-on to CMSIS functions) */
 
-#undef HSE_VALUE
 #define HSE_VALUE            ((uint32_t)12000000) /*!< Value of the External oscillator in Hz */
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
-
-/* If an external clock source is used, then the value of the following define 
-   should be set to the value of the external clock source, else, if no external 
-   clock is used, keep this define commented */
-/*#define I2S_EXTERNAL_CLOCK_VAL   12288000 */ /* Value of the external clock in Hz */
-
 /* Uncomment the line below to expanse the "assert_param" macro in the 
    Standard Peripheral Library drivers code */
 /* #define USE_FULL_ASSERT    1 */
@@ -87,4 +79,4 @@
 
 #endif /* __STM32F2xx_CONF_H */
 
-/******************* (C) COPYRIGHT 2011 STMicroelectronics *****END OF FILE****/
+/******************* (C) COPYRIGHT 2010 STMicroelectronics *****END OF FILE****/

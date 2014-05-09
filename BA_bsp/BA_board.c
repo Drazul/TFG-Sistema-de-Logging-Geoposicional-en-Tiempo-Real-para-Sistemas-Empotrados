@@ -34,11 +34,12 @@ void BA_SystimerInit(void) {
 }
 /* Función para implementar delays de nTime ms */
 
+/*
 void Delay(uint32_t nTime) {
 	TimingDelay = nTime;
 	while (TimingDelay != 0);
 }
-
+*/
 void EnableCOMDelay(uint32_t nTime) {
   COMDelay = nTime;
   COMDelayEnabled = 1;

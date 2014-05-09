@@ -1,14 +1,14 @@
 /**
   ******************************************************************************
-  * @file    USART/USART_Printf/stm32f2xx_it.c 
+  * @file    Project/STM32F2xx_StdPeriph_Template/stm32f2xx_it.c
   * @author  MCD Application Team
-  * @version V1.0.0
-  * @date    18-April-2011
+  * @version V0.0.2
+  * @date    02/25/2010
   * @brief   Main Interrupt Service Routines.
-  *          This file provides template for all exceptions handler and 
+  *          This file provides template for all exceptions handler and
   *          peripherals interrupt service routine.
   ******************************************************************************
-  * @attention
+  * @copy
   *
   * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
   * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
@@ -17,17 +17,15 @@
   * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
   * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
   *
-  * <h2><center>&copy; COPYRIGHT 2011 STMicroelectronics</center></h2>
-  ******************************************************************************
-  */ 
+  * <h2><center>&copy; COPYRIGHT 2010 STMicroelectronics</center></h2>
+  */
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f2xx_it.h"
-#include "buffer.h"
 
-extern BufferType dbgBuffer, btBuffer;
-extern void TimingDelay_Decrement (void);
-
+/** @addtogroup Template_Project
+  * @{
+  */
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -54,13 +52,15 @@ void NMI_Handler(void)
   * @param  None
   * @retval None
   */
+
 void HardFault_Handler(void)
 {
-  /* Go to infinite loop when Hard Fault exception occurs */
+  // Go to infinite loop when Hard Fault exception occurs
   while (1)
   {
   }
 }
+
 
 /**
   * @brief  This function handles Memory Manage exception.
@@ -102,40 +102,12 @@ void UsageFault_Handler(void)
 }
 
 /**
-  * @brief  This function handles SVCall exception.
-  * @param  None
-  * @retval None
-  */
-void SVC_Handler(void)
-{
-}
-
-/**
   * @brief  This function handles Debug Monitor exception.
   * @param  None
   * @retval None
   */
 void DebugMon_Handler(void)
 {
-}
-
-/**
-  * @brief  This function handles PendSVC exception.
-  * @param  None
-  * @retval None
-  */
-void PendSV_Handler(void)
-{
-}
-
-/**
-  * @brief  This function handles SysTick Handler.
-  * @param  None
-  * @retval None
-  */
-void SysTick_Handler(void)
-{
-	TimingDelay_Decrement();
 }
 
 /******************************************************************************/
@@ -145,10 +117,10 @@ void SysTick_Handler(void)
 /*  file (startup_stm32f2xx.s).                                               */
 /******************************************************************************/
 
+
 /**
-  * @brief  This function handles UART4 interrupt request.
-  * @param  None
-  * @retval None
+  * @}
   */
 
-/******************* (C) COPYRIGHT 2011 STMicroelectronics *****END OF FILE****/
+
+/******************* (C) COPYRIGHT 2010 STMicroelectronics *****END OF FILE****/
