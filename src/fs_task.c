@@ -22,7 +22,6 @@ void FSStartTask(unsigned short nStackDepth, unsigned portBASE_TYPE nPriority,
 }
 
 void read_file() {
-	FS fileSystem;
 	FIL fp;
 	GPS_MSG msg;
 	f_open(&fp, "ex1.txt", FA_OPEN_ALWAYS | FA_READ | FA_WRITE);
