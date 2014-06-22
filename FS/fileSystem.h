@@ -70,6 +70,7 @@ FRESULT f_close(FIL* fp); /* Close an open file object */
 FRESULT f_read(FIL* fp, void* buff, UINT btr, UINT* br); /* Read data from a file */
 FRESULT f_write(FIL* fp, const void* buff, UINT btw, UINT* bw); /* Write data to a file */
 FRESULT f_truncateStart(FIL* fp, DWORD ofs); /* Move start file pointer of a file object */
+FRESULT f_lseek(FIL* fp, DWORD ofs); /* Move read pointer of a file object  */
 FRESULT f_sync(FIL* fp); /* Flush cached data of a writing file */
 FRESULT f_getfree(int fsIndex, UINT* nclst); /* Get number of free clusters on the drive */
 FRESULT f_mount(FS* fileSystem, int fsIndex, BYTE opt); /* Mount/Unmount a logical drive */

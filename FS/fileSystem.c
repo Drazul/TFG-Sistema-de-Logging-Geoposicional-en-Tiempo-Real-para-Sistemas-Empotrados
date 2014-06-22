@@ -201,14 +201,17 @@ FRESULT reset_sector(int fsIndex) {
 	else
 		address = PHYSYCAL_START_ADDRESS2;
 
-	FLASH_Unlock();
-
-	FLASH_ClearFlag(FLASH_FLAG_EOP | FLASH_FLAG_OPERR | FLASH_FLAG_WRPERR |
-	FLASH_FLAG_PGAERR | FLASH_FLAG_PGPERR | FLASH_FLAG_PGSERR);
-	if (FLASH_EraseSector(GetSector(address), VoltageRange_3) != FLASH_COMPLETE)
-		result = FR_DISK_ERR;
+	result= disk_ioctl(fsIndex, CTRL_ERASE_SECTOR, (void *)address);
 
 	return result;
+}
+
+FRESULT f_lseek(FIL* fp, DWORD ofs){
+	if (fp->readPointer+ofs< fp->writePointer)
+		fp->readPointer+=ofs;
+	else
+		fp->readPointer=fp->writePointer-4;
+	return FR_OK;
 }
 
 FRESULT change_sector() {
