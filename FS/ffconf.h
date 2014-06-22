@@ -1,5 +1,7 @@
-/* File System Configuration*/
-
+/**
+ @file ffconf.h
+ @brief Fichero de configuración del sistema de archivos
+*/
 #define _MAX_FILES 3   /* Number of maximum files supported */
 #define SECTOR_SIZE 16 /* Bytes */
 #define FS_SIZE 8192	/* 128KB/16B= 8192 */

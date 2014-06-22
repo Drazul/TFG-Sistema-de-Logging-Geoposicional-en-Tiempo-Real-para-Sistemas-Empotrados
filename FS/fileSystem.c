@@ -1,8 +1,17 @@
+/**
+ @file fileSystem.c
+ @brief Módulo que implementa las funciones del archivo fileSystem.h
+*/
 #include "fileSystem.h"
 
 static FS *fs[2];
 static int actual_fs = 0;
 
+/**
+ * @brief Convierte un dato BYTE en un dato uint32_t
+ * @param src Vector de 4 BYTES a convertir
+ * @return Devuelve el valor correspondiente en uint32_t
+ */
 uint32_t byte_2_uint32(BYTE* src) {
 
 	uint32_t dst = 0;
@@ -18,7 +27,12 @@ uint32_t byte_2_uint32(BYTE* src) {
 	dst |= (uint32_t) src[3] << 0;
 	return dst;
 }
-
+/**
+ * @brief Convierte un dato uint32_t en un dato BYTE
+ * @param src Valor uint32_t a convertir
+ * @param dst Puntero donde se devolverá el valor
+ * @return Devuelve el valor correspondiente en BYTE*
+ */
 BYTE* uint32_2_byte(uint32_t src, BYTE * dst) {
 	dst[3] = (BYTE) (src >> 24);
 	dst[2] = (BYTE) (src >> 16);
@@ -28,6 +42,11 @@ BYTE* uint32_2_byte(uint32_t src, BYTE * dst) {
 	return dst;
 }
 
+/**
+ * @brief Comprueba si hay un sistema de archivos en memoria
+ * @param fsIndex Índice del sistema de archivos objetivo
+ * @return Código de estado de la operación
+ */
 FRESULT check_fs(int fsIndex) {
 
 	FRESULT result = FR_OK;
@@ -48,6 +67,11 @@ FRESULT check_fs(int fsIndex) {
 	return FR_OK;
 }
 
+/**
+ * @brief Comprueba si el archivo es válido
+ * @param file Puntero del archivo objetivo
+ * @return Código de estado de la operación
+ */
 FRESULT check_file(FIL *file) {
 
 	int i;
@@ -85,6 +109,12 @@ FRESULT check_file(FIL *file) {
 	return FR_OK;
 }
 
+/**
+ * @brief Lee una entrada en la tabla de descriptores de archivos y comprueba si es válida
+ * @param file Puntero de archivo en el que se devolverá el archivo si es válido
+ * @param sector Número de sector donde leer la entrada de la tabla de descriptores
+ * @return Código de estado de la operación
+ */
 FRESULT read_file_entry(FIL *file, DWORD sector) {
 
 	FRESULT result = FR_OK;
@@ -97,7 +127,11 @@ FRESULT read_file_entry(FIL *file, DWORD sector) {
 		file->descriptorSector = sector;
 	return result;
 }
-
+/**
+ * @brief Busca todos los archivos del sistema de archivos justo después de montarlo con éxito
+ * @param fsIndex Identificador del sistema de archivos
+ * @return Código de estado de la operación
+ */
 FRESULT loading_files(int fsIndex) {
 
 	FRESULT result = FR_OK;
@@ -126,7 +160,12 @@ FRESULT loading_files(int fsIndex) {
 		}
 	return FR_OK;
 }
-
+/**
+ * @brief Compara dos cadenas correspondientes al nombre de archivos
+ * @param path Cadena correspondiente al nombre del archivo que se quiere abrir
+ * @param name Cadena correspondiente al nombre de uno de los archivos del sistema de archivos
+ * @return Código de estado de la operación
+ */
 int compare(const TCHAR *path, TCHAR *name) {
 	int i;
 	for (i = 0; i < 7; i++) { /* 7 is the max length of name */
@@ -136,7 +175,12 @@ int compare(const TCHAR *path, TCHAR *name) {
 
 	return 1;
 }
-
+/**
+ * @brief Actualiza un archivo. En la práctica crea una copia del mismo
+ * @param src Archivo fuente
+ * @param dst Archivo destino
+ * @return Código de estado de la operación
+ */
 int update_file(FIL *src, FIL *dst) {
 	dst->buffindex = src->buffindex;
 	dst->descriptorSector = src->descriptorSector;
@@ -153,7 +197,12 @@ int update_file(FIL *src, FIL *dst) {
 
 	return 1;
 }
-
+/**
+ * @brief Copia un archivo en otro
+ * @param src Archivo fuente
+ * @param dst Archivo destino
+ * @return Código de estado de la operación
+ */
 FRESULT copy_file(FIL *src, FIL *dst) {
 	FRESULT result = FR_OK;
 	UINT byteRead = 0, byteWrite = 0;
@@ -169,7 +218,12 @@ FRESULT copy_file(FIL *src, FIL *dst) {
 
 	return result;
 }
-
+/**
+ * @brief Crea una copia del sistema de archivos en otro sistema de archivos
+ * @param src Identificador del sistema de archivos fuente
+ * @param dst Identificador del sistema de archivos destino
+ * @return Código de estado de la operación
+ */
 FRESULT backup_fs(int src, int dst) {
 	FRESULT result = FR_OK;
 	int i;
@@ -183,7 +237,10 @@ FRESULT backup_fs(int src, int dst) {
 
 	return result;
 }
-
+/**
+ * @brief Cierra todos los archivos del sistema de archivos actual
+ * @return Código de estado de la operación
+ */
 FRESULT close_all_files() {
 	FRESULT result = FR_OK;
 	int i;
@@ -214,6 +271,10 @@ FRESULT f_lseek(FIL* fp, DWORD ofs){
 	return FR_OK;
 }
 
+/**
+ * @brief Cambia el sector físico por defecto en el que se crea el sistema de archivos
+ * @return Código de estado de la operación
+ */
 FRESULT change_sector() {
 	FRESULT result = FR_OK;
 	FS fs1, fs2;

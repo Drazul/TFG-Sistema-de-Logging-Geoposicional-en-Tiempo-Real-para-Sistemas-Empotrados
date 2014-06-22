@@ -1,3 +1,8 @@
+/**
+ @file diskio.c
+ @brief Módulo que implementa las funciones del archivo diskio.h
+*/
+
 #include "diskio.h"		/* FileSystem lower layer API */
 #include <stm32f2xx_flash.h>
 #include <string.h>
@@ -15,6 +20,11 @@
 #define ADDR_FLASH_SECTOR_10    ((uint32_t)0x080C0000) /* Base @ of Sector 10, 128 Kbytes */
 #define ADDR_FLASH_SECTOR_11    ((uint32_t)0x080E0000) /* Base @ of Sector 11, 128 Kbytes */
 
+/**
+ * @brief Función que devuelve el sector al que hace referencia la dirección dada
+ * @param Address Dirección de memoria
+ * @return Sector físico al que pertenece la dirección dada
+ */
 uint32_t GetSector(uint32_t Address) {
 	uint32_t sector = 0;
 
@@ -57,7 +67,11 @@ uint32_t GetSector(uint32_t Address) {
 
 	return sector;
 }
-
+/**
+ * @brief Convierte un dato BYTE en un dato uint32_t
+ * @param src Vector de 4 BYTES a convertir
+ * @return Devuelve el valor correspondiente en uint32_t
+ */
 uint32_t byte_to_uint32(const BYTE* src) {
 	uint32_t dst = 0;
 	dst |= (uint32_t) src[0] << 0;
@@ -67,7 +81,12 @@ uint32_t byte_to_uint32(const BYTE* src) {
 
 	return dst;
 }
-
+/**
+ * @brief Convierte un dato uint32_t en un dato BYTE
+ * @param src Valor uint32_t a convertir
+ * @param dst Puntero donde se devolverá el valor
+ * @return Devuelve el valor correspondiente en BYTE*
+ */
 BYTE* uint32_to_byte(uint32_t src, BYTE * dst) {
 	dst[3] = (BYTE) (src >> 24);
 	dst[2] = (BYTE) (src >> 16);
@@ -76,7 +95,15 @@ BYTE* uint32_to_byte(uint32_t src, BYTE * dst) {
 
 	return dst;
 }
-
+/**
+ * @brief Convierte un número de sector en una dirección física y calcula la dirección de fin a partir del contador
+ * @param pdrv Identificador del sistema de archivos
+ * @param count Número de sectores lógicos de diferencia entre la dirección de inicio y de fin
+ * @paran sector Número de sector lógico de inicio
+ * @param startAddress Puntero donde se devuelve la dirección de inicio
+ * @param endAddress Puntero donde se devuelve la dirección de fin
+ * @return Código de estado de la operación
+ */
 DSTATUS get_start_end_address(int pdrv, int count, int sector,
 		uint32_t* startAddress, uint32_t* endAddress) {
 	int size;
@@ -91,7 +118,12 @@ DSTATUS get_start_end_address(int pdrv, int count, int sector,
 	}
 	return RES_OK;
 }
-
+/**
+ * @brief Convierte un número de sector en una dirección física
+ * @param pdrv Identificador del sistema de archivos
+ * @paran sector Número de sector lógico de inicio
+ * @return Código de estado de la operación
+ */
 uint32_t get_address(int pdrv, DWORD sector) {
 	uint32_t address;
 	int size;
@@ -118,7 +150,11 @@ DSTATUS disk_initialize(int pdrv /* Physical drive number (0..) */
 	return RES_OK;
 
 }
-
+/**
+ * @brief Convierte el estado de operación de la flash al estado de operación del sistema de archivos
+ * @param status Estado de operación de la FLASH
+ * @return Código de estado de la operación
+ */
 DSTATUS flashState2FSState(FLASH_Status status) {
 	if (status == FLASH_ERROR_WRP)
 		return STA_PROTECT;

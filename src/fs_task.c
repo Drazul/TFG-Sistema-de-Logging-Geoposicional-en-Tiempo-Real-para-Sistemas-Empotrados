@@ -1,3 +1,7 @@
+/**
+ @file fs_task.c
+ @brief Módulo que implementa las funciones del archivo fs_task.h
+*/
 #include "fs_task.h"
 #include "stm32f2xx.h"
 #include "BA_board.h"
@@ -7,7 +11,11 @@
 
 static FS fileSystem;
 
-static void FSTaskFunc(void *pParams);
+/**
+ * @brief Esta es la función principal de la tarea
+ * @Note Esta función inicializa la memoria y el sistema de archivos y lanza el método que se queda a la espera de mensajes desde el GPS
+ */
+void FSTaskFunc(void *pParams);
 
 void FSHardwareInit(void *pParam) {
 	reset_sector(0);
@@ -21,6 +29,10 @@ void FSStartTask(unsigned short nStackDepth, unsigned portBASE_TYPE nPriority,
 	xTaskCreate(FSTaskFunc, "FS", nStackDepth, pParams, nPriority, NULL);
 }
 
+/**
+ * @brief Función que lee de un archivo
+ * @Note Esta función no se utiliza en la implementación actual, pero se mantiene para poder ser utilizada cuando se integre en el proyecto Biker Assistant
+ */
 void read_file() {
 	FIL fp;
 	GPS_MSG msg;
@@ -34,6 +46,7 @@ void read_file() {
 }
 
 // FS
+/*
 void test_FS() {
 	FIL fp;
 
@@ -92,7 +105,12 @@ void test_FS() {
 	Delay(500);
 	GPIO_SetBits(LEDS_GPIO_PORT, LEDR_PIN);
 }
+*/
 
+/**
+ * @brief Función que escribe en un archivo todos los mensajes recibidos desde la tarea que controla el GPS
+ * @Note Esta función, dentro del bucle de ejecución, enciende y apaga un led cada vez que recibe y escribe un dato
+ */
 void ReceiveWriteGPS(){
 	int count =10;
 	UINT writed;
@@ -114,6 +132,7 @@ void ReceiveWriteGPS(){
 	f_close(&fp);
 }
 
+
 void FSTaskFunc(void *pParams) {
 
 	FSHardwareInit(pParams);
@@ -122,7 +141,7 @@ void FSTaskFunc(void *pParams) {
 	while (1) {
 		//test_FS();
 		ReceiveWriteGPS();
-		read_file();
+		//read_file();
 	}
 
 }

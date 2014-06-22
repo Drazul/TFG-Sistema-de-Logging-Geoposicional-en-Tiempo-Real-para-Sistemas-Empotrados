@@ -1,3 +1,7 @@
+/**
+ @file gps_task.c
+ @brief Módulo que implementa las funciones del archivo gps_task.h
+*/
 #include "gps_task.h"
 #include "stm32f2xx.h"
 #include "BA_board.h"
@@ -6,9 +10,15 @@
 
 //#define COMn 4
 //USART_TypeDef* COM_USART[COMn] = {DBG, BT, GSM, GPS};
+/**
+ * @brief Esta es la función principal de la tarea
+ * @Note Esta función inicializa el GPS y lanza el método que lee datos del GPS y se los manda a la tarea que gestiona el Sistema de Archivos
+ */
+void GPSTaskFunc(void *pParams);
 
-static void GPSTaskFunc(void *pParams);
-
+/**
+ * @brief Esta es la función que inicializa el GPS
+ */
 void setupGPS() {
 	USART_InitTypeDef USART_InitStructure;
 
@@ -23,7 +33,9 @@ void setupGPS() {
 	BA_GPSInit(&USART_InitStructure);
 	Delay(1000);
 }
-
+/**
+ * @brief Esta es la función que inicializa todo el hardware que necesita la tarea
+ */
 void GPSHardwareInit(void *pParam) {
 	setupGPS();
 }
@@ -33,7 +45,10 @@ void GPSStartTask(unsigned short nStackDepth, unsigned portBASE_TYPE nPriority,
 	xTaskCreate(GPSTaskFunc, "GPS", nStackDepth, pParams, nPriority, NULL);
 }
 
-// GPS
+/**
+ * @brief Esta es la función que lee datos del GPS y, cuando detecta un mensaje correcto, lo envía a la tarea que gestiona el Sistema de Archivos
+ * @Note Esta tarea enciende un led cada vez que envía correctamente un mensaje
+ */
 void parser_GPS() {
 	uint8_t answer[80];
 	uint16_t parser_idx = 0;
