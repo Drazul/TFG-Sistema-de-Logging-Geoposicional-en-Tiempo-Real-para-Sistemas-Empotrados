@@ -8,70 +8,70 @@
 #include "diskio.h"
 
 /* FILE PERMISSIONS */
-#define	 FA_READ			0x01
-#define	 FA_OPEN_EXISTING	0x00
+#define   FA_READ      0x01
+#define   FA_OPEN_EXISTING  0x00
 
-#define  FA_WRITE			0x02
-#define	 FA_CREATE_NEW		0x04
-#define	 FA_CREATE_ALWAYS	0x08
-#define	 FA_OPEN_ALWAYS		0x10
+#define  FA_WRITE      0x02
+#define   FA_CREATE_NEW    0x04
+#define   FA_CREATE_ALWAYS  0x08
+#define   FA_OPEN_ALWAYS    0x10
 
 /**
  *  @brief Enumeración de los estados de operación de la memoria FLASH
  */
 typedef enum {
-	FR_OK = 0, /**< (0) Éxito */
-	FR_DISK_ERR, /**< (1) Ha ocurrido un error en la capa de abstracción de E/S */
-	FR_INT_ERR, /**< (2) Parámetros erróneos */
-	FR_NOT_READY, /**< (3) Memoria ocupada */
-	FR_NO_FILE, /**< (4) No se encuentra el archivo */
-	FR_NO_PATH, /**< (5) No se encuentra la ruta */
-	FR_INVALID_NAME, /**< (6) El nombre o la ruta es inválido */
-	FR_DENIED, /**< (7) Acceso denegado o prohibido el acceso al directorio */
-	FR_EXIST, /**< (8) Acceso denegado o prohibido el acceso */
-	FR_INVALID_OBJECT, /**< (9) El archivo o directorio es inválido */
-	FR_WRITE_PROTECTED, /**< (10) La memoria está protegida contra escrituras */
-	FR_INVALID_DRIVE, /**< (11) El identificador del medio físco es inválido */
-	FR_NOT_ENABLED, /**< (12) El volúmen no tiene área de trabajo */
-	FR_NO_FILESYSTEM, /**< (13) No hay un Sistema de Archivos válido */
-	FR_MKFS_ABORTED, /**< (14) Abortada la creación de un Sistema de Archivos debido a parámetros erróneos */
-	FR_TIMEOUT, /**< (15) Tiempo de espera excedido */
-	FR_LOCKED, /**< (16) La operación ha sido rechazada debido a las políticas de acceso */
-	FR_NOT_ENOUGH_CORE, /**< (17) No hay espacio disponible para guardar */
-	FR_TOO_MANY_FILES, /**< (18) Número de archivos máximo excedido */
-	FR_INVALID_PARAMETER /**< (19) El parámetro dado es inválido */
+  FR_OK = 0, /**< (0) Éxito */
+  FR_DISK_ERR, /**< (1) Ha ocurrido un error en la capa de abstracción de E/S */
+  FR_INT_ERR, /**< (2) Parámetros erróneos */
+  FR_NOT_READY, /**< (3) Memoria ocupada */
+  FR_NO_FILE, /**< (4) No se encuentra el archivo */
+  FR_NO_PATH, /**< (5) No se encuentra la ruta */
+  FR_INVALID_NAME, /**< (6) El nombre o la ruta es inválido */
+  FR_DENIED, /**< (7) Acceso denegado o prohibido el acceso al directorio */
+  FR_EXIST, /**< (8) Acceso denegado o prohibido el acceso */
+  FR_INVALID_OBJECT, /**< (9) El archivo o directorio es inválido */
+  FR_WRITE_PROTECTED, /**< (10) La memoria está protegida contra escrituras */
+  FR_INVALID_DRIVE, /**< (11) El identificador del medio físco es inválido */
+  FR_NOT_ENABLED, /**< (12) El volúmen no tiene área de trabajo */
+  FR_NO_FILESYSTEM, /**< (13) No hay un Sistema de Archivos válido */
+  FR_MKFS_ABORTED, /**< (14) Abortada la creación de un Sistema de Archivos debido a parámetros erróneos */
+  FR_TIMEOUT, /**< (15) Tiempo de espera excedido */
+  FR_LOCKED, /**< (16) La operación ha sido rechazada debido a las políticas de acceso */
+  FR_NOT_ENOUGH_CORE, /**< (17) No hay espacio disponible para guardar */
+  FR_TOO_MANY_FILES, /**< (18) Número de archivos máximo excedido */
+  FR_INVALID_PARAMETER /**< (19) El parámetro dado es inválido */
 } FRESULT;
 
 /**
  *  @brief Estructura que define un archivo
  */typedef struct {
-	BYTE name[7]; /**< Nombre del archivo */
-	BYTE flag; /**< Estado y permisos del archivo */
-	BYTE err; /**< Estado de error */
-	BYTE dirty; /**< Si hay operaciones de escritura pendientes*/
-	BYTE fsIndex; /**< Índice en el sistema de archivos */
-	DWORD startSector; /**< Sector de inicio del archivo */
-	DWORD writePointer; /**< Puntero de escritura del archivo. Se encuentra al final del archivo. En bytes */
-	DWORD readPointer; /**< Puntero de lectura. En Bytes */
-	DWORD descriptorSector; /**< Sector del sistema de archivos en el que se encuentra el archivo */
-	WORD buffindex; /**< Índice del buffer donde se ha escrito por última vez */
-	BYTE buff[SECTOR_SIZE];/**< buffer de escritura */
+  BYTE name[7]; /**< Nombre del archivo */
+  BYTE flag; /**< Estado y permisos del archivo */
+  BYTE err; /**< Estado de error */
+  BYTE dirty; /**< Si hay operaciones de escritura pendientes*/
+  BYTE fsIndex; /**< Índice en el sistema de archivos */
+  DWORD startSector; /**< Sector de inicio del archivo */
+  DWORD writePointer; /**< Puntero de escritura del archivo. Se encuentra al final del archivo. En bytes */
+  DWORD readPointer; /**< Puntero de lectura. En Bytes */
+  DWORD descriptorSector; /**< Sector del sistema de archivos en el que se encuentra el archivo */
+  WORD buffindex; /**< Índice del buffer donde se ha escrito por última vez */
+  BYTE buff[SECTOR_SIZE];/**< buffer de escritura */
 } FIL;
 
 /**
  *  @brief Estructura que define el Sistema de Archivos
  */
 typedef struct {
-	uint32_t start_address; /**< Dirección de inicio del sistema de archivos */
-	BYTE sector_size; /**< Tamaño de cada sector lógico */
-	WORD free_sector; /**< Número de sectores libres */
-	WORD fs_size; /**< Tamaño en sectores lógicos del sistema de archivos */
-	WORD volbase; /**< Sector de inicio del volúmen de datos */
-	WORD fatbase; /**< Sector de inicio del sistema de archivos */
-	WORD database; /**< Sector de inicio de la tabla de descriptores */
-	WORD lastDescriptor; /**< Sector donde se guardó el último descriptor de archivo */
-	FIL files[_MAX_FILES]; /**< Vector de archivos abiertos */
-	BYTE win[SECTOR_SIZE]; /**< Buffer de lectura del sistema de archivos y de los archivos */
+  uint32_t start_address; /**< Dirección de inicio del sistema de archivos */
+  BYTE sector_size; /**< Tamaño de cada sector lógico */
+  WORD free_sector; /**< Número de sectores libres */
+  WORD fs_size; /**< Tamaño en sectores lógicos del sistema de archivos */
+  WORD volbase; /**< Sector de inicio del volúmen de datos */
+  WORD fatbase; /**< Sector de inicio del sistema de archivos */
+  WORD database; /**< Sector de inicio de la tabla de descriptores */
+  WORD lastDescriptor; /**< Sector donde se guardó el último descriptor de archivo */
+  FIL files[_MAX_FILES]; /**< Vector de archivos abiertos */
+  BYTE win[SECTOR_SIZE]; /**< Buffer de lectura del sistema de archivos y de los archivos */
 } FS;
 
 /**

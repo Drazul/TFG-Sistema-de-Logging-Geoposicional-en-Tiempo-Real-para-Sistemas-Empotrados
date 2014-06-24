@@ -36,14 +36,14 @@ int putChar( int ch );
  * @brief Función que crea las tareas del Sistemas Operativo FreeRTOS
  */
 void setupTasks() {
-	GPSStartTask(configMINIMAL_STACK_SIZE*4, 1, NULL);
-	FSStartTask(configMINIMAL_STACK_SIZE*4, 1, NULL);
+  GPSStartTask(configMINIMAL_STACK_SIZE*4, 1, NULL);
+  FSStartTask(configMINIMAL_STACK_SIZE*4, 1, NULL);
 }
 /**
  * @brief Función que crea las colas de mensajes entre tareas del Sistema Operativo FreeRTOS
  */
 void setupQueues(){
-	writeQueue = xQueueCreate(4, sizeof(GPS_MSG));
+  writeQueue = xQueueCreate(4, sizeof(GPS_MSG));
 }
 
 /*-----------------------------------------------------------*/
@@ -53,32 +53,32 @@ void setupQueues(){
  */
 int main( void )
 {
-	prvSetupHardware();
-	setupQueues();
-	setupTasks();
+  prvSetupHardware();
+  setupQueues();
+  setupTasks();
 
 
     /* Start the scheduler. */
-	vTaskStartScheduler();
+  vTaskStartScheduler();
 
     /* Will only get here if there was insufficient memory to create the idle
     task.  The idle task is created within vTaskStartScheduler(). */
-	for( ;; );
+  for( ;; );
 
-	return 0;
+  return 0;
 }
 /*-----------------------------------------------------------*/
 
 void prvSetupHardware( void )
 {
-	/* Set the Vector Table base address at 0x08000000 */
-	NVIC_SetVectorTable( NVIC_VectTab_FLASH, 0x0 );
+  /* Set the Vector Table base address at 0x08000000 */
+  NVIC_SetVectorTable( NVIC_VectTab_FLASH, 0x0 );
 
-	NVIC_PriorityGroupConfig( NVIC_PriorityGroup_4 );
+  NVIC_PriorityGroupConfig( NVIC_PriorityGroup_4 );
 
-	/* Configure HCLK clock as SysTick clock source. */
-	SysTick_CLKSourceConfig( SysTick_CLKSource_HCLK );
-	BA_LEDsInit();
+  /* Configure HCLK clock as SysTick clock source. */
+  SysTick_CLKSourceConfig( SysTick_CLKSource_HCLK );
+  BA_LEDsInit();
 
 }
 
@@ -89,14 +89,14 @@ void prvSetupHardware( void )
  */
 void vApplicationStackOverflowHook( xTaskHandle *pxTask, signed portCHAR *pcTaskName )
 {
-	/* This function will get called if a task overflows its stack.   If the
-	parameters are corrupt then inspect pxCurrentTCB to find which was the
-	offending task. */
+  /* This function will get called if a task overflows its stack.   If the
+  parameters are corrupt then inspect pxCurrentTCB to find which was the
+  offending task. */
 
-	( void ) pxTask;
-	( void ) pcTaskName;
+  ( void ) pxTask;
+  ( void ) pcTaskName;
 
-	for( ;; );
+  for( ;; );
 }
 /*-----------------------------------------------------------*/
 /**
@@ -111,7 +111,7 @@ void vApplicationTickHook( void )
 
 int putChar(int ch)
 {
-	return ch;
+  return ch;
 }
 
 /**
@@ -119,5 +119,5 @@ int putChar(int ch)
  * @param t Tiempo a esperar en milisegundos
  */
 void Delay(uint32_t t) {
-	vTaskDelay(t / portTICK_RATE_MS);
+  vTaskDelay(t / portTICK_RATE_MS);
 }
