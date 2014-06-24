@@ -273,27 +273,30 @@ FRESULT f_lseek(FIL* fp, DWORD ofs){
 
 /**
  * @brief Cambia el sector físico por defecto en el que se crea el sistema de archivos
+ * @param opt Opción que indica si queremos, o no, har un backup de los archivos de un sistema en el otro. Un 1 indica que queremos hacer backup.
  * @return Código de estado de la operación
  */
-FRESULT change_sector() {
+FRESULT change_sector(int opt) {
 	FRESULT result = FR_OK;
 	FS fs1, fs2;
 	if (actual_fs == 0) {
+		reset_sector(1);
 		f_mount(&fs1, 1, 0);
 		f_mkfs(1);
 		f_mount(&fs1, 1, 1);
 		f_mount(&fs2, 0, 1);
 		actual_fs = 1;
-		result = backup_fs(0, 1);
-		reset_sector(0);
+		if (opt==1)
+			result = backup_fs(0, 1);
 	} else {
+		reset_sector(0);
 		f_mount(&fs1, 0, 0);
 		f_mkfs(0);
 		f_mount(&fs1, 0, 1);
 		f_mount(&fs2, 1, 1);
 		actual_fs = 0;
-		result = backup_fs(1, 0);
-		reset_sector(1);
+		if (opt==1)
+			result = backup_fs(1, 0);
 	}
 	return result;
 }
