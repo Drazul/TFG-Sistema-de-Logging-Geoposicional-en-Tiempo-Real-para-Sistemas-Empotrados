@@ -1,0 +1,100 @@
+\chapter{Objetivos}
+\label{chap:objetivos}
+
+El objetivo principal de este \acs{TFG} es desarrollar un sistema de logging geoposicional que cumpla con las restricciones del proyecto \acs{BA} para, una vez finalizado, integrarlo dentro del mismo sistema.\\
+
+Debido al hecho de que este \acs{TFG} forma parte de un proyecto mayor con el que debe ser totalmente compatible y fácilmente integrable se deben cumplir una serie de restricciones ya fijadas en el proyecto además de las restricciones propias que tendría el desarrollo del sistema de forma independiente.\\
+
+Las restricciones básicas de recursos y componentes a utilizar por el proyecto \acs{BA} y que se siguen en este \acs{TFG} son las siguientes:
+\begin{enumerate}
+\item Hardware
+  \begin{enumerate}
+  \item <<CPU ARM Cortex M3 STMF205VGT6>>, con 1MByte Flash Memory.
+  \item <<GPS GlobalTop FGPMMOPA6H>>, acceso comandos AT.\\
+  \end{enumerate}
+\item Software
+  \begin{enumerate}
+  \item Compilador cruzado y librerías de programación en C para el Cortex M3.
+  \item Uso del sistema operativo en tiempo real FreeRTOS.\\
+  \end{enumerate}
+\end{enumerate}
+
+Las restricciones hardware y software a utilizar condicionan notablemente las decisiones de diseño a tomar, como se especifica en el capítulo \ref{chap:desarrollo} de este documento.\\
+
+Respecto al sistema, éste que debe cumplir las siguientes premisas de calidad:
+\begin{itemize}
+\item Extensible: el sistema debe poder extenderse con nuevas funcionalidades para los distintos actores de forma sencilla. 
+\item Robusto: el sistema debe ser capaz de poder estar en ejecución de forma indefinida sin presentar fallos por el mero hecho de estar activo. 
+\item Flexible: el sistema debe permitir cambios en su estructura e implementación de forma fácil y sin un excesivo coste en tiempo y recursos. 
+\item Recuperación: el sistema debe ser capaz de recuperarse por sí mismo frente a fallos eléctricos que no afecten al hardware (fallos suministro eléctrico). 
+\item Adaptabilidad: el sistema debe poder instalarse en otras plataformas de hardware con el mínimo coste posible. \\
+\end{itemize}
+
+A raíz de los condicionantes enumerados anteriormente surge una nueva batería de restricciones:
+\begin{itemize}
+\item Tamaño en memoria RAM: todo el sistema debe tener una huella pequeña, ya que debe poder ejecutarse sobre un máximo de 128 KB de memoria.
+\item Tamaño en memoria FLASH: todo el sistema debe ocupar el mínimo espacio posible ya que dentro de la misma memoria FLASH se debe almacenar el ejecutable del programa y el sistema de archivos donde almacenar el log del GPS y disponiendo de un máximo de 1 MB de memoria.
+\item Garantía de ejecución de las operaciones: todas las operaciones deben tener garantizada su ejecución.
+\item Tiempos: se deben respetar los tiempos máximos de respuesta para cada una de las operaciones que pueden realizar los actores simultáneamente.\\
+\end{itemize}
+
+La complejidad del desarrollo de este \acs{TFG} se ve incrementada notablemente debido a las restricciones conocidas, restricciones propias del trabajo con el hardware a bajo nivel y la necesidad de probar las soluciones en una plataforma física independiente de la máquina donde se desarrolla el sistema. Además esta plataforma es ligeramente diferente de la máquina donde se implementará el sistema completo una vez desarrollado ya que la única interfaz con el usuario son tres leds, aunque el desarrollador también puede utilizar la interfaz de programación y depuración.\\
+
+Así pues el objetivo principal de este proyecto consistirá en el diseño y desarrollo de un sistema autónomo para el acceso a datos de geolocalización y logging de los mismos en un fichero de texto sobre la plataforma proporcionada por la empresa.\\
+
+\section{Objetivos específicos}
+\label{sec:objetivosEspecificos}
+Dado el alcance del proyecto y la complejidad añadida por el hardware y el sistema operativo en tiempo real a utilizar, se desglosa el objetivo principal en varios subobjetivos que nos proporcionarán una hoja de ruta para el desarrollo del sistema.\\
+
+La lista de subobjetivos, junto con su descripción, se listan a continuación y se describen más adelante:
+
+\begin{enumerate}
+\item Comprensión de la plataforma hardware.
+\item Conocimiento software de acceso al hardware.                                                     
+\item Acceso a la memoria FLASH.                                                                                      
+\item Acceso al GPS.                                                                                             
+\item Implementación de un Sistema de Ficheros.                                                  
+\item Programación y configuración del Sistema Operativo en Tiempo Real FreeRTOS.                                                                                                              
+\item Diseño y programación del sistema final.\\
+\end{enumerate}
+
+\subsection{Comprensión de la plataforma hardware}
+Se debe analizar la plataforma hardware elegida de modo que se conozcan los distintos componentes que la forma y la interacción entre los mismos.\\
+
+En resumen se debe estudiar el comportamiento de la placa <<CPU ARM Cortex M3 STMF205VGT6>>, prestando especial atención a la memoria FLASH presente en la misma, y del GPS <<GlobalTop FGPMMOPA6H>>.\\   
+
+Este objetivo se documenta en profundidad en el apartado \ref{obj1}.        
+
+\subsection{Conocimiento software de acceso al hardware}
+Este objetivo está estrechamente relacionado con el anterior. Se debe estudiar la programación y bibliotecas de acceso al hardware proporcionado por el fabricante de modo que se esté en disposición de acometer el diseño y desarrollo del sistema.\\
+
+En resumen se deben estudiar las bibliotecas proporcionadas por el fabricante de la placa <<CPU ARM Cortex M3 STMF205VGT6>>, especialmente la biblioteca general, la específica de acceso a la FLASH y las necesarias para comunicarse con el componente GPS, y las proporcionadas por el fabricante del GPS.\\
+
+Este objetivo se documenta en profundidad en el apartado \ref{obj2}.        
+
+ 
+\subsection{Análisis del acceso a la memoria FLASH}
+ Analizar y programar varios test de acceso a la memoria FLASH de modo que se gane el conocimiento necesario para su uso y se descarte un mal funcionamiento de la misma.\\
+ 
+ Este objetivo se documenta en profundidad en el apartado \ref{obj3}.        
+
+\subsection{Análisis del acceso al GPS}
+Analizar y programar varios test de acceso al módulo GPS de modo que se gane el conocimiento necesario para su uso y se descarte un mal funcionamiento del mismo.\\
+
+Este objetivo se documenta en profundidad en el apartado \ref{obj4}.        
+
+\subsection{Implementación de un Sistema de Ficheros}
+Estudiar posibles opciones y se realizará el desarrollo del sistema de ficheros a utilizar con la memoria FLASH con el objetivo de gestionar los ficheros de log generados por la recepción de datos del GPS.     \\                                             
+
+Este objetivo se documenta en profundidad en el apartado \ref{obj5}.        
+
+\subsection{Programación y configuración del Sistema Operativo en Tiempo Real FreeRTOS}
+Analizar, configurar y programar varios test de prueba del Sistema Operativo FreeRTOS de modo que se gane el conocimiento necesario para su uso.             \\                                                                                                 
+
+Este objetivo se documenta en profundidad en el apartado \ref{obj6}.        
+
+\subsection{Diseño y programación del sistema final}
+Una vez comprendido el funcionamiento y teniendo implementaciones funcionales de acceso a los componentes necesarios, se retoman las restricciones y necesidades iniciales del sistema \acs{BA} para implementar el sistema de logging geoposicional objeto de este \acs{TFG}. \\
+
+Este objetivo se documenta en profundidad en el apartado \ref{obj7}.        
+

@@ -1,0 +1,30 @@
+\chapter{Resumen}
+\label{chap:resumen}
+Este \acf{TFG} se ha realizado dentro del proyecto <<\acf{BA}>>, un firmware para el control de motocicletas eléctricas, desarrollado por la empresa SmartSoC Solutions. Dicha empresa ha impuesto unas restricciones de diseño y calidad propias, necesarias para una correcta y sencilla integración de este \acs{TFG} dentro del proyecto que está desarrollando. Esta imposición ha influido de manera notoria en la toma de decisiones sobre el desarrollo e implementación del sistema.\\
+
+En este \acs{TFG} se implementa un sistema de logging geoposicional, que almacena los datos recibidos por un dispositivo GPS en la memoria FLASH de la placa en la que se ejecuta el sistema. Durante este documento se ofrece una visión detallada de los aspectos más importantes a tener en cuenta en el desarrollo de cualquier sistema empotrado, de los retos que ofrece la programación a bajo nivel y con unas fuertes restricciones de memoria y capacidad de cómputo.\\
+
+Este tipo de sistemas son muy utilizados hoy en día y existen multitud de dispositivos que lo implementan, como puede ser cualquier \textit{smartphone}. La complejidad del desarrollo de los sistemas empotrados viene dada por las restricciones de hardware y software impuestas por la empresa interesada, lo cual ha llevado a tener que tomar varias decisiones de diseño con el fin de adaptar la funcionalidad requerida de la aplicación a los recursos disponibles.\\
+
+Entre las restricciones del hardware impuesto por la empresa se encuentra se encuentra la utilización de la placa <<CPU ARM Cortex M3 STMF205VGT6>> y el dispositivo GPS <<GlobalTop FGPMMOPA6H>>.\\
+
+El presente trabajo se puede dividir en dos objetivos bien diferenciados: 1) realizar un sistema de comunicación entre la placa del sistema con el componente GPS para extraer los datos que nos proporcione, y 2) la implementación de un sistema de archivos que nos de soporte para el almacenamiento y posterior lectura de los datos extraídos del GPS. Estos objetivos se dividen en varios subobjetivos y su diseño, desarrollo e implementación son los que se recogen en este documento.\\
+
+Una de las decisiones más destacables del desarrollo de este \acs{TFG} que se han tenido que tomar está el implementar un Sistema de Archivos de desarrollo propio, ya que, como se verá en el apartado \ref{obj5}, el hardware presenta unas restricciones que impiden la utilización de un Sistema de Archivos comercial.\\
+
+
+
+\chapter{Abstract}
+
+This \acs{TFG} has been developed within the “\acf{BA}” project, a firmware to control electrical motorcycles, implemented by the SmartSoC Solutions company. This company has set its own design and quality restrictions which are needed to achieve a proper and simple integration of this TFG into the project named above. This restriction have affected notoriously when taking the decisions related to the system development and design.\\
+
+A geopositional logging system has been developed throughout the current \acs{TFG}. This system receives data from a GPS device and stores it on an embedded FLASH memory. Along this document a detailed vision of the most important points about development embedded systems, low level programming and strong restrictions of memory and computing power is explained.\\
+
+Embedded systems are very used nowadays and there are a lot of devices that implement them, such as any smartphone. Development complexity of this kind of systems depends on hardware and software restrictions imposed by the company. Because of this, several design decisions have been taken in order to fit the required system functionality to the available resources. \\
+
+Some of the imposed hardware specifications given by the company are the use of the “CPU ARM Cortex M3 STMF205VGT6” board and the “GlobalTop FGPMMOPA6H” GPS device.\\
+
+The current work can be divided into two distinct goals: 1) to develop a communication system between the system board and the GPS component in order to read the data from this GPS, and 2) to implement a file system to support the data storage and to read the data extracted from the GPS. This goals are divided into several subtasks and their design, development and implementation are included in this document.\\
+
+One of the most highlighted decisions about the development of this \acs{TFG} that has been taken is the implementation of  an own file system. As is described in the \ref{obj5} section, hardware has constraints that prevent the use of commercial file systems.\\
+

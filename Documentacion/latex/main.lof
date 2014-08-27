@@ -1,0 +1,53 @@
+\select@language {spanish}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Visi\IeC {\'o}n global del sistema <<Biker Assistant>> completo}}{2}{figure.1.1}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Visi\IeC {\'o}n global del sistema objetivo de este \acs {TFG}}}{3}{figure.1.2}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Diagrama de flujo del desarrollo de un sistema empotrado}}{13}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Diagrama de interacci\IeC {\'o}n entre componentes de un Sistema Empotrado}}{15}{figure.3.2}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Tabla de asignaci\IeC {\'o}n de archivos del Sistema de Archivos FAT}}{18}{figure.3.3}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Representaci\IeC {\'o}n gr\IeC {\'a}fica del funcionamiento de HTree}}{18}{figure.3.4}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Ahorro de costes en IBM despu\IeC {\'e}s de aplicar el desarrollo basado en plataforma}}{22}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Diagrama de flujo que define el funcionamiento del proceso de desarrollo orientado a test}}{23}{figure.4.2}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Diagrama de bloques de la placa STMF205VGT6}}{30}{figure.5.1}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Diagrama en capas de la organizaci\IeC {\'o}n de la biblioteca de funciones de la placa}}{35}{figure.5.2}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Flujo de ejecuci\IeC {\'o}n de las operaciones sobre la memoria FLASH}}{38}{figure.5.3}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Diagrama de secuencia e interacci\IeC {\'o}n entre el test de \textit {Unlock/Lock} y la biblioteca de acceso a la FLASH}}{39}{figure.5.4}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Diagrama de secuencia e interacci\IeC {\'o}n entre el test de ejemplo y la biblioteca de acceso a la FLASH}}{39}{figure.5.5}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Diagrama de secuencia e interacci\IeC {\'o}n entre el test de lectura y la biblioteca de acceso a la FLASH}}{40}{figure.5.6}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Diagrama de secuencia e interacci\IeC {\'o}n entre el test de escritura y la biblioteca de acceso a la FLASH}}{40}{figure.5.7}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Flujo de ejecuci\IeC {\'o}n de las operaciones de acceso al GPS}}{41}{figure.5.8}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Diagrama de secuencia e interacci\IeC {\'o}n de las operaciones de inicializaci\IeC {\'o}n del dispositivo GPS}}{42}{figure.5.9}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Diagrama de secuencia e interacci\IeC {\'o}n de las operaciones de lectura y parseo de datos del GPS}}{42}{figure.5.10}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Diagrama de secuencia e interacci\IeC {\'o}n de la operaci\IeC {\'o}n f\_mount del Sistema de Archivos}}{45}{figure.5.11}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Diagrama de secuencia e interacci\IeC {\'o}n de la operaci\IeC {\'o}n f\_mkfs del Sistema de Archivos}}{46}{figure.5.12}
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Diagrama de secuencia e interacci\IeC {\'o}n de la operaci\IeC {\'o}n f\_open del Sistema de Archivos}}{46}{figure.5.13}
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Diagrama de secuencia e interacci\IeC {\'o}n de la operaci\IeC {\'o}n f\_close del Sistema de Archivos}}{47}{figure.5.14}
+\contentsline {figure}{\numberline {5.15}{\ignorespaces Diagrama de secuencia e interacci\IeC {\'o}n de la operaci\IeC {\'o}n f\_read del Sistema de Archivos}}{47}{figure.5.15}
+\contentsline {figure}{\numberline {5.16}{\ignorespaces Diagrama de secuencia e interacci\IeC {\'o}n de la operaci\IeC {\'o}n f\_write del Sistema de Archivos}}{47}{figure.5.16}
+\contentsline {figure}{\numberline {5.17}{\ignorespaces Diagrama de secuencia e interacci\IeC {\'o}n de la operaci\IeC {\'o}n f\_sync del Sistema de Archivos}}{48}{figure.5.17}
+\contentsline {figure}{\numberline {5.18}{\ignorespaces Diagrama de secuencia e interacci\IeC {\'o}n de la operaci\IeC {\'o}n f\_getfree del Sistema de Archivos}}{48}{figure.5.18}
+\contentsline {figure}{\numberline {5.19}{\ignorespaces Diagrama de secuencia e interacci\IeC {\'o}n de la operaci\IeC {\'o}n reset\_sector del Sistema de Archivos}}{49}{figure.5.19}
+\contentsline {figure}{\numberline {5.20}{\ignorespaces Diagrama de secuencia e interacci\IeC {\'o}n de la operaci\IeC {\'o}n change\_sector del Sistema de Archivos}}{49}{figure.5.20}
+\contentsline {figure}{\numberline {5.21}{\ignorespaces Diagrama de secuencia e interacci\IeC {\'o}n de la operaci\IeC {\'o}n disk\_initialize de la capa de abstracci\IeC {\'o}n de la memoria FLASH}}{50}{figure.5.21}
+\contentsline {figure}{\numberline {5.22}{\ignorespaces Diagrama de secuencia e interacci\IeC {\'o}n de la operaci\IeC {\'o}n disk\_status de la capa de abstracci\IeC {\'o}n de la memoria FLASH}}{50}{figure.5.22}
+\contentsline {figure}{\numberline {5.23}{\ignorespaces Diagrama de secuencia e interacci\IeC {\'o}n de la operaci\IeC {\'o}n disk\_ioctl de la capa de abstracci\IeC {\'o}n de la memoria FLASH}}{51}{figure.5.23}
+\contentsline {figure}{\numberline {5.24}{\ignorespaces Disposici\IeC {\'o}n de la memoria de las tareas en memoria RAM}}{52}{figure.5.24}
+\contentsline {figure}{\numberline {5.25}{\ignorespaces M\IeC {\'a}quina de estados de las tareas}}{53}{figure.5.25}
+\contentsline {figure}{\numberline {5.26}{\ignorespaces Diagrama de componentes del Sistema final}}{55}{figure.5.26}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Imagen que muestran todos los componentes hardware del sistema}}{65}{figure.Alph1.1}
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Diagrama de componentes sobre una imagen de la placa}}{66}{figure.Alph1.2}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

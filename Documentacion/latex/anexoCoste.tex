@@ -1,0 +1,35 @@
+\chapter{Costes del proyecto}
+\label{anexo:coste}
+Para la realización de este proyecto se han tenido que adquirir varios componentes hardware. A continuación se listan los componentes adquiridos, al utilidad que han tenido y su coste.\\
+
+\begin{itemize}
+\item <<ST-Link/v2>>: este componente se conecta entre la placa donde se implementa el sistema y el PC donde se desarrolla. Este componente proporciona la interfaz de programación y depuración. Su precio a fecha del 15 de Enero de 2014 es de \EUR{25,85} \cite{website:farnell}.
+
+\item <<CPU ARM Cortex M3 STMF205VGT6>>: este componente es el modelo de la placa donde se implementa el sistema desarrollado. El coste de esta placa es difícil de calcular, ya que se trata de una placa modificada por IS2 del grupo POAS y no ha proporcionado el coste de la placa incluyendo componentes, integración y costes de desarrollo.\\
+\end{itemize}
+
+Para calcular el coste del proyecto se hizo, antes de empezar el desarrollo, una estimación en horas/hombre y coste con un salario diferente para los distintos roles que se han tenido que tomar durante el desarrollo. Los roles tomados básicamente han sido el de aprendizaje, el de arquitecto del sistema y el de desarrollador. El tiempo total estimado fue de unos tres meses a media jornada. \\
+
+El salario de estos roles está por debajo del valor de mercado debido a que el desarrollador no cuenta con ninguna titulación relacionada ni con la experiencia requerida.\\
+
+En la Tabla \ref{tab:costeEstimado} se puede ver el reparto de horas, precios y totales estimados del proyecto antes de iniciarlo.\\
+
+\begin{table}[h!]
+\centering
+\input{tables/costeEstimado.tex}
+\caption {Coste estimado del proyecto antes de empezar su desarrollo}
+\label{tab:costeEstimado}
+\end{table}
+
+El proyecto ha terminado desarrollándose a lo largo de unos seis meses de trabajo a media jornada. El incremento de coste es debido al descubrimiento de nuevas restricciones, que impidieron la utilización de un Sistema de Archivos comercial para el módulo de log y se tuvo que implementar una alternativa de diseño propio. Otro de los motivos que ha incrementado el tiempo de desarrollo fue la inestabilidad de uno de los prototipos hardware que obligó a paralizar el desarrollo mientras la empresa responsable enviaba uno nuevo.\\
+
+En la Tabla \ref{tab:costeReal} se puede ver el reparto de horas, precios y totales una vez finalizado el proyecto.\\
+
+\begin{table}[h!]
+\centering
+\input{tables/costeReal.tex}
+\caption {Coste real del proyecto a la hora de su finalización}
+\label{tab:costeReal}
+\end{table}
+
+Por tanto se puede decir que el coste total del proyecto, sin contar el coste del prototipo hardware sobre el que se ha implementado el sistema, ha sido de \EUR{5785}.

@@ -1,0 +1,7 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$diskio_8h.html" title="Cabecera de la capa de abstracción de operaciones a bajo nivel sobre la memoria." alt="" coords="49,83,137,112"/>
+<area shape="rect" id="node7" href="$fileSystem_8h.html" title="Cabecera principal del módulo del Sistema de Archivos." alt="" coords="117,160,232,189"/>
+<area shape="rect" id="node5" href="$diskio_8c.html" title="Módulo que implementa las funciones del archivo diskio.h." alt="" coords="5,160,93,189"/>
+<area shape="rect" id="node9" href="$fs__task_8c.html" title="Módulo que implementa las funciones del archivo fs_task.h." alt="" coords="60,237,159,267"/>
+<area shape="rect" id="node11" href="$fileSystem_8c.html" title="Módulo que implementa las funciones del archivo fileSystem.h." alt="" coords="183,237,297,267"/>
+</map>

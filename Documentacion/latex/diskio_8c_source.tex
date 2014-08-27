@@ -1,0 +1,275 @@
+\hypertarget{diskio_8c_source}{\subsection{diskio.\+c}
+\label{diskio_8c_source}\index{F\+S/diskio.\+c@{F\+S/diskio.\+c}}
+}
+
+\begin{DoxyCode}
+00001 
+00006 \textcolor{preprocessor}{#include "\hyperlink{diskio_8h}{diskio.h}"}    \textcolor{comment}{/* FileSystem lower layer API */}
+00007 \textcolor{preprocessor}{#include <stm32f2xx\_flash.h>}
+00008 \textcolor{preprocessor}{#include <string.h>}
+00009 
+00010 \textcolor{preprocessor}{#define ADDR\_FLASH\_SECTOR\_0     ((uint32\_t)0x08000000)}
+00011 \textcolor{preprocessor}{#define ADDR\_FLASH\_SECTOR\_1     ((uint32\_t)0x08004000)}
+00012 \textcolor{preprocessor}{#define ADDR\_FLASH\_SECTOR\_2     ((uint32\_t)0x08008000)}
+00013 \textcolor{preprocessor}{#define ADDR\_FLASH\_SECTOR\_3     ((uint32\_t)0x0800C000)}
+00014 \textcolor{preprocessor}{#define ADDR\_FLASH\_SECTOR\_4     ((uint32\_t)0x08010000)}
+00015 \textcolor{preprocessor}{#define ADDR\_FLASH\_SECTOR\_5     ((uint32\_t)0x08020000)}
+00016 \textcolor{preprocessor}{#define ADDR\_FLASH\_SECTOR\_6     ((uint32\_t)0x08040000)}
+00017 \textcolor{preprocessor}{#define ADDR\_FLASH\_SECTOR\_7     ((uint32\_t)0x08060000)}
+00018 \textcolor{preprocessor}{#define ADDR\_FLASH\_SECTOR\_8     ((uint32\_t)0x08080000)}
+00019 \textcolor{preprocessor}{#define ADDR\_FLASH\_SECTOR\_9     ((uint32\_t)0x080A0000)}
+00020 \textcolor{preprocessor}{#define ADDR\_FLASH\_SECTOR\_10    ((uint32\_t)0x080C0000)}
+00021 \textcolor{preprocessor}{#define ADDR\_FLASH\_SECTOR\_11    ((uint32\_t)0x080E0000)}
+00022 
+\hypertarget{diskio_8c_source_l00028}{}\hyperlink{diskio_8h_a90db73e2ffb962de6891c783f62db0d0}{00028} uint32\_t \hyperlink{diskio_8c_a90db73e2ffb962de6891c783f62db0d0}{GetSector}(uint32\_t Address) \{
+00029   uint32\_t sector = 0;
+00030 
+00031   \textcolor{keywordflow}{if} ((Address < ADDR\_FLASH\_SECTOR\_1) && (Address >= ADDR\_FLASH\_SECTOR\_0)) \{
+00032     sector = FLASH\_Sector\_0;
+00033   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ((Address < ADDR\_FLASH\_SECTOR\_2)
+00034       && (Address >= ADDR\_FLASH\_SECTOR\_1)) \{
+00035     sector = FLASH\_Sector\_1;
+00036   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ((Address < ADDR\_FLASH\_SECTOR\_3)
+00037       && (Address >= ADDR\_FLASH\_SECTOR\_2)) \{
+00038     sector = FLASH\_Sector\_2;
+00039   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ((Address < ADDR\_FLASH\_SECTOR\_4)
+00040       && (Address >= ADDR\_FLASH\_SECTOR\_3)) \{
+00041     sector = FLASH\_Sector\_3;
+00042   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ((Address < ADDR\_FLASH\_SECTOR\_5)
+00043       && (Address >= ADDR\_FLASH\_SECTOR\_4)) \{
+00044     sector = FLASH\_Sector\_4;
+00045   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ((Address < ADDR\_FLASH\_SECTOR\_6)
+00046       && (Address >= ADDR\_FLASH\_SECTOR\_5)) \{
+00047     sector = FLASH\_Sector\_5;
+00048   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ((Address < ADDR\_FLASH\_SECTOR\_7)
+00049       && (Address >= ADDR\_FLASH\_SECTOR\_6)) \{
+00050     sector = FLASH\_Sector\_6;
+00051   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ((Address < ADDR\_FLASH\_SECTOR\_8)
+00052       && (Address >= ADDR\_FLASH\_SECTOR\_7)) \{
+00053     sector = FLASH\_Sector\_7;
+00054   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ((Address < ADDR\_FLASH\_SECTOR\_9)
+00055       && (Address >= ADDR\_FLASH\_SECTOR\_8)) \{
+00056     sector = FLASH\_Sector\_8;
+00057   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ((Address < ADDR\_FLASH\_SECTOR\_10)
+00058       && (Address >= ADDR\_FLASH\_SECTOR\_9)) \{
+00059     sector = FLASH\_Sector\_9;
+00060   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ((Address < ADDR\_FLASH\_SECTOR\_11)
+00061       && (Address >= ADDR\_FLASH\_SECTOR\_10)) \{
+00062     sector = FLASH\_Sector\_10;
+00063   \} \textcolor{keywordflow}{else} \textcolor{comment}{//(Address < FLASH\_END\_ADDR) && (Address >= ADDR\_FLASH\_SECTOR\_11))}
+00064   \{
+00065     sector = FLASH\_Sector\_11;
+00066   \}
+00067 
+00068   \textcolor{keywordflow}{return} sector;
+00069 \}
+\hypertarget{diskio_8c_source_l00075}{}\hyperlink{diskio_8c_a900718135e0cd4b363dddcdb44175607}{00075} uint32\_t \hyperlink{diskio_8c_a900718135e0cd4b363dddcdb44175607}{byte\_to\_uint32}(\textcolor{keyword}{const} BYTE* src) \{
+00076   uint32\_t dst = 0;
+00077   dst |= (uint32\_t) src[0] << 0;
+00078   dst |= (uint32\_t) src[1] << 8;
+00079   dst |= (uint32\_t) src[2] << 16;
+00080   dst |= (uint32\_t) src[3] << 24;
+00081 
+00082   \textcolor{keywordflow}{return} dst;
+00083 \}
+\hypertarget{diskio_8c_source_l00090}{}\hyperlink{diskio_8c_ae214680b2ed5e6b6f4785c517f73c5b3}{00090} BYTE* \hyperlink{diskio_8c_ae214680b2ed5e6b6f4785c517f73c5b3}{uint32\_to\_byte}(uint32\_t src, BYTE * dst) \{
+00091   dst[3] = (BYTE) (src >> 24);
+00092   dst[2] = (BYTE) (src >> 16);
+00093   dst[1] = (BYTE) (src >> 8);
+00094   dst[0] = (BYTE) (src >> 0);
+00095 
+00096   \textcolor{keywordflow}{return} dst;
+00097 \}
+\hypertarget{diskio_8c_source_l00107}{}\hyperlink{diskio_8c_adbcc8690662c4993d61adc9e13d7cffc}{00107} \hyperlink{diskio_8h_adba6790898ce4029c20a34b898ce73c1}{DSTATUS} \hyperlink{diskio_8c_adbcc8690662c4993d61adc9e13d7cffc}{get\_start\_end\_address}(\textcolor{keywordtype}{int} pdrv, \textcolor{keywordtype}{int} count, \textcolor{keywordtype}{int} sector,
+00108     uint32\_t* startAddress, uint32\_t* endAddress) \{
+00109   \textcolor{keywordtype}{int} size;
+00110   \hyperlink{diskio_8c_a816bffc54e390c15d03f477133707de5}{disk\_ioctl}(pdrv, GET\_SECTOR\_SIZE, &size);
+00111 
+00112   \textcolor{keywordflow}{if} (pdrv == 0) \{
+00113     startAddress = (uint32\_t*) PHYSYCAL\_START\_ADDRESS + (size * sector);
+00114     endAddress = (uint32\_t*) startAddress + (size * count);
+00115   \} \textcolor{keywordflow}{else} \{
+00116     startAddress = (uint32\_t*) PHYSYCAL\_START\_ADDRESS2 + (size * sector);
+00117     endAddress = (uint32\_t*) startAddress + (size * count);
+00118   \}
+00119   \textcolor{keywordflow}{return} RES\_OK;
+00120 \}
+\hypertarget{diskio_8c_source_l00127}{}\hyperlink{diskio_8c_a713082e3e5375e658a941a3cca667aed}{00127} uint32\_t \hyperlink{diskio_8c_a713082e3e5375e658a941a3cca667aed}{get\_address}(\textcolor{keywordtype}{int} pdrv, DWORD sector) \{
+00128   uint32\_t address;
+00129   \textcolor{keywordtype}{int} size;
+00130   \hyperlink{diskio_8c_a816bffc54e390c15d03f477133707de5}{disk\_ioctl}(pdrv, GET\_SECTOR\_SIZE, &size);
+00131   \textcolor{keywordflow}{if} (pdrv == 0)
+00132     address = (uint32\_t) PHYSYCAL\_START\_ADDRESS + (size * sector);
+00133   \textcolor{keywordflow}{else}
+00134     address = (uint32\_t) PHYSYCAL\_START\_ADDRESS2 + (size * sector);
+00135 
+00136   \textcolor{keywordflow}{return} address;
+00137 \}
+00138 
+\hypertarget{diskio_8c_source_l00139}{}\hyperlink{diskio_8h_aa01f5479a3ee7c9aed89814238964cd2}{00139} \hyperlink{diskio_8h_adba6790898ce4029c20a34b898ce73c1}{DSTATUS} \hyperlink{diskio_8c_aa01f5479a3ee7c9aed89814238964cd2}{disk\_initialize}(\textcolor{keywordtype}{int} pdrv \textcolor{comment}{/* Physical drive number (0..) */}
+00140 ) \{
+00141   \textcolor{keywordflow}{if} (pdrv != 0 && pdrv != 1)
+00142     \textcolor{keywordflow}{return} RES\_PARERR;
+00143 
+00144   FLASH\_Unlock();
+00145 
+00146   FLASH\_ClearFlag(FLASH\_FLAG\_EOP | FLASH\_FLAG\_OPERR | FLASH\_FLAG\_WRPERR |
+00147   FLASH\_FLAG\_PGAERR | FLASH\_FLAG\_PGPERR | FLASH\_FLAG\_PGSERR);
+00148   FLASH\_Lock();
+00149 
+00150   \textcolor{keywordflow}{return} RES\_OK;
+00151 
+00152 \}
+\hypertarget{diskio_8c_source_l00158}{}\hyperlink{diskio_8c_a3dfe0827b5e2a3a79da131b076adedff}{00158} \hyperlink{diskio_8h_adba6790898ce4029c20a34b898ce73c1}{DSTATUS} \hyperlink{diskio_8c_a3dfe0827b5e2a3a79da131b076adedff}{flashState2FSState}(FLASH\_Status status) \{
+00159   \textcolor{keywordflow}{if} (status == FLASH\_ERROR\_WRP)
+00160     \textcolor{keywordflow}{return} STA\_PROTECT;
+00161   \textcolor{keywordflow}{return} 0; \textcolor{comment}{//Status OK}
+00162 \}
+00163 
+00164 \textcolor{comment}{/*-----------------------------------------------------------------------*/}
+00165 \textcolor{comment}{/* Get Disk Status                                                       */}
+00166 \textcolor{comment}{/*-----------------------------------------------------------------------*/}
+00167 
+\hypertarget{diskio_8c_source_l00168}{}\hyperlink{diskio_8h_a308c9b0a83724bf6e6aae72a736cc7a6}{00168} \hyperlink{diskio_8h_adba6790898ce4029c20a34b898ce73c1}{DSTATUS} \hyperlink{diskio_8c_a308c9b0a83724bf6e6aae72a736cc7a6}{disk\_status}(\textcolor{keywordtype}{int} pdrv \textcolor{comment}{/* Physical drive number (0..) */}
+00169 ) \{
+00170   \textcolor{keywordflow}{if} (pdrv != 0 && pdrv != 1)
+00171     \textcolor{keywordflow}{return} RES\_PARERR;
+00172   FLASH\_Status state = FLASH\_GetStatus();
+00173 
+00174   \textcolor{keywordflow}{return} \hyperlink{diskio_8c_a3dfe0827b5e2a3a79da131b076adedff}{flashState2FSState}(state);
+00175 \}
+00176 
+00177 \textcolor{comment}{/*-----------------------------------------------------------------------*/}
+00178 \textcolor{comment}{/* Read Sector(s)                                                        */}
+00179 \textcolor{comment}{/*-----------------------------------------------------------------------*/}
+00180 
+\hypertarget{diskio_8c_source_l00181}{}\hyperlink{diskio_8h_a9c6f716a2119a650cf3c61bee540be85}{00181} DRESULT \hyperlink{diskio_8c_a9c6f716a2119a650cf3c61bee540be85}{disk\_read}(\textcolor{keywordtype}{int} pdrv, \textcolor{comment}{/* Physical drive number (0..) */}
+00182 BYTE *buff, \textcolor{comment}{/* Data buffer to store read data */}
+00183 DWORD sector, \textcolor{comment}{/* Sector address (LBA) */}
+00184 UINT count \textcolor{comment}{/* Number of sectors to read (1..128) */}
+00185 ) \{
+00186 
+00187   \textcolor{keywordflow}{if} ((pdrv != 0 && pdrv != 1) || !count)
+00188     \textcolor{keywordflow}{return} RES\_PARERR;
+00189 
+00190   \hyperlink{diskio_8h_adba6790898ce4029c20a34b898ce73c1}{DSTATUS} status;
+00191   uint32\_t endAddress = 0, address = 0;
+00192   uint32\_t read = 0;
+00193 
+00194   address = \hyperlink{diskio_8c_a713082e3e5375e658a941a3cca667aed}{get\_address}(pdrv, sector);
+00195   endAddress = \hyperlink{diskio_8c_a713082e3e5375e658a941a3cca667aed}{get\_address}(pdrv, sector + count);
+00196 
+00197   status = \hyperlink{diskio_8c_a816bffc54e390c15d03f477133707de5}{disk\_ioctl}(pdrv, CTRL\_SYNC, (\textcolor{keywordtype}{void}*) NULL);
+00198 
+00199   \textcolor{keywordflow}{if} (status != RES\_OK)
+00200     \textcolor{keywordflow}{return} status;
+00201 
+00202   \textcolor{keywordflow}{do} \{
+00203     read = *(\_\_IO uint32\_t*) address;
+00204     \hyperlink{diskio_8c_ae214680b2ed5e6b6f4785c517f73c5b3}{uint32\_to\_byte}(read, buff);
+00205 
+00206     buff += 4;
+00207     address += 4;
+00208 
+00209     status = \hyperlink{diskio_8c_a816bffc54e390c15d03f477133707de5}{disk\_ioctl}(pdrv, CTRL\_SYNC, (\textcolor{keywordtype}{void}*) NULL);
+00210     \textcolor{keywordflow}{if} (status != RES\_OK)
+00211       \textcolor{keywordflow}{return} status;
+00212 
+00213   \} \textcolor{keywordflow}{while} (address < endAddress);
+00214 
+00215   \textcolor{keywordflow}{return} RES\_OK;
+00216 \}
+00217 
+00218 \textcolor{comment}{/*-----------------------------------------------------------------------*/}
+00219 \textcolor{comment}{/* Write Sector(s)                                                       */}
+00220 \textcolor{comment}{/*-----------------------------------------------------------------------*/}
+00221 
+\hypertarget{diskio_8c_source_l00222}{}\hyperlink{diskio_8h_a4fc55609dc0b2fba35c679984ae7ca68}{00222} DRESULT \hyperlink{diskio_8c_a4fc55609dc0b2fba35c679984ae7ca68}{disk\_write}(\textcolor{keywordtype}{int} pdrv, \textcolor{comment}{/* Physical drive number (0..) */}
+00223 \textcolor{keyword}{const} BYTE *buff, \textcolor{comment}{/* Data to be written */}
+00224 DWORD sector, \textcolor{comment}{/* Sector address (LBA) */}
+00225 UINT count \textcolor{comment}{/* Number of sectors to write (1..128) */}
+00226 ) \{
+00227   \hyperlink{diskio_8h_adba6790898ce4029c20a34b898ce73c1}{DSTATUS} status;
+00228 
+00229   \textcolor{keywordflow}{if} ((pdrv != 0 && pdrv != 1) || !count)
+00230     \textcolor{keywordflow}{return} RES\_PARERR;
+00231 
+00232   status = \hyperlink{diskio_8c_a308c9b0a83724bf6e6aae72a736cc7a6}{disk\_status}(pdrv);
+00233   \textcolor{keywordflow}{if} (status & STA\_PROTECT)
+00234     \textcolor{keywordflow}{return} RES\_WRPRT;
+00235 
+00236   uint32\_t endAddress = 0, address = 0;
+00237   uint32\_t toWrite = 0;
+00238   address = \hyperlink{diskio_8c_a713082e3e5375e658a941a3cca667aed}{get\_address}(pdrv, sector);
+00239   endAddress = \hyperlink{diskio_8c_a713082e3e5375e658a941a3cca667aed}{get\_address}(pdrv, sector + count);
+00240 
+00241   \textcolor{keywordflow}{do} \{
+00242     toWrite = \hyperlink{diskio_8c_a900718135e0cd4b363dddcdb44175607}{byte\_to\_uint32}(buff);
+00243     FLASH\_Unlock();
+00244     status = FLASH\_ProgramWord((uint32\_t) address, toWrite);
+00245 
+00246     FLASH\_Lock();
+00247 
+00248     \textcolor{keywordflow}{if} (status != FLASH\_COMPLETE)
+00249       \textcolor{keywordflow}{return} status;
+00250 
+00251     address += 4;
+00252     buff += 4;
+00253   \} \textcolor{keywordflow}{while} (address < endAddress); \textcolor{comment}{//Hasta fin del sector}
+00254 
+00255   \textcolor{keywordflow}{return} RES\_OK;
+00256 \}
+00257 
+00258 \textcolor{comment}{/*-----------------------------------------------------------------------*/}
+00259 \textcolor{comment}{/* Miscellaneous Functions                                               */}
+00260 \textcolor{comment}{/*-----------------------------------------------------------------------*/}
+00261 
+\hypertarget{diskio_8c_source_l00262}{}\hyperlink{diskio_8h_a816bffc54e390c15d03f477133707de5}{00262} DRESULT \hyperlink{diskio_8c_a816bffc54e390c15d03f477133707de5}{disk\_ioctl}(\textcolor{keywordtype}{int} pdrv, \textcolor{comment}{/* Physical drive nmuber (0..) */}
+00263 BYTE cmd, \textcolor{comment}{/* Control code */}
+00264 \textcolor{keywordtype}{void} *buff \textcolor{comment}{/* Buffer to send/receive control data */}
+00265 ) \{
+00266   \textcolor{keywordflow}{if} (pdrv != 0 && pdrv != 1)
+00267     \textcolor{keywordflow}{return} RES\_PARERR;
+00268 
+00269   uint32\_t address;
+00270   DRESULT state;
+00271 
+00272   \textcolor{keywordflow}{switch} (cmd) \{
+00273   \textcolor{keywordflow}{case} CTRL\_SYNC:
+00274     state = FLASH\_WaitForLastOperation();
+00275 
+00276     \textcolor{keywordflow}{return} \hyperlink{diskio_8c_a3dfe0827b5e2a3a79da131b076adedff}{flashState2FSState}(state);
+00277     \textcolor{keywordflow}{break};
+00278 
+00279   \textcolor{keywordflow}{case} GET\_SECTOR\_COUNT:
+00280     *(DWORD*) buff = (DWORD) FS\_SIZE;
+00281 
+00282     \textcolor{keywordflow}{return} RES\_OK;
+00283     \textcolor{keywordflow}{break};
+00284 
+00285   \textcolor{keywordflow}{case} GET\_SECTOR\_SIZE:
+00286     *(DWORD*) buff = SECTOR\_SIZE;
+00287 
+00288     \textcolor{keywordflow}{return} RES\_OK;
+00289     \textcolor{keywordflow}{break};
+00290 
+00291   \textcolor{keywordflow}{case} GET\_BLOCK\_SIZE:
+00292     *(DWORD*) buff = 1;
+00293 
+00294     \textcolor{keywordflow}{return} RES\_OK;
+00295     \textcolor{keywordflow}{break};
+00296 
+00297   \textcolor{keywordflow}{case} CTRL\_ERASE\_SECTOR:
+00298     address = \hyperlink{diskio_8c_a713082e3e5375e658a941a3cca667aed}{get\_address}(pdrv, (\textcolor{keywordtype}{int}) buff);
+00299     FLASH\_Unlock();
+00300     state = \hyperlink{diskio_8c_a3dfe0827b5e2a3a79da131b076adedff}{flashState2FSState}(
+00301         FLASH\_EraseSector(\hyperlink{diskio_8c_a90db73e2ffb962de6891c783f62db0d0}{GetSector}(address), VoltageRange\_3));
+00302     FLASH\_Lock();
+00303 
+00304     \textcolor{keywordflow}{return} state;
+00305     \textcolor{keywordflow}{break};
+00306   \}
+00307 
+00308   \textcolor{keywordflow}{return} RES\_PARERR;
+00309 \}
+\end{DoxyCode}

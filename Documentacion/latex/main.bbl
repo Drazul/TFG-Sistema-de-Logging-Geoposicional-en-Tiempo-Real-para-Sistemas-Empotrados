@@ -1,0 +1,176 @@
+\begin{thebibliography}{GAGS10}
+
+\bibitem[And14]{website:Android}
+Android.
+\newblock Página oficial del Sistema Operativo Android, Abril 2014.
+\newblock url: \url{http://www.android.com/}.
+
+\bibitem[App14]{website:iOS}
+Apple.
+\newblock Página oficial del Sistema Operativo iOS de Apple, Abril 2014.
+\newblock url: \url{http://www.apple.com/es/ios/}.
+
+\bibitem[Bec02]{DesTDD}
+K.~Beck.
+\newblock {\em Test-Driven Development: By Example}.
+\newblock Addison Wesley, 2002.
+
+\bibitem[Ble10]{DisAgilTDD}
+C.~Ble.
+\newblock Diseno Agil con TDD, 2010.
+
+\bibitem[Chi14]{website:chibios}
+ChibiOS.
+\newblock Página oficial de la documentación del Sistema Operativo ChibiOS,
+  Marzo 2014.
+\newblock url: \url{http://www.chibios.org/dokuwiki/doku.php}.
+
+\bibitem[ecO14]{website:ecOS}
+ecOS.
+\newblock Página oficial de la documentación del Sistema Operativo ecOS,
+  Marzo 2014.
+\newblock url: \url{http://ecos.sourceware.org/}.
+
+\bibitem[FAR14]{website:farnell}
+FARNELL.
+\newblock STMICROELECTRONICS - ST-LINK/V2 - ICD/PROGRAMMER, FOR STM8, STM32,
+  Enero 2014.
+\newblock url:
+  \url{http://es.farnell.com/jsp/displayProduct.jsp?sku=1892523&gross_price=true&CMP=KNC-GES-FES-GEN-LISTINGS&mckv=RFE1qR8W|pcrid|productlistings}.
+
+\bibitem[Fre14]{website:FreeRTOS}
+FreeRTOS.
+\newblock Página oficial de FreeRTOS, Abril 2014.
+\newblock url: \url{http://www.freertos.org/}.
+
+\bibitem[GAGS10]{embDes}
+D.~Gajsky, S.~Abdi, A.~Gerslauer, y G.~Schirner.
+\newblock {\em Embedded System Desing: Modelling, Synthesis and Verification}.
+\newblock Springer, 2010.
+
+\bibitem[Glo13a]{bib:gps}
+GlobalTop.
+\newblock GlobalTop-FGPMMOPA6H-Datasheet-V0A.
+\newblock Datasheet, GlobalTop, 2013.
+
+\bibitem[Glo13b]{bib:commandGPS}
+GlobalTop.
+\newblock PMTK command packet-Complete-A11.
+\newblock Technical report, GlobalTop, 2013.
+
+\bibitem[HG13]{embSistemImport}
+R.~Panthaleon H.~Geelen, A.~Hoogt.
+\newblock Embedded Systems Roadmap 2014.
+\newblock {\em HTSM}, December 2013.
+
+\bibitem[INT13]{bib:intelssd}
+INTEL.
+\newblock Intel® X18-M/X25-M SATA Solid State Drive.
+\newblock Datasheet, INTEL, 2013.
+
+\bibitem[JFF14]{website:JFFS2}
+JFFS2.
+\newblock JFFS2: The Journalling Flash File System, version 2, Mayo 2014.
+\newblock url: \url{https://sourceware.org/jffs2/}.
+
+\bibitem[Lin14a]{website:ext4}
+Linux.
+\newblock Página oficial de la documentación del Sistema de Archivos ext4,
+  Abril 2014.
+\newblock url: \url{https://ext4.wiki.kernel.org/index.php/Main_Page}.
+
+\bibitem[Lin14b]{website:linux}
+Linux.
+\newblock Página oficial del Sistema Operativo Linux, Abril 2014.
+\newblock url: \url{http://www.linux.org/}.
+
+\bibitem[Mic13a]{bib:datasheet}
+ST~Microelectronics.
+\newblock STM32F205VG Datasheet.
+\newblock Datasheet, ST Microelectronics, 2013.
+
+\bibitem[Mic13b]{bib:libdesc}
+ST~Microelectronics.
+\newblock STM32F20x LibDescription.
+\newblock Technical report, ST Microelectronics, 2013.
+
+\bibitem[Mic13c]{bib:flash}
+ST~Microelectronics.
+\newblock STMF205 FlashProgramming.
+\newblock Datasheet, ST Microelectronics, 2013.
+
+\bibitem[Mic14a]{website:fat}
+Microsoft.
+\newblock Página oficial de la descripción de FAT32, Abril 2014.
+\newblock url: \url{http://support.microsoft.com/kb/154997}.
+
+\bibitem[Mic14b]{website:ntfs}
+Microsoft.
+\newblock Página oficial describiendo los sistemas de archivos FAT, HPFS y
+  NTFS, Abril 2014.
+\newblock url: \url{http://support.microsoft.com/kb/100108}.
+
+\bibitem[MIT09]{website:mitApolo}
+MIT.
+\newblock AeroAstro Magazine Highlight, Marzo 2009.
+\newblock url:
+  \url{http://web.mit.edu/aeroastro/news/magazine/aeroastro6/mit-apollo.html}.
+
+\bibitem[NME08]{bib:nmea}
+NMEA.
+\newblock NMEA0183 Standard.
+\newblock Standard, NMEA, 2008.
+\newblock url:
+  \url{http://www.nmea.org/content/nmea_standards/nmea_0183_v_410.asp}.
+
+\bibitem[rom14]{website:romfs}
+romfs.
+\newblock romfs, Mayo 2014.
+\newblock url: \url{http://romfs.sourceforge.net/}.
+
+\bibitem[squ14]{website:squashfs}
+squashfs.
+\newblock squashfs, Mayo 2014.
+\newblock url: \url{http://squashfs.sourceforge.net/}.
+
+\bibitem[Tin14]{website:tinyOS}
+TinyOS.
+\newblock Página oficial de la documentación del Sistema Operativo TinyOS,
+  Marzo 2014.
+\newblock url: \url{http://www.tinyos.net/}.
+
+\bibitem[TIO14]{website:tiobe}
+TIOBE.
+\newblock Index of popularity of programming languages, June 2014.
+\newblock url:
+  \url{http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html}.
+
+\bibitem[TWS06]{disPBD}
+O.Weck T.~W.~Simpson, T.Marion.
+\newblock Platform-Based Design and Development: Current Trends and Needs in
+  Industry.
+\newblock En {\em ASME 2006 International Design Engineering Technical
+  Conferences \& Computers and Information in Engineering Conference},
+  September 2006.
+
+\bibitem[USA14]{website:GPS}
+USA.
+\newblock The Global Positioning System, June 2014.
+\newblock url: \url{http://www.gps.gov/systems/gps/}.
+
+\bibitem[Wij14]{EmbeddedOS}
+D.~Wijesinghe.
+\newblock Embedded Operating Systems.
+\newblock {\em University of Ulster}, April 2014.
+
+\bibitem[Wir10]{website:AndroidLikeSuperComputer}
+Wired.
+\newblock Android Phones Can Substitute for Supercomputers, Agosto 2010.
+\newblock url: \url{http://www.wired.com/2010/08/supercomputing-app-android/}.
+
+\bibitem[YAF14]{website:YAFFS2}
+YAFFS2.
+\newblock YAFFS2 Overview, Mayo 2014.
+\newblock url: \url{http://www.yaffs.net/yaffs-overview}.
+
+\end{thebibliography}

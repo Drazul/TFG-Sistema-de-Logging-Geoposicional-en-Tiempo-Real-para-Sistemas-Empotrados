@@ -1,0 +1,91 @@
+\hypertarget{fileSystem_8h_source}{\subsection{file\+System.\+h}
+\label{fileSystem_8h_source}\index{F\+S/file\+System.\+h@{F\+S/file\+System.\+h}}
+}
+
+\begin{DoxyCode}
+00001 
+00006 \textcolor{preprocessor}{#include "\hyperlink{integer_8h}{integer.h}"}
+00007 \textcolor{preprocessor}{#include "stm32f2xx.h"}
+00008 \textcolor{preprocessor}{#include "\hyperlink{diskio_8h}{diskio.h}"}
+00009 
+00010 \textcolor{comment}{/* FILE PERMISSIONS */}
+00011 \textcolor{preprocessor}{#define   FA\_READ      0x01}
+00012 \textcolor{preprocessor}{#define   FA\_OPEN\_EXISTING  0x00}
+00013 
+00014 \textcolor{preprocessor}{#define  FA\_WRITE      0x02}
+00015 \textcolor{preprocessor}{#define   FA\_CREATE\_NEW    0x04}
+00016 \textcolor{preprocessor}{#define   FA\_CREATE\_ALWAYS  0x08}
+00017 \textcolor{preprocessor}{#define   FA\_OPEN\_ALWAYS    0x10}
+00018 
+\hypertarget{fileSystem_8h_source_l00022}{}\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{00022} \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{
+\hypertarget{fileSystem_8h_source_l00023}{}\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{00023}   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK} = 0, 
+\hypertarget{fileSystem_8h_source_l00024}{}\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca97dee4a6b485dc8f91f37486092dfe34}{00024}   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca97dee4a6b485dc8f91f37486092dfe34}{FR\_DISK\_ERR}, 
+\hypertarget{fileSystem_8h_source_l00025}{}\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cab6c9903af6e9bffbb7a288705f4a6a76}{00025}   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cab6c9903af6e9bffbb7a288705f4a6a76}{FR\_INT\_ERR}, 
+\hypertarget{fileSystem_8h_source_l00026}{}\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cac9894bed3e8632ede8d2712235fa8e45}{00026}   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cac9894bed3e8632ede8d2712235fa8e45}{FR\_NOT\_READY}, 
+\hypertarget{fileSystem_8h_source_l00027}{}\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca97da8f98fc2e66d8fa7847f9ebb19b8c}{00027}   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca97da8f98fc2e66d8fa7847f9ebb19b8c}{FR\_NO\_FILE}, 
+\hypertarget{fileSystem_8h_source_l00028}{}\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cae4529c8cc8b59783d6efc9ba4f574532}{00028}   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cae4529c8cc8b59783d6efc9ba4f574532}{FR\_NO\_PATH}, 
+\hypertarget{fileSystem_8h_source_l00029}{}\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca83e45a4b579558c57192c0a391b9bb45}{00029}   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca83e45a4b579558c57192c0a391b9bb45}{FR\_INVALID\_NAME}, 
+\hypertarget{fileSystem_8h_source_l00030}{}\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca897e9f2dd7629a80f48af242d8bc1a3d}{00030}   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca897e9f2dd7629a80f48af242d8bc1a3d}{FR\_DENIED}, 
+\hypertarget{fileSystem_8h_source_l00031}{}\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca0d8f024d256df76e84782b95018a2450}{00031}   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca0d8f024d256df76e84782b95018a2450}{FR\_EXIST}, 
+\hypertarget{fileSystem_8h_source_l00032}{}\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca3dec4eba481cdf5e99d7cd6009e6dcf8}{00032}   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca3dec4eba481cdf5e99d7cd6009e6dcf8}{FR\_INVALID\_OBJECT}, 
+\hypertarget{fileSystem_8h_source_l00033}{}\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cac3afbb423b1d4497229416812aff383b}{00033}   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cac3afbb423b1d4497229416812aff383b}{FR\_WRITE\_PROTECTED}, 
+\hypertarget{fileSystem_8h_source_l00034}{}\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca487844af77de15f6932a3b41ef3a2d65}{00034}   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca487844af77de15f6932a3b41ef3a2d65}{FR\_INVALID\_DRIVE}, 
+\hypertarget{fileSystem_8h_source_l00035}{}\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cafc56605c68aaffab4a428339a8bd600d}{00035}   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cafc56605c68aaffab4a428339a8bd600d}{FR\_NOT\_ENABLED}, 
+\hypertarget{fileSystem_8h_source_l00036}{}\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca086154b5fee763f28c49fd0e2c1cb463}{00036}   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca086154b5fee763f28c49fd0e2c1cb463}{FR\_NO\_FILESYSTEM}, 
+\hypertarget{fileSystem_8h_source_l00037}{}\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca4b02760f758f5b1a89f445244fe9fbca}{00037}   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca4b02760f758f5b1a89f445244fe9fbca}{FR\_MKFS\_ABORTED}, 
+\hypertarget{fileSystem_8h_source_l00038}{}\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca3f8ca7e51af8b129d14328de7243c5d4}{00038}   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca3f8ca7e51af8b129d14328de7243c5d4}{FR\_TIMEOUT}, 
+\hypertarget{fileSystem_8h_source_l00039}{}\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca7db5afaaa2af591bd4a208b2967075d7}{00039}   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca7db5afaaa2af591bd4a208b2967075d7}{FR\_LOCKED}, 
+\hypertarget{fileSystem_8h_source_l00040}{}\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44caf56a76a86602cbdeb2c4f3d00cfad21c}{00040}   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44caf56a76a86602cbdeb2c4f3d00cfad21c}{FR\_NOT\_ENOUGH\_CORE}, 
+\hypertarget{fileSystem_8h_source_l00041}{}\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cac7926e01d7519a1a7e21a44e2dd76789}{00041}   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cac7926e01d7519a1a7e21a44e2dd76789}{FR\_TOO\_MANY\_FILES}, 
+\hypertarget{fileSystem_8h_source_l00042}{}\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca3b89faeceab64db277d0fcdeaaa315d6}{00042}   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca3b89faeceab64db277d0fcdeaaa315d6}{FR\_INVALID\_PARAMETER} 
+00043 \} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT};
+00044 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{
+\hypertarget{fileSystem_8h_source_l00048}{}\hyperlink{structFIL_a21240fe08417eb46f794e67519bf4a58}{00048}   BYTE name[7]; 
+\hypertarget{fileSystem_8h_source_l00049}{}\hyperlink{structFIL_ac409508881f5a16f2998ae675072b376}{00049}   BYTE \hyperlink{structFIL_ac409508881f5a16f2998ae675072b376}{flag}; 
+\hypertarget{fileSystem_8h_source_l00050}{}\hyperlink{structFIL_aea440945db26de9c4a88065c0c887fda}{00050}   BYTE \hyperlink{structFIL_aea440945db26de9c4a88065c0c887fda}{err}; 
+\hypertarget{fileSystem_8h_source_l00051}{}\hyperlink{structFIL_a32847fe875861954ec3dc750d332a194}{00051}   BYTE \hyperlink{structFIL_a32847fe875861954ec3dc750d332a194}{dirty}; 
+\hypertarget{fileSystem_8h_source_l00052}{}\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{00052}   BYTE \hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}; 
+\hypertarget{fileSystem_8h_source_l00053}{}\hyperlink{structFIL_a684d4d555f293b08b8396c35e20706d3}{00053}   DWORD \hyperlink{structFIL_a684d4d555f293b08b8396c35e20706d3}{startSector}; 
+\hypertarget{fileSystem_8h_source_l00054}{}\hyperlink{structFIL_a89e92b4845c72b4f9f119b38d1142a41}{00054}   DWORD \hyperlink{structFIL_a89e92b4845c72b4f9f119b38d1142a41}{writePointer}; 
+\hypertarget{fileSystem_8h_source_l00055}{}\hyperlink{structFIL_ad0d1f48655e0e06936cb7883993afb1f}{00055}   DWORD \hyperlink{structFIL_ad0d1f48655e0e06936cb7883993afb1f}{readPointer}; 
+\hypertarget{fileSystem_8h_source_l00056}{}\hyperlink{structFIL_a043930088c6fdc5e523500b833106476}{00056}   DWORD \hyperlink{structFIL_a043930088c6fdc5e523500b833106476}{descriptorSector}; 
+\hypertarget{fileSystem_8h_source_l00057}{}\hyperlink{structFIL_a5fb6271e3cc261b9f811bb8860cb6110}{00057}   WORD \hyperlink{structFIL_a5fb6271e3cc261b9f811bb8860cb6110}{buffindex}; 
+\hypertarget{fileSystem_8h_source_l00058}{}\hyperlink{structFIL_a9e1f6c5e0e2cd4fd3705e5a213ad2f83}{00058}   BYTE buff[SECTOR\_SIZE];
+00059 \} \hyperlink{structFIL}{FIL};
+00060 
+\hypertarget{fileSystem_8h_source_l00064}{}\hyperlink{structFS}{00064} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{
+\hypertarget{fileSystem_8h_source_l00065}{}\hyperlink{structFS_a22eed025311346b8029d8b445c192b95}{00065}   uint32\_t \hyperlink{structFS_a22eed025311346b8029d8b445c192b95}{start\_address}; 
+\hypertarget{fileSystem_8h_source_l00066}{}\hyperlink{structFS_a06559d64af1c2b15af05165f30c59868}{00066}   BYTE \hyperlink{structFS_a06559d64af1c2b15af05165f30c59868}{sector\_size}; 
+\hypertarget{fileSystem_8h_source_l00067}{}\hyperlink{structFS_adae8dcbe72b934a870bf663481207e3e}{00067}   WORD \hyperlink{structFS_adae8dcbe72b934a870bf663481207e3e}{free\_sector}; 
+\hypertarget{fileSystem_8h_source_l00068}{}\hyperlink{structFS_ab8f2ed716ba1865bff2fe82d36e90546}{00068}   WORD \hyperlink{structFS_ab8f2ed716ba1865bff2fe82d36e90546}{fs\_size}; 
+\hypertarget{fileSystem_8h_source_l00069}{}\hyperlink{structFS_a6b431a5035eb3bb668565772a3ecd57a}{00069}   WORD \hyperlink{structFS_a6b431a5035eb3bb668565772a3ecd57a}{volbase}; 
+\hypertarget{fileSystem_8h_source_l00070}{}\hyperlink{structFS_a7c6676234fc0734f2139c627a0b01428}{00070}   WORD \hyperlink{structFS_a7c6676234fc0734f2139c627a0b01428}{fatbase}; 
+\hypertarget{fileSystem_8h_source_l00071}{}\hyperlink{structFS_a727068deba19f90b5b402ae005f49b58}{00071}   WORD \hyperlink{structFS_a727068deba19f90b5b402ae005f49b58}{database}; 
+\hypertarget{fileSystem_8h_source_l00072}{}\hyperlink{structFS_a050f921ab2140aa4eadce4a140b61fbe}{00072}   WORD \hyperlink{structFS_a050f921ab2140aa4eadce4a140b61fbe}{lastDescriptor}; 
+\hypertarget{fileSystem_8h_source_l00073}{}\hyperlink{structFS_a5772298ea6aafc77f842037933531a02}{00073}   \hyperlink{structFIL}{FIL} files[\_MAX\_FILES]; 
+\hypertarget{fileSystem_8h_source_l00074}{}\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{00074}   BYTE win[SECTOR\_SIZE]; 
+00075 \} \hyperlink{structFS}{FS};
+00076 
+00084 \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} \hyperlink{fileSystem_8h_aefdef7126128d99d0b3bd82c28e54d80}{f\_open}(\hyperlink{structFIL}{FIL}* fp, \textcolor{keyword}{const} TCHAR* path, BYTE mode);
+00085 
+00091 \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} \hyperlink{fileSystem_8h_a53882db20ef4323dcfd1874d7733ffc3}{f\_close}(\hyperlink{structFIL}{FIL}* fp); \textcolor{comment}{/* Close an open file object */}
+00092 
+00101 \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} \hyperlink{fileSystem_8h_ac4c3dcb6869ca252888eebabe39727b3}{f\_read}(\hyperlink{structFIL}{FIL}* fp, \textcolor{keywordtype}{void}* buff, UINT btr, UINT* br); \textcolor{comment}{/* Read data from a file */}
+00102 
+00111 \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} \hyperlink{fileSystem_8h_ae6a4dfae8a9e308bdb2283a37ef680f2}{f\_write}(\hyperlink{structFIL}{FIL}* fp, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* buff, UINT btw, UINT* bw); \textcolor{comment}{/* Write data to a file */}
+00112 
+00119 \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} \hyperlink{fileSystem_8h_acdcf7b6e3f54419d2612c38f83733edf}{f\_truncateStart}(\hyperlink{structFIL}{FIL}* fp, DWORD ofs); \textcolor{comment}{/* Move start file pointer of a file
+       object */}
+00120 
+00127 \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} \hyperlink{fileSystem_8h_a5df0ac672ada972e89ef4b003e57f964}{f\_lseek}(\hyperlink{structFIL}{FIL}* fp, DWORD ofs); \textcolor{comment}{/* Move read pointer of a file object  */}
+00128 
+00134 \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} \hyperlink{fileSystem_8h_ad69c7246b122ba56a134939ee0eaf847}{f\_sync}(\hyperlink{structFIL}{FIL}* fp); \textcolor{comment}{/* Flush cached data of a writing file */}
+00135 
+00142 \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} \hyperlink{fileSystem_8h_ad34712146dce899b62634cbc071ff5b1}{f\_getfree}(\textcolor{keywordtype}{int} fsIndex, UINT* nclst); \textcolor{comment}{/* Get number of free clusters on the drive */}
+00143 
+00151 \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} \hyperlink{fileSystem_8h_a06b1816d729a1ee702209d4ddc1d91af}{f\_mount}(\hyperlink{structFS}{FS}* fileSystem, \textcolor{keywordtype}{int} fsIndex, BYTE opt); \textcolor{comment}{/* Mount/Unmount a logical drive */}
+00152 
+00158 \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} \hyperlink{fileSystem_8h_a8e75c990b2a6c64fa783c75aace55059}{f\_mkfs}(\textcolor{keywordtype}{int} fsIndex); \textcolor{comment}{/* Create a file system on the volume */}
+00159 
+00165 \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} \hyperlink{fileSystem_8h_afcfe716c836b3b8a019fa38faf56da96}{reset\_sector}(\textcolor{keywordtype}{int} fsIndex);
+\end{DoxyCode}

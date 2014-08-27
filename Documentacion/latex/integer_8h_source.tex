@@ -1,0 +1,29 @@
+\hypertarget{integer_8h_source}{\subsection{integer.\+h}
+\label{integer_8h_source}\index{F\+S/integer.\+h@{F\+S/integer.\+h}}
+}
+
+\begin{DoxyCode}
+00001 
+00006 \textcolor{preprocessor}{#ifndef \_FF\_INTEGER}
+00007 \textcolor{preprocessor}{#define \_FF\_INTEGER}
+00008 
+00009 
+00010 \textcolor{comment}{/* This type MUST be 8 bit */}
+00011 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}  BYTE;
+00012 
+00013 \textcolor{comment}{/* These types MUST be 16 bit */}
+00014 \textcolor{keyword}{typedef} \textcolor{keywordtype}{short}      SHORT;
+00015 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short}  WORD;
+00016 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short}  WCHAR;
+00017 
+00018 \textcolor{comment}{/* These types MUST be 16 bit or 32 bit */}
+00019 \textcolor{keyword}{typedef} \textcolor{keywordtype}{int}        INT;
+00020 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}  UINT;
+00021 
+00022 \textcolor{comment}{/* These types MUST be 32 bit */}
+00023 \textcolor{keyword}{typedef} \textcolor{keywordtype}{long}      LONG;
+00024 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long}  DWORD;
+00025 \textcolor{keyword}{typedef} \textcolor{keywordtype}{char} TCHAR;
+00026 
+00027 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

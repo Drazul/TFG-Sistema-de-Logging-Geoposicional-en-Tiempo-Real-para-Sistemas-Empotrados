@@ -1,0 +1,30 @@
+\chapter{Resultados}
+\label{chap:resultados}
+
+En este capítulo se evaluarán los resultados obtenidos y se valorará el grado de cumplimiento de los requisitos funcionales y no funcionales especificados en el capítulo \ref{chap:objetivos} y en el punto \ref{sec:requisitos}.\\
+
+A continuación voy a listar los requisitos funcionales del sistemas y voy a evaluar el grado de cumplimiento:
+\begin{itemize}
+\item FLASH Driver: Este componente está desarrollado en los archivos \textit{diskio.h} y \textit{diskio.c}. Forma parte de una capa de abstracción del hardware para completar el sistema de archivos. Tiene funciones de inicialización (\textit{disk\_initialize}), reset(\textit{disk\_ioctl(CTRL\_ERASE\_SECTOR)}), lectura (\textit{disk\_read}), escritura (\textit{disk\_write}) y borrado (se puede borrar mediante la función de reset o escribiendo encima de los datos viejos). \newline
+\textbf{Grado de cumplimiento}: Total.
+\item FS Manager: Este componente está implementado en los archivos \textit{fileSystem.h} y \textit{fileSystem.h}. Este componente se trata de la capa de gestión del sistema de archivos y depende de la capa definida como FLASH Driver. Tiene funciones de inicialización (\textit{f\_mount}), reset (\textit{f\_mkfs} y \textit{reset\_sector}), apertura (\textit{f\_open}) y cierre de archivos (\textit{f\_close}), lectura (\textit{f\_read}) y escritura (\textit{f\_write}) sobre archivos y creación de archivos (\textit{f\_open} con permiso de creación). \newline
+\textbf{Grado de cumplimiento}: Total.
+\item LOG Module: Este componente está desarrollado como una tarea del sistema operativo en los archivos \textit{fs\_task.h} y \textit{fs\_task.c}. Como acabo de mencionar, este componente se trata de una tarea del sistema operativo y delega en este su creación, eliminación y reseteo. Las funciones de creación, eliminación, lectura y escritura de archivos se realizan utilizando las funciones de la capa del sistema de archivos descrita anteriormente.\newline
+\textbf{Grado de cumplimiento}: Total.
+\item GPS Driver: Esta capa de abstracción se encuentra definida en el archivo \textit{BA\_Board.h} y \textit{BA\_Board.c}. En estos archivos se definen los métodos de inicialización y lectura de datos de todos los periféricos del sistema, incluyendo el dispositivo GPS.\newline
+\textbf{Grado de cumplimiento}: Total.
+\item GPS Manager: Este componente está desarrollado como una tarea del sistema operativo en los archivos \textit{gps\_task.h} y \textit{gps\_task.c}. Como acabo de mencionar, este componente se trata de una tarea del sistema operativo y delega en este su creación, eliminación y reseteo. Las funciones de lectura de datos del GPS está implementada como \textit{parser\_gps} y dentro de la misma se mandan los mensajes leídos a una cola de mensajes de la que lee la tarea LOG Module.
+\newline
+\textbf{Grado de cumplimiento}: Total.\\
+\end{itemize}
+
+Sobre los requisitos no funcionales especificados en el punto \ref{sec:requisitos} considero que están cumplidos ya que se ha desarrollado el sistema dividido en diferentes capas de abstracción y la robustez del sistema operativo elegido está más que probada gracias a la multitud de proyectos que lo han utilizado y que aún se mantiene y mejora con nuevas versiones.\\
+
+Sobre los requisitos no funcionales especificados en el capítulo \ref{chap:objetivos} considero que también están cumplidos ya que:
+\begin{itemize}
+\item el sistema es fácilmente extensible, ya que solo basta con utilizar las bibliotecas de funciones desarrolladas o implementar unas si la funcionalidad es diferente;
+\item es robusto, ya que de no recibir datos del GPS se quedaría el sistema en espera y de llenarse el sistema de archivos automáticamente se crearía uno nuevo en otra parte de la memoria;
+\item es flexible, ya que la funcionalidad desarrollada no impide que se puedan desarrollar nuevas o mejorarlas;
+\item permite recuperación ante errores, ya que a la tarea del GPS no le afecta en absoluto porque no modifica la configuración del hardware y la tarea del Sistema de Archivos es capaz de leer correctamente un sistema de archivos almacenado previamente;
+\item y es adaptable a otras plataformas gracias a su diseño en varias capas de abstracción, siendo posible utilizarlo en otra plataforma cambiando únicamente la capa de abstracción del hardware. 
+\end{itemize}    

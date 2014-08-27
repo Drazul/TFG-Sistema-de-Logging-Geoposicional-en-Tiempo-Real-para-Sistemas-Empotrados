@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$diskio_8c.html" title="Módulo que implementa las funciones del archivo diskio.h." alt="" coords="5,83,93,112"/>
+<area shape="rect" id="node5" href="$fileSystem_8h.html" title="Cabecera principal del módulo del Sistema de Archivos." alt="" coords="117,83,232,112"/>
+<area shape="rect" id="node7" href="$fs__task_8c.html" title="Módulo que implementa las funciones del archivo fs_task.h." alt="" coords="60,160,159,189"/>
+<area shape="rect" id="node9" href="$fileSystem_8c.html" title="Módulo que implementa las funciones del archivo fileSystem.h." alt="" coords="183,160,297,189"/>
+</map>

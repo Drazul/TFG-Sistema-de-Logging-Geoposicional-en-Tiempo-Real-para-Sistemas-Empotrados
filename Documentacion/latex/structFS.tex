@@ -1,0 +1,129 @@
+\hypertarget{structFS}{\subsection{Referencia de la Estructura F\+S}
+\label{structFS}\index{F\+S@{F\+S}}
+}
+
+
+Estructura que define el Sistema de Archivos.  
+
+
+
+
+{\ttfamily \#include $<$file\+System.\+h$>$}
+
+
+
+Diagrama de colaboración para F\+S\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{structFS__coll__graph}
+\end{center}
+\end{figure}
+\subsubsection*{Campos de datos}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \hyperlink{structFS_a22eed025311346b8029d8b445c192b95}{start\+\_\+address}
+\item 
+B\+Y\+T\+E \hyperlink{structFS_a06559d64af1c2b15af05165f30c59868}{sector\+\_\+size}
+\item 
+W\+O\+R\+D \hyperlink{structFS_adae8dcbe72b934a870bf663481207e3e}{free\+\_\+sector}
+\item 
+W\+O\+R\+D \hyperlink{structFS_ab8f2ed716ba1865bff2fe82d36e90546}{fs\+\_\+size}
+\item 
+W\+O\+R\+D \hyperlink{structFS_a6b431a5035eb3bb668565772a3ecd57a}{volbase}
+\item 
+W\+O\+R\+D \hyperlink{structFS_a7c6676234fc0734f2139c627a0b01428}{fatbase}
+\item 
+W\+O\+R\+D \hyperlink{structFS_a727068deba19f90b5b402ae005f49b58}{database}
+\item 
+W\+O\+R\+D \hyperlink{structFS_a050f921ab2140aa4eadce4a140b61fbe}{last\+Descriptor}
+\item 
+\hyperlink{structFIL}{F\+I\+L} \hyperlink{structFS_a5772298ea6aafc77f842037933531a02}{files} \mbox{[}\+\_\+\+M\+A\+X\+\_\+\+F\+I\+L\+E\+S\mbox{]}
+\item 
+B\+Y\+T\+E \hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win} \mbox{[}S\+E\+C\+T\+O\+R\+\_\+\+S\+I\+Z\+E\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Descripción detallada}
+Estructura que define el Sistema de Archivos. 
+
+Definición en la línea 64 del archivo file\+System.\+h.
+
+
+
+\subsubsection{Documentación de los campos}
+\hypertarget{structFS_a727068deba19f90b5b402ae005f49b58}{\index{F\+S@{F\+S}!database@{database}}
+\index{database@{database}!F\+S@{F\+S}}
+\paragraph[{database}]{\setlength{\rightskip}{0pt plus 5cm}W\+O\+R\+D F\+S\+::database}}\label{structFS_a727068deba19f90b5b402ae005f49b58}
+Sector de inicio de la tabla de descriptores 
+
+Definición en la línea 71 del archivo file\+System.\+h.
+
+\hypertarget{structFS_a7c6676234fc0734f2139c627a0b01428}{\index{F\+S@{F\+S}!fatbase@{fatbase}}
+\index{fatbase@{fatbase}!F\+S@{F\+S}}
+\paragraph[{fatbase}]{\setlength{\rightskip}{0pt plus 5cm}W\+O\+R\+D F\+S\+::fatbase}}\label{structFS_a7c6676234fc0734f2139c627a0b01428}
+Sector de inicio del sistema de archivos 
+
+Definición en la línea 70 del archivo file\+System.\+h.
+
+\hypertarget{structFS_a5772298ea6aafc77f842037933531a02}{\index{F\+S@{F\+S}!files@{files}}
+\index{files@{files}!F\+S@{F\+S}}
+\paragraph[{files}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+I\+L} F\+S\+::files\mbox{[}\+\_\+\+M\+A\+X\+\_\+\+F\+I\+L\+E\+S\mbox{]}}}\label{structFS_a5772298ea6aafc77f842037933531a02}
+Vector de archivos abiertos 
+
+Definición en la línea 73 del archivo file\+System.\+h.
+
+\hypertarget{structFS_adae8dcbe72b934a870bf663481207e3e}{\index{F\+S@{F\+S}!free\+\_\+sector@{free\+\_\+sector}}
+\index{free\+\_\+sector@{free\+\_\+sector}!F\+S@{F\+S}}
+\paragraph[{free\+\_\+sector}]{\setlength{\rightskip}{0pt plus 5cm}W\+O\+R\+D F\+S\+::free\+\_\+sector}}\label{structFS_adae8dcbe72b934a870bf663481207e3e}
+Número de sectores libres 
+
+Definición en la línea 67 del archivo file\+System.\+h.
+
+\hypertarget{structFS_ab8f2ed716ba1865bff2fe82d36e90546}{\index{F\+S@{F\+S}!fs\+\_\+size@{fs\+\_\+size}}
+\index{fs\+\_\+size@{fs\+\_\+size}!F\+S@{F\+S}}
+\paragraph[{fs\+\_\+size}]{\setlength{\rightskip}{0pt plus 5cm}W\+O\+R\+D F\+S\+::fs\+\_\+size}}\label{structFS_ab8f2ed716ba1865bff2fe82d36e90546}
+Tamaño en sectores lógicos del sistema de archivos 
+
+Definición en la línea 68 del archivo file\+System.\+h.
+
+\hypertarget{structFS_a050f921ab2140aa4eadce4a140b61fbe}{\index{F\+S@{F\+S}!last\+Descriptor@{last\+Descriptor}}
+\index{last\+Descriptor@{last\+Descriptor}!F\+S@{F\+S}}
+\paragraph[{last\+Descriptor}]{\setlength{\rightskip}{0pt plus 5cm}W\+O\+R\+D F\+S\+::last\+Descriptor}}\label{structFS_a050f921ab2140aa4eadce4a140b61fbe}
+Sector donde se guardó el último descriptor de archivo 
+
+Definición en la línea 72 del archivo file\+System.\+h.
+
+\hypertarget{structFS_a06559d64af1c2b15af05165f30c59868}{\index{F\+S@{F\+S}!sector\+\_\+size@{sector\+\_\+size}}
+\index{sector\+\_\+size@{sector\+\_\+size}!F\+S@{F\+S}}
+\paragraph[{sector\+\_\+size}]{\setlength{\rightskip}{0pt plus 5cm}B\+Y\+T\+E F\+S\+::sector\+\_\+size}}\label{structFS_a06559d64af1c2b15af05165f30c59868}
+Tamaño de cada sector lógico 
+
+Definición en la línea 66 del archivo file\+System.\+h.
+
+\hypertarget{structFS_a22eed025311346b8029d8b445c192b95}{\index{F\+S@{F\+S}!start\+\_\+address@{start\+\_\+address}}
+\index{start\+\_\+address@{start\+\_\+address}!F\+S@{F\+S}}
+\paragraph[{start\+\_\+address}]{\setlength{\rightskip}{0pt plus 5cm}uint32\+\_\+t F\+S\+::start\+\_\+address}}\label{structFS_a22eed025311346b8029d8b445c192b95}
+Dirección de inicio del sistema de archivos 
+
+Definición en la línea 65 del archivo file\+System.\+h.
+
+\hypertarget{structFS_a6b431a5035eb3bb668565772a3ecd57a}{\index{F\+S@{F\+S}!volbase@{volbase}}
+\index{volbase@{volbase}!F\+S@{F\+S}}
+\paragraph[{volbase}]{\setlength{\rightskip}{0pt plus 5cm}W\+O\+R\+D F\+S\+::volbase}}\label{structFS_a6b431a5035eb3bb668565772a3ecd57a}
+Sector de inicio del volúmen de datos 
+
+Definición en la línea 69 del archivo file\+System.\+h.
+
+\hypertarget{structFS_a23d4e26f31e8932d8b216955e6af2130}{\index{F\+S@{F\+S}!win@{win}}
+\index{win@{win}!F\+S@{F\+S}}
+\paragraph[{win}]{\setlength{\rightskip}{0pt plus 5cm}B\+Y\+T\+E F\+S\+::win\mbox{[}S\+E\+C\+T\+O\+R\+\_\+\+S\+I\+Z\+E\mbox{]}}}\label{structFS_a23d4e26f31e8932d8b216955e6af2130}
+Buffer de lectura del sistema de archivos y de los archivos 
+
+Definición en la línea 74 del archivo file\+System.\+h.
+
+
+
+La documentación para esta estructura fue generada a partir del siguiente fichero\+:\begin{DoxyCompactItemize}
+\item 
+F\+S/\hyperlink{fileSystem_8h}{file\+System.\+h}\end{DoxyCompactItemize}

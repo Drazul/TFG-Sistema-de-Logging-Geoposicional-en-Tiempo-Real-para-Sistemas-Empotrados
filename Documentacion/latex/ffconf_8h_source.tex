@@ -1,0 +1,19 @@
+\hypertarget{ffconf_8h_source}{\subsection{ffconf.\+h}
+\label{ffconf_8h_source}\index{F\+S/ffconf.\+h@{F\+S/ffconf.\+h}}
+}
+
+\begin{DoxyCode}
+00001 
+00005 \textcolor{preprocessor}{#define \_MAX\_FILES 3   }\textcolor{comment}{/* Number of maximum files supported */}\textcolor{preprocessor}{}
+00006 \textcolor{preprocessor}{#define SECTOR\_SIZE 16 }\textcolor{comment}{/* Bytes */}\textcolor{preprocessor}{}
+00007 \textcolor{preprocessor}{#define FS\_SIZE 8192  }\textcolor{comment}{/* 128KB/16B= 8192 */}\textcolor{preprocessor}{}
+00008 \textcolor{preprocessor}{#define MAX\_FILE\_SIZE FS\_SIZE/(\_MAX\_FILES+1)}
+00009 
+00010 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} uint32\_t;
+00011 
+00012 \textcolor{comment}{/* Define start physical address,           *}
+00013 \textcolor{comment}{ * START\_ADDRESS is from 9 flash sector     *}
+00014 \textcolor{comment}{ * START\_ADDRESS2 is from 10 flash sector   */}
+00015 \textcolor{preprocessor}{#define PHYSYCAL\_START\_ADDRESS2 ((uint32\_t)0x080A0000)  // Sector  9}
+00016 \textcolor{preprocessor}{#define PHYSYCAL\_START\_ADDRESS ((uint32\_t)0x080C0000)  // Sector 10}
+\end{DoxyCode}

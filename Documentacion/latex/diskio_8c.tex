@@ -1,0 +1,392 @@
+\hypertarget{diskio_8c}{\subsection{Referencia del Archivo F\+S/diskio.c}
+\label{diskio_8c}\index{F\+S/diskio.\+c@{F\+S/diskio.\+c}}
+}
+
+
+Módulo que implementa las funciones del archivo \hyperlink{diskio_8h}{diskio.\+h}.  
+
+
+{\ttfamily \#include \char`\"{}diskio.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stm32f2xx\+\_\+flash.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+Dependencia gráfica adjunta para diskio.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=347pt]{diskio_8c__incl}
+\end{center}
+\end{figure}
+\subsubsection*{'defines'}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{diskio_8c_a1a626254790c0810ff2dda356393e10c}{\#define {\bfseries A\+D\+D\+R\+\_\+\+F\+L\+A\+S\+H\+\_\+\+S\+E\+C\+T\+O\+R\+\_\+0}~((uint32\+\_\+t)0x08000000)}\label{diskio_8c_a1a626254790c0810ff2dda356393e10c}
+
+\item 
+\hypertarget{diskio_8c_a3921df9831b40afc489e0abb4ae2e1d8}{\#define {\bfseries A\+D\+D\+R\+\_\+\+F\+L\+A\+S\+H\+\_\+\+S\+E\+C\+T\+O\+R\+\_\+1}~((uint32\+\_\+t)0x08004000)}\label{diskio_8c_a3921df9831b40afc489e0abb4ae2e1d8}
+
+\item 
+\hypertarget{diskio_8c_a252ab8bba2a5556d7aa70c4629749b25}{\#define {\bfseries A\+D\+D\+R\+\_\+\+F\+L\+A\+S\+H\+\_\+\+S\+E\+C\+T\+O\+R\+\_\+2}~((uint32\+\_\+t)0x08008000)}\label{diskio_8c_a252ab8bba2a5556d7aa70c4629749b25}
+
+\item 
+\hypertarget{diskio_8c_a299b477f5a33428b1867eecc8663028a}{\#define {\bfseries A\+D\+D\+R\+\_\+\+F\+L\+A\+S\+H\+\_\+\+S\+E\+C\+T\+O\+R\+\_\+3}~((uint32\+\_\+t)0x0800\+C000)}\label{diskio_8c_a299b477f5a33428b1867eecc8663028a}
+
+\item 
+\hypertarget{diskio_8c_a0137a47c6b41f7aef7e18d9bc280a918}{\#define {\bfseries A\+D\+D\+R\+\_\+\+F\+L\+A\+S\+H\+\_\+\+S\+E\+C\+T\+O\+R\+\_\+4}~((uint32\+\_\+t)0x08010000)}\label{diskio_8c_a0137a47c6b41f7aef7e18d9bc280a918}
+
+\item 
+\hypertarget{diskio_8c_a6e78dc4f01c1faf00384490d3536f4de}{\#define {\bfseries A\+D\+D\+R\+\_\+\+F\+L\+A\+S\+H\+\_\+\+S\+E\+C\+T\+O\+R\+\_\+5}~((uint32\+\_\+t)0x08020000)}\label{diskio_8c_a6e78dc4f01c1faf00384490d3536f4de}
+
+\item 
+\hypertarget{diskio_8c_a353c96f72d9893b5c24e9775a6e9f999}{\#define {\bfseries A\+D\+D\+R\+\_\+\+F\+L\+A\+S\+H\+\_\+\+S\+E\+C\+T\+O\+R\+\_\+6}~((uint32\+\_\+t)0x08040000)}\label{diskio_8c_a353c96f72d9893b5c24e9775a6e9f999}
+
+\item 
+\hypertarget{diskio_8c_a0fcae367e68209cb20aec1f31d0cef75}{\#define {\bfseries A\+D\+D\+R\+\_\+\+F\+L\+A\+S\+H\+\_\+\+S\+E\+C\+T\+O\+R\+\_\+7}~((uint32\+\_\+t)0x08060000)}\label{diskio_8c_a0fcae367e68209cb20aec1f31d0cef75}
+
+\item 
+\hypertarget{diskio_8c_a46efd249195dc6615a5f991bf67fbfd5}{\#define {\bfseries A\+D\+D\+R\+\_\+\+F\+L\+A\+S\+H\+\_\+\+S\+E\+C\+T\+O\+R\+\_\+8}~((uint32\+\_\+t)0x08080000)}\label{diskio_8c_a46efd249195dc6615a5f991bf67fbfd5}
+
+\item 
+\hypertarget{diskio_8c_a94b661cf00ffc288e3d2983c3d6c72ed}{\#define {\bfseries A\+D\+D\+R\+\_\+\+F\+L\+A\+S\+H\+\_\+\+S\+E\+C\+T\+O\+R\+\_\+9}~((uint32\+\_\+t)0x080\+A0000)}\label{diskio_8c_a94b661cf00ffc288e3d2983c3d6c72ed}
+
+\item 
+\hypertarget{diskio_8c_a3cea1f00ae802317e67815c9dedc62b7}{\#define {\bfseries A\+D\+D\+R\+\_\+\+F\+L\+A\+S\+H\+\_\+\+S\+E\+C\+T\+O\+R\+\_\+10}~((uint32\+\_\+t)0x080\+C0000)}\label{diskio_8c_a3cea1f00ae802317e67815c9dedc62b7}
+
+\item 
+\hypertarget{diskio_8c_a7b945836a10e9782cbb63338f271f2aa}{\#define {\bfseries A\+D\+D\+R\+\_\+\+F\+L\+A\+S\+H\+\_\+\+S\+E\+C\+T\+O\+R\+\_\+11}~((uint32\+\_\+t)0x080\+E0000)}\label{diskio_8c_a7b945836a10e9782cbb63338f271f2aa}
+
+\end{DoxyCompactItemize}
+\subsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \hyperlink{diskio_8c_a90db73e2ffb962de6891c783f62db0d0}{Get\+Sector} (uint32\+\_\+t Address)
+\begin{DoxyCompactList}\small\item\em Función que devuelve el sector al que hace referencia la dirección dada. \end{DoxyCompactList}\item 
+uint32\+\_\+t \hyperlink{diskio_8c_a900718135e0cd4b363dddcdb44175607}{byte\+\_\+to\+\_\+uint32} (const B\+Y\+T\+E $\ast$src)
+\begin{DoxyCompactList}\small\item\em Convierte un dato B\+Y\+T\+E en un dato uint32\+\_\+t. \end{DoxyCompactList}\item 
+B\+Y\+T\+E $\ast$ \hyperlink{diskio_8c_ae214680b2ed5e6b6f4785c517f73c5b3}{uint32\+\_\+to\+\_\+byte} (uint32\+\_\+t src, B\+Y\+T\+E $\ast$dst)
+\begin{DoxyCompactList}\small\item\em Convierte un dato uint32\+\_\+t en un dato B\+Y\+T\+E. \end{DoxyCompactList}\item 
+\hyperlink{diskio_8h_adba6790898ce4029c20a34b898ce73c1}{D\+S\+T\+A\+T\+U\+S} \hyperlink{diskio_8c_adbcc8690662c4993d61adc9e13d7cffc}{get\+\_\+start\+\_\+end\+\_\+address} (int pdrv, int count, int sector, uint32\+\_\+t $\ast$start\+Address, uint32\+\_\+t $\ast$end\+Address)
+\begin{DoxyCompactList}\small\item\em Convierte un número de sector en una dirección física y calcula la dirección de fin a partir del contador. \end{DoxyCompactList}\item 
+uint32\+\_\+t \hyperlink{diskio_8c_a713082e3e5375e658a941a3cca667aed}{get\+\_\+address} (int pdrv, D\+W\+O\+R\+D sector)
+\begin{DoxyCompactList}\small\item\em Convierte un número de sector en una dirección física. \end{DoxyCompactList}\item 
+\hyperlink{diskio_8h_adba6790898ce4029c20a34b898ce73c1}{D\+S\+T\+A\+T\+U\+S} \hyperlink{diskio_8c_aa01f5479a3ee7c9aed89814238964cd2}{disk\+\_\+initialize} (int pdrv)
+\begin{DoxyCompactList}\small\item\em Función que incializa la memoria F\+L\+A\+S\+H. \end{DoxyCompactList}\item 
+\hyperlink{diskio_8h_adba6790898ce4029c20a34b898ce73c1}{D\+S\+T\+A\+T\+U\+S} \hyperlink{diskio_8c_a3dfe0827b5e2a3a79da131b076adedff}{flash\+State2\+F\+S\+State} (F\+L\+A\+S\+H\+\_\+\+Status status)
+\begin{DoxyCompactList}\small\item\em Convierte el estado de operación de la flash al estado de operación del sistema de archivos. \end{DoxyCompactList}\item 
+\hyperlink{diskio_8h_adba6790898ce4029c20a34b898ce73c1}{D\+S\+T\+A\+T\+U\+S} \hyperlink{diskio_8c_a308c9b0a83724bf6e6aae72a736cc7a6}{disk\+\_\+status} (int pdrv)
+\begin{DoxyCompactList}\small\item\em Función que devuelve el estado de la F\+L\+A\+S\+H. \end{DoxyCompactList}\item 
+D\+R\+E\+S\+U\+L\+T \hyperlink{diskio_8c_a9c6f716a2119a650cf3c61bee540be85}{disk\+\_\+read} (int pdrv, B\+Y\+T\+E $\ast$buff, D\+W\+O\+R\+D sector, U\+I\+N\+T count)
+\begin{DoxyCompactList}\small\item\em Función que lee datos desde la memoria F\+L\+A\+S\+H. \end{DoxyCompactList}\item 
+D\+R\+E\+S\+U\+L\+T \hyperlink{diskio_8c_a4fc55609dc0b2fba35c679984ae7ca68}{disk\+\_\+write} (int pdrv, const B\+Y\+T\+E $\ast$buff, D\+W\+O\+R\+D sector, U\+I\+N\+T count)
+\begin{DoxyCompactList}\small\item\em Función que escribe en la memoria F\+L\+A\+S\+H. \end{DoxyCompactList}\item 
+D\+R\+E\+S\+U\+L\+T \hyperlink{diskio_8c_a816bffc54e390c15d03f477133707de5}{disk\+\_\+ioctl} (int pdrv, B\+Y\+T\+E cmd, void $\ast$buff)
+\begin{DoxyCompactList}\small\item\em Función de control de entrada/salida, varias funciones. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Descripción detallada}
+Módulo que implementa las funciones del archivo \hyperlink{diskio_8h}{diskio.\+h}. 
+
+
+
+Definición en el archivo \hyperlink{diskio_8c_source}{diskio.\+c}.
+
+
+
+\subsubsection{Documentación de las funciones}
+\hypertarget{diskio_8c_a900718135e0cd4b363dddcdb44175607}{\index{diskio.\+c@{diskio.\+c}!byte\+\_\+to\+\_\+uint32@{byte\+\_\+to\+\_\+uint32}}
+\index{byte\+\_\+to\+\_\+uint32@{byte\+\_\+to\+\_\+uint32}!diskio.\+c@{diskio.\+c}}
+\paragraph[{byte\+\_\+to\+\_\+uint32}]{\setlength{\rightskip}{0pt plus 5cm}uint32\+\_\+t byte\+\_\+to\+\_\+uint32 (
+\begin{DoxyParamCaption}
+\item[{const B\+Y\+T\+E $\ast$}]{src}
+\end{DoxyParamCaption}
+)}}\label{diskio_8c_a900718135e0cd4b363dddcdb44175607}
+
+
+Convierte un dato B\+Y\+T\+E en un dato uint32\+\_\+t. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em src} & Vector de 4 B\+Y\+T\+E\+S a convertir \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Devuelve el valor correspondiente en uint32\+\_\+t 
+\end{DoxyReturn}
+
+
+Definición en la línea 75 del archivo diskio.\+c.
+
+\hypertarget{diskio_8c_aa01f5479a3ee7c9aed89814238964cd2}{\index{diskio.\+c@{diskio.\+c}!disk\+\_\+initialize@{disk\+\_\+initialize}}
+\index{disk\+\_\+initialize@{disk\+\_\+initialize}!diskio.\+c@{diskio.\+c}}
+\paragraph[{disk\+\_\+initialize}]{\setlength{\rightskip}{0pt plus 5cm}{\bf D\+S\+T\+A\+T\+U\+S} disk\+\_\+initialize (
+\begin{DoxyParamCaption}
+\item[{int}]{pdrv}
+\end{DoxyParamCaption}
+)}}\label{diskio_8c_aa01f5479a3ee7c9aed89814238964cd2}
+
+
+Función que incializa la memoria F\+L\+A\+S\+H. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em pdrv} & Identificador del sector físico utilizado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 139 del archivo diskio.\+c.
+
+\hypertarget{diskio_8c_a816bffc54e390c15d03f477133707de5}{\index{diskio.\+c@{diskio.\+c}!disk\+\_\+ioctl@{disk\+\_\+ioctl}}
+\index{disk\+\_\+ioctl@{disk\+\_\+ioctl}!diskio.\+c@{diskio.\+c}}
+\paragraph[{disk\+\_\+ioctl}]{\setlength{\rightskip}{0pt plus 5cm}D\+R\+E\+S\+U\+L\+T disk\+\_\+ioctl (
+\begin{DoxyParamCaption}
+\item[{int}]{pdrv, }
+\item[{B\+Y\+T\+E}]{cmd, }
+\item[{void $\ast$}]{buff}
+\end{DoxyParamCaption}
+)}}\label{diskio_8c_a816bffc54e390c15d03f477133707de5}
+
+
+Función de control de entrada/salida, varias funciones. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em pdrv} & Identificador del sector físico utilizado \\
+\hline
+{\em cmd} & Comando que especifica qué función realizar \\
+\hline
+{\em buff} & Parámetro de entrada o salida dependiendo de la función a realizar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación
+\end{DoxyReturn}
+\begin{DoxyVerb}A continuación se especifican todos los comandos disponibles:
+ CTRL_SYNC espera a que termine la última operación de la FLASH
+ GET_SECTOR_COUNT Devuelve el número de sectores del sistema de archivos
+ GET_SECTOR_SIZE Devuelve el tamaño de cada sector lógico
+ GET_BLOCK_SIZE Devuelve el número de sectores físicos del sistema de archivos
+ CTRL_ERASE_SECTOR Resetea el sector especificado en buff
+\end{DoxyVerb}
+ 
+
+Definición en la línea 262 del archivo diskio.\+c.
+
+\hypertarget{diskio_8c_a9c6f716a2119a650cf3c61bee540be85}{\index{diskio.\+c@{diskio.\+c}!disk\+\_\+read@{disk\+\_\+read}}
+\index{disk\+\_\+read@{disk\+\_\+read}!diskio.\+c@{diskio.\+c}}
+\paragraph[{disk\+\_\+read}]{\setlength{\rightskip}{0pt plus 5cm}D\+R\+E\+S\+U\+L\+T disk\+\_\+read (
+\begin{DoxyParamCaption}
+\item[{int}]{pdrv, }
+\item[{B\+Y\+T\+E $\ast$}]{buff, }
+\item[{D\+W\+O\+R\+D}]{sector, }
+\item[{U\+I\+N\+T}]{count}
+\end{DoxyParamCaption}
+)}}\label{diskio_8c_a9c6f716a2119a650cf3c61bee540be85}
+
+
+Función que lee datos desde la memoria F\+L\+A\+S\+H. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em pdrv} & Identificador del sector físico utilizado \\
+\hline
+{\em buff} & Buffer donde devolver los datos leídos \\
+\hline
+{\em sector} & Número de sector lógico donde empezar a leer \\
+\hline
+{\em count} & Número de sectores lógicos a leer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 181 del archivo diskio.\+c.
+
+\hypertarget{diskio_8c_a308c9b0a83724bf6e6aae72a736cc7a6}{\index{diskio.\+c@{diskio.\+c}!disk\+\_\+status@{disk\+\_\+status}}
+\index{disk\+\_\+status@{disk\+\_\+status}!diskio.\+c@{diskio.\+c}}
+\paragraph[{disk\+\_\+status}]{\setlength{\rightskip}{0pt plus 5cm}{\bf D\+S\+T\+A\+T\+U\+S} disk\+\_\+status (
+\begin{DoxyParamCaption}
+\item[{int}]{pdrv}
+\end{DoxyParamCaption}
+)}}\label{diskio_8c_a308c9b0a83724bf6e6aae72a736cc7a6}
+
+
+Función que devuelve el estado de la F\+L\+A\+S\+H. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em pdrv} & Identificador del sector físico utilizado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Estado de la F\+L\+A\+S\+H 
+\end{DoxyReturn}
+
+
+Definición en la línea 168 del archivo diskio.\+c.
+
+\hypertarget{diskio_8c_a4fc55609dc0b2fba35c679984ae7ca68}{\index{diskio.\+c@{diskio.\+c}!disk\+\_\+write@{disk\+\_\+write}}
+\index{disk\+\_\+write@{disk\+\_\+write}!diskio.\+c@{diskio.\+c}}
+\paragraph[{disk\+\_\+write}]{\setlength{\rightskip}{0pt plus 5cm}D\+R\+E\+S\+U\+L\+T disk\+\_\+write (
+\begin{DoxyParamCaption}
+\item[{int}]{pdrv, }
+\item[{const B\+Y\+T\+E $\ast$}]{buff, }
+\item[{D\+W\+O\+R\+D}]{sector, }
+\item[{U\+I\+N\+T}]{count}
+\end{DoxyParamCaption}
+)}}\label{diskio_8c_a4fc55609dc0b2fba35c679984ae7ca68}
+
+
+Función que escribe en la memoria F\+L\+A\+S\+H. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em pdrv} & Identificador del sector físico utilizado \\
+\hline
+{\em buff} & Stream de datos que se van a escribir \\
+\hline
+{\em sector} & Número de sector lógico donde escribir \\
+\hline
+{\em count} & Número de sectores lógicos a escribir \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 222 del archivo diskio.\+c.
+
+\hypertarget{diskio_8c_a3dfe0827b5e2a3a79da131b076adedff}{\index{diskio.\+c@{diskio.\+c}!flash\+State2\+F\+S\+State@{flash\+State2\+F\+S\+State}}
+\index{flash\+State2\+F\+S\+State@{flash\+State2\+F\+S\+State}!diskio.\+c@{diskio.\+c}}
+\paragraph[{flash\+State2\+F\+S\+State}]{\setlength{\rightskip}{0pt plus 5cm}{\bf D\+S\+T\+A\+T\+U\+S} flash\+State2\+F\+S\+State (
+\begin{DoxyParamCaption}
+\item[{F\+L\+A\+S\+H\+\_\+\+Status}]{status}
+\end{DoxyParamCaption}
+)}}\label{diskio_8c_a3dfe0827b5e2a3a79da131b076adedff}
+
+
+Convierte el estado de operación de la flash al estado de operación del sistema de archivos. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em status} & Estado de operación de la F\+L\+A\+S\+H \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 158 del archivo diskio.\+c.
+
+\hypertarget{diskio_8c_a713082e3e5375e658a941a3cca667aed}{\index{diskio.\+c@{diskio.\+c}!get\+\_\+address@{get\+\_\+address}}
+\index{get\+\_\+address@{get\+\_\+address}!diskio.\+c@{diskio.\+c}}
+\paragraph[{get\+\_\+address}]{\setlength{\rightskip}{0pt plus 5cm}uint32\+\_\+t get\+\_\+address (
+\begin{DoxyParamCaption}
+\item[{int}]{pdrv, }
+\item[{D\+W\+O\+R\+D}]{sector}
+\end{DoxyParamCaption}
+)}}\label{diskio_8c_a713082e3e5375e658a941a3cca667aed}
+
+
+Convierte un número de sector en una dirección física. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em pdrv} & Identificador del sistema de archivos  sector Número de sector lógico de inicio \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 127 del archivo diskio.\+c.
+
+\hypertarget{diskio_8c_adbcc8690662c4993d61adc9e13d7cffc}{\index{diskio.\+c@{diskio.\+c}!get\+\_\+start\+\_\+end\+\_\+address@{get\+\_\+start\+\_\+end\+\_\+address}}
+\index{get\+\_\+start\+\_\+end\+\_\+address@{get\+\_\+start\+\_\+end\+\_\+address}!diskio.\+c@{diskio.\+c}}
+\paragraph[{get\+\_\+start\+\_\+end\+\_\+address}]{\setlength{\rightskip}{0pt plus 5cm}{\bf D\+S\+T\+A\+T\+U\+S} get\+\_\+start\+\_\+end\+\_\+address (
+\begin{DoxyParamCaption}
+\item[{int}]{pdrv, }
+\item[{int}]{count, }
+\item[{int}]{sector, }
+\item[{uint32\+\_\+t $\ast$}]{start\+Address, }
+\item[{uint32\+\_\+t $\ast$}]{end\+Address}
+\end{DoxyParamCaption}
+)}}\label{diskio_8c_adbcc8690662c4993d61adc9e13d7cffc}
+
+
+Convierte un número de sector en una dirección física y calcula la dirección de fin a partir del contador. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em pdrv} & Identificador del sistema de archivos \\
+\hline
+{\em count} & Número de sectores lógicos de diferencia entre la dirección de inicio y de fin  sector Número de sector lógico de inicio \\
+\hline
+{\em start\+Address} & Puntero donde se devuelve la dirección de inicio \\
+\hline
+{\em end\+Address} & Puntero donde se devuelve la dirección de fin \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 107 del archivo diskio.\+c.
+
+\hypertarget{diskio_8c_a90db73e2ffb962de6891c783f62db0d0}{\index{diskio.\+c@{diskio.\+c}!Get\+Sector@{Get\+Sector}}
+\index{Get\+Sector@{Get\+Sector}!diskio.\+c@{diskio.\+c}}
+\paragraph[{Get\+Sector}]{\setlength{\rightskip}{0pt plus 5cm}uint32\+\_\+t Get\+Sector (
+\begin{DoxyParamCaption}
+\item[{uint32\+\_\+t}]{Address}
+\end{DoxyParamCaption}
+)}}\label{diskio_8c_a90db73e2ffb962de6891c783f62db0d0}
+
+
+Función que devuelve el sector al que hace referencia la dirección dada. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em Address} & Dirección de memoria \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Sector físico al que pertenece la dirección dada 
+\end{DoxyReturn}
+
+
+Definición en la línea 28 del archivo diskio.\+c.
+
+\hypertarget{diskio_8c_ae214680b2ed5e6b6f4785c517f73c5b3}{\index{diskio.\+c@{diskio.\+c}!uint32\+\_\+to\+\_\+byte@{uint32\+\_\+to\+\_\+byte}}
+\index{uint32\+\_\+to\+\_\+byte@{uint32\+\_\+to\+\_\+byte}!diskio.\+c@{diskio.\+c}}
+\paragraph[{uint32\+\_\+to\+\_\+byte}]{\setlength{\rightskip}{0pt plus 5cm}B\+Y\+T\+E$\ast$ uint32\+\_\+to\+\_\+byte (
+\begin{DoxyParamCaption}
+\item[{uint32\+\_\+t}]{src, }
+\item[{B\+Y\+T\+E $\ast$}]{dst}
+\end{DoxyParamCaption}
+)}}\label{diskio_8c_ae214680b2ed5e6b6f4785c517f73c5b3}
+
+
+Convierte un dato uint32\+\_\+t en un dato B\+Y\+T\+E. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em src} & Valor uint32\+\_\+t a convertir \\
+\hline
+{\em dst} & Puntero donde se devolverá el valor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Devuelve el valor correspondiente en B\+Y\+T\+E$\ast$ 
+\end{DoxyReturn}
+
+
+Definición en la línea 90 del archivo diskio.\+c.
+

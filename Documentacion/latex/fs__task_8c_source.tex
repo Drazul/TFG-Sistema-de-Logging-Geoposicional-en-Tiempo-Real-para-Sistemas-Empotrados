@@ -1,0 +1,138 @@
+\hypertarget{fs__task_8c_source}{\subsection{fs\+\_\+task.\+c}
+\label{fs__task_8c_source}\index{src/fs\+\_\+task.\+c@{src/fs\+\_\+task.\+c}}
+}
+
+\begin{DoxyCode}
+00001 
+00005 \textcolor{preprocessor}{#include "\hyperlink{fs__task_8h}{fs\_task.h}"}
+00006 \textcolor{preprocessor}{#include "stm32f2xx.h"}
+00007 \textcolor{preprocessor}{#include "BA\_board.h"}
+00008 \textcolor{preprocessor}{#include "task.h"}
+00009 \textcolor{preprocessor}{#include <stdlib.h>}
+00010 \textcolor{preprocessor}{#include "\hyperlink{fileSystem_8h}{fileSystem.h}"}
+00011 
+00012 \textcolor{keyword}{static} \hyperlink{structFS}{FS} fileSystem;
+00013 
+00018 \textcolor{keywordtype}{void} \hyperlink{fs__task_8c_a941f5a214539980b9c21487c9e598ed1}{FSTaskFunc}(\textcolor{keywordtype}{void} *pParams);
+00019 
+\hypertarget{fs__task_8c_source_l00020}{}\hyperlink{fs__task_8h_ab7f1e7392ed5dbe6c58be74746987f99}{00020} \textcolor{keywordtype}{void} \hyperlink{fs__task_8c_ab7f1e7392ed5dbe6c58be74746987f99}{FSHardwareInit}(\textcolor{keywordtype}{void} *pParam) \{
+00021   \hyperlink{fileSystem_8c_afcfe716c836b3b8a019fa38faf56da96}{reset\_sector}(0);
+00022   \hyperlink{fileSystem_8c_a06b1816d729a1ee702209d4ddc1d91af}{f\_mount}(&fileSystem, 0, 0);
+00023   \hyperlink{fileSystem_8c_a8e75c990b2a6c64fa783c75aace55059}{f\_mkfs}(0);
+00024   \hyperlink{fileSystem_8c_a06b1816d729a1ee702209d4ddc1d91af}{f\_mount}(&fileSystem, 0, 1);
+00025 \}
+00026 
+\hypertarget{fs__task_8c_source_l00027}{}\hyperlink{fs__task_8h_a67c975ae61cf5db912f17b454b2713c7}{00027} \textcolor{keywordtype}{void} \hyperlink{fs__task_8c_a67c975ae61cf5db912f17b454b2713c7}{FSStartTask}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} nStackDepth, \textcolor{keywordtype}{unsigned} portBASE\_TYPE nPriority,
+00028     \textcolor{keywordtype}{void} *pParams) \{
+00029   xTaskCreate(\hyperlink{fs__task_8c_a941f5a214539980b9c21487c9e598ed1}{FSTaskFunc}, \textcolor{stringliteral}{"FS"}, nStackDepth, pParams, nPriority, NULL);
+00030 \}
+00031 
+\hypertarget{fs__task_8c_source_l00036}{}\hyperlink{fs__task_8c_a7b35ce27806462ceb0681745fc16ed0b}{00036} \textcolor{keywordtype}{void} \hyperlink{fs__task_8c_a7b35ce27806462ceb0681745fc16ed0b}{read\_file}() \{
+00037   \hyperlink{structFIL}{FIL} fp;
+00038   \hyperlink{structGPS__MSG}{GPS\_MSG} msg;
+00039   \hyperlink{fileSystem_8c_aefdef7126128d99d0b3bd82c28e54d80}{f\_open}(&fp, \textcolor{stringliteral}{"ex1.txt"}, FA\_OPEN\_ALWAYS | FA\_READ | FA\_WRITE);
+00040 
+00041   \textcolor{keywordtype}{int} i;
+00042   UINT readed = 0;
+00043   \textcolor{keywordflow}{for} (i = 0; i < 10; i++) \{
+00044     \hyperlink{fileSystem_8c_ac4c3dcb6869ca252888eebabe39727b3}{f\_read}(&fp, &msg.\hyperlink{structGPS__MSG_ac486c996a8a7a5edd1752baaea5b4571}{buffer}, 37, &readed);
+00045   \}
+00046 \}
+00047 
+00048 \textcolor{comment}{// FS}
+00049 \textcolor{comment}{/*}
+00050 \textcolor{comment}{void test\_FS() \{}
+00051 \textcolor{comment}{  FIL fp;}
+00052 \textcolor{comment}{}
+00053 \textcolor{comment}{  f\_open(&fp, "ex1.txt", FA\_OPEN\_ALWAYS | FA\_READ | FA\_WRITE);}
+00054 \textcolor{comment}{}
+00055 \textcolor{comment}{  Delay(500);}
+00056 \textcolor{comment}{  GPIO\_ResetBits(LEDS\_GPIO\_PORT, LEDR\_PIN);}
+00057 \textcolor{comment}{  Delay(500);}
+00058 \textcolor{comment}{  GPIO\_SetBits(LEDS\_GPIO\_PORT, LEDR\_PIN);}
+00059 \textcolor{comment}{}
+00060 \textcolor{comment}{  uint8\_t toWrite[100];}
+00061 \textcolor{comment}{  uint8\_t toRead[100];}
+00062 \textcolor{comment}{  int i;}
+00063 \textcolor{comment}{  UINT writed, readed;}
+00064 \textcolor{comment}{  for (i = 0; i < 100; i++) \{}
+00065 \textcolor{comment}{    toWrite[i] = '2';}
+00066 \textcolor{comment}{    toRead[i] = '1';}
+00067 \textcolor{comment}{  \}}
+00068 \textcolor{comment}{}
+00069 \textcolor{comment}{  Delay(500);}
+00070 \textcolor{comment}{  GPIO\_ResetBits(LEDS\_GPIO\_PORT, LEDR\_PIN);}
+00071 \textcolor{comment}{  Delay(500);}
+00072 \textcolor{comment}{  GPIO\_SetBits(LEDS\_GPIO\_PORT, LEDR\_PIN);}
+00073 \textcolor{comment}{}
+00074 \textcolor{comment}{  for (i = 0; i < 100; i++) \{}
+00075 \textcolor{comment}{    f\_write(&fp, toWrite, 100, &writed);}
+00076 \textcolor{comment}{  \}}
+00077 \textcolor{comment}{}
+00078 \textcolor{comment}{  Delay(500);}
+00079 \textcolor{comment}{  GPIO\_ResetBits(LEDS\_GPIO\_PORT, LEDR\_PIN);}
+00080 \textcolor{comment}{  Delay(500);}
+00081 \textcolor{comment}{  GPIO\_SetBits(LEDS\_GPIO\_PORT, LEDR\_PIN);}
+00082 \textcolor{comment}{}
+00083 \textcolor{comment}{  f\_close(&fp);}
+00084 \textcolor{comment}{}
+00085 \textcolor{comment}{  Delay(500);}
+00086 \textcolor{comment}{  GPIO\_ResetBits(LEDS\_GPIO\_PORT, LEDR\_PIN);}
+00087 \textcolor{comment}{  Delay(500);}
+00088 \textcolor{comment}{  GPIO\_SetBits(LEDS\_GPIO\_PORT, LEDR\_PIN);}
+00089 \textcolor{comment}{}
+00090 \textcolor{comment}{  f\_open(&fp, "ex1.txt", FA\_OPEN\_ALWAYS | FA\_READ | FA\_WRITE);}
+00091 \textcolor{comment}{}
+00092 \textcolor{comment}{  for (i = 0; i < 100; i++) \{}
+00093 \textcolor{comment}{    f\_read(&fp, toRead, 100, &readed);}
+00094 \textcolor{comment}{  \}}
+00095 \textcolor{comment}{}
+00096 \textcolor{comment}{  Delay(500);}
+00097 \textcolor{comment}{  GPIO\_ResetBits(LEDS\_GPIO\_PORT, LEDR\_PIN);}
+00098 \textcolor{comment}{  Delay(500);}
+00099 \textcolor{comment}{  GPIO\_SetBits(LEDS\_GPIO\_PORT, LEDR\_PIN);}
+00100 \textcolor{comment}{}
+00101 \textcolor{comment}{  f\_close(&fp);}
+00102 \textcolor{comment}{}
+00103 \textcolor{comment}{  Delay(500);}
+00104 \textcolor{comment}{  GPIO\_ResetBits(LEDS\_GPIO\_PORT, LEDR\_PIN);}
+00105 \textcolor{comment}{  Delay(500);}
+00106 \textcolor{comment}{  GPIO\_SetBits(LEDS\_GPIO\_PORT, LEDR\_PIN);}
+00107 \textcolor{comment}{\}}
+00108 \textcolor{comment}{*/}
+00109 
+\hypertarget{fs__task_8c_source_l00114}{}\hyperlink{fs__task_8c_a21257086cb63d29c4622a8a876a98413}{00114} \textcolor{keywordtype}{void} \hyperlink{fs__task_8c_a21257086cb63d29c4622a8a876a98413}{ReceiveWriteGPS}()\{
+00115   \textcolor{keywordtype}{int} count =10;
+00116   UINT writed;
+00117   \hyperlink{structGPS__MSG}{GPS\_MSG} msg;
+00118   \hyperlink{structFIL}{FIL} fp;
+00119   \hyperlink{fileSystem_8c_aefdef7126128d99d0b3bd82c28e54d80}{f\_open}(&fp, \textcolor{stringliteral}{"ex1.txt"}, FA\_OPEN\_ALWAYS | FA\_READ | FA\_WRITE);
+00120 
+00121   \textcolor{keywordflow}{while} (count >0)\{
+00122     \hyperlink{main_8c_a7d5d5262a3c7d9c39a226ed465e347dc}{Delay}(500);
+00123     GPIO\_SetBits(LEDS\_GPIO\_PORT, LEDR\_PIN);
+00124 
+00125     count--;
+00126     xQueueReceive(writeQueue, &msg, 10000);
+00127     \hyperlink{fileSystem_8c_ae6a4dfae8a9e308bdb2283a37ef680f2}{f\_write}(&fp, msg.\hyperlink{structGPS__MSG_ac486c996a8a7a5edd1752baaea5b4571}{buffer}, msg.\hyperlink{structGPS__MSG_a4f0c127ec8708885192496df14c31a71}{count}, &writed);
+00128 
+00129     \hyperlink{main_8c_a7d5d5262a3c7d9c39a226ed465e347dc}{Delay}(500);
+00130     GPIO\_ResetBits(LEDS\_GPIO\_PORT, LEDR\_PIN);
+00131   \}
+00132   \hyperlink{fileSystem_8c_a53882db20ef4323dcfd1874d7733ffc3}{f\_close}(&fp);
+00133 \}
+00134 
+00135 
+\hypertarget{fs__task_8c_source_l00136}{}\hyperlink{fs__task_8c_a941f5a214539980b9c21487c9e598ed1}{00136} \textcolor{keywordtype}{void} \hyperlink{fs__task_8c_a941f5a214539980b9c21487c9e598ed1}{FSTaskFunc}(\textcolor{keywordtype}{void} *pParams) \{
+00137 
+00138   \hyperlink{fs__task_8c_ab7f1e7392ed5dbe6c58be74746987f99}{FSHardwareInit}(pParams);
+00139   \hyperlink{main_8c_a7d5d5262a3c7d9c39a226ed465e347dc}{Delay}(2000);
+00140 
+00141   \textcolor{keywordflow}{while} (1) \{
+00142     \textcolor{comment}{//test\_FS();}
+00143     \hyperlink{fs__task_8c_a21257086cb63d29c4622a8a876a98413}{ReceiveWriteGPS}();
+00144     \textcolor{comment}{//read\_file();}
+00145   \}
+00146 
+00147 \}
+\end{DoxyCode}

@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>Sistema de Logging Geoposicional en Tiempo Real para Sistemas Empotrados: Fichero Fuente FS/diskio.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Sistema de Logging Geoposicional en Tiempo Real para Sistemas Empotrados
+   
+   </div>
+   <div id="projectbrief">Trabajo Fin de Grado incluido en el proyecto Biker Assistant de la empresa SmartSoC Solutions</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Generado por Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="annotated.html"><span>Estructuras&#160;de&#160;Datos</span></a></li>
+      <li class="current"><a href="files.html"><span>Archivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;archivos</span></a></li>
+      <li><a href="globals.html"><span>Globales</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">FS/diskio.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="diskio_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00005"></a>00005 <span class="preprocessor">#include &quot;<a class="code" href="integer_8h.html" title="Tipos de datos abreviados.">integer.h</a>&quot;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &quot;<a class="code" href="ffconf_8h.html" title="Fichero de configuración del sistema de archivos.">ffconf.h</a>&quot;</span>
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008 <span class="comment">/* Status of Disk Functions */</span>
+<a name="l00009"></a>00009 <span class="keyword">typedef</span> BYTE <a class="code" href="diskio_8h.html#adba6790898ce4029c20a34b898ce73c1">DSTATUS</a>;
+<a name="l00010"></a>00010 
+<a name="l00012"></a>00012 <span class="keyword">typedef</span> <span class="keyword">enum</span> {
+<a name="l00013"></a>00013   RES_OK = 0, <span class="comment">/* 0: Successful */</span>
+<a name="l00014"></a>00014   RES_ERROR,  <span class="comment">/* 1: R/W Error */</span>
+<a name="l00015"></a>00015   RES_WRPRT,  <span class="comment">/* 2: Write Protected */</span>
+<a name="l00016"></a>00016   RES_NOTRDY, <span class="comment">/* 3: Not Ready */</span>
+<a name="l00017"></a>00017   RES_PARERR  <span class="comment">/* 4: Invalid Parameter */</span>
+<a name="l00018"></a>00018 } DRESULT;
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020 <span class="comment">/*---------------------------------------*/</span>
+<a name="l00021"></a>00021 <span class="comment">/* Prototypes for disk control functions */</span>
+<a name="l00022"></a>00022 
+<a name="l00028"></a>00028 <a class="code" href="diskio_8h.html#adba6790898ce4029c20a34b898ce73c1">DSTATUS</a> <a class="code" href="diskio_8c.html#aa01f5479a3ee7c9aed89814238964cd2" title="Función que incializa la memoria FLASH.">disk_initialize</a>(<span class="keywordtype">int</span> pdrv);
+<a name="l00029"></a>00029 
+<a name="l00035"></a>00035 <a class="code" href="diskio_8h.html#adba6790898ce4029c20a34b898ce73c1">DSTATUS</a> <a class="code" href="diskio_8c.html#a308c9b0a83724bf6e6aae72a736cc7a6" title="Función que devuelve el estado de la FLASH.">disk_status</a>(<span class="keywordtype">int</span> pdrv);
+<a name="l00036"></a>00036 
+<a name="l00045"></a>00045 DRESULT <a class="code" href="diskio_8c.html#a9c6f716a2119a650cf3c61bee540be85" title="Función que lee datos desde la memoria FLASH.">disk_read</a>(<span class="keywordtype">int</span> pdrv, BYTE* buff, DWORD sector, UINT count);
+<a name="l00046"></a>00046 
+<a name="l00055"></a>00055 DRESULT <a class="code" href="diskio_8c.html#a4fc55609dc0b2fba35c679984ae7ca68" title="Función que escribe en la memoria FLASH.">disk_write</a>(<span class="keywordtype">int</span> pdrv, <span class="keyword">const</span> BYTE* buff, DWORD sector, UINT count);
+<a name="l00056"></a>00056 
+<a name="l00072"></a>00072 DRESULT <a class="code" href="diskio_8c.html#a816bffc54e390c15d03f477133707de5" title="Función de control de entrada/salida, varias funciones.">disk_ioctl</a>(<span class="keywordtype">int</span> pdrv, BYTE cmd, <span class="keywordtype">void</span>* buff);
+<a name="l00073"></a>00073 uint32_t <a class="code" href="diskio_8c.html#a90db73e2ffb962de6891c783f62db0d0" title="Función que devuelve el sector al que hace referencia la dirección dada.">GetSector</a>(uint32_t Address);
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075 <span class="comment">/* Disk Status Bits (DSTATUS) */</span>
+<a name="l00076"></a>00076 <span class="preprocessor">#define STA_NOINIT    0x01  </span><span class="comment">/* Drive not initialized */</span>
+<a name="l00077"></a>00077 <span class="preprocessor">#define STA_NODISK    0x02  </span><span class="comment">/* No medium in the drive */</span>
+<a name="l00078"></a>00078 <span class="preprocessor">#define STA_PROTECT    0x04  </span><span class="comment">/* Write protected */</span>
+<a name="l00079"></a>00079 
+<a name="l00080"></a>00080 <span class="comment">/* Command code for disk_ioctrl function */</span>
+<a name="l00081"></a>00081 <span class="preprocessor">#define CTRL_SYNC      0  </span><span class="comment">/* Wait for last operation */</span>
+<a name="l00082"></a>00082 <span class="preprocessor">#define GET_SECTOR_COUNT  1  </span><span class="comment">/* Get media size (for only f_mkfs()) */</span>
+<a name="l00083"></a>00083 <span class="preprocessor">#define GET_SECTOR_SIZE    2  </span><span class="comment">/* Get sector size (for multiple sector size (_MAX_SS &gt;= 1024)) */</span>
+<a name="l00084"></a>00084 <span class="preprocessor">#define GET_BLOCK_SIZE    3  </span><span class="comment">/* Get erase block size (for only f_mkfs()) */</span>
+<a name="l00085"></a>00085 <span class="preprocessor">#define CTRL_ERASE_SECTOR  4  </span><span class="comment">/* Force erased a block of sectors (for only _USE_ERASE) */</span>
+</pre></div></div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Estructuras de Datos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Valores de enumeraciones</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Generado el Miércoles, 2 de Julio de 2014 10:04:37 para Sistema de Logging Geoposicional en Tiempo Real para Sistemas Empotrados por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

@@ -1,0 +1,444 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>Sistema de Logging Geoposicional en Tiempo Real para Sistemas Empotrados: Referencia del Archivo FS/diskio.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Sistema de Logging Geoposicional en Tiempo Real para Sistemas Empotrados
+   
+   </div>
+   <div id="projectbrief">Trabajo Fin de Grado incluido en el proyecto Biker Assistant de la empresa SmartSoC Solutions</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Generado por Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="annotated.html"><span>Estructuras&#160;de&#160;Datos</span></a></li>
+      <li class="current"><a href="files.html"><span>Archivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;archivos</span></a></li>
+      <li><a href="globals.html"><span>Globales</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#define-members">'defines'</a> &#124;
+<a href="#typedef-members">'typedefs'</a> &#124;
+<a href="#enum-members">Enumeraciones</a> &#124;
+<a href="#func-members">Funciones</a>  </div>
+  <div class="headertitle">
+<div class="title">Referencia del Archivo FS/diskio.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Cabecera de la capa de abstracción de operaciones a bajo nivel sobre la memoria.  
+<a href="#details">Más...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="integer_8h_source.html">integer.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="ffconf_8h_source.html">ffconf.h</a>&quot;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Dependencia gráfica adjunta para diskio.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="diskio_8h__incl.png" border="0" usemap="#FS_2diskio_8h" alt=""/></div>
+<map name="FS_2diskio_8h" id="FS_2diskio_8h">
+<area shape="rect" id="node3" href="integer_8h.html" title="Tipos de datos abreviados." alt="" coords="5,83,77,112"/><area shape="rect" id="node5" href="ffconf_8h.html" title="Fichero de configuración del sistema de archivos." alt="" coords="101,83,168,112"/></map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Gráfico de los archivos que directa o indirectamente incluyen a este archivo:</div>
+<div class="dyncontent">
+<div class="center"><img src="diskio_8h__dep__incl.png" border="0" usemap="#FS_2diskio_8hdep" alt=""/></div>
+<map name="FS_2diskio_8hdep" id="FS_2diskio_8hdep">
+<area shape="rect" id="node3" href="diskio_8c.html" title="Módulo que implementa las funciones del archivo diskio.h." alt="" coords="5,83,93,112"/><area shape="rect" id="node5" href="fileSystem_8h.html" title="Cabecera principal del módulo del Sistema de Archivos." alt="" coords="117,83,232,112"/><area shape="rect" id="node7" href="fs__task_8c.html" title="Módulo que implementa las funciones del archivo fs_task.h." alt="" coords="60,160,159,189"/><area shape="rect" id="node9" href="fileSystem_8c.html" title="Módulo que implementa las funciones del archivo fileSystem.h." alt="" coords="183,160,297,189"/></map>
+</div>
+</div>
+<p><a href="diskio_8h_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="define-members"></a>
+'defines'</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abd6503c70d862b979a3f7080a59e9acd"></a><!-- doxytag: member="diskio.h::STA_NOINIT" ref="abd6503c70d862b979a3f7080a59e9acd" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>STA_NOINIT</b>&#160;&#160;&#160;0x01  /* Drive not initialized */</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aec625080763d6cf487e550a6c9a2dd19"></a><!-- doxytag: member="diskio.h::STA_NODISK" ref="aec625080763d6cf487e550a6c9a2dd19" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>STA_NODISK</b>&#160;&#160;&#160;0x02  /* No medium in the drive */</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9ec6dc5f6620a33fabe388d3a111ca8c"></a><!-- doxytag: member="diskio.h::STA_PROTECT" ref="a9ec6dc5f6620a33fabe388d3a111ca8c" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>STA_PROTECT</b>&#160;&#160;&#160;0x04  /* Write protected */</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1b3c492f9aec325f0655941b75256f3c"></a><!-- doxytag: member="diskio.h::CTRL_SYNC" ref="a1b3c492f9aec325f0655941b75256f3c" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CTRL_SYNC</b>&#160;&#160;&#160;0  /* Wait for last operation */</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a570216006f6a8fc4e1698b1bbb2d1dde"></a><!-- doxytag: member="diskio.h::GET_SECTOR_COUNT" ref="a570216006f6a8fc4e1698b1bbb2d1dde" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>GET_SECTOR_COUNT</b>&#160;&#160;&#160;1  /* Get media size (for only <a class="el" href="fileSystem_8h.html#a8e75c990b2a6c64fa783c75aace55059">f_mkfs</a>()) */</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac73b5cf2135cbd459d109b96c9aa346a"></a><!-- doxytag: member="diskio.h::GET_SECTOR_SIZE" ref="ac73b5cf2135cbd459d109b96c9aa346a" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>GET_SECTOR_SIZE</b>&#160;&#160;&#160;2  /* Get sector size (for multiple sector size (_MAX_SS &gt;= 1024)) */</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aec3bb4dfe075d0ba2f3b07b300a95500"></a><!-- doxytag: member="diskio.h::GET_BLOCK_SIZE" ref="aec3bb4dfe075d0ba2f3b07b300a95500" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>GET_BLOCK_SIZE</b>&#160;&#160;&#160;3  /* Get erase block size (for only <a class="el" href="fileSystem_8h.html#a8e75c990b2a6c64fa783c75aace55059">f_mkfs</a>()) */</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3b1dc812217ea7ffa118b14a3c1ab151"></a><!-- doxytag: member="diskio.h::CTRL_ERASE_SECTOR" ref="a3b1dc812217ea7ffa118b14a3c1ab151" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CTRL_ERASE_SECTOR</b>&#160;&#160;&#160;4  /* Force erased a block of sectors (for only _USE_ERASE) */</td></tr>
+<tr><td colspan="2"><h2><a name="typedef-members"></a>
+'typedefs'</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef BYTE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diskio_8h.html#adba6790898ce4029c20a34b898ce73c1">DSTATUS</a></td></tr>
+<tr><td colspan="2"><h2><a name="enum-members"></a>
+Enumeraciones</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>DRESULT</b> { <br/>
+&#160;&#160;<b>RES_OK</b> =  0, 
+<b>RES_ERROR</b>, 
+<b>RES_WRPRT</b>, 
+<b>RES_NOTRDY</b>, 
+<br/>
+&#160;&#160;<b>RES_PARERR</b>
+<br/>
+ }</td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Funciones</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="diskio_8h.html#adba6790898ce4029c20a34b898ce73c1">DSTATUS</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diskio_8h.html#aa01f5479a3ee7c9aed89814238964cd2">disk_initialize</a> (int pdrv)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Función que incializa la memoria FLASH.  <a href="#aa01f5479a3ee7c9aed89814238964cd2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="diskio_8h.html#adba6790898ce4029c20a34b898ce73c1">DSTATUS</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diskio_8h.html#a308c9b0a83724bf6e6aae72a736cc7a6">disk_status</a> (int pdrv)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Función que devuelve el estado de la FLASH.  <a href="#a308c9b0a83724bf6e6aae72a736cc7a6"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">DRESULT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diskio_8h.html#a9c6f716a2119a650cf3c61bee540be85">disk_read</a> (int pdrv, BYTE *buff, DWORD sector, UINT count)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Función que lee datos desde la memoria FLASH.  <a href="#a9c6f716a2119a650cf3c61bee540be85"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">DRESULT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diskio_8h.html#a4fc55609dc0b2fba35c679984ae7ca68">disk_write</a> (int pdrv, const BYTE *buff, DWORD sector, UINT count)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Función que escribe en la memoria FLASH.  <a href="#a4fc55609dc0b2fba35c679984ae7ca68"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">DRESULT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diskio_8h.html#a816bffc54e390c15d03f477133707de5">disk_ioctl</a> (int pdrv, BYTE cmd, void *buff)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Función de control de entrada/salida, varias funciones.  <a href="#a816bffc54e390c15d03f477133707de5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diskio_8h.html#a90db73e2ffb962de6891c783f62db0d0">GetSector</a> (uint32_t Address)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Función que devuelve el sector al que hace referencia la dirección dada.  <a href="#a90db73e2ffb962de6891c783f62db0d0"></a><br/></td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Descripción detallada</h2>
+<div class="textblock"><p>Cabecera de la capa de abstracción de operaciones a bajo nivel sobre la memoria. </p>
+
+<p>Definición en el archivo <a class="el" href="diskio_8h_source.html">diskio.h</a>.</p>
+</div><hr/><h2>Documentación de los 'typedefs'</h2>
+<a class="anchor" id="adba6790898ce4029c20a34b898ce73c1"></a><!-- doxytag: member="diskio.h::DSTATUS" ref="adba6790898ce4029c20a34b898ce73c1" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef BYTE <a class="el" href="diskio_8h.html#adba6790898ce4029c20a34b898ce73c1">DSTATUS</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Enumeración de los estados de operación </p>
+
+<p>Definición en la línea <a class="el" href="diskio_8h_source.html#l00011">11</a> del archivo <a class="el" href="diskio_8h_source.html">diskio.h</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Documentación de las funciones</h2>
+<a class="anchor" id="aa01f5479a3ee7c9aed89814238964cd2"></a><!-- doxytag: member="diskio.h::disk_initialize" ref="aa01f5479a3ee7c9aed89814238964cd2" args="(int pdrv)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="diskio_8h.html#adba6790898ce4029c20a34b898ce73c1">DSTATUS</a> <a class="el" href="diskio_8h.html#aa01f5479a3ee7c9aed89814238964cd2">disk_initialize</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pdrv</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Función que incializa la memoria FLASH. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pdrv</td><td>Identificador del sector físico utilizado </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Código de estado de la operación </dd></dl>
+
+<p>Definición en la línea <a class="el" href="diskio_8c_source.html#l00139">139</a> del archivo <a class="el" href="diskio_8c_source.html">diskio.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a816bffc54e390c15d03f477133707de5"></a><!-- doxytag: member="diskio.h::disk_ioctl" ref="a816bffc54e390c15d03f477133707de5" args="(int pdrv, BYTE cmd, void *buff)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DRESULT <a class="el" href="diskio_8h.html#a816bffc54e390c15d03f477133707de5">disk_ioctl</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pdrv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">BYTE&#160;</td>
+          <td class="paramname"><em>cmd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>buff</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Función de control de entrada/salida, varias funciones. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pdrv</td><td>Identificador del sector físico utilizado </td></tr>
+    <tr><td class="paramname">cmd</td><td>Comando que especifica qué función realizar </td></tr>
+    <tr><td class="paramname">buff</td><td>Parámetro de entrada o salida dependiendo de la función a realizar </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Código de estado de la operación</dd></dl>
+<div class="fragment"><pre class="fragment">A continuación se especifican todos los comandos disponibles:
+    CTRL_SYNC espera a que termine la última operación de la FLASH
+    GET_SECTOR_COUNT Devuelve el número de sectores del sistema de archivos
+    GET_SECTOR_SIZE Devuelve el tamaño de cada sector lógico
+    GET_BLOCK_SIZE Devuelve el número de sectores físicos del sistema de archivos
+    CTRL_ERASE_SECTOR Resetea el sector especificado en buff
+   </pre></div> 
+<p>Definición en la línea <a class="el" href="diskio_8c_source.html#l00262">262</a> del archivo <a class="el" href="diskio_8c_source.html">diskio.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9c6f716a2119a650cf3c61bee540be85"></a><!-- doxytag: member="diskio.h::disk_read" ref="a9c6f716a2119a650cf3c61bee540be85" args="(int pdrv, BYTE *buff, DWORD sector, UINT count)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DRESULT <a class="el" href="diskio_8h.html#a9c6f716a2119a650cf3c61bee540be85">disk_read</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pdrv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">BYTE *&#160;</td>
+          <td class="paramname"><em>buff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">DWORD&#160;</td>
+          <td class="paramname"><em>sector</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UINT&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Función que lee datos desde la memoria FLASH. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pdrv</td><td>Identificador del sector físico utilizado </td></tr>
+    <tr><td class="paramname">buff</td><td>Buffer donde devolver los datos leídos </td></tr>
+    <tr><td class="paramname">sector</td><td>Número de sector lógico donde empezar a leer </td></tr>
+    <tr><td class="paramname">count</td><td>Número de sectores lógicos a leer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Código de estado de la operación </dd></dl>
+
+<p>Definición en la línea <a class="el" href="diskio_8c_source.html#l00181">181</a> del archivo <a class="el" href="diskio_8c_source.html">diskio.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a308c9b0a83724bf6e6aae72a736cc7a6"></a><!-- doxytag: member="diskio.h::disk_status" ref="a308c9b0a83724bf6e6aae72a736cc7a6" args="(int pdrv)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="diskio_8h.html#adba6790898ce4029c20a34b898ce73c1">DSTATUS</a> <a class="el" href="diskio_8h.html#a308c9b0a83724bf6e6aae72a736cc7a6">disk_status</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pdrv</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Función que devuelve el estado de la FLASH. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pdrv</td><td>Identificador del sector físico utilizado </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Estado de la FLASH </dd></dl>
+
+<p>Definición en la línea <a class="el" href="diskio_8c_source.html#l00168">168</a> del archivo <a class="el" href="diskio_8c_source.html">diskio.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4fc55609dc0b2fba35c679984ae7ca68"></a><!-- doxytag: member="diskio.h::disk_write" ref="a4fc55609dc0b2fba35c679984ae7ca68" args="(int pdrv, const BYTE *buff, DWORD sector, UINT count)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DRESULT <a class="el" href="diskio_8h.html#a4fc55609dc0b2fba35c679984ae7ca68">disk_write</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pdrv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const BYTE *&#160;</td>
+          <td class="paramname"><em>buff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">DWORD&#160;</td>
+          <td class="paramname"><em>sector</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UINT&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Función que escribe en la memoria FLASH. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pdrv</td><td>Identificador del sector físico utilizado </td></tr>
+    <tr><td class="paramname">buff</td><td>Stream de datos que se van a escribir </td></tr>
+    <tr><td class="paramname">sector</td><td>Número de sector lógico donde escribir </td></tr>
+    <tr><td class="paramname">count</td><td>Número de sectores lógicos a escribir </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Código de estado de la operación </dd></dl>
+
+<p>Definición en la línea <a class="el" href="diskio_8c_source.html#l00222">222</a> del archivo <a class="el" href="diskio_8c_source.html">diskio.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a90db73e2ffb962de6891c783f62db0d0"></a><!-- doxytag: member="diskio.h::GetSector" ref="a90db73e2ffb962de6891c783f62db0d0" args="(uint32_t Address)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t <a class="el" href="diskio_8h.html#a90db73e2ffb962de6891c783f62db0d0">GetSector</a> </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>Address</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Función que devuelve el sector al que hace referencia la dirección dada. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Address</td><td>Dirección de memoria </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Sector físico al que pertenece la dirección dada </dd></dl>
+
+<p>Definición en la línea <a class="el" href="diskio_8c_source.html#l00028">28</a> del archivo <a class="el" href="diskio_8c_source.html">diskio.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Estructuras de Datos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Valores de enumeraciones</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Generado el Miércoles, 2 de Julio de 2014 10:04:37 para Sistema de Logging Geoposicional en Tiempo Real para Sistemas Empotrados por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

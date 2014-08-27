@@ -1,0 +1,658 @@
+\hypertarget{fileSystem_8c}{\subsection{Referencia del Archivo F\+S/file\+System.c}
+\label{fileSystem_8c}\index{F\+S/file\+System.\+c@{F\+S/file\+System.\+c}}
+}
+
+
+Módulo que implementa las funciones del archivo \hyperlink{fileSystem_8h}{file\+System.\+h}.  
+
+
+{\ttfamily \#include \char`\"{}file\+System.\+h\char`\"{}}\\*
+Dependencia gráfica adjunta para file\+System.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{fileSystem_8c__incl}
+\end{center}
+\end{figure}
+\subsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \hyperlink{fileSystem_8c_a3a0f60af901aa1945ab943e63fbd06d0}{byte\+\_\+2\+\_\+uint32} (B\+Y\+T\+E $\ast$src)
+\begin{DoxyCompactList}\small\item\em Convierte un dato B\+Y\+T\+E en un dato uint32\+\_\+t. \end{DoxyCompactList}\item 
+B\+Y\+T\+E $\ast$ \hyperlink{fileSystem_8c_a3623bef990ae28b977811f039ee158bb}{uint32\+\_\+2\+\_\+byte} (uint32\+\_\+t src, B\+Y\+T\+E $\ast$dst)
+\begin{DoxyCompactList}\small\item\em Convierte un dato uint32\+\_\+t en un dato B\+Y\+T\+E. \end{DoxyCompactList}\item 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \hyperlink{fileSystem_8c_aaa2cbdb65e6f30c0a2a3e5761eea1ef8}{check\+\_\+fs} (int fs\+Index)
+\begin{DoxyCompactList}\small\item\em Comprueba si hay un sistema de archivos en memoria. \end{DoxyCompactList}\item 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \hyperlink{fileSystem_8c_a2ad7019c52d78ebe461b5ba559736aa5}{check\+\_\+file} (\hyperlink{structFIL}{F\+I\+L} $\ast$file)
+\begin{DoxyCompactList}\small\item\em Comprueba si el archivo es válido. \end{DoxyCompactList}\item 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \hyperlink{fileSystem_8c_a4ab6badca8cdbe971b432c8a3bb7b0b1}{read\+\_\+file\+\_\+entry} (\hyperlink{structFIL}{F\+I\+L} $\ast$file, D\+W\+O\+R\+D sector)
+\begin{DoxyCompactList}\small\item\em Lee una entrada en la tabla de descriptores de archivos y comprueba si es válida. \end{DoxyCompactList}\item 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \hyperlink{fileSystem_8c_a951ec41abe19766602d305ff1e99fd32}{loading\+\_\+files} (int fs\+Index)
+\begin{DoxyCompactList}\small\item\em Busca todos los archivos del sistema de archivos justo después de montarlo con éxito. \end{DoxyCompactList}\item 
+int \hyperlink{fileSystem_8c_a2c77bece2713c99a22b9ec7d1d083b47}{compare} (const T\+C\+H\+A\+R $\ast$path, T\+C\+H\+A\+R $\ast$name)
+\begin{DoxyCompactList}\small\item\em Compara dos cadenas correspondientes al nombre de archivos. \end{DoxyCompactList}\item 
+int \hyperlink{fileSystem_8c_aa4ef3507a98f8090aa382f4015cebe78}{update\+\_\+file} (\hyperlink{structFIL}{F\+I\+L} $\ast$src, \hyperlink{structFIL}{F\+I\+L} $\ast$dst)
+\begin{DoxyCompactList}\small\item\em Actualiza un archivo. En la práctica crea una copia del mismo. \end{DoxyCompactList}\item 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \hyperlink{fileSystem_8c_a8b7c0e2dcc69101a9bcec19d59480b0f}{copy\+\_\+file} (\hyperlink{structFIL}{F\+I\+L} $\ast$src, \hyperlink{structFIL}{F\+I\+L} $\ast$dst)
+\begin{DoxyCompactList}\small\item\em Copia un archivo en otro. \end{DoxyCompactList}\item 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \hyperlink{fileSystem_8c_ac1802ff989bc875c1147d22cf93e8416}{backup\+\_\+fs} (int src, int dst)
+\begin{DoxyCompactList}\small\item\em Crea una copia del sistema de archivos en otro sistema de archivos. \end{DoxyCompactList}\item 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \hyperlink{fileSystem_8c_a7211e2f1543fb9aabc61814f9fb89546}{close\+\_\+all\+\_\+files} ()
+\begin{DoxyCompactList}\small\item\em Cierra todos los archivos del sistema de archivos actual. \end{DoxyCompactList}\item 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \hyperlink{fileSystem_8c_afcfe716c836b3b8a019fa38faf56da96}{reset\+\_\+sector} (int fs\+Index)
+\begin{DoxyCompactList}\small\item\em Función que resetea un sector. \end{DoxyCompactList}\item 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \hyperlink{fileSystem_8c_a5df0ac672ada972e89ef4b003e57f964}{f\+\_\+lseek} (\hyperlink{structFIL}{F\+I\+L} $\ast$fp, D\+W\+O\+R\+D ofs)
+\begin{DoxyCompactList}\small\item\em Función que mueve el puntero de lectura de un archivo. \end{DoxyCompactList}\item 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \hyperlink{fileSystem_8c_a517b0da489a13124534a5eebc7af5358}{change\+\_\+sector} (int opt)
+\begin{DoxyCompactList}\small\item\em Cambia el sector físico por defecto en el que se crea el sistema de archivos. \end{DoxyCompactList}\item 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \hyperlink{fileSystem_8c_aefdef7126128d99d0b3bd82c28e54d80}{f\+\_\+open} (\hyperlink{structFIL}{F\+I\+L} $\ast$fp, const T\+C\+H\+A\+R $\ast$path, B\+Y\+T\+E mode)
+\begin{DoxyCompactList}\small\item\em Función que abre o crea un archivo. \end{DoxyCompactList}\item 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \hyperlink{fileSystem_8c_a53882db20ef4323dcfd1874d7733ffc3}{f\+\_\+close} (\hyperlink{structFIL}{F\+I\+L} $\ast$fp)
+\begin{DoxyCompactList}\small\item\em Función que cierra un archivo. \end{DoxyCompactList}\item 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \hyperlink{fileSystem_8c_ac4c3dcb6869ca252888eebabe39727b3}{f\+\_\+read} (\hyperlink{structFIL}{F\+I\+L} $\ast$fp, void $\ast$buff, U\+I\+N\+T btr, U\+I\+N\+T $\ast$br)
+\begin{DoxyCompactList}\small\item\em Función que lee de un archivo. \end{DoxyCompactList}\item 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \hyperlink{fileSystem_8c_ae6a4dfae8a9e308bdb2283a37ef680f2}{f\+\_\+write} (\hyperlink{structFIL}{F\+I\+L} $\ast$fp, const void $\ast$buff, U\+I\+N\+T btw, U\+I\+N\+T $\ast$bw)
+\begin{DoxyCompactList}\small\item\em Función que escribe de un archivo. \end{DoxyCompactList}\item 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \hyperlink{fileSystem_8c_acdcf7b6e3f54419d2612c38f83733edf}{f\+\_\+truncate\+Start} (\hyperlink{structFIL}{F\+I\+L} $\ast$fp, D\+W\+O\+R\+D ofs)
+\begin{DoxyCompactList}\small\item\em Función que elimina parte de un archivo. \end{DoxyCompactList}\item 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \hyperlink{fileSystem_8c_ad69c7246b122ba56a134939ee0eaf847}{f\+\_\+sync} (\hyperlink{structFIL}{F\+I\+L} $\ast$fp)
+\begin{DoxyCompactList}\small\item\em Función que sincroniza un archivo, escribe en memoria los datos que queden pendientes. \end{DoxyCompactList}\item 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \hyperlink{fileSystem_8c_a08c2cfaf5d5cde77fc6853ab7a11dd8a}{f\+\_\+getfree} (int fs\+Index, U\+I\+N\+T $\ast$mnfs)
+\begin{DoxyCompactList}\small\item\em Función que devuelve el número de sectores libres del sistema de archivos. \end{DoxyCompactList}\item 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \hyperlink{fileSystem_8c_a06b1816d729a1ee702209d4ddc1d91af}{f\+\_\+mount} (\hyperlink{structFS}{F\+S} $\ast$file\+System, int fs\+Index, B\+Y\+T\+E opt)
+\begin{DoxyCompactList}\small\item\em Función que crea la estructura necesaria para crear un sistema de archivos. \end{DoxyCompactList}\item 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \hyperlink{fileSystem_8c_a8e75c990b2a6c64fa783c75aace55059}{f\+\_\+mkfs} (int fs\+Index)
+\begin{DoxyCompactList}\small\item\em Función que crea un sistema de archivos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Descripción detallada}
+Módulo que implementa las funciones del archivo \hyperlink{fileSystem_8h}{file\+System.\+h}. 
+
+
+
+Definición en el archivo \hyperlink{fileSystem_8c_source}{file\+System.\+c}.
+
+
+
+\subsubsection{Documentación de las funciones}
+\hypertarget{fileSystem_8c_ac1802ff989bc875c1147d22cf93e8416}{\index{file\+System.\+c@{file\+System.\+c}!backup\+\_\+fs@{backup\+\_\+fs}}
+\index{backup\+\_\+fs@{backup\+\_\+fs}!file\+System.\+c@{file\+System.\+c}}
+\paragraph[{backup\+\_\+fs}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+R\+E\+S\+U\+L\+T} backup\+\_\+fs (
+\begin{DoxyParamCaption}
+\item[{int}]{src, }
+\item[{int}]{dst}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8c_ac1802ff989bc875c1147d22cf93e8416}
+
+
+Crea una copia del sistema de archivos en otro sistema de archivos. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em src} & Identificador del sistema de archivos fuente \\
+\hline
+{\em dst} & Identificador del sistema de archivos destino \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 227 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8c_a3a0f60af901aa1945ab943e63fbd06d0}{\index{file\+System.\+c@{file\+System.\+c}!byte\+\_\+2\+\_\+uint32@{byte\+\_\+2\+\_\+uint32}}
+\index{byte\+\_\+2\+\_\+uint32@{byte\+\_\+2\+\_\+uint32}!file\+System.\+c@{file\+System.\+c}}
+\paragraph[{byte\+\_\+2\+\_\+uint32}]{\setlength{\rightskip}{0pt plus 5cm}uint32\+\_\+t byte\+\_\+2\+\_\+uint32 (
+\begin{DoxyParamCaption}
+\item[{B\+Y\+T\+E $\ast$}]{src}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8c_a3a0f60af901aa1945ab943e63fbd06d0}
+
+
+Convierte un dato B\+Y\+T\+E en un dato uint32\+\_\+t. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em src} & Vector de 4 B\+Y\+T\+E\+S a convertir \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Devuelve el valor correspondiente en uint32\+\_\+t 
+\end{DoxyReturn}
+
+
+Definición en la línea 15 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8c_a517b0da489a13124534a5eebc7af5358}{\index{file\+System.\+c@{file\+System.\+c}!change\+\_\+sector@{change\+\_\+sector}}
+\index{change\+\_\+sector@{change\+\_\+sector}!file\+System.\+c@{file\+System.\+c}}
+\paragraph[{change\+\_\+sector}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+R\+E\+S\+U\+L\+T} change\+\_\+sector (
+\begin{DoxyParamCaption}
+\item[{int}]{opt}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8c_a517b0da489a13124534a5eebc7af5358}
+
+
+Cambia el sector físico por defecto en el que se crea el sistema de archivos. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em opt} & Opción que indica si queremos, o no, har un backup de los archivos de un sistema en el otro. Un 1 indica que queremos hacer backup. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 279 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8c_a2ad7019c52d78ebe461b5ba559736aa5}{\index{file\+System.\+c@{file\+System.\+c}!check\+\_\+file@{check\+\_\+file}}
+\index{check\+\_\+file@{check\+\_\+file}!file\+System.\+c@{file\+System.\+c}}
+\paragraph[{check\+\_\+file}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+R\+E\+S\+U\+L\+T} check\+\_\+file (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+I\+L} $\ast$}]{file}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8c_a2ad7019c52d78ebe461b5ba559736aa5}
+
+
+Comprueba si el archivo es válido. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em file} & Puntero del archivo objetivo \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 75 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8c_aaa2cbdb65e6f30c0a2a3e5761eea1ef8}{\index{file\+System.\+c@{file\+System.\+c}!check\+\_\+fs@{check\+\_\+fs}}
+\index{check\+\_\+fs@{check\+\_\+fs}!file\+System.\+c@{file\+System.\+c}}
+\paragraph[{check\+\_\+fs}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+R\+E\+S\+U\+L\+T} check\+\_\+fs (
+\begin{DoxyParamCaption}
+\item[{int}]{fs\+Index}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8c_aaa2cbdb65e6f30c0a2a3e5761eea1ef8}
+
+
+Comprueba si hay un sistema de archivos en memoria. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em fs\+Index} & Índice del sistema de archivos objetivo \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 50 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8c_a7211e2f1543fb9aabc61814f9fb89546}{\index{file\+System.\+c@{file\+System.\+c}!close\+\_\+all\+\_\+files@{close\+\_\+all\+\_\+files}}
+\index{close\+\_\+all\+\_\+files@{close\+\_\+all\+\_\+files}!file\+System.\+c@{file\+System.\+c}}
+\paragraph[{close\+\_\+all\+\_\+files}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+R\+E\+S\+U\+L\+T} close\+\_\+all\+\_\+files (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8c_a7211e2f1543fb9aabc61814f9fb89546}
+
+
+Cierra todos los archivos del sistema de archivos actual. 
+
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 244 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8c_a2c77bece2713c99a22b9ec7d1d083b47}{\index{file\+System.\+c@{file\+System.\+c}!compare@{compare}}
+\index{compare@{compare}!file\+System.\+c@{file\+System.\+c}}
+\paragraph[{compare}]{\setlength{\rightskip}{0pt plus 5cm}int compare (
+\begin{DoxyParamCaption}
+\item[{const T\+C\+H\+A\+R $\ast$}]{path, }
+\item[{T\+C\+H\+A\+R $\ast$}]{name}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8c_a2c77bece2713c99a22b9ec7d1d083b47}
+
+
+Compara dos cadenas correspondientes al nombre de archivos. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em path} & Cadena correspondiente al nombre del archivo que se quiere abrir \\
+\hline
+{\em name} & Cadena correspondiente al nombre de uno de los archivos del sistema de archivos \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 169 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8c_a8b7c0e2dcc69101a9bcec19d59480b0f}{\index{file\+System.\+c@{file\+System.\+c}!copy\+\_\+file@{copy\+\_\+file}}
+\index{copy\+\_\+file@{copy\+\_\+file}!file\+System.\+c@{file\+System.\+c}}
+\paragraph[{copy\+\_\+file}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+R\+E\+S\+U\+L\+T} copy\+\_\+file (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+I\+L} $\ast$}]{src, }
+\item[{{\bf F\+I\+L} $\ast$}]{dst}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8c_a8b7c0e2dcc69101a9bcec19d59480b0f}
+
+
+Copia un archivo en otro. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em src} & Archivo fuente \\
+\hline
+{\em dst} & Archivo destino \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 206 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8c_a53882db20ef4323dcfd1874d7733ffc3}{\index{file\+System.\+c@{file\+System.\+c}!f\+\_\+close@{f\+\_\+close}}
+\index{f\+\_\+close@{f\+\_\+close}!file\+System.\+c@{file\+System.\+c}}
+\paragraph[{f\+\_\+close}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+R\+E\+S\+U\+L\+T} f\+\_\+close (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+I\+L} $\ast$}]{fp}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8c_a53882db20ef4323dcfd1874d7733ffc3}
+
+
+Función que cierra un archivo. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em fp} & Parámetro de entrada en el que se especifica el fichero a cerrar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 353 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8c_a08c2cfaf5d5cde77fc6853ab7a11dd8a}{\index{file\+System.\+c@{file\+System.\+c}!f\+\_\+getfree@{f\+\_\+getfree}}
+\index{f\+\_\+getfree@{f\+\_\+getfree}!file\+System.\+c@{file\+System.\+c}}
+\paragraph[{f\+\_\+getfree}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+R\+E\+S\+U\+L\+T} f\+\_\+getfree (
+\begin{DoxyParamCaption}
+\item[{int}]{fs\+Index, }
+\item[{U\+I\+N\+T $\ast$}]{nclst}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8c_a08c2cfaf5d5cde77fc6853ab7a11dd8a}
+
+
+Función que devuelve el número de sectores libres del sistema de archivos. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em fs\+Index} & Identificador del sistema de archivos \\
+\hline
+{\em nclst} & Puntero donde se devuelve el valor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 504 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8c_a5df0ac672ada972e89ef4b003e57f964}{\index{file\+System.\+c@{file\+System.\+c}!f\+\_\+lseek@{f\+\_\+lseek}}
+\index{f\+\_\+lseek@{f\+\_\+lseek}!file\+System.\+c@{file\+System.\+c}}
+\paragraph[{f\+\_\+lseek}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+R\+E\+S\+U\+L\+T} f\+\_\+lseek (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+I\+L} $\ast$}]{fp, }
+\item[{D\+W\+O\+R\+D}]{ofs}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8c_a5df0ac672ada972e89ef4b003e57f964}
+
+
+Función que mueve el puntero de lectura de un archivo. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em fp} & Parámetro de entrada en el que se especifica el fichero objetivo \\
+\hline
+{\em ofs} & Cantidad de bytes a mover desde la posición actual del puntero de lectura \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 266 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8c_a8e75c990b2a6c64fa783c75aace55059}{\index{file\+System.\+c@{file\+System.\+c}!f\+\_\+mkfs@{f\+\_\+mkfs}}
+\index{f\+\_\+mkfs@{f\+\_\+mkfs}!file\+System.\+c@{file\+System.\+c}}
+\paragraph[{f\+\_\+mkfs}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+R\+E\+S\+U\+L\+T} f\+\_\+mkfs (
+\begin{DoxyParamCaption}
+\item[{int}]{fs\+Index}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8c_a8e75c990b2a6c64fa783c75aace55059}
+
+
+Función que crea un sistema de archivos. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em fs\+Index} & Identificador del sistema de archivos a crear \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 561 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8c_a06b1816d729a1ee702209d4ddc1d91af}{\index{file\+System.\+c@{file\+System.\+c}!f\+\_\+mount@{f\+\_\+mount}}
+\index{f\+\_\+mount@{f\+\_\+mount}!file\+System.\+c@{file\+System.\+c}}
+\paragraph[{f\+\_\+mount}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+R\+E\+S\+U\+L\+T} f\+\_\+mount (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+S} $\ast$}]{file\+System, }
+\item[{int}]{fs\+Index, }
+\item[{B\+Y\+T\+E}]{opt}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8c_a06b1816d729a1ee702209d4ddc1d91af}
+
+
+Función que crea la estructura necesaria para crear un sistema de archivos. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em file\+System} & Puntero de Sistema de Archivos donde devolver el valor \\
+\hline
+{\em fs\+Index} & Identificador del sistema de archivos objetivo \\
+\hline
+{\em opt} & Acepta dos opciones\+: 0, sólo crea la estructura necesaria para crear un sistema de archivos. 1, intenta montar un sistema de archivos existente \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 529 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8c_aefdef7126128d99d0b3bd82c28e54d80}{\index{file\+System.\+c@{file\+System.\+c}!f\+\_\+open@{f\+\_\+open}}
+\index{f\+\_\+open@{f\+\_\+open}!file\+System.\+c@{file\+System.\+c}}
+\paragraph[{f\+\_\+open}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+R\+E\+S\+U\+L\+T} f\+\_\+open (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+I\+L} $\ast$}]{fp, }
+\item[{const T\+C\+H\+A\+R $\ast$}]{path, }
+\item[{B\+Y\+T\+E}]{mode}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8c_aefdef7126128d99d0b3bd82c28e54d80}
+
+
+Función que abre o crea un archivo. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em fp} & Parámetro de entrada en el que se devolverá el puntero del archivo abierto \\
+\hline
+{\em path} & Nombre del archivo que queremos abrir \\
+\hline
+{\em mode} & Permisos de apertura del archivo \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 305 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8c_ac4c3dcb6869ca252888eebabe39727b3}{\index{file\+System.\+c@{file\+System.\+c}!f\+\_\+read@{f\+\_\+read}}
+\index{f\+\_\+read@{f\+\_\+read}!file\+System.\+c@{file\+System.\+c}}
+\paragraph[{f\+\_\+read}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+R\+E\+S\+U\+L\+T} f\+\_\+read (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+I\+L} $\ast$}]{fp, }
+\item[{void $\ast$}]{buff, }
+\item[{U\+I\+N\+T}]{btr, }
+\item[{U\+I\+N\+T $\ast$}]{br}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8c_ac4c3dcb6869ca252888eebabe39727b3}
+
+
+Función que lee de un archivo. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em fp} & Parámetro de entrada en el que se especifica el fichero de donde leer \\
+\hline
+{\em buff} & Buffer donde se devolverán los datos leídos \\
+\hline
+{\em btr} & Dirección de donde empezar a leer \\
+\hline
+{\em br} & Cantidad de bytes a leer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 405 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8c_ad69c7246b122ba56a134939ee0eaf847}{\index{file\+System.\+c@{file\+System.\+c}!f\+\_\+sync@{f\+\_\+sync}}
+\index{f\+\_\+sync@{f\+\_\+sync}!file\+System.\+c@{file\+System.\+c}}
+\paragraph[{f\+\_\+sync}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+R\+E\+S\+U\+L\+T} f\+\_\+sync (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+I\+L} $\ast$}]{fp}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8c_ad69c7246b122ba56a134939ee0eaf847}
+
+
+Función que sincroniza un archivo, escribe en memoria los datos que queden pendientes. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em fp} & Parámetro de entrada en el que se especifica el fichero objetivo \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 490 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8c_acdcf7b6e3f54419d2612c38f83733edf}{\index{file\+System.\+c@{file\+System.\+c}!f\+\_\+truncate\+Start@{f\+\_\+truncate\+Start}}
+\index{f\+\_\+truncate\+Start@{f\+\_\+truncate\+Start}!file\+System.\+c@{file\+System.\+c}}
+\paragraph[{f\+\_\+truncate\+Start}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+R\+E\+S\+U\+L\+T} f\+\_\+truncate\+Start (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+I\+L} $\ast$}]{fp, }
+\item[{D\+W\+O\+R\+D}]{ofs}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8c_acdcf7b6e3f54419d2612c38f83733edf}
+
+
+Función que elimina parte de un archivo. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em fp} & Parámetro de entrada en el que se especifica el fichero objetivo \\
+\hline
+{\em ofs} & Cantidad de bytes a eliminar desde la posición cero del archivo \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 473 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8c_ae6a4dfae8a9e308bdb2283a37ef680f2}{\index{file\+System.\+c@{file\+System.\+c}!f\+\_\+write@{f\+\_\+write}}
+\index{f\+\_\+write@{f\+\_\+write}!file\+System.\+c@{file\+System.\+c}}
+\paragraph[{f\+\_\+write}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+R\+E\+S\+U\+L\+T} f\+\_\+write (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+I\+L} $\ast$}]{fp, }
+\item[{const void $\ast$}]{buff, }
+\item[{U\+I\+N\+T}]{btw, }
+\item[{U\+I\+N\+T $\ast$}]{bw}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8c_ae6a4dfae8a9e308bdb2283a37ef680f2}
+
+
+Función que escribe de un archivo. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em fp} & Parámetro de entrada en el que se especifica el fichero de donde leer \\
+\hline
+{\em buff} & Stream de datos que se quieren escribir \\
+\hline
+{\em btw} & Dirección de donde empezar a escribir \\
+\hline
+{\em bw} & Cantidad de bytes a leer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 435 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8c_a951ec41abe19766602d305ff1e99fd32}{\index{file\+System.\+c@{file\+System.\+c}!loading\+\_\+files@{loading\+\_\+files}}
+\index{loading\+\_\+files@{loading\+\_\+files}!file\+System.\+c@{file\+System.\+c}}
+\paragraph[{loading\+\_\+files}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+R\+E\+S\+U\+L\+T} loading\+\_\+files (
+\begin{DoxyParamCaption}
+\item[{int}]{fs\+Index}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8c_a951ec41abe19766602d305ff1e99fd32}
+
+
+Busca todos los archivos del sistema de archivos justo después de montarlo con éxito. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em fs\+Index} & Identificador del sistema de archivos \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 135 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8c_a4ab6badca8cdbe971b432c8a3bb7b0b1}{\index{file\+System.\+c@{file\+System.\+c}!read\+\_\+file\+\_\+entry@{read\+\_\+file\+\_\+entry}}
+\index{read\+\_\+file\+\_\+entry@{read\+\_\+file\+\_\+entry}!file\+System.\+c@{file\+System.\+c}}
+\paragraph[{read\+\_\+file\+\_\+entry}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+R\+E\+S\+U\+L\+T} read\+\_\+file\+\_\+entry (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+I\+L} $\ast$}]{file, }
+\item[{D\+W\+O\+R\+D}]{sector}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8c_a4ab6badca8cdbe971b432c8a3bb7b0b1}
+
+
+Lee una entrada en la tabla de descriptores de archivos y comprueba si es válida. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em file} & Puntero de archivo en el que se devolverá el archivo si es válido \\
+\hline
+{\em sector} & Número de sector donde leer la entrada de la tabla de descriptores \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 118 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8c_afcfe716c836b3b8a019fa38faf56da96}{\index{file\+System.\+c@{file\+System.\+c}!reset\+\_\+sector@{reset\+\_\+sector}}
+\index{reset\+\_\+sector@{reset\+\_\+sector}!file\+System.\+c@{file\+System.\+c}}
+\paragraph[{reset\+\_\+sector}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+R\+E\+S\+U\+L\+T} reset\+\_\+sector (
+\begin{DoxyParamCaption}
+\item[{int}]{fs\+Index}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8c_afcfe716c836b3b8a019fa38faf56da96}
+
+
+Función que resetea un sector. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em fs\+Index} & Identificador del sistema de archivos sobre el que resetear sus sectores \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 253 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8c_a3623bef990ae28b977811f039ee158bb}{\index{file\+System.\+c@{file\+System.\+c}!uint32\+\_\+2\+\_\+byte@{uint32\+\_\+2\+\_\+byte}}
+\index{uint32\+\_\+2\+\_\+byte@{uint32\+\_\+2\+\_\+byte}!file\+System.\+c@{file\+System.\+c}}
+\paragraph[{uint32\+\_\+2\+\_\+byte}]{\setlength{\rightskip}{0pt plus 5cm}B\+Y\+T\+E$\ast$ uint32\+\_\+2\+\_\+byte (
+\begin{DoxyParamCaption}
+\item[{uint32\+\_\+t}]{src, }
+\item[{B\+Y\+T\+E $\ast$}]{dst}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8c_a3623bef990ae28b977811f039ee158bb}
+
+
+Convierte un dato uint32\+\_\+t en un dato B\+Y\+T\+E. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em src} & Valor uint32\+\_\+t a convertir \\
+\hline
+{\em dst} & Puntero donde se devolverá el valor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Devuelve el valor correspondiente en B\+Y\+T\+E$\ast$ 
+\end{DoxyReturn}
+
+
+Definición en la línea 36 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8c_aa4ef3507a98f8090aa382f4015cebe78}{\index{file\+System.\+c@{file\+System.\+c}!update\+\_\+file@{update\+\_\+file}}
+\index{update\+\_\+file@{update\+\_\+file}!file\+System.\+c@{file\+System.\+c}}
+\paragraph[{update\+\_\+file}]{\setlength{\rightskip}{0pt plus 5cm}int update\+\_\+file (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+I\+L} $\ast$}]{src, }
+\item[{{\bf F\+I\+L} $\ast$}]{dst}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8c_aa4ef3507a98f8090aa382f4015cebe78}
+
+
+Actualiza un archivo. En la práctica crea una copia del mismo. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em src} & Archivo fuente \\
+\hline
+{\em dst} & Archivo destino \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 184 del archivo file\+System.\+c.
+

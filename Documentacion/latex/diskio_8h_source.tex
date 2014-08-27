@@ -1,0 +1,46 @@
+\hypertarget{diskio_8h_source}{\subsection{diskio.\+h}
+\label{diskio_8h_source}\index{F\+S/diskio.\+h@{F\+S/diskio.\+h}}
+}
+
+\begin{DoxyCode}
+00001 
+00005 \textcolor{preprocessor}{#include "\hyperlink{integer_8h}{integer.h}"}
+00006 \textcolor{preprocessor}{#include "\hyperlink{ffconf_8h}{ffconf.h}"}
+00007 
+00008 \textcolor{comment}{/* Status of Disk Functions */}
+\hypertarget{diskio_8h_source_l00009}{}\hyperlink{diskio_8h_adba6790898ce4029c20a34b898ce73c1}{00009} \textcolor{keyword}{typedef} BYTE \hyperlink{diskio_8h_adba6790898ce4029c20a34b898ce73c1}{DSTATUS};
+00010 
+00012 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{
+00013   RES\_OK = 0, \textcolor{comment}{/* 0: Successful */}
+00014   RES\_ERROR,  \textcolor{comment}{/* 1: R/W Error */}
+00015   RES\_WRPRT,  \textcolor{comment}{/* 2: Write Protected */}
+00016   RES\_NOTRDY, \textcolor{comment}{/* 3: Not Ready */}
+00017   RES\_PARERR  \textcolor{comment}{/* 4: Invalid Parameter */}
+00018 \} DRESULT;
+00019 
+00020 \textcolor{comment}{/*---------------------------------------*/}
+00021 \textcolor{comment}{/* Prototypes for disk control functions */}
+00022 
+00028 \hyperlink{diskio_8h_adba6790898ce4029c20a34b898ce73c1}{DSTATUS} \hyperlink{diskio_8h_aa01f5479a3ee7c9aed89814238964cd2}{disk\_initialize}(\textcolor{keywordtype}{int} pdrv);
+00029 
+00035 \hyperlink{diskio_8h_adba6790898ce4029c20a34b898ce73c1}{DSTATUS} \hyperlink{diskio_8h_a308c9b0a83724bf6e6aae72a736cc7a6}{disk\_status}(\textcolor{keywordtype}{int} pdrv);
+00036 
+00045 DRESULT \hyperlink{diskio_8h_a9c6f716a2119a650cf3c61bee540be85}{disk\_read}(\textcolor{keywordtype}{int} pdrv, BYTE* buff, DWORD sector, UINT count);
+00046 
+00055 DRESULT \hyperlink{diskio_8h_a4fc55609dc0b2fba35c679984ae7ca68}{disk\_write}(\textcolor{keywordtype}{int} pdrv, \textcolor{keyword}{const} BYTE* buff, DWORD sector, UINT count);
+00056 
+00072 DRESULT \hyperlink{diskio_8h_a816bffc54e390c15d03f477133707de5}{disk\_ioctl}(\textcolor{keywordtype}{int} pdrv, BYTE cmd, \textcolor{keywordtype}{void}* buff);
+00073 uint32\_t \hyperlink{diskio_8h_a90db73e2ffb962de6891c783f62db0d0}{GetSector}(uint32\_t Address);
+00074 
+00075 \textcolor{comment}{/* Disk Status Bits (DSTATUS) */}
+00076 \textcolor{preprocessor}{#define STA\_NOINIT    0x01  }\textcolor{comment}{/* Drive not initialized */}\textcolor{preprocessor}{}
+00077 \textcolor{preprocessor}{#define STA\_NODISK    0x02  }\textcolor{comment}{/* No medium in the drive */}\textcolor{preprocessor}{}
+00078 \textcolor{preprocessor}{#define STA\_PROTECT    0x04  }\textcolor{comment}{/* Write protected */}\textcolor{preprocessor}{}
+00079 
+00080 \textcolor{comment}{/* Command code for disk\_ioctrl function */}
+00081 \textcolor{preprocessor}{#define CTRL\_SYNC      0  }\textcolor{comment}{/* Wait for last operation */}\textcolor{preprocessor}{}
+00082 \textcolor{preprocessor}{#define GET\_SECTOR\_COUNT  1  }\textcolor{comment}{/* Get media size (for only f\_mkfs()) */}\textcolor{preprocessor}{}
+00083 \textcolor{preprocessor}{#define GET\_SECTOR\_SIZE    2  }\textcolor{comment}{/* Get sector size (for multiple sector size (\_MAX\_SS >= 1024)) */}\textcolor{preprocessor}{}
+00084 \textcolor{preprocessor}{#define GET\_BLOCK\_SIZE    3  }\textcolor{comment}{/* Get erase block size (for only f\_mkfs()) */}\textcolor{preprocessor}{}
+00085 \textcolor{preprocessor}{#define CTRL\_ERASE\_SECTOR  4  }\textcolor{comment}{/* Force erased a block of sectors (for only \_USE\_ERASE) */}\textcolor{preprocessor}{}
+\end{DoxyCode}

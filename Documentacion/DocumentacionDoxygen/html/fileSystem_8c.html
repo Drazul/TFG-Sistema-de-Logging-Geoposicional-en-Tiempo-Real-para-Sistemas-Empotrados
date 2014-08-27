@@ -1,0 +1,998 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>Sistema de Logging Geoposicional en Tiempo Real para Sistemas Empotrados: Referencia del Archivo FS/fileSystem.c</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Sistema de Logging Geoposicional en Tiempo Real para Sistemas Empotrados
+   
+   </div>
+   <div id="projectbrief">Trabajo Fin de Grado incluido en el proyecto Biker Assistant de la empresa SmartSoC Solutions</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Generado por Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="annotated.html"><span>Estructuras&#160;de&#160;Datos</span></a></li>
+      <li class="current"><a href="files.html"><span>Archivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;archivos</span></a></li>
+      <li><a href="globals.html"><span>Globales</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funciones</a>  </div>
+  <div class="headertitle">
+<div class="title">Referencia del Archivo FS/fileSystem.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Módulo que implementa las funciones del archivo <a class="el" href="fileSystem_8h.html" title="Cabecera principal del módulo del Sistema de Archivos.">fileSystem.h</a>.  
+<a href="#details">Más...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="fileSystem_8h_source.html">fileSystem.h</a>&quot;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Dependencia gráfica adjunta para fileSystem.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="fileSystem_8c__incl.png" border="0" usemap="#FS_2fileSystem_8c" alt=""/></div>
+<map name="FS_2fileSystem_8c" id="FS_2fileSystem_8c">
+<area shape="rect" id="node3" href="fileSystem_8h.html" title="Cabecera principal del módulo del Sistema de Archivos." alt="" coords="32,83,125,112"/><area shape="rect" id="node5" href="integer_8h.html" title="Tipos de datos abreviados." alt="" coords="5,237,77,267"/><area shape="rect" id="node9" href="diskio_8h.html" title="Cabecera de la capa de abstracción de operaciones a bajo nivel sobre la memoria." alt="" coords="149,160,216,189"/><area shape="rect" id="node12" href="ffconf_8h.html" title="Fichero de configuración del sistema de archivos." alt="" coords="149,237,216,267"/></map>
+</div>
+</div>
+<p><a href="fileSystem_8c_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Funciones</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileSystem_8c.html#a3a0f60af901aa1945ab943e63fbd06d0">byte_2_uint32</a> (BYTE *src)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convierte un dato BYTE en un dato uint32_t.  <a href="#a3a0f60af901aa1945ab943e63fbd06d0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">BYTE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileSystem_8c.html#a3623bef990ae28b977811f039ee158bb">uint32_2_byte</a> (uint32_t src, BYTE *dst)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convierte un dato uint32_t en un dato BYTE.  <a href="#a3623bef990ae28b977811f039ee158bb"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileSystem_8c.html#aaa2cbdb65e6f30c0a2a3e5761eea1ef8">check_fs</a> (int fsIndex)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Comprueba si hay un sistema de archivos en memoria.  <a href="#aaa2cbdb65e6f30c0a2a3e5761eea1ef8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileSystem_8c.html#a2ad7019c52d78ebe461b5ba559736aa5">check_file</a> (<a class="el" href="structFIL.html">FIL</a> *file)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Comprueba si el archivo es válido.  <a href="#a2ad7019c52d78ebe461b5ba559736aa5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileSystem_8c.html#a4ab6badca8cdbe971b432c8a3bb7b0b1">read_file_entry</a> (<a class="el" href="structFIL.html">FIL</a> *file, DWORD sector)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Lee una entrada en la tabla de descriptores de archivos y comprueba si es válida.  <a href="#a4ab6badca8cdbe971b432c8a3bb7b0b1"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileSystem_8c.html#a951ec41abe19766602d305ff1e99fd32">loading_files</a> (int fsIndex)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Busca todos los archivos del sistema de archivos justo después de montarlo con éxito.  <a href="#a951ec41abe19766602d305ff1e99fd32"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileSystem_8c.html#a2c77bece2713c99a22b9ec7d1d083b47">compare</a> (const TCHAR *path, TCHAR *name)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compara dos cadenas correspondientes al nombre de archivos.  <a href="#a2c77bece2713c99a22b9ec7d1d083b47"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileSystem_8c.html#aa4ef3507a98f8090aa382f4015cebe78">update_file</a> (<a class="el" href="structFIL.html">FIL</a> *src, <a class="el" href="structFIL.html">FIL</a> *dst)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Actualiza un archivo. En la práctica crea una copia del mismo.  <a href="#aa4ef3507a98f8090aa382f4015cebe78"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileSystem_8c.html#a8b7c0e2dcc69101a9bcec19d59480b0f">copy_file</a> (<a class="el" href="structFIL.html">FIL</a> *src, <a class="el" href="structFIL.html">FIL</a> *dst)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Copia un archivo en otro.  <a href="#a8b7c0e2dcc69101a9bcec19d59480b0f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileSystem_8c.html#ac1802ff989bc875c1147d22cf93e8416">backup_fs</a> (int src, int dst)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea una copia del sistema de archivos en otro sistema de archivos.  <a href="#ac1802ff989bc875c1147d22cf93e8416"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileSystem_8c.html#a7211e2f1543fb9aabc61814f9fb89546">close_all_files</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Cierra todos los archivos del sistema de archivos actual.  <a href="#a7211e2f1543fb9aabc61814f9fb89546"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileSystem_8c.html#afcfe716c836b3b8a019fa38faf56da96">reset_sector</a> (int fsIndex)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Función que resetea un sector.  <a href="#afcfe716c836b3b8a019fa38faf56da96"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileSystem_8c.html#a5df0ac672ada972e89ef4b003e57f964">f_lseek</a> (<a class="el" href="structFIL.html">FIL</a> *fp, DWORD ofs)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Función que mueve el puntero de lectura de un archivo.  <a href="#a5df0ac672ada972e89ef4b003e57f964"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileSystem_8c.html#a517b0da489a13124534a5eebc7af5358">change_sector</a> (int opt)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Cambia el sector físico por defecto en el que se crea el sistema de archivos.  <a href="#a517b0da489a13124534a5eebc7af5358"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileSystem_8c.html#aefdef7126128d99d0b3bd82c28e54d80">f_open</a> (<a class="el" href="structFIL.html">FIL</a> *fp, const TCHAR *path, BYTE mode)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Función que abre o crea un archivo.  <a href="#aefdef7126128d99d0b3bd82c28e54d80"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileSystem_8c.html#a53882db20ef4323dcfd1874d7733ffc3">f_close</a> (<a class="el" href="structFIL.html">FIL</a> *fp)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Función que cierra un archivo.  <a href="#a53882db20ef4323dcfd1874d7733ffc3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileSystem_8c.html#ac4c3dcb6869ca252888eebabe39727b3">f_read</a> (<a class="el" href="structFIL.html">FIL</a> *fp, void *buff, UINT btr, UINT *br)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Función que lee de un archivo.  <a href="#ac4c3dcb6869ca252888eebabe39727b3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileSystem_8c.html#ae6a4dfae8a9e308bdb2283a37ef680f2">f_write</a> (<a class="el" href="structFIL.html">FIL</a> *fp, const void *buff, UINT btw, UINT *bw)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Función que escribe de un archivo.  <a href="#ae6a4dfae8a9e308bdb2283a37ef680f2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileSystem_8c.html#acdcf7b6e3f54419d2612c38f83733edf">f_truncateStart</a> (<a class="el" href="structFIL.html">FIL</a> *fp, DWORD ofs)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Función que elimina parte de un archivo.  <a href="#acdcf7b6e3f54419d2612c38f83733edf"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileSystem_8c.html#ad69c7246b122ba56a134939ee0eaf847">f_sync</a> (<a class="el" href="structFIL.html">FIL</a> *fp)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Función que sincroniza un archivo, escribe en memoria los datos que queden pendientes.  <a href="#ad69c7246b122ba56a134939ee0eaf847"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileSystem_8c.html#a08c2cfaf5d5cde77fc6853ab7a11dd8a">f_getfree</a> (int fsIndex, UINT *mnfs)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Función que devuelve el número de sectores libres del sistema de archivos.  <a href="#a08c2cfaf5d5cde77fc6853ab7a11dd8a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileSystem_8c.html#a06b1816d729a1ee702209d4ddc1d91af">f_mount</a> (<a class="el" href="structFS.html">FS</a> *fileSystem, int fsIndex, BYTE opt)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Función que crea la estructura necesaria para crear un sistema de archivos.  <a href="#a06b1816d729a1ee702209d4ddc1d91af"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileSystem_8c.html#a8e75c990b2a6c64fa783c75aace55059">f_mkfs</a> (int fsIndex)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Función que crea un sistema de archivos.  <a href="#a8e75c990b2a6c64fa783c75aace55059"></a><br/></td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Descripción detallada</h2>
+<div class="textblock"><p>Módulo que implementa las funciones del archivo <a class="el" href="fileSystem_8h.html" title="Cabecera principal del módulo del Sistema de Archivos.">fileSystem.h</a>. </p>
+
+<p>Definición en el archivo <a class="el" href="fileSystem_8c_source.html">fileSystem.c</a>.</p>
+</div><hr/><h2>Documentación de las funciones</h2>
+<a class="anchor" id="ac1802ff989bc875c1147d22cf93e8416"></a><!-- doxytag: member="fileSystem.c::backup_fs" ref="ac1802ff989bc875c1147d22cf93e8416" args="(int src, int dst)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a> <a class="el" href="fileSystem_8c.html#ac1802ff989bc875c1147d22cf93e8416">backup_fs</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dst</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Crea una copia del sistema de archivos en otro sistema de archivos. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">src</td><td>Identificador del sistema de archivos fuente </td></tr>
+    <tr><td class="paramname">dst</td><td>Identificador del sistema de archivos destino </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Código de estado de la operación </dd></dl>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8c_source.html#l00227">227</a> del archivo <a class="el" href="fileSystem_8c_source.html">fileSystem.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3a0f60af901aa1945ab943e63fbd06d0"></a><!-- doxytag: member="fileSystem.c::byte_2_uint32" ref="a3a0f60af901aa1945ab943e63fbd06d0" args="(BYTE *src)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t <a class="el" href="fileSystem_8c.html#a3a0f60af901aa1945ab943e63fbd06d0">byte_2_uint32</a> </td>
+          <td>(</td>
+          <td class="paramtype">BYTE *&#160;</td>
+          <td class="paramname"><em>src</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Convierte un dato BYTE en un dato uint32_t. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">src</td><td>Vector de 4 BYTES a convertir </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Devuelve el valor correspondiente en uint32_t </dd></dl>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8c_source.html#l00015">15</a> del archivo <a class="el" href="fileSystem_8c_source.html">fileSystem.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a517b0da489a13124534a5eebc7af5358"></a><!-- doxytag: member="fileSystem.c::change_sector" ref="a517b0da489a13124534a5eebc7af5358" args="(int opt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a> <a class="el" href="fileSystem_8c.html#a517b0da489a13124534a5eebc7af5358">change_sector</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>opt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Cambia el sector físico por defecto en el que se crea el sistema de archivos. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">opt</td><td>Opción que indica si queremos, o no, har un backup de los archivos de un sistema en el otro. Un 1 indica que queremos hacer backup. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Código de estado de la operación </dd></dl>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8c_source.html#l00279">279</a> del archivo <a class="el" href="fileSystem_8c_source.html">fileSystem.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2ad7019c52d78ebe461b5ba559736aa5"></a><!-- doxytag: member="fileSystem.c::check_file" ref="a2ad7019c52d78ebe461b5ba559736aa5" args="(FIL *file)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a> <a class="el" href="fileSystem_8c.html#a2ad7019c52d78ebe461b5ba559736aa5">check_file</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFIL.html">FIL</a> *&#160;</td>
+          <td class="paramname"><em>file</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Comprueba si el archivo es válido. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td>Puntero del archivo objetivo </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Código de estado de la operación </dd></dl>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8c_source.html#l00075">75</a> del archivo <a class="el" href="fileSystem_8c_source.html">fileSystem.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aaa2cbdb65e6f30c0a2a3e5761eea1ef8"></a><!-- doxytag: member="fileSystem.c::check_fs" ref="aaa2cbdb65e6f30c0a2a3e5761eea1ef8" args="(int fsIndex)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a> <a class="el" href="fileSystem_8c.html#aaa2cbdb65e6f30c0a2a3e5761eea1ef8">check_fs</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fsIndex</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Comprueba si hay un sistema de archivos en memoria. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fsIndex</td><td>Índice del sistema de archivos objetivo </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Código de estado de la operación </dd></dl>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8c_source.html#l00050">50</a> del archivo <a class="el" href="fileSystem_8c_source.html">fileSystem.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7211e2f1543fb9aabc61814f9fb89546"></a><!-- doxytag: member="fileSystem.c::close_all_files" ref="a7211e2f1543fb9aabc61814f9fb89546" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a> <a class="el" href="fileSystem_8c.html#a7211e2f1543fb9aabc61814f9fb89546">close_all_files</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Cierra todos los archivos del sistema de archivos actual. </p>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Código de estado de la operación </dd></dl>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8c_source.html#l00244">244</a> del archivo <a class="el" href="fileSystem_8c_source.html">fileSystem.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2c77bece2713c99a22b9ec7d1d083b47"></a><!-- doxytag: member="fileSystem.c::compare" ref="a2c77bece2713c99a22b9ec7d1d083b47" args="(const TCHAR *path, TCHAR *name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="fileSystem_8c.html#a2c77bece2713c99a22b9ec7d1d083b47">compare</a> </td>
+          <td>(</td>
+          <td class="paramtype">const TCHAR *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TCHAR *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Compara dos cadenas correspondientes al nombre de archivos. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Cadena correspondiente al nombre del archivo que se quiere abrir </td></tr>
+    <tr><td class="paramname">name</td><td>Cadena correspondiente al nombre de uno de los archivos del sistema de archivos </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Código de estado de la operación </dd></dl>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8c_source.html#l00169">169</a> del archivo <a class="el" href="fileSystem_8c_source.html">fileSystem.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8b7c0e2dcc69101a9bcec19d59480b0f"></a><!-- doxytag: member="fileSystem.c::copy_file" ref="a8b7c0e2dcc69101a9bcec19d59480b0f" args="(FIL *src, FIL *dst)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a> <a class="el" href="fileSystem_8c.html#a8b7c0e2dcc69101a9bcec19d59480b0f">copy_file</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFIL.html">FIL</a> *&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structFIL.html">FIL</a> *&#160;</td>
+          <td class="paramname"><em>dst</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Copia un archivo en otro. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">src</td><td>Archivo fuente </td></tr>
+    <tr><td class="paramname">dst</td><td>Archivo destino </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Código de estado de la operación </dd></dl>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8c_source.html#l00206">206</a> del archivo <a class="el" href="fileSystem_8c_source.html">fileSystem.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a53882db20ef4323dcfd1874d7733ffc3"></a><!-- doxytag: member="fileSystem.c::f_close" ref="a53882db20ef4323dcfd1874d7733ffc3" args="(FIL *fp)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a> <a class="el" href="fileSystem_8h.html#a53882db20ef4323dcfd1874d7733ffc3">f_close</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFIL.html">FIL</a> *&#160;</td>
+          <td class="paramname"><em>fp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Función que cierra un archivo. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fp</td><td>Parámetro de entrada en el que se especifica el fichero a cerrar </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Código de estado de la operación </dd></dl>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8c_source.html#l00353">353</a> del archivo <a class="el" href="fileSystem_8c_source.html">fileSystem.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a08c2cfaf5d5cde77fc6853ab7a11dd8a"></a><!-- doxytag: member="fileSystem.c::f_getfree" ref="a08c2cfaf5d5cde77fc6853ab7a11dd8a" args="(int fsIndex, UINT *mnfs)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a> <a class="el" href="fileSystem_8h.html#ad34712146dce899b62634cbc071ff5b1">f_getfree</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fsIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UINT *&#160;</td>
+          <td class="paramname"><em>nclst</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Función que devuelve el número de sectores libres del sistema de archivos. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fsIndex</td><td>Identificador del sistema de archivos </td></tr>
+    <tr><td class="paramname">nclst</td><td>Puntero donde se devuelve el valor </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Código de estado de la operación </dd></dl>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8c_source.html#l00504">504</a> del archivo <a class="el" href="fileSystem_8c_source.html">fileSystem.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5df0ac672ada972e89ef4b003e57f964"></a><!-- doxytag: member="fileSystem.c::f_lseek" ref="a5df0ac672ada972e89ef4b003e57f964" args="(FIL *fp, DWORD ofs)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a> <a class="el" href="fileSystem_8h.html#a5df0ac672ada972e89ef4b003e57f964">f_lseek</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFIL.html">FIL</a> *&#160;</td>
+          <td class="paramname"><em>fp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">DWORD&#160;</td>
+          <td class="paramname"><em>ofs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Función que mueve el puntero de lectura de un archivo. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fp</td><td>Parámetro de entrada en el que se especifica el fichero objetivo </td></tr>
+    <tr><td class="paramname">ofs</td><td>Cantidad de bytes a mover desde la posición actual del puntero de lectura </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Código de estado de la operación </dd></dl>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8c_source.html#l00266">266</a> del archivo <a class="el" href="fileSystem_8c_source.html">fileSystem.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8e75c990b2a6c64fa783c75aace55059"></a><!-- doxytag: member="fileSystem.c::f_mkfs" ref="a8e75c990b2a6c64fa783c75aace55059" args="(int fsIndex)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a> <a class="el" href="fileSystem_8h.html#a8e75c990b2a6c64fa783c75aace55059">f_mkfs</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fsIndex</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Función que crea un sistema de archivos. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fsIndex</td><td>Identificador del sistema de archivos a crear </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Código de estado de la operación </dd></dl>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8c_source.html#l00561">561</a> del archivo <a class="el" href="fileSystem_8c_source.html">fileSystem.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a06b1816d729a1ee702209d4ddc1d91af"></a><!-- doxytag: member="fileSystem.c::f_mount" ref="a06b1816d729a1ee702209d4ddc1d91af" args="(FS *fileSystem, int fsIndex, BYTE opt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a> <a class="el" href="fileSystem_8h.html#a06b1816d729a1ee702209d4ddc1d91af">f_mount</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFS.html">FS</a> *&#160;</td>
+          <td class="paramname"><em>fileSystem</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fsIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">BYTE&#160;</td>
+          <td class="paramname"><em>opt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Función que crea la estructura necesaria para crear un sistema de archivos. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fileSystem</td><td>Puntero de Sistema de Archivos donde devolver el valor </td></tr>
+    <tr><td class="paramname">fsIndex</td><td>Identificador del sistema de archivos objetivo </td></tr>
+    <tr><td class="paramname">opt</td><td>Acepta dos opciones: 0, sólo crea la estructura necesaria para crear un sistema de archivos. 1, intenta montar un sistema de archivos existente </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Código de estado de la operación </dd></dl>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8c_source.html#l00529">529</a> del archivo <a class="el" href="fileSystem_8c_source.html">fileSystem.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aefdef7126128d99d0b3bd82c28e54d80"></a><!-- doxytag: member="fileSystem.c::f_open" ref="aefdef7126128d99d0b3bd82c28e54d80" args="(FIL *fp, const TCHAR *path, BYTE mode)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a> <a class="el" href="fileSystem_8h.html#aefdef7126128d99d0b3bd82c28e54d80">f_open</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFIL.html">FIL</a> *&#160;</td>
+          <td class="paramname"><em>fp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const TCHAR *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">BYTE&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Función que abre o crea un archivo. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fp</td><td>Parámetro de entrada en el que se devolverá el puntero del archivo abierto </td></tr>
+    <tr><td class="paramname">path</td><td>Nombre del archivo que queremos abrir </td></tr>
+    <tr><td class="paramname">mode</td><td>Permisos de apertura del archivo </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Código de estado de la operación </dd></dl>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8c_source.html#l00305">305</a> del archivo <a class="el" href="fileSystem_8c_source.html">fileSystem.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac4c3dcb6869ca252888eebabe39727b3"></a><!-- doxytag: member="fileSystem.c::f_read" ref="ac4c3dcb6869ca252888eebabe39727b3" args="(FIL *fp, void *buff, UINT btr, UINT *br)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a> <a class="el" href="fileSystem_8h.html#ac4c3dcb6869ca252888eebabe39727b3">f_read</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFIL.html">FIL</a> *&#160;</td>
+          <td class="paramname"><em>fp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>buff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UINT&#160;</td>
+          <td class="paramname"><em>btr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UINT *&#160;</td>
+          <td class="paramname"><em>br</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Función que lee de un archivo. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fp</td><td>Parámetro de entrada en el que se especifica el fichero de donde leer </td></tr>
+    <tr><td class="paramname">buff</td><td>Buffer donde se devolverán los datos leídos </td></tr>
+    <tr><td class="paramname">btr</td><td>Dirección de donde empezar a leer </td></tr>
+    <tr><td class="paramname">br</td><td>Cantidad de bytes a leer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Código de estado de la operación </dd></dl>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8c_source.html#l00405">405</a> del archivo <a class="el" href="fileSystem_8c_source.html">fileSystem.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad69c7246b122ba56a134939ee0eaf847"></a><!-- doxytag: member="fileSystem.c::f_sync" ref="ad69c7246b122ba56a134939ee0eaf847" args="(FIL *fp)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a> <a class="el" href="fileSystem_8h.html#ad69c7246b122ba56a134939ee0eaf847">f_sync</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFIL.html">FIL</a> *&#160;</td>
+          <td class="paramname"><em>fp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Función que sincroniza un archivo, escribe en memoria los datos que queden pendientes. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fp</td><td>Parámetro de entrada en el que se especifica el fichero objetivo </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Código de estado de la operación </dd></dl>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8c_source.html#l00490">490</a> del archivo <a class="el" href="fileSystem_8c_source.html">fileSystem.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acdcf7b6e3f54419d2612c38f83733edf"></a><!-- doxytag: member="fileSystem.c::f_truncateStart" ref="acdcf7b6e3f54419d2612c38f83733edf" args="(FIL *fp, DWORD ofs)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a> <a class="el" href="fileSystem_8h.html#acdcf7b6e3f54419d2612c38f83733edf">f_truncateStart</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFIL.html">FIL</a> *&#160;</td>
+          <td class="paramname"><em>fp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">DWORD&#160;</td>
+          <td class="paramname"><em>ofs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Función que elimina parte de un archivo. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fp</td><td>Parámetro de entrada en el que se especifica el fichero objetivo </td></tr>
+    <tr><td class="paramname">ofs</td><td>Cantidad de bytes a eliminar desde la posición cero del archivo </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Código de estado de la operación </dd></dl>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8c_source.html#l00473">473</a> del archivo <a class="el" href="fileSystem_8c_source.html">fileSystem.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae6a4dfae8a9e308bdb2283a37ef680f2"></a><!-- doxytag: member="fileSystem.c::f_write" ref="ae6a4dfae8a9e308bdb2283a37ef680f2" args="(FIL *fp, const void *buff, UINT btw, UINT *bw)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a> <a class="el" href="fileSystem_8h.html#ae6a4dfae8a9e308bdb2283a37ef680f2">f_write</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFIL.html">FIL</a> *&#160;</td>
+          <td class="paramname"><em>fp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>buff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UINT&#160;</td>
+          <td class="paramname"><em>btw</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UINT *&#160;</td>
+          <td class="paramname"><em>bw</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Función que escribe de un archivo. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fp</td><td>Parámetro de entrada en el que se especifica el fichero de donde leer </td></tr>
+    <tr><td class="paramname">buff</td><td>Stream de datos que se quieren escribir </td></tr>
+    <tr><td class="paramname">btw</td><td>Dirección de donde empezar a escribir </td></tr>
+    <tr><td class="paramname">bw</td><td>Cantidad de bytes a leer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Código de estado de la operación </dd></dl>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8c_source.html#l00435">435</a> del archivo <a class="el" href="fileSystem_8c_source.html">fileSystem.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a951ec41abe19766602d305ff1e99fd32"></a><!-- doxytag: member="fileSystem.c::loading_files" ref="a951ec41abe19766602d305ff1e99fd32" args="(int fsIndex)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a> <a class="el" href="fileSystem_8c.html#a951ec41abe19766602d305ff1e99fd32">loading_files</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fsIndex</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Busca todos los archivos del sistema de archivos justo después de montarlo con éxito. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fsIndex</td><td>Identificador del sistema de archivos </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Código de estado de la operación </dd></dl>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8c_source.html#l00135">135</a> del archivo <a class="el" href="fileSystem_8c_source.html">fileSystem.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4ab6badca8cdbe971b432c8a3bb7b0b1"></a><!-- doxytag: member="fileSystem.c::read_file_entry" ref="a4ab6badca8cdbe971b432c8a3bb7b0b1" args="(FIL *file, DWORD sector)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a> <a class="el" href="fileSystem_8c.html#a4ab6badca8cdbe971b432c8a3bb7b0b1">read_file_entry</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFIL.html">FIL</a> *&#160;</td>
+          <td class="paramname"><em>file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">DWORD&#160;</td>
+          <td class="paramname"><em>sector</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Lee una entrada en la tabla de descriptores de archivos y comprueba si es válida. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td>Puntero de archivo en el que se devolverá el archivo si es válido </td></tr>
+    <tr><td class="paramname">sector</td><td>Número de sector donde leer la entrada de la tabla de descriptores </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Código de estado de la operación </dd></dl>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8c_source.html#l00118">118</a> del archivo <a class="el" href="fileSystem_8c_source.html">fileSystem.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afcfe716c836b3b8a019fa38faf56da96"></a><!-- doxytag: member="fileSystem.c::reset_sector" ref="afcfe716c836b3b8a019fa38faf56da96" args="(int fsIndex)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">FRESULT</a> <a class="el" href="fileSystem_8h.html#afcfe716c836b3b8a019fa38faf56da96">reset_sector</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fsIndex</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Función que resetea un sector. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fsIndex</td><td>Identificador del sistema de archivos sobre el que resetear sus sectores </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Código de estado de la operación </dd></dl>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8c_source.html#l00253">253</a> del archivo <a class="el" href="fileSystem_8c_source.html">fileSystem.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3623bef990ae28b977811f039ee158bb"></a><!-- doxytag: member="fileSystem.c::uint32_2_byte" ref="a3623bef990ae28b977811f039ee158bb" args="(uint32_t src, BYTE *dst)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BYTE* <a class="el" href="fileSystem_8c.html#a3623bef990ae28b977811f039ee158bb">uint32_2_byte</a> </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">BYTE *&#160;</td>
+          <td class="paramname"><em>dst</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Convierte un dato uint32_t en un dato BYTE. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">src</td><td>Valor uint32_t a convertir </td></tr>
+    <tr><td class="paramname">dst</td><td>Puntero donde se devolverá el valor </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Devuelve el valor correspondiente en BYTE* </dd></dl>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8c_source.html#l00036">36</a> del archivo <a class="el" href="fileSystem_8c_source.html">fileSystem.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa4ef3507a98f8090aa382f4015cebe78"></a><!-- doxytag: member="fileSystem.c::update_file" ref="aa4ef3507a98f8090aa382f4015cebe78" args="(FIL *src, FIL *dst)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="fileSystem_8c.html#aa4ef3507a98f8090aa382f4015cebe78">update_file</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFIL.html">FIL</a> *&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structFIL.html">FIL</a> *&#160;</td>
+          <td class="paramname"><em>dst</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Actualiza un archivo. En la práctica crea una copia del mismo. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">src</td><td>Archivo fuente </td></tr>
+    <tr><td class="paramname">dst</td><td>Archivo destino </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Código de estado de la operación </dd></dl>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8c_source.html#l00184">184</a> del archivo <a class="el" href="fileSystem_8c_source.html">fileSystem.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Estructuras de Datos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Valores de enumeraciones</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Generado el Miércoles, 2 de Julio de 2014 10:04:37 para Sistema de Logging Geoposicional en Tiempo Real para Sistemas Empotrados por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

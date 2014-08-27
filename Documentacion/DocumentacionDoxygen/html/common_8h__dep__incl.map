@@ -1,0 +1,7 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$fs__task_8h.html" title="Cabecera de la tarea que gestiona el sistema de archivos." alt="" coords="59,83,157,112"/>
+<area shape="rect" id="node9" href="$gps__task_8h.html" title="Cabecera de la tarea que gestiona el GPS." alt="" coords="181,83,288,112"/>
+<area shape="rect" id="node5" href="$fs__task_8c.html" title="Módulo que implementa las funciones del archivo fs_task.h." alt="" coords="5,160,104,189"/>
+<area shape="rect" id="node7" href="$main_8c.html" title="Función principal." alt="" coords="128,160,211,189"/>
+<area shape="rect" id="node11" href="$gps__task_8c.html" title="Módulo que implementa las funciones del archivo gps_task.h." alt="" coords="235,160,341,189"/>
+</map>

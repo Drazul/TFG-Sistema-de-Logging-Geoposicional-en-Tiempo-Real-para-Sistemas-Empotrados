@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>Sistema de Logging Geoposicional en Tiempo Real para Sistemas Empotrados: Fichero Fuente FS/fileSystem.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Sistema de Logging Geoposicional en Tiempo Real para Sistemas Empotrados
+   
+   </div>
+   <div id="projectbrief">Trabajo Fin de Grado incluido en el proyecto Biker Assistant de la empresa SmartSoC Solutions</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Generado por Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="annotated.html"><span>Estructuras&#160;de&#160;Datos</span></a></li>
+      <li class="current"><a href="files.html"><span>Archivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;archivos</span></a></li>
+      <li><a href="globals.html"><span>Globales</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">FS/fileSystem.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="fileSystem_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00006"></a>00006 <span class="preprocessor">#include &quot;<a class="code" href="integer_8h.html" title="Tipos de datos abreviados.">integer.h</a>&quot;</span>
+<a name="l00007"></a>00007 <span class="preprocessor">#include &quot;stm32f2xx.h&quot;</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#include &quot;<a class="code" href="diskio_8h.html" title="Cabecera de la capa de abstracción de operaciones a bajo nivel sobre la memoria.">diskio.h</a>&quot;</span>
+<a name="l00009"></a>00009 
+<a name="l00010"></a>00010 <span class="comment">/* FILE PERMISSIONS */</span>
+<a name="l00011"></a>00011 <span class="preprocessor">#define   FA_READ      0x01</span>
+<a name="l00012"></a>00012 <span class="preprocessor"></span><span class="preprocessor">#define   FA_OPEN_EXISTING  0x00</span>
+<a name="l00013"></a>00013 <span class="preprocessor"></span>
+<a name="l00014"></a>00014 <span class="preprocessor">#define  FA_WRITE      0x02</span>
+<a name="l00015"></a>00015 <span class="preprocessor"></span><span class="preprocessor">#define   FA_CREATE_NEW    0x04</span>
+<a name="l00016"></a>00016 <span class="preprocessor"></span><span class="preprocessor">#define   FA_CREATE_ALWAYS  0x08</span>
+<a name="l00017"></a>00017 <span class="preprocessor"></span><span class="preprocessor">#define   FA_OPEN_ALWAYS    0x10</span>
+<a name="l00018"></a>00018 <span class="preprocessor"></span>
+<a name="l00022"></a><a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c">00022</a> <span class="keyword">typedef</span> <span class="keyword">enum</span> {
+<a name="l00023"></a><a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1">00023</a>   <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1">FR_OK</a> = 0, 
+<a name="l00024"></a><a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44ca97dee4a6b485dc8f91f37486092dfe34">00024</a>   <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44ca97dee4a6b485dc8f91f37486092dfe34">FR_DISK_ERR</a>, 
+<a name="l00025"></a><a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44cab6c9903af6e9bffbb7a288705f4a6a76">00025</a>   <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44cab6c9903af6e9bffbb7a288705f4a6a76">FR_INT_ERR</a>, 
+<a name="l00026"></a><a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44cac9894bed3e8632ede8d2712235fa8e45">00026</a>   <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44cac9894bed3e8632ede8d2712235fa8e45">FR_NOT_READY</a>, 
+<a name="l00027"></a><a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44ca97da8f98fc2e66d8fa7847f9ebb19b8c">00027</a>   <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44ca97da8f98fc2e66d8fa7847f9ebb19b8c">FR_NO_FILE</a>, 
+<a name="l00028"></a><a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44cae4529c8cc8b59783d6efc9ba4f574532">00028</a>   <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44cae4529c8cc8b59783d6efc9ba4f574532">FR_NO_PATH</a>, 
+<a name="l00029"></a><a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44ca83e45a4b579558c57192c0a391b9bb45">00029</a>   <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44ca83e45a4b579558c57192c0a391b9bb45">FR_INVALID_NAME</a>, 
+<a name="l00030"></a><a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44ca897e9f2dd7629a80f48af242d8bc1a3d">00030</a>   <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44ca897e9f2dd7629a80f48af242d8bc1a3d">FR_DENIED</a>, 
+<a name="l00031"></a><a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44ca0d8f024d256df76e84782b95018a2450">00031</a>   <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44ca0d8f024d256df76e84782b95018a2450">FR_EXIST</a>, 
+<a name="l00032"></a><a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44ca3dec4eba481cdf5e99d7cd6009e6dcf8">00032</a>   <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44ca3dec4eba481cdf5e99d7cd6009e6dcf8">FR_INVALID_OBJECT</a>, 
+<a name="l00033"></a><a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44cac3afbb423b1d4497229416812aff383b">00033</a>   <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44cac3afbb423b1d4497229416812aff383b">FR_WRITE_PROTECTED</a>, 
+<a name="l00034"></a><a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44ca487844af77de15f6932a3b41ef3a2d65">00034</a>   <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44ca487844af77de15f6932a3b41ef3a2d65">FR_INVALID_DRIVE</a>, 
+<a name="l00035"></a><a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44cafc56605c68aaffab4a428339a8bd600d">00035</a>   <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44cafc56605c68aaffab4a428339a8bd600d">FR_NOT_ENABLED</a>, 
+<a name="l00036"></a><a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44ca086154b5fee763f28c49fd0e2c1cb463">00036</a>   <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44ca086154b5fee763f28c49fd0e2c1cb463">FR_NO_FILESYSTEM</a>, 
+<a name="l00037"></a><a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44ca4b02760f758f5b1a89f445244fe9fbca">00037</a>   <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44ca4b02760f758f5b1a89f445244fe9fbca">FR_MKFS_ABORTED</a>, 
+<a name="l00038"></a><a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44ca3f8ca7e51af8b129d14328de7243c5d4">00038</a>   <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44ca3f8ca7e51af8b129d14328de7243c5d4">FR_TIMEOUT</a>, 
+<a name="l00039"></a><a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44ca7db5afaaa2af591bd4a208b2967075d7">00039</a>   <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44ca7db5afaaa2af591bd4a208b2967075d7">FR_LOCKED</a>, 
+<a name="l00040"></a><a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44caf56a76a86602cbdeb2c4f3d00cfad21c">00040</a>   <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44caf56a76a86602cbdeb2c4f3d00cfad21c">FR_NOT_ENOUGH_CORE</a>, 
+<a name="l00041"></a><a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44cac7926e01d7519a1a7e21a44e2dd76789">00041</a>   <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44cac7926e01d7519a1a7e21a44e2dd76789">FR_TOO_MANY_FILES</a>, 
+<a name="l00042"></a><a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44ca3b89faeceab64db277d0fcdeaaa315d6">00042</a>   <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44ca3b89faeceab64db277d0fcdeaaa315d6">FR_INVALID_PARAMETER</a> 
+<a name="l00043"></a>00043 } <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c" title="Enumeración de los estados de operación de la memoria FLASH.">FRESULT</a>;
+<a name="l00044"></a>00044 <span class="keyword">typedef</span> <span class="keyword">struct </span>{
+<a name="l00048"></a><a class="code" href="structFIL.html#a21240fe08417eb46f794e67519bf4a58">00048</a>   BYTE name[7]; 
+<a name="l00049"></a><a class="code" href="structFIL.html#ac409508881f5a16f2998ae675072b376">00049</a>   BYTE <a class="code" href="structFIL.html#ac409508881f5a16f2998ae675072b376">flag</a>; 
+<a name="l00050"></a><a class="code" href="structFIL.html#aea440945db26de9c4a88065c0c887fda">00050</a>   BYTE <a class="code" href="structFIL.html#aea440945db26de9c4a88065c0c887fda">err</a>; 
+<a name="l00051"></a><a class="code" href="structFIL.html#a32847fe875861954ec3dc750d332a194">00051</a>   BYTE <a class="code" href="structFIL.html#a32847fe875861954ec3dc750d332a194">dirty</a>; 
+<a name="l00052"></a><a class="code" href="structFIL.html#ab32bf8d0b478b2cef4942b2128f4f5f5">00052</a>   BYTE <a class="code" href="structFIL.html#ab32bf8d0b478b2cef4942b2128f4f5f5">fsIndex</a>; 
+<a name="l00053"></a><a class="code" href="structFIL.html#a684d4d555f293b08b8396c35e20706d3">00053</a>   DWORD <a class="code" href="structFIL.html#a684d4d555f293b08b8396c35e20706d3">startSector</a>; 
+<a name="l00054"></a><a class="code" href="structFIL.html#a89e92b4845c72b4f9f119b38d1142a41">00054</a>   DWORD <a class="code" href="structFIL.html#a89e92b4845c72b4f9f119b38d1142a41">writePointer</a>; 
+<a name="l00055"></a><a class="code" href="structFIL.html#ad0d1f48655e0e06936cb7883993afb1f">00055</a>   DWORD <a class="code" href="structFIL.html#ad0d1f48655e0e06936cb7883993afb1f">readPointer</a>; 
+<a name="l00056"></a><a class="code" href="structFIL.html#a043930088c6fdc5e523500b833106476">00056</a>   DWORD <a class="code" href="structFIL.html#a043930088c6fdc5e523500b833106476">descriptorSector</a>; 
+<a name="l00057"></a><a class="code" href="structFIL.html#a5fb6271e3cc261b9f811bb8860cb6110">00057</a>   WORD <a class="code" href="structFIL.html#a5fb6271e3cc261b9f811bb8860cb6110">buffindex</a>; 
+<a name="l00058"></a><a class="code" href="structFIL.html#a9e1f6c5e0e2cd4fd3705e5a213ad2f83">00058</a>   BYTE buff[SECTOR_SIZE];
+<a name="l00059"></a>00059 } <a class="code" href="structFIL.html" title="Estructura que define un archivo.">FIL</a>;
+<a name="l00060"></a>00060 
+<a name="l00064"></a><a class="code" href="structFS.html">00064</a> <span class="keyword">typedef</span> <span class="keyword">struct </span>{
+<a name="l00065"></a><a class="code" href="structFS.html#a22eed025311346b8029d8b445c192b95">00065</a>   uint32_t <a class="code" href="structFS.html#a22eed025311346b8029d8b445c192b95">start_address</a>; 
+<a name="l00066"></a><a class="code" href="structFS.html#a06559d64af1c2b15af05165f30c59868">00066</a>   BYTE <a class="code" href="structFS.html#a06559d64af1c2b15af05165f30c59868">sector_size</a>; 
+<a name="l00067"></a><a class="code" href="structFS.html#adae8dcbe72b934a870bf663481207e3e">00067</a>   WORD <a class="code" href="structFS.html#adae8dcbe72b934a870bf663481207e3e">free_sector</a>; 
+<a name="l00068"></a><a class="code" href="structFS.html#ab8f2ed716ba1865bff2fe82d36e90546">00068</a>   WORD <a class="code" href="structFS.html#ab8f2ed716ba1865bff2fe82d36e90546">fs_size</a>; 
+<a name="l00069"></a><a class="code" href="structFS.html#a6b431a5035eb3bb668565772a3ecd57a">00069</a>   WORD <a class="code" href="structFS.html#a6b431a5035eb3bb668565772a3ecd57a">volbase</a>; 
+<a name="l00070"></a><a class="code" href="structFS.html#a7c6676234fc0734f2139c627a0b01428">00070</a>   WORD <a class="code" href="structFS.html#a7c6676234fc0734f2139c627a0b01428">fatbase</a>; 
+<a name="l00071"></a><a class="code" href="structFS.html#a727068deba19f90b5b402ae005f49b58">00071</a>   WORD <a class="code" href="structFS.html#a727068deba19f90b5b402ae005f49b58">database</a>; 
+<a name="l00072"></a><a class="code" href="structFS.html#a050f921ab2140aa4eadce4a140b61fbe">00072</a>   WORD <a class="code" href="structFS.html#a050f921ab2140aa4eadce4a140b61fbe">lastDescriptor</a>; 
+<a name="l00073"></a><a class="code" href="structFS.html#a5772298ea6aafc77f842037933531a02">00073</a>   <a class="code" href="structFIL.html" title="Estructura que define un archivo.">FIL</a> files[_MAX_FILES]; 
+<a name="l00074"></a><a class="code" href="structFS.html#a23d4e26f31e8932d8b216955e6af2130">00074</a>   BYTE win[SECTOR_SIZE]; 
+<a name="l00075"></a>00075 } <a class="code" href="structFS.html" title="Estructura que define el Sistema de Archivos.">FS</a>;
+<a name="l00076"></a>00076 
+<a name="l00084"></a>00084 <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c" title="Enumeración de los estados de operación de la memoria FLASH.">FRESULT</a> <a class="code" href="fileSystem_8c.html#aefdef7126128d99d0b3bd82c28e54d80" title="Función que abre o crea un archivo.">f_open</a>(<a class="code" href="structFIL.html" title="Estructura que define un archivo.">FIL</a>* fp, <span class="keyword">const</span> TCHAR* path, BYTE mode);
+<a name="l00085"></a>00085 
+<a name="l00091"></a>00091 <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c" title="Enumeración de los estados de operación de la memoria FLASH.">FRESULT</a> <a class="code" href="fileSystem_8c.html#a53882db20ef4323dcfd1874d7733ffc3" title="Función que cierra un archivo.">f_close</a>(<a class="code" href="structFIL.html" title="Estructura que define un archivo.">FIL</a>* fp); <span class="comment">/* Close an open file object */</span>
+<a name="l00092"></a>00092 
+<a name="l00101"></a>00101 <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c" title="Enumeración de los estados de operación de la memoria FLASH.">FRESULT</a> <a class="code" href="fileSystem_8c.html#ac4c3dcb6869ca252888eebabe39727b3" title="Función que lee de un archivo.">f_read</a>(<a class="code" href="structFIL.html" title="Estructura que define un archivo.">FIL</a>* fp, <span class="keywordtype">void</span>* buff, UINT btr, UINT* br); <span class="comment">/* Read data from a file */</span>
+<a name="l00102"></a>00102 
+<a name="l00111"></a>00111 <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c" title="Enumeración de los estados de operación de la memoria FLASH.">FRESULT</a> <a class="code" href="fileSystem_8c.html#ae6a4dfae8a9e308bdb2283a37ef680f2" title="Función que escribe de un archivo.">f_write</a>(<a class="code" href="structFIL.html" title="Estructura que define un archivo.">FIL</a>* fp, <span class="keyword">const</span> <span class="keywordtype">void</span>* buff, UINT btw, UINT* bw); <span class="comment">/* Write data to a file */</span>
+<a name="l00112"></a>00112 
+<a name="l00119"></a>00119 <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c" title="Enumeración de los estados de operación de la memoria FLASH.">FRESULT</a> <a class="code" href="fileSystem_8c.html#acdcf7b6e3f54419d2612c38f83733edf" title="Función que elimina parte de un archivo.">f_truncateStart</a>(<a class="code" href="structFIL.html" title="Estructura que define un archivo.">FIL</a>* fp, DWORD ofs); <span class="comment">/* Move start file pointer of a file object */</span>
+<a name="l00120"></a>00120 
+<a name="l00127"></a>00127 <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c" title="Enumeración de los estados de operación de la memoria FLASH.">FRESULT</a> <a class="code" href="fileSystem_8c.html#a5df0ac672ada972e89ef4b003e57f964" title="Función que mueve el puntero de lectura de un archivo.">f_lseek</a>(<a class="code" href="structFIL.html" title="Estructura que define un archivo.">FIL</a>* fp, DWORD ofs); <span class="comment">/* Move read pointer of a file object  */</span>
+<a name="l00128"></a>00128 
+<a name="l00134"></a>00134 <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c" title="Enumeración de los estados de operación de la memoria FLASH.">FRESULT</a> <a class="code" href="fileSystem_8c.html#ad69c7246b122ba56a134939ee0eaf847" title="Función que sincroniza un archivo, escribe en memoria los datos que queden pendientes.">f_sync</a>(<a class="code" href="structFIL.html" title="Estructura que define un archivo.">FIL</a>* fp); <span class="comment">/* Flush cached data of a writing file */</span>
+<a name="l00135"></a>00135 
+<a name="l00142"></a>00142 <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c" title="Enumeración de los estados de operación de la memoria FLASH.">FRESULT</a> <a class="code" href="fileSystem_8c.html#a08c2cfaf5d5cde77fc6853ab7a11dd8a" title="Función que devuelve el número de sectores libres del sistema de archivos.">f_getfree</a>(<span class="keywordtype">int</span> fsIndex, UINT* nclst); <span class="comment">/* Get number of free clusters on the drive */</span>
+<a name="l00143"></a>00143 
+<a name="l00151"></a>00151 <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c" title="Enumeración de los estados de operación de la memoria FLASH.">FRESULT</a> <a class="code" href="fileSystem_8c.html#a06b1816d729a1ee702209d4ddc1d91af" title="Función que crea la estructura necesaria para crear un sistema de archivos.">f_mount</a>(<a class="code" href="structFS.html" title="Estructura que define el Sistema de Archivos.">FS</a>* fileSystem, <span class="keywordtype">int</span> fsIndex, BYTE opt); <span class="comment">/* Mount/Unmount a logical drive */</span>
+<a name="l00152"></a>00152 
+<a name="l00158"></a>00158 <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c" title="Enumeración de los estados de operación de la memoria FLASH.">FRESULT</a> <a class="code" href="fileSystem_8c.html#a8e75c990b2a6c64fa783c75aace55059" title="Función que crea un sistema de archivos.">f_mkfs</a>(<span class="keywordtype">int</span> fsIndex); <span class="comment">/* Create a file system on the volume */</span>
+<a name="l00159"></a>00159 
+<a name="l00165"></a>00165 <a class="code" href="fileSystem_8h.html#a49d0171ecbd362cda5680a0d360db44c" title="Enumeración de los estados de operación de la memoria FLASH.">FRESULT</a> <a class="code" href="fileSystem_8c.html#afcfe716c836b3b8a019fa38faf56da96" title="Función que resetea un sector.">reset_sector</a>(<span class="keywordtype">int</span> fsIndex);
+</pre></div></div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Estructuras de Datos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Valores de enumeraciones</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Generado el Miércoles, 2 de Julio de 2014 10:04:37 para Sistema de Logging Geoposicional en Tiempo Real para Sistemas Empotrados por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

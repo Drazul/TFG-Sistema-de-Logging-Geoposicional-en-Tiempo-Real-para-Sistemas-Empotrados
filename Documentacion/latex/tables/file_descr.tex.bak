@@ -1,0 +1,15 @@
+
+\begin{tabular}{p{.15\textwidth}p{.2\textwidth}p{.2\textwidth}p{.2\textwidth}}
+\tabheadformat
+  \tabhead{Validez}   &
+  \tabhead{Nombre}      &
+  \tabhead{Dirección de inicio}  &
+  \tabhead{Dirección de fin}      \\
+\hline
+255 & archivo & 2048 & 2184 \\ \hline
+255 & ex1.txt & 4112 & 4140 \\ \hline
+255 & 1111111 & 4294967295 & 4294967295 \\ 
+
+% \\ 
+\hline
+\end{tabular}

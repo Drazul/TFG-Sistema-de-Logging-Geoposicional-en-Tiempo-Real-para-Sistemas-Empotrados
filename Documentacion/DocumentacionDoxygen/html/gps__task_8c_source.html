@@ -1,0 +1,267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>Sistema de Logging Geoposicional en Tiempo Real para Sistemas Empotrados: Fichero Fuente src/gps_task.c</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Sistema de Logging Geoposicional en Tiempo Real para Sistemas Empotrados
+   
+   </div>
+   <div id="projectbrief">Trabajo Fin de Grado incluido en el proyecto Biker Assistant de la empresa SmartSoC Solutions</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Generado por Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="annotated.html"><span>Estructuras&#160;de&#160;Datos</span></a></li>
+      <li class="current"><a href="files.html"><span>Archivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;archivos</span></a></li>
+      <li><a href="globals.html"><span>Globales</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/gps_task.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="gps__task_8c.html">Ir a la documentación de este archivo.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00005"></a>00005 <span class="preprocessor">#include &quot;<a class="code" href="gps__task_8h.html" title="Cabecera de la tarea que gestiona el GPS.">gps_task.h</a>&quot;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &quot;stm32f2xx.h&quot;</span>
+<a name="l00007"></a>00007 <span class="preprocessor">#include &quot;BA_board.h&quot;</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#include &quot;task.h&quot;</span>
+<a name="l00009"></a>00009 <span class="preprocessor">#include &lt;stdlib.h&gt;</span>
+<a name="l00010"></a>00010 
+<a name="l00011"></a>00011 <span class="comment">//#define COMn 4</span>
+<a name="l00012"></a>00012 <span class="comment">//USART_TypeDef* COM_USART[COMn] = {DBG, BT, GSM, GPS};</span>
+<a name="l00017"></a>00017 <span class="comment"></span><span class="keywordtype">void</span> <a class="code" href="gps__task_8c.html#abdcfae3302239b75ae41f8d99d7ef7d4" title="Esta es la función principal de la tarea  Esta función inicializa el GPS y lanza el método que lee da...">GPSTaskFunc</a>(<span class="keywordtype">void</span> *pParams);
+<a name="l00018"></a>00018 
+<a name="l00022"></a><a class="code" href="gps__task_8c.html#a6ff22959c4c93001c06b23ec016df388">00022</a> <span class="keywordtype">void</span> <a class="code" href="gps__task_8c.html#a6ff22959c4c93001c06b23ec016df388" title="Esta es la función que inicializa el GPS.">setupGPS</a>() {
+<a name="l00023"></a>00023   USART_InitTypeDef USART_InitStructure;
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025   USART_InitStructure.USART_BaudRate = 9600;
+<a name="l00026"></a>00026   USART_InitStructure.USART_WordLength = USART_WordLength_8b;
+<a name="l00027"></a>00027   USART_InitStructure.USART_StopBits = USART_StopBits_1;
+<a name="l00028"></a>00028   USART_InitStructure.USART_Parity = USART_Parity_No;
+<a name="l00029"></a>00029   USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+<a name="l00030"></a>00030   USART_InitStructure.USART_HardwareFlowControl =
+<a name="l00031"></a>00031   USART_HardwareFlowControl_None;
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033   BA_GPSInit(&amp;USART_InitStructure);
+<a name="l00034"></a>00034   <a class="code" href="main_8c.html#a7d5d5262a3c7d9c39a226ed465e347dc" title="Función que define la función de espera.">Delay</a>(1000);
+<a name="l00035"></a>00035 }
+<a name="l00039"></a><a class="code" href="gps__task_8h.html#ab5a1e3a14590de2541497dd0c38c15a8">00039</a> <span class="keywordtype">void</span> <a class="code" href="gps__task_8c.html#ab5a1e3a14590de2541497dd0c38c15a8" title="Esta es la función que inicializa todo el hardware que necesita la tarea.">GPSHardwareInit</a>(<span class="keywordtype">void</span> *pParam) {
+<a name="l00040"></a>00040   <a class="code" href="gps__task_8c.html#a6ff22959c4c93001c06b23ec016df388" title="Esta es la función que inicializa el GPS.">setupGPS</a>();
+<a name="l00041"></a>00041 }
+<a name="l00042"></a>00042 
+<a name="l00043"></a><a class="code" href="gps__task_8h.html#ac8c08e783e9eabb617e98e4af988aeed">00043</a> <span class="keywordtype">void</span> <a class="code" href="gps__task_8c.html#ac8c08e783e9eabb617e98e4af988aeed" title="Método que crea la tarea.">GPSStartTask</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> nStackDepth, <span class="keywordtype">unsigned</span> portBASE_TYPE nPriority,
+<a name="l00044"></a>00044     <span class="keywordtype">void</span> *pParams) {
+<a name="l00045"></a>00045   xTaskCreate(<a class="code" href="gps__task_8c.html#abdcfae3302239b75ae41f8d99d7ef7d4" title="Esta es la función principal de la tarea  Esta función inicializa el GPS y lanza el método que lee da...">GPSTaskFunc</a>, <span class="stringliteral">&quot;GPS&quot;</span>, nStackDepth, pParams, nPriority, NULL);
+<a name="l00046"></a>00046 }
+<a name="l00047"></a>00047 
+<a name="l00052"></a><a class="code" href="gps__task_8c.html#ac0340e20d1b18f9259b07a8fd719df9f">00052</a> <span class="keywordtype">void</span> <a class="code" href="gps__task_8c.html#ac0340e20d1b18f9259b07a8fd719df9f" title="Esta es la función que lee datos del GPS y, cuando detecta un mensaje correcto, lo envía a la tarea q...">parser_GPS</a>() {
+<a name="l00053"></a>00053   uint8_t answer[80];
+<a name="l00054"></a>00054   uint16_t parser_idx = 0;
+<a name="l00055"></a>00055   uint8_t c;
+<a name="l00056"></a>00056   <span class="keywordtype">int</span> state = 0;  <span class="comment">// 0-5 -&gt; searching for $GPGGA header,  1-&gt; getting data</span>
+<a name="l00057"></a>00057   <a class="code" href="structGPS__MSG.html" title="Estructura que define el mensaje de la cola de mensaje writeQueue.">GPS_MSG</a> msg;
+<a name="l00058"></a>00058   <span class="keywordtype">int</span> i;
+<a name="l00059"></a>00059   <span class="comment">// Parse for $GPGGA statements</span>
+<a name="l00060"></a>00060   <span class="comment">// $GPGGA,064951.000,2307.1256,N,12016.4438,E,1,8,0.95,39.9,M,17.8,M,,*65\r</span>
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062   <span class="keywordflow">while</span> (1) {
+<a name="l00063"></a>00063     GPIO_ResetBits(LEDS_GPIO_PORT, LEDV_PIN);
+<a name="l00064"></a>00064     <span class="comment">// BA_DBGSend((uint8_t*)&quot;\r\n New GPGGA reading ... \r\n&quot;);</span>
+<a name="l00065"></a>00065     <span class="keywordflow">while</span> (state &lt; 7) {
+<a name="l00066"></a>00066       BA_GPSReceive(&amp;c, 1);
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068       <span class="keywordflow">switch</span> (state) {
+<a name="l00069"></a>00069       <span class="keywordflow">case</span> 0:
+<a name="l00070"></a>00070         <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;$&#39;</span>) {
+<a name="l00071"></a>00071           answer[parser_idx] = c;
+<a name="l00072"></a>00072           state = 1;
+<a name="l00073"></a>00073           parser_idx++;
+<a name="l00074"></a>00074         } <span class="keywordflow">else</span> {
+<a name="l00075"></a>00075           parser_idx = 0;
+<a name="l00076"></a>00076           state = 0;
+<a name="l00077"></a>00077         }
+<a name="l00078"></a>00078         <span class="keywordflow">break</span>;
+<a name="l00079"></a>00079 
+<a name="l00080"></a>00080       <span class="keywordflow">case</span> 1:
+<a name="l00081"></a>00081         <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;G&#39;</span>) {
+<a name="l00082"></a>00082           answer[parser_idx] = c;
+<a name="l00083"></a>00083           state = 2;
+<a name="l00084"></a>00084           parser_idx++;
+<a name="l00085"></a>00085         } <span class="keywordflow">else</span> {
+<a name="l00086"></a>00086           parser_idx = 0;
+<a name="l00087"></a>00087           state = 0;
+<a name="l00088"></a>00088         }
+<a name="l00089"></a>00089         <span class="keywordflow">break</span>;
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091       <span class="keywordflow">case</span> 2:
+<a name="l00092"></a>00092         <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;P&#39;</span>) {
+<a name="l00093"></a>00093           answer[parser_idx] = c;
+<a name="l00094"></a>00094           state = 3;
+<a name="l00095"></a>00095           parser_idx++;
+<a name="l00096"></a>00096         } <span class="keywordflow">else</span> {
+<a name="l00097"></a>00097           parser_idx = 0;
+<a name="l00098"></a>00098           state = 0;
+<a name="l00099"></a>00099         }
+<a name="l00100"></a>00100         <span class="keywordflow">break</span>;
+<a name="l00101"></a>00101 
+<a name="l00102"></a>00102       <span class="keywordflow">case</span> 3:
+<a name="l00103"></a>00103         <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;G&#39;</span>) {
+<a name="l00104"></a>00104           answer[parser_idx] = c;
+<a name="l00105"></a>00105           state = 4;
+<a name="l00106"></a>00106           parser_idx++;
+<a name="l00107"></a>00107         } <span class="keywordflow">else</span> {
+<a name="l00108"></a>00108           parser_idx = 0;
+<a name="l00109"></a>00109           state = 0;
+<a name="l00110"></a>00110         }
+<a name="l00111"></a>00111         <span class="keywordflow">break</span>;
+<a name="l00112"></a>00112 
+<a name="l00113"></a>00113       <span class="keywordflow">case</span> 4:
+<a name="l00114"></a>00114         <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;G&#39;</span>) {
+<a name="l00115"></a>00115           answer[parser_idx] = c;
+<a name="l00116"></a>00116           state = 5;
+<a name="l00117"></a>00117           parser_idx++;
+<a name="l00118"></a>00118         } <span class="keywordflow">else</span> {
+<a name="l00119"></a>00119           parser_idx = 0;
+<a name="l00120"></a>00120           state = 0;
+<a name="l00121"></a>00121         }
+<a name="l00122"></a>00122         <span class="keywordflow">break</span>;
+<a name="l00123"></a>00123 
+<a name="l00124"></a>00124       <span class="keywordflow">case</span> 5:
+<a name="l00125"></a>00125         <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;A&#39;</span>) {
+<a name="l00126"></a>00126           answer[parser_idx] = c;
+<a name="l00127"></a>00127           state = 6;
+<a name="l00128"></a>00128           parser_idx++;
+<a name="l00129"></a>00129         } <span class="keywordflow">else</span> {
+<a name="l00130"></a>00130           parser_idx = 0;
+<a name="l00131"></a>00131           state = 0;
+<a name="l00132"></a>00132         }
+<a name="l00133"></a>00133         <span class="keywordflow">break</span>;
+<a name="l00134"></a>00134 
+<a name="l00135"></a>00135       <span class="keywordflow">case</span> 6: <span class="comment">// get the rest of the message</span>
+<a name="l00136"></a>00136         <span class="keywordflow">while</span> (c != <span class="charliteral">&#39;\r&#39;</span>) {
+<a name="l00137"></a>00137           BA_GPSReceive(&amp;c, 1);
+<a name="l00138"></a>00138           answer[parser_idx] = c;
+<a name="l00139"></a>00139           parser_idx++;
+<a name="l00140"></a>00140         }
+<a name="l00141"></a>00141         <span class="comment">//BA_GPSReceive(&amp;(answer[parser_idx]), 60);</span>
+<a name="l00142"></a>00142         state = 7;
+<a name="l00143"></a>00143         <span class="keywordflow">break</span>;
+<a name="l00144"></a>00144 
+<a name="l00145"></a>00145       <span class="keywordflow">default</span>:
+<a name="l00146"></a>00146         <span class="comment">// get the rest of the message</span>
+<a name="l00147"></a>00147         <span class="keywordflow">break</span>;
+<a name="l00148"></a>00148       }
+<a name="l00149"></a>00149 
+<a name="l00150"></a>00150     }
+<a name="l00151"></a>00151 
+<a name="l00152"></a>00152     answer[parser_idx] = <span class="charliteral">&#39;\n&#39;</span>;
+<a name="l00153"></a>00153     <span class="keywordflow">for</span> (i=0;i&lt;80;i++){
+<a name="l00154"></a>00154       msg.<a class="code" href="structGPS__MSG.html#ac486c996a8a7a5edd1752baaea5b4571">buffer</a>[i]=answer[i];
+<a name="l00155"></a>00155     }
+<a name="l00156"></a>00156     <span class="comment">//msg.buffer=(uint8_t[80])answer;</span>
+<a name="l00157"></a>00157     msg.<a class="code" href="structGPS__MSG.html#a4f0c127ec8708885192496df14c31a71">count</a>=parser_idx;
+<a name="l00158"></a>00158 
+<a name="l00159"></a>00159     xQueueSend(writeQueue, &amp;msg, 1000);
+<a name="l00160"></a>00160     GPIO_SetBits(LEDS_GPIO_PORT, LEDV_PIN);
+<a name="l00161"></a>00161 
+<a name="l00162"></a>00162     <a class="code" href="main_8c.html#a7d5d5262a3c7d9c39a226ed465e347dc" title="Función que define la función de espera.">Delay</a>(1000);
+<a name="l00163"></a>00163 
+<a name="l00164"></a>00164     state = 0;
+<a name="l00165"></a>00165     parser_idx = 0;
+<a name="l00166"></a>00166   }
+<a name="l00167"></a>00167 }
+<a name="l00168"></a>00168 
+<a name="l00169"></a><a class="code" href="gps__task_8c.html#abdcfae3302239b75ae41f8d99d7ef7d4">00169</a> <span class="keywordtype">void</span> <a class="code" href="gps__task_8c.html#abdcfae3302239b75ae41f8d99d7ef7d4" title="Esta es la función principal de la tarea  Esta función inicializa el GPS y lanza el método que lee da...">GPSTaskFunc</a>(<span class="keywordtype">void</span> *pParams) {
+<a name="l00170"></a>00170 
+<a name="l00171"></a>00171   <a class="code" href="gps__task_8c.html#ab5a1e3a14590de2541497dd0c38c15a8" title="Esta es la función que inicializa todo el hardware que necesita la tarea.">GPSHardwareInit</a>(pParams);
+<a name="l00172"></a>00172   <a class="code" href="main_8c.html#a7d5d5262a3c7d9c39a226ed465e347dc" title="Función que define la función de espera.">Delay</a>(2000);
+<a name="l00173"></a>00173 
+<a name="l00174"></a>00174   <span class="keywordflow">while</span> (1) {
+<a name="l00175"></a>00175     <a class="code" href="gps__task_8c.html#ac0340e20d1b18f9259b07a8fd719df9f" title="Esta es la función que lee datos del GPS y, cuando detecta un mensaje correcto, lo envía a la tarea q...">parser_GPS</a>();
+<a name="l00176"></a>00176   }
+<a name="l00177"></a>00177 
+<a name="l00178"></a>00178 }
+</pre></div></div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Estructuras de Datos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Valores de enumeraciones</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Generado el Miércoles, 2 de Julio de 2014 10:04:37 para Sistema de Logging Geoposicional en Tiempo Real para Sistemas Empotrados por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

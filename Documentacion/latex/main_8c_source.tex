@@ -1,0 +1,94 @@
+\hypertarget{main_8c_source}{\subsection{main.\+c}
+\label{main_8c_source}\index{src/main.\+c@{src/main.\+c}}
+}
+
+\begin{DoxyCode}
+00001 
+00006 \textcolor{comment}{/* Standard includes. */}
+00007 \textcolor{preprocessor}{#include <stdio.h>}
+00008 
+00009 \textcolor{comment}{/* Scheduler includes. */}
+00010 \textcolor{preprocessor}{#include "FreeRTOS.h"}
+00011 \textcolor{preprocessor}{#include "task.h"}
+00012 
+00013 \textcolor{comment}{/* Library includes. */}
+00014 \textcolor{preprocessor}{#include "stm32f2xx.h"}
+00015 \textcolor{preprocessor}{#include "BA\_board.h"}
+00016 
+00017 \textcolor{comment}{/* Demo app includes. */}
+00018 \textcolor{preprocessor}{#include "\hyperlink{gps__task_8h}{gps\_task.h}"}
+00019 \textcolor{preprocessor}{#include "\hyperlink{fs__task_8h}{fs\_task.h}"}
+00020 
+00025 \textcolor{keywordtype}{void} \hyperlink{main_8c_a70d35396e40a379083f623fc98817ce5}{prvSetupHardware}( \textcolor{keywordtype}{void} );
+00026 
+00033 \textcolor{keywordtype}{int} \hyperlink{main_8c_aa2bb3bba4ac29312751cdf8d20d86c5b}{putChar}( \textcolor{keywordtype}{int} ch );
+00034 
+\hypertarget{main_8c_source_l00038}{}\hyperlink{main_8c_a22d2ba743406e0f67f8fa5d6df6e2891}{00038} \textcolor{keywordtype}{void} \hyperlink{main_8c_a22d2ba743406e0f67f8fa5d6df6e2891}{setupTasks}() \{
+00039   \hyperlink{gps__task_8c_ac8c08e783e9eabb617e98e4af988aeed}{GPSStartTask}(configMINIMAL\_STACK\_SIZE*4, 1, NULL);
+00040   \hyperlink{fs__task_8c_a67c975ae61cf5db912f17b454b2713c7}{FSStartTask}(configMINIMAL\_STACK\_SIZE*4, 1, NULL);
+00041 \}
+\hypertarget{main_8c_source_l00045}{}\hyperlink{main_8c_a631058ae679448e6987400bfd4173c03}{00045} \textcolor{keywordtype}{void} \hyperlink{main_8c_a631058ae679448e6987400bfd4173c03}{setupQueues}()\{
+00046   writeQueue = xQueueCreate(4, \textcolor{keyword}{sizeof}(\hyperlink{structGPS__MSG}{GPS\_MSG}));
+00047 \}
+00048 
+00049 \textcolor{comment}{/*-----------------------------------------------------------*/}
+\hypertarget{main_8c_source_l00054}{}\hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{00054} \textcolor{keywordtype}{int} \hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}( \textcolor{keywordtype}{void} )
+00055 \{
+00056   \hyperlink{main_8c_a70d35396e40a379083f623fc98817ce5}{prvSetupHardware}();
+00057   \hyperlink{main_8c_a631058ae679448e6987400bfd4173c03}{setupQueues}();
+00058   \hyperlink{main_8c_a22d2ba743406e0f67f8fa5d6df6e2891}{setupTasks}();
+00059 
+00060 
+00061     \textcolor{comment}{/* Start the scheduler. */}
+00062   vTaskStartScheduler();
+00063 
+00064     \textcolor{comment}{/* Will only get here if there was insufficient memory to create the idle}
+00065 \textcolor{comment}{    task.  The idle task is created within vTaskStartScheduler(). */}
+00066   \textcolor{keywordflow}{for}( ;; );
+00067 
+00068   \textcolor{keywordflow}{return} 0;
+00069 \}
+00070 \textcolor{comment}{/*-----------------------------------------------------------*/}
+00071 
+\hypertarget{main_8c_source_l00072}{}\hyperlink{main_8c_a70d35396e40a379083f623fc98817ce5}{00072} \textcolor{keywordtype}{void} \hyperlink{main_8c_a70d35396e40a379083f623fc98817ce5}{prvSetupHardware}( \textcolor{keywordtype}{void} )
+00073 \{
+00074   \textcolor{comment}{/* Set the Vector Table base address at 0x08000000 */}
+00075   NVIC\_SetVectorTable( NVIC\_VectTab\_FLASH, 0x0 );
+00076 
+00077   NVIC\_PriorityGroupConfig( NVIC\_PriorityGroup\_4 );
+00078 
+00079   \textcolor{comment}{/* Configure HCLK clock as SysTick clock source. */}
+00080   SysTick\_CLKSourceConfig( SysTick\_CLKSource\_HCLK );
+00081   BA\_LEDsInit();
+00082 
+00083 \}
+00084 
+00085 \textcolor{comment}{/*-----------------------------------------------------------*/}
+\hypertarget{main_8c_source_l00090}{}\hyperlink{main_8c_a329de0f973fabef8b34da6444654295c}{00090} \textcolor{keywordtype}{void} \hyperlink{main_8c_a329de0f973fabef8b34da6444654295c}{vApplicationStackOverflowHook}( xTaskHandle *pxTask, \textcolor{keywordtype}{signed} portCHAR *
+      pcTaskName )
+00091 \{
+00092   \textcolor{comment}{/* This function will get called if a task overflows its stack.   If the}
+00093 \textcolor{comment}{  parameters are corrupt then inspect pxCurrentTCB to find which was the}
+00094 \textcolor{comment}{  offending task. */}
+00095 
+00096   ( void ) pxTask;
+00097   ( void ) pcTaskName;
+00098 
+00099   \textcolor{keywordflow}{for}( ;; );
+00100 \}
+00101 \textcolor{comment}{/*-----------------------------------------------------------*/}
+\hypertarget{main_8c_source_l00106}{}\hyperlink{main_8c_a9ca051aa77e17583aa5a85d5de5c199a}{00106} \textcolor{keywordtype}{void} \hyperlink{main_8c_a9ca051aa77e17583aa5a85d5de5c199a}{vApplicationTickHook}( \textcolor{keywordtype}{void} )
+00107 \{
+00108 \}
+00109 
+00110 \textcolor{comment}{/*-----------------------------------------------------------*/}
+00111 
+\hypertarget{main_8c_source_l00112}{}\hyperlink{main_8c_aa2bb3bba4ac29312751cdf8d20d86c5b}{00112} \textcolor{keywordtype}{int} \hyperlink{main_8c_aa2bb3bba4ac29312751cdf8d20d86c5b}{putChar}(\textcolor{keywordtype}{int} ch)
+00113 \{
+00114   \textcolor{keywordflow}{return} ch;
+00115 \}
+00116 
+\hypertarget{main_8c_source_l00121}{}\hyperlink{main_8c_a7d5d5262a3c7d9c39a226ed465e347dc}{00121} \textcolor{keywordtype}{void} \hyperlink{main_8c_a7d5d5262a3c7d9c39a226ed465e347dc}{Delay}(uint32\_t t) \{
+00122   vTaskDelay(t / portTICK\_RATE\_MS);
+00123 \}
+\end{DoxyCode}

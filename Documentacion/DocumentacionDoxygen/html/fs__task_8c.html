@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>Sistema de Logging Geoposicional en Tiempo Real para Sistemas Empotrados: Referencia del Archivo src/fs_task.c</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Sistema de Logging Geoposicional en Tiempo Real para Sistemas Empotrados
+   
+   </div>
+   <div id="projectbrief">Trabajo Fin de Grado incluido en el proyecto Biker Assistant de la empresa SmartSoC Solutions</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Generado por Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="annotated.html"><span>Estructuras&#160;de&#160;Datos</span></a></li>
+      <li class="current"><a href="files.html"><span>Archivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;archivos</span></a></li>
+      <li><a href="globals.html"><span>Globales</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funciones</a>  </div>
+  <div class="headertitle">
+<div class="title">Referencia del Archivo src/fs_task.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Módulo que implementa las funciones del archivo <a class="el" href="fs__task_8h.html" title="Cabecera de la tarea que gestiona el sistema de archivos.">fs_task.h</a>.  
+<a href="#details">Más...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="fs__task_8h_source.html">fs_task.h</a>&quot;</code><br/>
+<code>#include &quot;stm32f2xx.h&quot;</code><br/>
+<code>#include &quot;BA_board.h&quot;</code><br/>
+<code>#include &quot;task.h&quot;</code><br/>
+<code>#include &lt;stdlib.h&gt;</code><br/>
+<code>#include &quot;<a class="el" href="fileSystem_8h_source.html">fileSystem.h</a>&quot;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Dependencia gráfica adjunta para fs_task.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="fs__task_8c__incl.png" border="0" usemap="#src_2fs__task_8c" alt=""/></div>
+<map name="src_2fs__task_8c" id="src_2fs__task_8c">
+<area shape="rect" id="node3" href="fs__task_8h.html" title="Cabecera de la tarea que gestiona el sistema de archivos." alt="" coords="95,83,169,112"/><area shape="rect" id="node21" href="fileSystem_8h.html" title="Cabecera principal del módulo del Sistema de Archivos." alt="" coords="533,83,627,112"/><area shape="rect" id="node7" href="common_8h.html" title="En este archivo se definen estructuras de datos comunes para todas las tareas." alt="" coords="91,160,173,189"/><area shape="rect" id="node23" href="integer_8h.html" title="Tipos de datos abreviados." alt="" coords="508,237,580,267"/><area shape="rect" id="node26" href="diskio_8h.html" title="Cabecera de la capa de abstracción de operaciones a bajo nivel sobre la memoria." alt="" coords="581,160,648,189"/><area shape="rect" id="node29" href="ffconf_8h.html" title="Fichero de configuración del sistema de archivos." alt="" coords="604,237,671,267"/></map>
+</div>
+</div>
+<p><a href="fs__task_8c_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Funciones</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a941f5a214539980b9c21487c9e598ed1"></a><!-- doxytag: member="fs_task.c::FSTaskFunc" ref="a941f5a214539980b9c21487c9e598ed1" args="(void *pParams)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fs__task_8c.html#a941f5a214539980b9c21487c9e598ed1">FSTaskFunc</a> (void *pParams)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Esta es la función principal de la tarea  Esta función inicializa la memoria y el sistema de archivos y lanza el método que se queda a la espera de mensajes desde el GPS. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab7f1e7392ed5dbe6c58be74746987f99"></a><!-- doxytag: member="fs_task.c::FSHardwareInit" ref="ab7f1e7392ed5dbe6c58be74746987f99" args="(void *pParam)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fs__task_8c.html#ab7f1e7392ed5dbe6c58be74746987f99">FSHardwareInit</a> (void *pParam)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Método que inicializa el hardware de la tarea  Esta función resetea un sector y crea en él un sistema de archivos. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fs__task_8c.html#a67c975ae61cf5db912f17b454b2713c7">FSStartTask</a> (unsigned short nStackDepth, unsigned portBASE_TYPE nPriority, void *pParams)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Método que crea la tarea.  <a href="#a67c975ae61cf5db912f17b454b2713c7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7b35ce27806462ceb0681745fc16ed0b"></a><!-- doxytag: member="fs_task.c::read_file" ref="a7b35ce27806462ceb0681745fc16ed0b" args="()" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fs__task_8c.html#a7b35ce27806462ceb0681745fc16ed0b">read_file</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Función que lee de un archivo  Esta función no se utiliza en la implementación actual, pero se mantiene para poder ser utilizada cuando se integre en el proyecto Biker Assistant. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a21257086cb63d29c4622a8a876a98413"></a><!-- doxytag: member="fs_task.c::ReceiveWriteGPS" ref="a21257086cb63d29c4622a8a876a98413" args="()" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fs__task_8c.html#a21257086cb63d29c4622a8a876a98413">ReceiveWriteGPS</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Función que escribe en un archivo todos los mensajes recibidos desde la tarea que controla el GPS  Esta función, dentro del bucle de ejecución, enciende y apaga un led cada vez que recibe y escribe un dato. <br/></td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Descripción detallada</h2>
+<div class="textblock"><p>Módulo que implementa las funciones del archivo <a class="el" href="fs__task_8h.html" title="Cabecera de la tarea que gestiona el sistema de archivos.">fs_task.h</a>. </p>
+
+<p>Definición en el archivo <a class="el" href="fs__task_8c_source.html">fs_task.c</a>.</p>
+</div><hr/><h2>Documentación de las funciones</h2>
+<a class="anchor" id="a67c975ae61cf5db912f17b454b2713c7"></a><!-- doxytag: member="fs_task.c::FSStartTask" ref="a67c975ae61cf5db912f17b454b2713c7" args="(unsigned short nStackDepth, unsigned portBASE_TYPE nPriority, void *pParams)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="fs__task_8h.html#a67c975ae61cf5db912f17b454b2713c7">FSStartTask</a> </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>nStackDepth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned portBASE_TYPE&#160;</td>
+          <td class="paramname"><em>nPriority</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pParams</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Método que crea la tarea. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sStackDepth</td><td>Tamaño de la pila de memoria </td></tr>
+    <tr><td class="paramname">nPrioriy</td><td>Prioridad de la tarea </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definición en la línea <a class="el" href="fs__task_8c_source.html#l00027">27</a> del archivo <a class="el" href="fs__task_8c_source.html">fs_task.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Estructuras de Datos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Valores de enumeraciones</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Generado el Miércoles, 2 de Julio de 2014 10:04:37 para Sistema de Logging Geoposicional en Tiempo Real para Sistemas Empotrados por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

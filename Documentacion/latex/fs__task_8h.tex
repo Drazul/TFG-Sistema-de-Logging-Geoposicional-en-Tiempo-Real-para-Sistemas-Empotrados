@@ -1,0 +1,68 @@
+\hypertarget{fs__task_8h}{\subsection{Referencia del Archivo src/fs\+\_\+task.h}
+\label{fs__task_8h}\index{src/fs\+\_\+task.\+h@{src/fs\+\_\+task.\+h}}
+}
+
+
+Cabecera de la tarea que gestiona el sistema de archivos.  
+
+
+{\ttfamily \#include \char`\"{}Free\+R\+T\+O\+S.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}common.\+h\char`\"{}}\\*
+Dependencia gráfica adjunta para fs\+\_\+task.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{fs__task_8h__incl}
+\end{center}
+\end{figure}
+Gráfico de los archivos que directa o indirectamente incluyen a este archivo\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{fs__task_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{fs__task_8h_ab7f1e7392ed5dbe6c58be74746987f99}{void \hyperlink{fs__task_8h_ab7f1e7392ed5dbe6c58be74746987f99}{F\+S\+Hardware\+Init} (void $\ast$p\+Param)}\label{fs__task_8h_ab7f1e7392ed5dbe6c58be74746987f99}
+
+\begin{DoxyCompactList}\small\item\em Método que inicializa el hardware de la tarea  Esta función resetea un sector y crea en él un sistema de archivos. \end{DoxyCompactList}\item 
+void \hyperlink{fs__task_8h_a67c975ae61cf5db912f17b454b2713c7}{F\+S\+Start\+Task} (unsigned short n\+Stack\+Depth, unsigned port\+B\+A\+S\+E\+\_\+\+T\+Y\+P\+E n\+Priority, void $\ast$p\+Params)
+\begin{DoxyCompactList}\small\item\em Método que crea la tarea. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Descripción detallada}
+Cabecera de la tarea que gestiona el sistema de archivos. 
+
+
+
+Definición en el archivo \hyperlink{fs__task_8h_source}{fs\+\_\+task.\+h}.
+
+
+
+\subsubsection{Documentación de las funciones}
+\hypertarget{fs__task_8h_a67c975ae61cf5db912f17b454b2713c7}{\index{fs\+\_\+task.\+h@{fs\+\_\+task.\+h}!F\+S\+Start\+Task@{F\+S\+Start\+Task}}
+\index{F\+S\+Start\+Task@{F\+S\+Start\+Task}!fs\+\_\+task.\+h@{fs\+\_\+task.\+h}}
+\paragraph[{F\+S\+Start\+Task}]{\setlength{\rightskip}{0pt plus 5cm}void F\+S\+Start\+Task (
+\begin{DoxyParamCaption}
+\item[{unsigned short}]{n\+Stack\+Depth, }
+\item[{unsigned port\+B\+A\+S\+E\+\_\+\+T\+Y\+P\+E}]{n\+Priority, }
+\item[{void $\ast$}]{p\+Params}
+\end{DoxyParamCaption}
+)}}\label{fs__task_8h_a67c975ae61cf5db912f17b454b2713c7}
+
+
+Método que crea la tarea. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em s\+Stack\+Depth} & Tamaño de la pila de memoria \\
+\hline
+{\em n\+Prioriy} & Prioridad de la tarea \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea 27 del archivo fs\+\_\+task.\+c.
+

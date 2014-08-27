@@ -1,0 +1,303 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>Sistema de Logging Geoposicional en Tiempo Real para Sistemas Empotrados: Referencia de la Estructura FS</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Sistema de Logging Geoposicional en Tiempo Real para Sistemas Empotrados
+   
+   </div>
+   <div id="projectbrief">Trabajo Fin de Grado incluido en el proyecto Biker Assistant de la empresa SmartSoC Solutions</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Generado por Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Estructuras&#160;de&#160;Datos</span></a></li>
+      <li><a href="files.html"><span>Archivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Estructura&#160;de&#160;datos</span></a></li>
+      <li><a href="classes.html"><span>Índice&#160;de&#160;estructura&#160;de&#160;datos</span></a></li>
+      <li><a href="functions.html"><span>Campos&#160;de&#160;datos</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Campos de datos</a>  </div>
+  <div class="headertitle">
+<div class="title">Referencia de la Estructura FS</div>  </div>
+</div><!--header-->
+<div class="contents">
+<!-- doxytag: class="FS" -->
+<p>Estructura que define el Sistema de Archivos.  
+ <a href="structFS.html#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="fileSystem_8h_source.html">fileSystem.h</a>&gt;</code></p>
+<div class="dynheader">
+Diagrama de colaboración para FS:</div>
+<div class="dyncontent">
+<div class="center"><img src="structFS__coll__graph.png" border="0" usemap="#FS_coll__map" alt="Collaboration graph"/></div>
+<map name="FS_coll__map" id="FS_coll__map">
+<area shape="rect" id="node2" href="structFIL.html" title="Estructura que define un archivo." alt="" coords="5,5,133,264"/></map>
+<center><span class="legend">[<a href="graph_legend.html">significado de colores y flechas</a>]</span></center></div>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="pub-attribs"></a>
+Campos de datos</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFS.html#a22eed025311346b8029d8b445c192b95">start_address</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">BYTE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFS.html#a06559d64af1c2b15af05165f30c59868">sector_size</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">WORD&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFS.html#adae8dcbe72b934a870bf663481207e3e">free_sector</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">WORD&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFS.html#ab8f2ed716ba1865bff2fe82d36e90546">fs_size</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">WORD&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFS.html#a6b431a5035eb3bb668565772a3ecd57a">volbase</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">WORD&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFS.html#a7c6676234fc0734f2139c627a0b01428">fatbase</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">WORD&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFS.html#a727068deba19f90b5b402ae005f49b58">database</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">WORD&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFS.html#a050f921ab2140aa4eadce4a140b61fbe">lastDescriptor</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structFIL.html">FIL</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFS.html#a5772298ea6aafc77f842037933531a02">files</a> [_MAX_FILES]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">BYTE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFS.html#a23d4e26f31e8932d8b216955e6af2130">win</a> [SECTOR_SIZE]</td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Descripción detallada</h2>
+<div class="textblock"><p>Estructura que define el Sistema de Archivos. </p>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8h_source.html#l00064">64</a> del archivo <a class="el" href="fileSystem_8h_source.html">fileSystem.h</a>.</p>
+</div><hr/><h2>Documentación de los campos</h2>
+<a class="anchor" id="a727068deba19f90b5b402ae005f49b58"></a><!-- doxytag: member="FS::database" ref="a727068deba19f90b5b402ae005f49b58" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">WORD <a class="el" href="structFS.html#a727068deba19f90b5b402ae005f49b58">FS::database</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Sector de inicio de la tabla de descriptores </p>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8h_source.html#l00071">71</a> del archivo <a class="el" href="fileSystem_8h_source.html">fileSystem.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7c6676234fc0734f2139c627a0b01428"></a><!-- doxytag: member="FS::fatbase" ref="a7c6676234fc0734f2139c627a0b01428" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">WORD <a class="el" href="structFS.html#a7c6676234fc0734f2139c627a0b01428">FS::fatbase</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Sector de inicio del sistema de archivos </p>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8h_source.html#l00070">70</a> del archivo <a class="el" href="fileSystem_8h_source.html">fileSystem.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5772298ea6aafc77f842037933531a02"></a><!-- doxytag: member="FS::files" ref="a5772298ea6aafc77f842037933531a02" args="[_MAX_FILES]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structFIL.html">FIL</a> <a class="el" href="structFS.html#a5772298ea6aafc77f842037933531a02">FS::files</a>[_MAX_FILES]</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Vector de archivos abiertos </p>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8h_source.html#l00073">73</a> del archivo <a class="el" href="fileSystem_8h_source.html">fileSystem.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="adae8dcbe72b934a870bf663481207e3e"></a><!-- doxytag: member="FS::free_sector" ref="adae8dcbe72b934a870bf663481207e3e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">WORD <a class="el" href="structFS.html#adae8dcbe72b934a870bf663481207e3e">FS::free_sector</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Número de sectores libres </p>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8h_source.html#l00067">67</a> del archivo <a class="el" href="fileSystem_8h_source.html">fileSystem.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab8f2ed716ba1865bff2fe82d36e90546"></a><!-- doxytag: member="FS::fs_size" ref="ab8f2ed716ba1865bff2fe82d36e90546" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">WORD <a class="el" href="structFS.html#ab8f2ed716ba1865bff2fe82d36e90546">FS::fs_size</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Tamaño en sectores lógicos del sistema de archivos </p>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8h_source.html#l00068">68</a> del archivo <a class="el" href="fileSystem_8h_source.html">fileSystem.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a050f921ab2140aa4eadce4a140b61fbe"></a><!-- doxytag: member="FS::lastDescriptor" ref="a050f921ab2140aa4eadce4a140b61fbe" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">WORD <a class="el" href="structFS.html#a050f921ab2140aa4eadce4a140b61fbe">FS::lastDescriptor</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Sector donde se guardó el último descriptor de archivo </p>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8h_source.html#l00072">72</a> del archivo <a class="el" href="fileSystem_8h_source.html">fileSystem.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a06559d64af1c2b15af05165f30c59868"></a><!-- doxytag: member="FS::sector_size" ref="a06559d64af1c2b15af05165f30c59868" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BYTE <a class="el" href="structFS.html#a06559d64af1c2b15af05165f30c59868">FS::sector_size</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Tamaño de cada sector lógico </p>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8h_source.html#l00066">66</a> del archivo <a class="el" href="fileSystem_8h_source.html">fileSystem.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a22eed025311346b8029d8b445c192b95"></a><!-- doxytag: member="FS::start_address" ref="a22eed025311346b8029d8b445c192b95" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t <a class="el" href="structFS.html#a22eed025311346b8029d8b445c192b95">FS::start_address</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Dirección de inicio del sistema de archivos </p>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8h_source.html#l00065">65</a> del archivo <a class="el" href="fileSystem_8h_source.html">fileSystem.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6b431a5035eb3bb668565772a3ecd57a"></a><!-- doxytag: member="FS::volbase" ref="a6b431a5035eb3bb668565772a3ecd57a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">WORD <a class="el" href="structFS.html#a6b431a5035eb3bb668565772a3ecd57a">FS::volbase</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Sector de inicio del volúmen de datos </p>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8h_source.html#l00069">69</a> del archivo <a class="el" href="fileSystem_8h_source.html">fileSystem.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a23d4e26f31e8932d8b216955e6af2130"></a><!-- doxytag: member="FS::win" ref="a23d4e26f31e8932d8b216955e6af2130" args="[SECTOR_SIZE]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BYTE <a class="el" href="structFS.html#a23d4e26f31e8932d8b216955e6af2130">FS::win</a>[SECTOR_SIZE]</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Buffer de lectura del sistema de archivos y de los archivos </p>
+
+<p>Definición en la línea <a class="el" href="fileSystem_8h_source.html#l00074">74</a> del archivo <a class="el" href="fileSystem_8h_source.html">fileSystem.h</a>.</p>
+
+</div>
+</div>
+<hr/>La documentación para esta estructura fue generada a partir del siguiente fichero:<ul>
+<li>FS/<a class="el" href="fileSystem_8h_source.html">fileSystem.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Estructuras de Datos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Valores de enumeraciones</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Generado el Miércoles, 2 de Julio de 2014 10:04:37 para Sistema de Logging Geoposicional en Tiempo Real para Sistemas Empotrados por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

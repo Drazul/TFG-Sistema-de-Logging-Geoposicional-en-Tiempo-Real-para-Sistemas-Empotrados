@@ -1,0 +1,26 @@
+
+\begin{tabular}{p{.3\textwidth}p{.2\textwidth}p{.4\textwidth}}
+\tabheadformat
+  \tabhead{Nombre}   &
+  \tabhead{Ejemplo}      &
+  \tabhead{Descripción}  \\
+\hline
+%\textbf{Nombre}          & \textbf{Ejemplo} & \textbf{Descripción}                                                                               \\ \hline
+Identificador de mensaje & \$GPGGA          & Cabecera del protocolo GGA                                                                         \\ \hline
+Tiempo UTC               & 064951.000       & hhmmss.sss                                                                                         \\ \hline
+Latitud                  & 2307.1256        & ddmm.mmmm                                                                                          \\ \hline
+Indicador N/S            & N                & N=norte, S=sur                                                                                     \\ \hline
+Longitud                 & 12016.4438       & dddmm.mmmm                                                                                         \\ \hline
+Indicador E/O            & E                & E=este, W=oeste                                                                                    \\ \hline
+Indicador de posición    & 1                & \begin{tabular}[c]{@{}l@{}}0=no disponible, 1=ajustado,\\  2=diferente ajuste del GPS\end{tabular} \\ \hline
+Nº de satélites usados   & 8                & Entre 0 y 14                                                                                       \\ \hline
+HDOP                     & 0.95             & Dilución de la precisión horizontal                                                                \\ \hline
+Altitud sobre el mar     & 39.9             & \begin{tabular}[c]{@{}l@{}}Altitud, en metros, de la antena \\ sobre el nivel del mar\end{tabular} \\ \hline
+Unidades                 & M                & Metros de altitud de la antena                                                                     \\ \hline
+Separación geoidal       & 17.8             &                                                                                                    \\ \hline
+Unidades                 & M                & Metros de la separación geoidal                                                                    \\ \hline
+Age of Diff. Corr.       &                  & \begin{tabular}[c]{@{}l@{}}Nulo cuando no se utiliza DGPS\\  en segundos\end{tabular}              \\ \hline
+Checksum                 & *65              &                                                                                                    \\ \hline
+CR LF                    &                  & Fin de mensaje                                                                                     \\ \hline
+\end{tabular}
+

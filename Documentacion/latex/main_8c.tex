@@ -1,0 +1,169 @@
+\hypertarget{main_8c}{\subsection{Referencia del Archivo src/main.c}
+\label{main_8c}\index{src/main.\+c@{src/main.\+c}}
+}
+
+
+Función principal.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}Free\+R\+T\+O\+S.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}task.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}stm32f2xx.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}B\+A\+\_\+board.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}gps\+\_\+task.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}fs\+\_\+task.\+h\char`\"{}}\\*
+Dependencia gráfica adjunta para main.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8c__incl}
+\end{center}
+\end{figure}
+\subsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{main_8c_a70d35396e40a379083f623fc98817ce5}{prv\+Setup\+Hardware} (void)
+\begin{DoxyCompactList}\small\item\em Función que inicializa el hardware. \end{DoxyCompactList}\item 
+int \hyperlink{main_8c_aa2bb3bba4ac29312751cdf8d20d86c5b}{put\+Char} (int ch)
+\item 
+\hypertarget{main_8c_a22d2ba743406e0f67f8fa5d6df6e2891}{void \hyperlink{main_8c_a22d2ba743406e0f67f8fa5d6df6e2891}{setup\+Tasks} ()}\label{main_8c_a22d2ba743406e0f67f8fa5d6df6e2891}
+
+\begin{DoxyCompactList}\small\item\em Función que crea las tareas del Sistemas Operativo Free\+R\+T\+O\+S. \end{DoxyCompactList}\item 
+\hypertarget{main_8c_a631058ae679448e6987400bfd4173c03}{void \hyperlink{main_8c_a631058ae679448e6987400bfd4173c03}{setup\+Queues} ()}\label{main_8c_a631058ae679448e6987400bfd4173c03}
+
+\begin{DoxyCompactList}\small\item\em Función que crea las colas de mensajes entre tareas del Sistema Operativo Free\+R\+T\+O\+S. \end{DoxyCompactList}\item 
+int \hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main} (void)
+\begin{DoxyCompactList}\small\item\em Función principal del sistema. \end{DoxyCompactList}\item 
+void \hyperlink{main_8c_a329de0f973fabef8b34da6444654295c}{v\+Application\+Stack\+Overflow\+Hook} (x\+Task\+Handle $\ast$px\+Task, signed port\+C\+H\+A\+R $\ast$pc\+Task\+Name)
+\begin{DoxyCompactList}\small\item\em Función que crea la excepción de desbordamiento de la pila de memoria. \end{DoxyCompactList}\item 
+void \hyperlink{main_8c_a9ca051aa77e17583aa5a85d5de5c199a}{v\+Application\+Tick\+Hook} (void)
+\begin{DoxyCompactList}\small\item\em Función que crea la excepción del reloj. \end{DoxyCompactList}\item 
+void \hyperlink{main_8c_a7d5d5262a3c7d9c39a226ed465e347dc}{Delay} (uint32\+\_\+t t)
+\begin{DoxyCompactList}\small\item\em Función que define la función de espera. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Descripción detallada}
+Función principal. 
+
+
+
+Definición en el archivo \hyperlink{main_8c_source}{main.\+c}.
+
+
+
+\subsubsection{Documentación de las funciones}
+\hypertarget{main_8c_a7d5d5262a3c7d9c39a226ed465e347dc}{\index{main.\+c@{main.\+c}!Delay@{Delay}}
+\index{Delay@{Delay}!main.\+c@{main.\+c}}
+\paragraph[{Delay}]{\setlength{\rightskip}{0pt plus 5cm}void Delay (
+\begin{DoxyParamCaption}
+\item[{uint32\+\_\+t}]{t}
+\end{DoxyParamCaption}
+)}}\label{main_8c_a7d5d5262a3c7d9c39a226ed465e347dc}
+
+
+Función que define la función de espera. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em t} & Tiempo a esperar en milisegundos \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea 121 del archivo main.\+c.
+
+\hypertarget{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{\index{main.\+c@{main.\+c}!main@{main}}
+\index{main@{main}!main.\+c@{main.\+c}}
+\paragraph[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{main_8c_a840291bc02cba5474a4cb46a9b9566fe}
+
+
+Función principal del sistema. 
+
+\begin{DoxyNote}{Nota}
+Esta función inicializa el hardware, crea las colas de mensajes, crea las tareas e inicializa el planificador del Sistema Operativo 
+\end{DoxyNote}
+
+
+Definición en la línea 54 del archivo main.\+c.
+
+\hypertarget{main_8c_a70d35396e40a379083f623fc98817ce5}{\index{main.\+c@{main.\+c}!prv\+Setup\+Hardware@{prv\+Setup\+Hardware}}
+\index{prv\+Setup\+Hardware@{prv\+Setup\+Hardware}!main.\+c@{main.\+c}}
+\paragraph[{prv\+Setup\+Hardware}]{\setlength{\rightskip}{0pt plus 5cm}void prv\+Setup\+Hardware (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{main_8c_a70d35396e40a379083f623fc98817ce5}
+
+
+Función que inicializa el hardware. 
+
+\begin{DoxyNote}{Nota}
+Esta función inicializa el vector de interrupciones, configura los niveles de priporidad, establece la fuente del reloj del sistema e inicializa los leds 
+\end{DoxyNote}
+
+
+Definición en la línea 72 del archivo main.\+c.
+
+\hypertarget{main_8c_aa2bb3bba4ac29312751cdf8d20d86c5b}{\index{main.\+c@{main.\+c}!put\+Char@{put\+Char}}
+\index{put\+Char@{put\+Char}!main.\+c@{main.\+c}}
+\paragraph[{put\+Char}]{\setlength{\rightskip}{0pt plus 5cm}int put\+Char (
+\begin{DoxyParamCaption}
+\item[{int}]{ch}
+\end{DoxyParamCaption}
+)}}\label{main_8c_aa2bb3bba4ac29312751cdf8d20d86c5b}
+External dependence needed by printf implementation. Write a character to standard out.
+
+
+\begin{DoxyParams}{Parámetros}
+{\em c} & Specifies the character to be written. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Returns the character written. No error conditions are managed. 
+\end{DoxyReturn}
+
+
+Definición en la línea 112 del archivo main.\+c.
+
+\hypertarget{main_8c_a329de0f973fabef8b34da6444654295c}{\index{main.\+c@{main.\+c}!v\+Application\+Stack\+Overflow\+Hook@{v\+Application\+Stack\+Overflow\+Hook}}
+\index{v\+Application\+Stack\+Overflow\+Hook@{v\+Application\+Stack\+Overflow\+Hook}!main.\+c@{main.\+c}}
+\paragraph[{v\+Application\+Stack\+Overflow\+Hook}]{\setlength{\rightskip}{0pt plus 5cm}void v\+Application\+Stack\+Overflow\+Hook (
+\begin{DoxyParamCaption}
+\item[{x\+Task\+Handle $\ast$}]{px\+Task, }
+\item[{signed port\+C\+H\+A\+R $\ast$}]{pc\+Task\+Name}
+\end{DoxyParamCaption}
+)}}\label{main_8c_a329de0f973fabef8b34da6444654295c}
+
+
+Función que crea la excepción de desbordamiento de la pila de memoria. 
+
+\begin{DoxyNote}{Nota}
+Esta función la llama internamente el Sistema Operativo 
+\end{DoxyNote}
+
+
+Definición en la línea 90 del archivo main.\+c.
+
+\hypertarget{main_8c_a9ca051aa77e17583aa5a85d5de5c199a}{\index{main.\+c@{main.\+c}!v\+Application\+Tick\+Hook@{v\+Application\+Tick\+Hook}}
+\index{v\+Application\+Tick\+Hook@{v\+Application\+Tick\+Hook}!main.\+c@{main.\+c}}
+\paragraph[{v\+Application\+Tick\+Hook}]{\setlength{\rightskip}{0pt plus 5cm}void v\+Application\+Tick\+Hook (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{main_8c_a9ca051aa77e17583aa5a85d5de5c199a}
+
+
+Función que crea la excepción del reloj. 
+
+\begin{DoxyNote}{Nota}
+Esta función la llama internamente el Sistema Operativo 
+\end{DoxyNote}
+
+
+Definición en la línea 106 del archivo main.\+c.
+

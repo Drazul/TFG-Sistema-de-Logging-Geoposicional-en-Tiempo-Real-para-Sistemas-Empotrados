@@ -1,0 +1,138 @@
+\hypertarget{structFIL}{\subsection{Referencia de la Estructura F\+I\+L}
+\label{structFIL}\index{F\+I\+L@{F\+I\+L}}
+}
+
+
+Estructura que define un archivo.  
+
+
+
+
+{\ttfamily \#include $<$file\+System.\+h$>$}
+
+
+
+Diagrama de colaboración para F\+I\+L\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{structFIL__coll__graph}
+\end{center}
+\end{figure}
+\subsubsection*{Campos de datos}
+\begin{DoxyCompactItemize}
+\item 
+B\+Y\+T\+E \hyperlink{structFIL_a21240fe08417eb46f794e67519bf4a58}{name} \mbox{[}7\mbox{]}
+\item 
+B\+Y\+T\+E \hyperlink{structFIL_ac409508881f5a16f2998ae675072b376}{flag}
+\item 
+B\+Y\+T\+E \hyperlink{structFIL_aea440945db26de9c4a88065c0c887fda}{err}
+\item 
+B\+Y\+T\+E \hyperlink{structFIL_a32847fe875861954ec3dc750d332a194}{dirty}
+\item 
+B\+Y\+T\+E \hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fs\+Index}
+\item 
+D\+W\+O\+R\+D \hyperlink{structFIL_a684d4d555f293b08b8396c35e20706d3}{start\+Sector}
+\item 
+D\+W\+O\+R\+D \hyperlink{structFIL_a89e92b4845c72b4f9f119b38d1142a41}{write\+Pointer}
+\item 
+D\+W\+O\+R\+D \hyperlink{structFIL_ad0d1f48655e0e06936cb7883993afb1f}{read\+Pointer}
+\item 
+D\+W\+O\+R\+D \hyperlink{structFIL_a043930088c6fdc5e523500b833106476}{descriptor\+Sector}
+\item 
+W\+O\+R\+D \hyperlink{structFIL_a5fb6271e3cc261b9f811bb8860cb6110}{buffindex}
+\item 
+B\+Y\+T\+E \hyperlink{structFIL_a9e1f6c5e0e2cd4fd3705e5a213ad2f83}{buff} \mbox{[}S\+E\+C\+T\+O\+R\+\_\+\+S\+I\+Z\+E\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Descripción detallada}
+Estructura que define un archivo. 
+
+Definición en la línea 47 del archivo file\+System.\+h.
+
+
+
+\subsubsection{Documentación de los campos}
+\hypertarget{structFIL_a9e1f6c5e0e2cd4fd3705e5a213ad2f83}{\index{F\+I\+L@{F\+I\+L}!buff@{buff}}
+\index{buff@{buff}!F\+I\+L@{F\+I\+L}}
+\paragraph[{buff}]{\setlength{\rightskip}{0pt plus 5cm}B\+Y\+T\+E F\+I\+L\+::buff\mbox{[}S\+E\+C\+T\+O\+R\+\_\+\+S\+I\+Z\+E\mbox{]}}}\label{structFIL_a9e1f6c5e0e2cd4fd3705e5a213ad2f83}
+buffer de escritura 
+
+Definición en la línea 58 del archivo file\+System.\+h.
+
+\hypertarget{structFIL_a5fb6271e3cc261b9f811bb8860cb6110}{\index{F\+I\+L@{F\+I\+L}!buffindex@{buffindex}}
+\index{buffindex@{buffindex}!F\+I\+L@{F\+I\+L}}
+\paragraph[{buffindex}]{\setlength{\rightskip}{0pt plus 5cm}W\+O\+R\+D F\+I\+L\+::buffindex}}\label{structFIL_a5fb6271e3cc261b9f811bb8860cb6110}
+Índice del buffer donde se ha escrito por última vez 
+
+Definición en la línea 57 del archivo file\+System.\+h.
+
+\hypertarget{structFIL_a043930088c6fdc5e523500b833106476}{\index{F\+I\+L@{F\+I\+L}!descriptor\+Sector@{descriptor\+Sector}}
+\index{descriptor\+Sector@{descriptor\+Sector}!F\+I\+L@{F\+I\+L}}
+\paragraph[{descriptor\+Sector}]{\setlength{\rightskip}{0pt plus 5cm}D\+W\+O\+R\+D F\+I\+L\+::descriptor\+Sector}}\label{structFIL_a043930088c6fdc5e523500b833106476}
+Sector del sistema de archivos en el que se encuentra el archivo 
+
+Definición en la línea 56 del archivo file\+System.\+h.
+
+\hypertarget{structFIL_a32847fe875861954ec3dc750d332a194}{\index{F\+I\+L@{F\+I\+L}!dirty@{dirty}}
+\index{dirty@{dirty}!F\+I\+L@{F\+I\+L}}
+\paragraph[{dirty}]{\setlength{\rightskip}{0pt plus 5cm}B\+Y\+T\+E F\+I\+L\+::dirty}}\label{structFIL_a32847fe875861954ec3dc750d332a194}
+Si hay operaciones de escritura pendientes 
+
+Definición en la línea 51 del archivo file\+System.\+h.
+
+\hypertarget{structFIL_aea440945db26de9c4a88065c0c887fda}{\index{F\+I\+L@{F\+I\+L}!err@{err}}
+\index{err@{err}!F\+I\+L@{F\+I\+L}}
+\paragraph[{err}]{\setlength{\rightskip}{0pt plus 5cm}B\+Y\+T\+E F\+I\+L\+::err}}\label{structFIL_aea440945db26de9c4a88065c0c887fda}
+Estado de error 
+
+Definición en la línea 50 del archivo file\+System.\+h.
+
+\hypertarget{structFIL_ac409508881f5a16f2998ae675072b376}{\index{F\+I\+L@{F\+I\+L}!flag@{flag}}
+\index{flag@{flag}!F\+I\+L@{F\+I\+L}}
+\paragraph[{flag}]{\setlength{\rightskip}{0pt plus 5cm}B\+Y\+T\+E F\+I\+L\+::flag}}\label{structFIL_ac409508881f5a16f2998ae675072b376}
+Estado y permisos del archivo 
+
+Definición en la línea 49 del archivo file\+System.\+h.
+
+\hypertarget{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{\index{F\+I\+L@{F\+I\+L}!fs\+Index@{fs\+Index}}
+\index{fs\+Index@{fs\+Index}!F\+I\+L@{F\+I\+L}}
+\paragraph[{fs\+Index}]{\setlength{\rightskip}{0pt plus 5cm}B\+Y\+T\+E F\+I\+L\+::fs\+Index}}\label{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}
+Índice en el sistema de archivos 
+
+Definición en la línea 52 del archivo file\+System.\+h.
+
+\hypertarget{structFIL_a21240fe08417eb46f794e67519bf4a58}{\index{F\+I\+L@{F\+I\+L}!name@{name}}
+\index{name@{name}!F\+I\+L@{F\+I\+L}}
+\paragraph[{name}]{\setlength{\rightskip}{0pt plus 5cm}B\+Y\+T\+E F\+I\+L\+::name\mbox{[}7\mbox{]}}}\label{structFIL_a21240fe08417eb46f794e67519bf4a58}
+Nombre del archivo 
+
+Definición en la línea 48 del archivo file\+System.\+h.
+
+\hypertarget{structFIL_ad0d1f48655e0e06936cb7883993afb1f}{\index{F\+I\+L@{F\+I\+L}!read\+Pointer@{read\+Pointer}}
+\index{read\+Pointer@{read\+Pointer}!F\+I\+L@{F\+I\+L}}
+\paragraph[{read\+Pointer}]{\setlength{\rightskip}{0pt plus 5cm}D\+W\+O\+R\+D F\+I\+L\+::read\+Pointer}}\label{structFIL_ad0d1f48655e0e06936cb7883993afb1f}
+Puntero de lectura. En Bytes 
+
+Definición en la línea 55 del archivo file\+System.\+h.
+
+\hypertarget{structFIL_a684d4d555f293b08b8396c35e20706d3}{\index{F\+I\+L@{F\+I\+L}!start\+Sector@{start\+Sector}}
+\index{start\+Sector@{start\+Sector}!F\+I\+L@{F\+I\+L}}
+\paragraph[{start\+Sector}]{\setlength{\rightskip}{0pt plus 5cm}D\+W\+O\+R\+D F\+I\+L\+::start\+Sector}}\label{structFIL_a684d4d555f293b08b8396c35e20706d3}
+Sector de inicio del archivo 
+
+Definición en la línea 53 del archivo file\+System.\+h.
+
+\hypertarget{structFIL_a89e92b4845c72b4f9f119b38d1142a41}{\index{F\+I\+L@{F\+I\+L}!write\+Pointer@{write\+Pointer}}
+\index{write\+Pointer@{write\+Pointer}!F\+I\+L@{F\+I\+L}}
+\paragraph[{write\+Pointer}]{\setlength{\rightskip}{0pt plus 5cm}D\+W\+O\+R\+D F\+I\+L\+::write\+Pointer}}\label{structFIL_a89e92b4845c72b4f9f119b38d1142a41}
+Puntero de escritura del archivo. Se encuentra al final del archivo. En bytes 
+
+Definición en la línea 54 del archivo file\+System.\+h.
+
+
+
+La documentación para esta estructura fue generada a partir del siguiente fichero\+:\begin{DoxyCompactItemize}
+\item 
+F\+S/\hyperlink{fileSystem_8h}{file\+System.\+h}\end{DoxyCompactItemize}

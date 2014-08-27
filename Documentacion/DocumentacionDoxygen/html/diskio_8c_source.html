@@ -1,0 +1,375 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>Sistema de Logging Geoposicional en Tiempo Real para Sistemas Empotrados: Fichero Fuente FS/diskio.c</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Sistema de Logging Geoposicional en Tiempo Real para Sistemas Empotrados
+   
+   </div>
+   <div id="projectbrief">Trabajo Fin de Grado incluido en el proyecto Biker Assistant de la empresa SmartSoC Solutions</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Generado por Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="annotated.html"><span>Estructuras&#160;de&#160;Datos</span></a></li>
+      <li class="current"><a href="files.html"><span>Archivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;archivos</span></a></li>
+      <li><a href="globals.html"><span>Globales</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">FS/diskio.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="diskio_8c.html">Ir a la documentación de este archivo.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00006"></a>00006 <span class="preprocessor">#include &quot;<a class="code" href="diskio_8h.html" title="Cabecera de la capa de abstracción de operaciones a bajo nivel sobre la memoria.">diskio.h</a>&quot;</span>    <span class="comment">/* FileSystem lower layer API */</span>
+<a name="l00007"></a>00007 <span class="preprocessor">#include &lt;stm32f2xx_flash.h&gt;</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#include &lt;string.h&gt;</span>
+<a name="l00009"></a>00009 
+<a name="l00010"></a>00010 <span class="preprocessor">#define ADDR_FLASH_SECTOR_0     ((uint32_t)0x08000000)</span>
+<a name="l00011"></a>00011 <span class="preprocessor"></span><span class="preprocessor">#define ADDR_FLASH_SECTOR_1     ((uint32_t)0x08004000)</span>
+<a name="l00012"></a>00012 <span class="preprocessor"></span><span class="preprocessor">#define ADDR_FLASH_SECTOR_2     ((uint32_t)0x08008000)</span>
+<a name="l00013"></a>00013 <span class="preprocessor"></span><span class="preprocessor">#define ADDR_FLASH_SECTOR_3     ((uint32_t)0x0800C000)</span>
+<a name="l00014"></a>00014 <span class="preprocessor"></span><span class="preprocessor">#define ADDR_FLASH_SECTOR_4     ((uint32_t)0x08010000)</span>
+<a name="l00015"></a>00015 <span class="preprocessor"></span><span class="preprocessor">#define ADDR_FLASH_SECTOR_5     ((uint32_t)0x08020000)</span>
+<a name="l00016"></a>00016 <span class="preprocessor"></span><span class="preprocessor">#define ADDR_FLASH_SECTOR_6     ((uint32_t)0x08040000)</span>
+<a name="l00017"></a>00017 <span class="preprocessor"></span><span class="preprocessor">#define ADDR_FLASH_SECTOR_7     ((uint32_t)0x08060000)</span>
+<a name="l00018"></a>00018 <span class="preprocessor"></span><span class="preprocessor">#define ADDR_FLASH_SECTOR_8     ((uint32_t)0x08080000)</span>
+<a name="l00019"></a>00019 <span class="preprocessor"></span><span class="preprocessor">#define ADDR_FLASH_SECTOR_9     ((uint32_t)0x080A0000)</span>
+<a name="l00020"></a>00020 <span class="preprocessor"></span><span class="preprocessor">#define ADDR_FLASH_SECTOR_10    ((uint32_t)0x080C0000)</span>
+<a name="l00021"></a>00021 <span class="preprocessor"></span><span class="preprocessor">#define ADDR_FLASH_SECTOR_11    ((uint32_t)0x080E0000)</span>
+<a name="l00022"></a>00022 <span class="preprocessor"></span>
+<a name="l00028"></a><a class="code" href="diskio_8h.html#a90db73e2ffb962de6891c783f62db0d0">00028</a> uint32_t <a class="code" href="diskio_8c.html#a90db73e2ffb962de6891c783f62db0d0" title="Función que devuelve el sector al que hace referencia la dirección dada.">GetSector</a>(uint32_t Address) {
+<a name="l00029"></a>00029   uint32_t sector = 0;
+<a name="l00030"></a>00030 
+<a name="l00031"></a>00031   <span class="keywordflow">if</span> ((Address &lt; ADDR_FLASH_SECTOR_1) &amp;&amp; (Address &gt;= ADDR_FLASH_SECTOR_0)) {
+<a name="l00032"></a>00032     sector = FLASH_Sector_0;
+<a name="l00033"></a>00033   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((Address &lt; ADDR_FLASH_SECTOR_2)
+<a name="l00034"></a>00034       &amp;&amp; (Address &gt;= ADDR_FLASH_SECTOR_1)) {
+<a name="l00035"></a>00035     sector = FLASH_Sector_1;
+<a name="l00036"></a>00036   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((Address &lt; ADDR_FLASH_SECTOR_3)
+<a name="l00037"></a>00037       &amp;&amp; (Address &gt;= ADDR_FLASH_SECTOR_2)) {
+<a name="l00038"></a>00038     sector = FLASH_Sector_2;
+<a name="l00039"></a>00039   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((Address &lt; ADDR_FLASH_SECTOR_4)
+<a name="l00040"></a>00040       &amp;&amp; (Address &gt;= ADDR_FLASH_SECTOR_3)) {
+<a name="l00041"></a>00041     sector = FLASH_Sector_3;
+<a name="l00042"></a>00042   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((Address &lt; ADDR_FLASH_SECTOR_5)
+<a name="l00043"></a>00043       &amp;&amp; (Address &gt;= ADDR_FLASH_SECTOR_4)) {
+<a name="l00044"></a>00044     sector = FLASH_Sector_4;
+<a name="l00045"></a>00045   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((Address &lt; ADDR_FLASH_SECTOR_6)
+<a name="l00046"></a>00046       &amp;&amp; (Address &gt;= ADDR_FLASH_SECTOR_5)) {
+<a name="l00047"></a>00047     sector = FLASH_Sector_5;
+<a name="l00048"></a>00048   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((Address &lt; ADDR_FLASH_SECTOR_7)
+<a name="l00049"></a>00049       &amp;&amp; (Address &gt;= ADDR_FLASH_SECTOR_6)) {
+<a name="l00050"></a>00050     sector = FLASH_Sector_6;
+<a name="l00051"></a>00051   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((Address &lt; ADDR_FLASH_SECTOR_8)
+<a name="l00052"></a>00052       &amp;&amp; (Address &gt;= ADDR_FLASH_SECTOR_7)) {
+<a name="l00053"></a>00053     sector = FLASH_Sector_7;
+<a name="l00054"></a>00054   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((Address &lt; ADDR_FLASH_SECTOR_9)
+<a name="l00055"></a>00055       &amp;&amp; (Address &gt;= ADDR_FLASH_SECTOR_8)) {
+<a name="l00056"></a>00056     sector = FLASH_Sector_8;
+<a name="l00057"></a>00057   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((Address &lt; ADDR_FLASH_SECTOR_10)
+<a name="l00058"></a>00058       &amp;&amp; (Address &gt;= ADDR_FLASH_SECTOR_9)) {
+<a name="l00059"></a>00059     sector = FLASH_Sector_9;
+<a name="l00060"></a>00060   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((Address &lt; ADDR_FLASH_SECTOR_11)
+<a name="l00061"></a>00061       &amp;&amp; (Address &gt;= ADDR_FLASH_SECTOR_10)) {
+<a name="l00062"></a>00062     sector = FLASH_Sector_10;
+<a name="l00063"></a>00063   } <span class="keywordflow">else</span> <span class="comment">//(Address &lt; FLASH_END_ADDR) &amp;&amp; (Address &gt;= ADDR_FLASH_SECTOR_11))</span>
+<a name="l00064"></a>00064   {
+<a name="l00065"></a>00065     sector = FLASH_Sector_11;
+<a name="l00066"></a>00066   }
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068   <span class="keywordflow">return</span> sector;
+<a name="l00069"></a>00069 }
+<a name="l00075"></a><a class="code" href="diskio_8c.html#a900718135e0cd4b363dddcdb44175607">00075</a> uint32_t <a class="code" href="diskio_8c.html#a900718135e0cd4b363dddcdb44175607" title="Convierte un dato BYTE en un dato uint32_t.">byte_to_uint32</a>(<span class="keyword">const</span> BYTE* src) {
+<a name="l00076"></a>00076   uint32_t dst = 0;
+<a name="l00077"></a>00077   dst |= (uint32_t) src[0] &lt;&lt; 0;
+<a name="l00078"></a>00078   dst |= (uint32_t) src[1] &lt;&lt; 8;
+<a name="l00079"></a>00079   dst |= (uint32_t) src[2] &lt;&lt; 16;
+<a name="l00080"></a>00080   dst |= (uint32_t) src[3] &lt;&lt; 24;
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082   <span class="keywordflow">return</span> dst;
+<a name="l00083"></a>00083 }
+<a name="l00090"></a><a class="code" href="diskio_8c.html#ae214680b2ed5e6b6f4785c517f73c5b3">00090</a> BYTE* <a class="code" href="diskio_8c.html#ae214680b2ed5e6b6f4785c517f73c5b3" title="Convierte un dato uint32_t en un dato BYTE.">uint32_to_byte</a>(uint32_t src, BYTE * dst) {
+<a name="l00091"></a>00091   dst[3] = (BYTE) (src &gt;&gt; 24);
+<a name="l00092"></a>00092   dst[2] = (BYTE) (src &gt;&gt; 16);
+<a name="l00093"></a>00093   dst[1] = (BYTE) (src &gt;&gt; 8);
+<a name="l00094"></a>00094   dst[0] = (BYTE) (src &gt;&gt; 0);
+<a name="l00095"></a>00095 
+<a name="l00096"></a>00096   <span class="keywordflow">return</span> dst;
+<a name="l00097"></a>00097 }
+<a name="l00107"></a><a class="code" href="diskio_8c.html#adbcc8690662c4993d61adc9e13d7cffc">00107</a> <a class="code" href="diskio_8h.html#adba6790898ce4029c20a34b898ce73c1">DSTATUS</a> <a class="code" href="diskio_8c.html#adbcc8690662c4993d61adc9e13d7cffc" title="Convierte un número de sector en una dirección física y calcula la dirección de fin a partir del cont...">get_start_end_address</a>(<span class="keywordtype">int</span> pdrv, <span class="keywordtype">int</span> count, <span class="keywordtype">int</span> sector,
+<a name="l00108"></a>00108     uint32_t* startAddress, uint32_t* endAddress) {
+<a name="l00109"></a>00109   <span class="keywordtype">int</span> size;
+<a name="l00110"></a>00110   <a class="code" href="diskio_8c.html#a816bffc54e390c15d03f477133707de5" title="Función de control de entrada/salida, varias funciones.">disk_ioctl</a>(pdrv, GET_SECTOR_SIZE, &amp;size);
+<a name="l00111"></a>00111 
+<a name="l00112"></a>00112   <span class="keywordflow">if</span> (pdrv == 0) {
+<a name="l00113"></a>00113     startAddress = (uint32_t*) PHYSYCAL_START_ADDRESS + (size * sector);
+<a name="l00114"></a>00114     endAddress = (uint32_t*) startAddress + (size * count);
+<a name="l00115"></a>00115   } <span class="keywordflow">else</span> {
+<a name="l00116"></a>00116     startAddress = (uint32_t*) PHYSYCAL_START_ADDRESS2 + (size * sector);
+<a name="l00117"></a>00117     endAddress = (uint32_t*) startAddress + (size * count);
+<a name="l00118"></a>00118   }
+<a name="l00119"></a>00119   <span class="keywordflow">return</span> RES_OK;
+<a name="l00120"></a>00120 }
+<a name="l00127"></a><a class="code" href="diskio_8c.html#a713082e3e5375e658a941a3cca667aed">00127</a> uint32_t <a class="code" href="diskio_8c.html#a713082e3e5375e658a941a3cca667aed" title="Convierte un número de sector en una dirección física.">get_address</a>(<span class="keywordtype">int</span> pdrv, DWORD sector) {
+<a name="l00128"></a>00128   uint32_t address;
+<a name="l00129"></a>00129   <span class="keywordtype">int</span> size;
+<a name="l00130"></a>00130   <a class="code" href="diskio_8c.html#a816bffc54e390c15d03f477133707de5" title="Función de control de entrada/salida, varias funciones.">disk_ioctl</a>(pdrv, GET_SECTOR_SIZE, &amp;size);
+<a name="l00131"></a>00131   <span class="keywordflow">if</span> (pdrv == 0)
+<a name="l00132"></a>00132     address = (uint32_t) PHYSYCAL_START_ADDRESS + (size * sector);
+<a name="l00133"></a>00133   <span class="keywordflow">else</span>
+<a name="l00134"></a>00134     address = (uint32_t) PHYSYCAL_START_ADDRESS2 + (size * sector);
+<a name="l00135"></a>00135 
+<a name="l00136"></a>00136   <span class="keywordflow">return</span> address;
+<a name="l00137"></a>00137 }
+<a name="l00138"></a>00138 
+<a name="l00139"></a><a class="code" href="diskio_8h.html#aa01f5479a3ee7c9aed89814238964cd2">00139</a> <a class="code" href="diskio_8h.html#adba6790898ce4029c20a34b898ce73c1">DSTATUS</a> <a class="code" href="diskio_8c.html#aa01f5479a3ee7c9aed89814238964cd2" title="Función que incializa la memoria FLASH.">disk_initialize</a>(<span class="keywordtype">int</span> pdrv <span class="comment">/* Physical drive number (0..) */</span>
+<a name="l00140"></a>00140 ) {
+<a name="l00141"></a>00141   <span class="keywordflow">if</span> (pdrv != 0 &amp;&amp; pdrv != 1)
+<a name="l00142"></a>00142     <span class="keywordflow">return</span> RES_PARERR;
+<a name="l00143"></a>00143 
+<a name="l00144"></a>00144   FLASH_Unlock();
+<a name="l00145"></a>00145 
+<a name="l00146"></a>00146   FLASH_ClearFlag(FLASH_FLAG_EOP | FLASH_FLAG_OPERR | FLASH_FLAG_WRPERR |
+<a name="l00147"></a>00147   FLASH_FLAG_PGAERR | FLASH_FLAG_PGPERR | FLASH_FLAG_PGSERR);
+<a name="l00148"></a>00148   FLASH_Lock();
+<a name="l00149"></a>00149 
+<a name="l00150"></a>00150   <span class="keywordflow">return</span> RES_OK;
+<a name="l00151"></a>00151 
+<a name="l00152"></a>00152 }
+<a name="l00158"></a><a class="code" href="diskio_8c.html#a3dfe0827b5e2a3a79da131b076adedff">00158</a> <a class="code" href="diskio_8h.html#adba6790898ce4029c20a34b898ce73c1">DSTATUS</a> <a class="code" href="diskio_8c.html#a3dfe0827b5e2a3a79da131b076adedff" title="Convierte el estado de operación de la flash al estado de operación del sistema de archivos...">flashState2FSState</a>(FLASH_Status status) {
+<a name="l00159"></a>00159   <span class="keywordflow">if</span> (status == FLASH_ERROR_WRP)
+<a name="l00160"></a>00160     <span class="keywordflow">return</span> STA_PROTECT;
+<a name="l00161"></a>00161   <span class="keywordflow">return</span> 0; <span class="comment">//Status OK</span>
+<a name="l00162"></a>00162 }
+<a name="l00163"></a>00163 
+<a name="l00164"></a>00164 <span class="comment">/*-----------------------------------------------------------------------*/</span>
+<a name="l00165"></a>00165 <span class="comment">/* Get Disk Status                                                       */</span>
+<a name="l00166"></a>00166 <span class="comment">/*-----------------------------------------------------------------------*/</span>
+<a name="l00167"></a>00167 
+<a name="l00168"></a><a class="code" href="diskio_8h.html#a308c9b0a83724bf6e6aae72a736cc7a6">00168</a> <a class="code" href="diskio_8h.html#adba6790898ce4029c20a34b898ce73c1">DSTATUS</a> <a class="code" href="diskio_8c.html#a308c9b0a83724bf6e6aae72a736cc7a6" title="Función que devuelve el estado de la FLASH.">disk_status</a>(<span class="keywordtype">int</span> pdrv <span class="comment">/* Physical drive number (0..) */</span>
+<a name="l00169"></a>00169 ) {
+<a name="l00170"></a>00170   <span class="keywordflow">if</span> (pdrv != 0 &amp;&amp; pdrv != 1)
+<a name="l00171"></a>00171     <span class="keywordflow">return</span> RES_PARERR;
+<a name="l00172"></a>00172   FLASH_Status state = FLASH_GetStatus();
+<a name="l00173"></a>00173 
+<a name="l00174"></a>00174   <span class="keywordflow">return</span> <a class="code" href="diskio_8c.html#a3dfe0827b5e2a3a79da131b076adedff" title="Convierte el estado de operación de la flash al estado de operación del sistema de archivos...">flashState2FSState</a>(state);
+<a name="l00175"></a>00175 }
+<a name="l00176"></a>00176 
+<a name="l00177"></a>00177 <span class="comment">/*-----------------------------------------------------------------------*/</span>
+<a name="l00178"></a>00178 <span class="comment">/* Read Sector(s)                                                        */</span>
+<a name="l00179"></a>00179 <span class="comment">/*-----------------------------------------------------------------------*/</span>
+<a name="l00180"></a>00180 
+<a name="l00181"></a><a class="code" href="diskio_8h.html#a9c6f716a2119a650cf3c61bee540be85">00181</a> DRESULT <a class="code" href="diskio_8c.html#a9c6f716a2119a650cf3c61bee540be85" title="Función que lee datos desde la memoria FLASH.">disk_read</a>(<span class="keywordtype">int</span> pdrv, <span class="comment">/* Physical drive number (0..) */</span>
+<a name="l00182"></a>00182 BYTE *buff, <span class="comment">/* Data buffer to store read data */</span>
+<a name="l00183"></a>00183 DWORD sector, <span class="comment">/* Sector address (LBA) */</span>
+<a name="l00184"></a>00184 UINT count <span class="comment">/* Number of sectors to read (1..128) */</span>
+<a name="l00185"></a>00185 ) {
+<a name="l00186"></a>00186 
+<a name="l00187"></a>00187   <span class="keywordflow">if</span> ((pdrv != 0 &amp;&amp; pdrv != 1) || !count)
+<a name="l00188"></a>00188     <span class="keywordflow">return</span> RES_PARERR;
+<a name="l00189"></a>00189 
+<a name="l00190"></a>00190   <a class="code" href="diskio_8h.html#adba6790898ce4029c20a34b898ce73c1">DSTATUS</a> status;
+<a name="l00191"></a>00191   uint32_t endAddress = 0, address = 0;
+<a name="l00192"></a>00192   uint32_t read = 0;
+<a name="l00193"></a>00193 
+<a name="l00194"></a>00194   address = <a class="code" href="diskio_8c.html#a713082e3e5375e658a941a3cca667aed" title="Convierte un número de sector en una dirección física.">get_address</a>(pdrv, sector);
+<a name="l00195"></a>00195   endAddress = <a class="code" href="diskio_8c.html#a713082e3e5375e658a941a3cca667aed" title="Convierte un número de sector en una dirección física.">get_address</a>(pdrv, sector + count);
+<a name="l00196"></a>00196 
+<a name="l00197"></a>00197   status = <a class="code" href="diskio_8c.html#a816bffc54e390c15d03f477133707de5" title="Función de control de entrada/salida, varias funciones.">disk_ioctl</a>(pdrv, CTRL_SYNC, (<span class="keywordtype">void</span>*) NULL);
+<a name="l00198"></a>00198 
+<a name="l00199"></a>00199   <span class="keywordflow">if</span> (status != RES_OK)
+<a name="l00200"></a>00200     <span class="keywordflow">return</span> status;
+<a name="l00201"></a>00201 
+<a name="l00202"></a>00202   <span class="keywordflow">do</span> {
+<a name="l00203"></a>00203     read = *(__IO uint32_t*) address;
+<a name="l00204"></a>00204     <a class="code" href="diskio_8c.html#ae214680b2ed5e6b6f4785c517f73c5b3" title="Convierte un dato uint32_t en un dato BYTE.">uint32_to_byte</a>(read, buff);
+<a name="l00205"></a>00205 
+<a name="l00206"></a>00206     buff += 4;
+<a name="l00207"></a>00207     address += 4;
+<a name="l00208"></a>00208 
+<a name="l00209"></a>00209     status = <a class="code" href="diskio_8c.html#a816bffc54e390c15d03f477133707de5" title="Función de control de entrada/salida, varias funciones.">disk_ioctl</a>(pdrv, CTRL_SYNC, (<span class="keywordtype">void</span>*) NULL);
+<a name="l00210"></a>00210     <span class="keywordflow">if</span> (status != RES_OK)
+<a name="l00211"></a>00211       <span class="keywordflow">return</span> status;
+<a name="l00212"></a>00212 
+<a name="l00213"></a>00213   } <span class="keywordflow">while</span> (address &lt; endAddress);
+<a name="l00214"></a>00214 
+<a name="l00215"></a>00215   <span class="keywordflow">return</span> RES_OK;
+<a name="l00216"></a>00216 }
+<a name="l00217"></a>00217 
+<a name="l00218"></a>00218 <span class="comment">/*-----------------------------------------------------------------------*/</span>
+<a name="l00219"></a>00219 <span class="comment">/* Write Sector(s)                                                       */</span>
+<a name="l00220"></a>00220 <span class="comment">/*-----------------------------------------------------------------------*/</span>
+<a name="l00221"></a>00221 
+<a name="l00222"></a><a class="code" href="diskio_8h.html#a4fc55609dc0b2fba35c679984ae7ca68">00222</a> DRESULT <a class="code" href="diskio_8c.html#a4fc55609dc0b2fba35c679984ae7ca68" title="Función que escribe en la memoria FLASH.">disk_write</a>(<span class="keywordtype">int</span> pdrv, <span class="comment">/* Physical drive number (0..) */</span>
+<a name="l00223"></a>00223 <span class="keyword">const</span> BYTE *buff, <span class="comment">/* Data to be written */</span>
+<a name="l00224"></a>00224 DWORD sector, <span class="comment">/* Sector address (LBA) */</span>
+<a name="l00225"></a>00225 UINT count <span class="comment">/* Number of sectors to write (1..128) */</span>
+<a name="l00226"></a>00226 ) {
+<a name="l00227"></a>00227   <a class="code" href="diskio_8h.html#adba6790898ce4029c20a34b898ce73c1">DSTATUS</a> status;
+<a name="l00228"></a>00228 
+<a name="l00229"></a>00229   <span class="keywordflow">if</span> ((pdrv != 0 &amp;&amp; pdrv != 1) || !count)
+<a name="l00230"></a>00230     <span class="keywordflow">return</span> RES_PARERR;
+<a name="l00231"></a>00231 
+<a name="l00232"></a>00232   status = <a class="code" href="diskio_8c.html#a308c9b0a83724bf6e6aae72a736cc7a6" title="Función que devuelve el estado de la FLASH.">disk_status</a>(pdrv);
+<a name="l00233"></a>00233   <span class="keywordflow">if</span> (status &amp; STA_PROTECT)
+<a name="l00234"></a>00234     <span class="keywordflow">return</span> RES_WRPRT;
+<a name="l00235"></a>00235 
+<a name="l00236"></a>00236   uint32_t endAddress = 0, address = 0;
+<a name="l00237"></a>00237   uint32_t toWrite = 0;
+<a name="l00238"></a>00238   address = <a class="code" href="diskio_8c.html#a713082e3e5375e658a941a3cca667aed" title="Convierte un número de sector en una dirección física.">get_address</a>(pdrv, sector);
+<a name="l00239"></a>00239   endAddress = <a class="code" href="diskio_8c.html#a713082e3e5375e658a941a3cca667aed" title="Convierte un número de sector en una dirección física.">get_address</a>(pdrv, sector + count);
+<a name="l00240"></a>00240 
+<a name="l00241"></a>00241   <span class="keywordflow">do</span> {
+<a name="l00242"></a>00242     toWrite = <a class="code" href="diskio_8c.html#a900718135e0cd4b363dddcdb44175607" title="Convierte un dato BYTE en un dato uint32_t.">byte_to_uint32</a>(buff);
+<a name="l00243"></a>00243     FLASH_Unlock();
+<a name="l00244"></a>00244     status = FLASH_ProgramWord((uint32_t) address, toWrite);
+<a name="l00245"></a>00245 
+<a name="l00246"></a>00246     FLASH_Lock();
+<a name="l00247"></a>00247 
+<a name="l00248"></a>00248     <span class="keywordflow">if</span> (status != FLASH_COMPLETE)
+<a name="l00249"></a>00249       <span class="keywordflow">return</span> status;
+<a name="l00250"></a>00250 
+<a name="l00251"></a>00251     address += 4;
+<a name="l00252"></a>00252     buff += 4;
+<a name="l00253"></a>00253   } <span class="keywordflow">while</span> (address &lt; endAddress); <span class="comment">//Hasta fin del sector</span>
+<a name="l00254"></a>00254 
+<a name="l00255"></a>00255   <span class="keywordflow">return</span> RES_OK;
+<a name="l00256"></a>00256 }
+<a name="l00257"></a>00257 
+<a name="l00258"></a>00258 <span class="comment">/*-----------------------------------------------------------------------*/</span>
+<a name="l00259"></a>00259 <span class="comment">/* Miscellaneous Functions                                               */</span>
+<a name="l00260"></a>00260 <span class="comment">/*-----------------------------------------------------------------------*/</span>
+<a name="l00261"></a>00261 
+<a name="l00262"></a><a class="code" href="diskio_8h.html#a816bffc54e390c15d03f477133707de5">00262</a> DRESULT <a class="code" href="diskio_8c.html#a816bffc54e390c15d03f477133707de5" title="Función de control de entrada/salida, varias funciones.">disk_ioctl</a>(<span class="keywordtype">int</span> pdrv, <span class="comment">/* Physical drive nmuber (0..) */</span>
+<a name="l00263"></a>00263 BYTE cmd, <span class="comment">/* Control code */</span>
+<a name="l00264"></a>00264 <span class="keywordtype">void</span> *buff <span class="comment">/* Buffer to send/receive control data */</span>
+<a name="l00265"></a>00265 ) {
+<a name="l00266"></a>00266   <span class="keywordflow">if</span> (pdrv != 0 &amp;&amp; pdrv != 1)
+<a name="l00267"></a>00267     <span class="keywordflow">return</span> RES_PARERR;
+<a name="l00268"></a>00268 
+<a name="l00269"></a>00269   uint32_t address;
+<a name="l00270"></a>00270   DRESULT state;
+<a name="l00271"></a>00271 
+<a name="l00272"></a>00272   <span class="keywordflow">switch</span> (cmd) {
+<a name="l00273"></a>00273   <span class="keywordflow">case</span> CTRL_SYNC:
+<a name="l00274"></a>00274     state = FLASH_WaitForLastOperation();
+<a name="l00275"></a>00275 
+<a name="l00276"></a>00276     <span class="keywordflow">return</span> <a class="code" href="diskio_8c.html#a3dfe0827b5e2a3a79da131b076adedff" title="Convierte el estado de operación de la flash al estado de operación del sistema de archivos...">flashState2FSState</a>(state);
+<a name="l00277"></a>00277     <span class="keywordflow">break</span>;
+<a name="l00278"></a>00278 
+<a name="l00279"></a>00279   <span class="keywordflow">case</span> GET_SECTOR_COUNT:
+<a name="l00280"></a>00280     *(DWORD*) buff = (DWORD) FS_SIZE;
+<a name="l00281"></a>00281 
+<a name="l00282"></a>00282     <span class="keywordflow">return</span> RES_OK;
+<a name="l00283"></a>00283     <span class="keywordflow">break</span>;
+<a name="l00284"></a>00284 
+<a name="l00285"></a>00285   <span class="keywordflow">case</span> GET_SECTOR_SIZE:
+<a name="l00286"></a>00286     *(DWORD*) buff = SECTOR_SIZE;
+<a name="l00287"></a>00287 
+<a name="l00288"></a>00288     <span class="keywordflow">return</span> RES_OK;
+<a name="l00289"></a>00289     <span class="keywordflow">break</span>;
+<a name="l00290"></a>00290 
+<a name="l00291"></a>00291   <span class="keywordflow">case</span> GET_BLOCK_SIZE:
+<a name="l00292"></a>00292     *(DWORD*) buff = 1;
+<a name="l00293"></a>00293 
+<a name="l00294"></a>00294     <span class="keywordflow">return</span> RES_OK;
+<a name="l00295"></a>00295     <span class="keywordflow">break</span>;
+<a name="l00296"></a>00296 
+<a name="l00297"></a>00297   <span class="keywordflow">case</span> CTRL_ERASE_SECTOR:
+<a name="l00298"></a>00298     address = <a class="code" href="diskio_8c.html#a713082e3e5375e658a941a3cca667aed" title="Convierte un número de sector en una dirección física.">get_address</a>(pdrv, (<span class="keywordtype">int</span>) buff);
+<a name="l00299"></a>00299     FLASH_Unlock();
+<a name="l00300"></a>00300     state = <a class="code" href="diskio_8c.html#a3dfe0827b5e2a3a79da131b076adedff" title="Convierte el estado de operación de la flash al estado de operación del sistema de archivos...">flashState2FSState</a>(
+<a name="l00301"></a>00301         FLASH_EraseSector(<a class="code" href="diskio_8c.html#a90db73e2ffb962de6891c783f62db0d0" title="Función que devuelve el sector al que hace referencia la dirección dada.">GetSector</a>(address), VoltageRange_3));
+<a name="l00302"></a>00302     FLASH_Lock();
+<a name="l00303"></a>00303 
+<a name="l00304"></a>00304     <span class="keywordflow">return</span> state;
+<a name="l00305"></a>00305     <span class="keywordflow">break</span>;
+<a name="l00306"></a>00306   }
+<a name="l00307"></a>00307 
+<a name="l00308"></a>00308   <span class="keywordflow">return</span> RES_PARERR;
+<a name="l00309"></a>00309 }
+</pre></div></div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Estructuras de Datos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Valores de enumeraciones</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Generado el Miércoles, 2 de Julio de 2014 10:04:37 para Sistema de Logging Geoposicional en Tiempo Real para Sistemas Empotrados por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

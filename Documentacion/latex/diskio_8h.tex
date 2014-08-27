@@ -1,0 +1,275 @@
+\hypertarget{diskio_8h}{\subsection{Referencia del Archivo F\+S/diskio.h}
+\label{diskio_8h}\index{F\+S/diskio.\+h@{F\+S/diskio.\+h}}
+}
+
+
+Cabecera de la capa de abstracción de operaciones a bajo nivel sobre la memoria.  
+
+
+{\ttfamily \#include \char`\"{}integer.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}ffconf.\+h\char`\"{}}\\*
+Dependencia gráfica adjunta para diskio.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{diskio_8h__incl}
+\end{center}
+\end{figure}
+Gráfico de los archivos que directa o indirectamente incluyen a este archivo\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=299pt]{diskio_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsubsection*{'defines'}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{diskio_8h_abd6503c70d862b979a3f7080a59e9acd}{\#define {\bfseries S\+T\+A\+\_\+\+N\+O\+I\+N\+I\+T}~0x01  /$\ast$ Drive not initialized $\ast$/}\label{diskio_8h_abd6503c70d862b979a3f7080a59e9acd}
+
+\item 
+\hypertarget{diskio_8h_aec625080763d6cf487e550a6c9a2dd19}{\#define {\bfseries S\+T\+A\+\_\+\+N\+O\+D\+I\+S\+K}~0x02  /$\ast$ No medium in the drive $\ast$/}\label{diskio_8h_aec625080763d6cf487e550a6c9a2dd19}
+
+\item 
+\hypertarget{diskio_8h_a9ec6dc5f6620a33fabe388d3a111ca8c}{\#define {\bfseries S\+T\+A\+\_\+\+P\+R\+O\+T\+E\+C\+T}~0x04  /$\ast$ Write protected $\ast$/}\label{diskio_8h_a9ec6dc5f6620a33fabe388d3a111ca8c}
+
+\item 
+\hypertarget{diskio_8h_a1b3c492f9aec325f0655941b75256f3c}{\#define {\bfseries C\+T\+R\+L\+\_\+\+S\+Y\+N\+C}~0  /$\ast$ Wait for last operation $\ast$/}\label{diskio_8h_a1b3c492f9aec325f0655941b75256f3c}
+
+\item 
+\hypertarget{diskio_8h_a570216006f6a8fc4e1698b1bbb2d1dde}{\#define {\bfseries G\+E\+T\+\_\+\+S\+E\+C\+T\+O\+R\+\_\+\+C\+O\+U\+N\+T}~1  /$\ast$ Get media size (for only \hyperlink{fileSystem_8h_a8e75c990b2a6c64fa783c75aace55059}{f\+\_\+mkfs}()) $\ast$/}\label{diskio_8h_a570216006f6a8fc4e1698b1bbb2d1dde}
+
+\item 
+\hypertarget{diskio_8h_ac73b5cf2135cbd459d109b96c9aa346a}{\#define {\bfseries G\+E\+T\+\_\+\+S\+E\+C\+T\+O\+R\+\_\+\+S\+I\+Z\+E}~2  /$\ast$ Get sector size (for multiple sector size (\+\_\+\+M\+A\+X\+\_\+\+S\+S $>$= 1024)) $\ast$/}\label{diskio_8h_ac73b5cf2135cbd459d109b96c9aa346a}
+
+\item 
+\hypertarget{diskio_8h_aec3bb4dfe075d0ba2f3b07b300a95500}{\#define {\bfseries G\+E\+T\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+Z\+E}~3  /$\ast$ Get erase block size (for only \hyperlink{fileSystem_8h_a8e75c990b2a6c64fa783c75aace55059}{f\+\_\+mkfs}()) $\ast$/}\label{diskio_8h_aec3bb4dfe075d0ba2f3b07b300a95500}
+
+\item 
+\hypertarget{diskio_8h_a3b1dc812217ea7ffa118b14a3c1ab151}{\#define {\bfseries C\+T\+R\+L\+\_\+\+E\+R\+A\+S\+E\+\_\+\+S\+E\+C\+T\+O\+R}~4  /$\ast$ Force erased a block of sectors (for only \+\_\+\+U\+S\+E\+\_\+\+E\+R\+A\+S\+E) $\ast$/}\label{diskio_8h_a3b1dc812217ea7ffa118b14a3c1ab151}
+
+\end{DoxyCompactItemize}
+\subsubsection*{'typedefs'}
+\begin{DoxyCompactItemize}
+\item 
+typedef B\+Y\+T\+E \hyperlink{diskio_8h_adba6790898ce4029c20a34b898ce73c1}{D\+S\+T\+A\+T\+U\+S}
+\end{DoxyCompactItemize}
+\subsubsection*{Enumeraciones}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{diskio_8h_aacdfef1dad6565f65c26d12fe0ea4b2b}{enum {\bfseries D\+R\+E\+S\+U\+L\+T} \{ \\*
+{\bfseries R\+E\+S\+\_\+\+O\+K} = 0, 
+{\bfseries R\+E\+S\+\_\+\+E\+R\+R\+O\+R}, 
+{\bfseries R\+E\+S\+\_\+\+W\+R\+P\+R\+T}, 
+{\bfseries R\+E\+S\+\_\+\+N\+O\+T\+R\+D\+Y}, 
+\\*
+{\bfseries R\+E\+S\+\_\+\+P\+A\+R\+E\+R\+R}
+ \}}\label{diskio_8h_aacdfef1dad6565f65c26d12fe0ea4b2b}
+
+\end{DoxyCompactItemize}
+\subsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{diskio_8h_adba6790898ce4029c20a34b898ce73c1}{D\+S\+T\+A\+T\+U\+S} \hyperlink{diskio_8h_aa01f5479a3ee7c9aed89814238964cd2}{disk\+\_\+initialize} (int pdrv)
+\begin{DoxyCompactList}\small\item\em Función que incializa la memoria F\+L\+A\+S\+H. \end{DoxyCompactList}\item 
+\hyperlink{diskio_8h_adba6790898ce4029c20a34b898ce73c1}{D\+S\+T\+A\+T\+U\+S} \hyperlink{diskio_8h_a308c9b0a83724bf6e6aae72a736cc7a6}{disk\+\_\+status} (int pdrv)
+\begin{DoxyCompactList}\small\item\em Función que devuelve el estado de la F\+L\+A\+S\+H. \end{DoxyCompactList}\item 
+D\+R\+E\+S\+U\+L\+T \hyperlink{diskio_8h_a9c6f716a2119a650cf3c61bee540be85}{disk\+\_\+read} (int pdrv, B\+Y\+T\+E $\ast$buff, D\+W\+O\+R\+D sector, U\+I\+N\+T count)
+\begin{DoxyCompactList}\small\item\em Función que lee datos desde la memoria F\+L\+A\+S\+H. \end{DoxyCompactList}\item 
+D\+R\+E\+S\+U\+L\+T \hyperlink{diskio_8h_a4fc55609dc0b2fba35c679984ae7ca68}{disk\+\_\+write} (int pdrv, const B\+Y\+T\+E $\ast$buff, D\+W\+O\+R\+D sector, U\+I\+N\+T count)
+\begin{DoxyCompactList}\small\item\em Función que escribe en la memoria F\+L\+A\+S\+H. \end{DoxyCompactList}\item 
+D\+R\+E\+S\+U\+L\+T \hyperlink{diskio_8h_a816bffc54e390c15d03f477133707de5}{disk\+\_\+ioctl} (int pdrv, B\+Y\+T\+E cmd, void $\ast$buff)
+\begin{DoxyCompactList}\small\item\em Función de control de entrada/salida, varias funciones. \end{DoxyCompactList}\item 
+uint32\+\_\+t \hyperlink{diskio_8h_a90db73e2ffb962de6891c783f62db0d0}{Get\+Sector} (uint32\+\_\+t Address)
+\begin{DoxyCompactList}\small\item\em Función que devuelve el sector al que hace referencia la dirección dada. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Descripción detallada}
+Cabecera de la capa de abstracción de operaciones a bajo nivel sobre la memoria. 
+
+
+
+Definición en el archivo \hyperlink{diskio_8h_source}{diskio.\+h}.
+
+
+
+\subsubsection{Documentación de los 'typedefs'}
+\hypertarget{diskio_8h_adba6790898ce4029c20a34b898ce73c1}{\index{diskio.\+h@{diskio.\+h}!D\+S\+T\+A\+T\+U\+S@{D\+S\+T\+A\+T\+U\+S}}
+\index{D\+S\+T\+A\+T\+U\+S@{D\+S\+T\+A\+T\+U\+S}!diskio.\+h@{diskio.\+h}}
+\paragraph[{D\+S\+T\+A\+T\+U\+S}]{\setlength{\rightskip}{0pt plus 5cm}typedef B\+Y\+T\+E {\bf D\+S\+T\+A\+T\+U\+S}}}\label{diskio_8h_adba6790898ce4029c20a34b898ce73c1}
+Enumeración de los estados de operación 
+
+Definición en la línea 9 del archivo diskio.\+h.
+
+
+
+\subsubsection{Documentación de las funciones}
+\hypertarget{diskio_8h_aa01f5479a3ee7c9aed89814238964cd2}{\index{diskio.\+h@{diskio.\+h}!disk\+\_\+initialize@{disk\+\_\+initialize}}
+\index{disk\+\_\+initialize@{disk\+\_\+initialize}!diskio.\+h@{diskio.\+h}}
+\paragraph[{disk\+\_\+initialize}]{\setlength{\rightskip}{0pt plus 5cm}{\bf D\+S\+T\+A\+T\+U\+S} disk\+\_\+initialize (
+\begin{DoxyParamCaption}
+\item[{int}]{pdrv}
+\end{DoxyParamCaption}
+)}}\label{diskio_8h_aa01f5479a3ee7c9aed89814238964cd2}
+
+
+Función que incializa la memoria F\+L\+A\+S\+H. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em pdrv} & Identificador del sector físico utilizado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 139 del archivo diskio.\+c.
+
+\hypertarget{diskio_8h_a816bffc54e390c15d03f477133707de5}{\index{diskio.\+h@{diskio.\+h}!disk\+\_\+ioctl@{disk\+\_\+ioctl}}
+\index{disk\+\_\+ioctl@{disk\+\_\+ioctl}!diskio.\+h@{diskio.\+h}}
+\paragraph[{disk\+\_\+ioctl}]{\setlength{\rightskip}{0pt plus 5cm}D\+R\+E\+S\+U\+L\+T disk\+\_\+ioctl (
+\begin{DoxyParamCaption}
+\item[{int}]{pdrv, }
+\item[{B\+Y\+T\+E}]{cmd, }
+\item[{void $\ast$}]{buff}
+\end{DoxyParamCaption}
+)}}\label{diskio_8h_a816bffc54e390c15d03f477133707de5}
+
+
+Función de control de entrada/salida, varias funciones. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em pdrv} & Identificador del sector físico utilizado \\
+\hline
+{\em cmd} & Comando que especifica qué función realizar \\
+\hline
+{\em buff} & Parámetro de entrada o salida dependiendo de la función a realizar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación
+\end{DoxyReturn}
+\begin{DoxyVerb}A continuación se especifican todos los comandos disponibles:
+ CTRL_SYNC espera a que termine la última operación de la FLASH
+ GET_SECTOR_COUNT Devuelve el número de sectores del sistema de archivos
+ GET_SECTOR_SIZE Devuelve el tamaño de cada sector lógico
+ GET_BLOCK_SIZE Devuelve el número de sectores físicos del sistema de archivos
+ CTRL_ERASE_SECTOR Resetea el sector especificado en buff
+\end{DoxyVerb}
+ 
+
+Definición en la línea 262 del archivo diskio.\+c.
+
+\hypertarget{diskio_8h_a9c6f716a2119a650cf3c61bee540be85}{\index{diskio.\+h@{diskio.\+h}!disk\+\_\+read@{disk\+\_\+read}}
+\index{disk\+\_\+read@{disk\+\_\+read}!diskio.\+h@{diskio.\+h}}
+\paragraph[{disk\+\_\+read}]{\setlength{\rightskip}{0pt plus 5cm}D\+R\+E\+S\+U\+L\+T disk\+\_\+read (
+\begin{DoxyParamCaption}
+\item[{int}]{pdrv, }
+\item[{B\+Y\+T\+E $\ast$}]{buff, }
+\item[{D\+W\+O\+R\+D}]{sector, }
+\item[{U\+I\+N\+T}]{count}
+\end{DoxyParamCaption}
+)}}\label{diskio_8h_a9c6f716a2119a650cf3c61bee540be85}
+
+
+Función que lee datos desde la memoria F\+L\+A\+S\+H. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em pdrv} & Identificador del sector físico utilizado \\
+\hline
+{\em buff} & Buffer donde devolver los datos leídos \\
+\hline
+{\em sector} & Número de sector lógico donde empezar a leer \\
+\hline
+{\em count} & Número de sectores lógicos a leer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 181 del archivo diskio.\+c.
+
+\hypertarget{diskio_8h_a308c9b0a83724bf6e6aae72a736cc7a6}{\index{diskio.\+h@{diskio.\+h}!disk\+\_\+status@{disk\+\_\+status}}
+\index{disk\+\_\+status@{disk\+\_\+status}!diskio.\+h@{diskio.\+h}}
+\paragraph[{disk\+\_\+status}]{\setlength{\rightskip}{0pt plus 5cm}{\bf D\+S\+T\+A\+T\+U\+S} disk\+\_\+status (
+\begin{DoxyParamCaption}
+\item[{int}]{pdrv}
+\end{DoxyParamCaption}
+)}}\label{diskio_8h_a308c9b0a83724bf6e6aae72a736cc7a6}
+
+
+Función que devuelve el estado de la F\+L\+A\+S\+H. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em pdrv} & Identificador del sector físico utilizado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Estado de la F\+L\+A\+S\+H 
+\end{DoxyReturn}
+
+
+Definición en la línea 168 del archivo diskio.\+c.
+
+\hypertarget{diskio_8h_a4fc55609dc0b2fba35c679984ae7ca68}{\index{diskio.\+h@{diskio.\+h}!disk\+\_\+write@{disk\+\_\+write}}
+\index{disk\+\_\+write@{disk\+\_\+write}!diskio.\+h@{diskio.\+h}}
+\paragraph[{disk\+\_\+write}]{\setlength{\rightskip}{0pt plus 5cm}D\+R\+E\+S\+U\+L\+T disk\+\_\+write (
+\begin{DoxyParamCaption}
+\item[{int}]{pdrv, }
+\item[{const B\+Y\+T\+E $\ast$}]{buff, }
+\item[{D\+W\+O\+R\+D}]{sector, }
+\item[{U\+I\+N\+T}]{count}
+\end{DoxyParamCaption}
+)}}\label{diskio_8h_a4fc55609dc0b2fba35c679984ae7ca68}
+
+
+Función que escribe en la memoria F\+L\+A\+S\+H. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em pdrv} & Identificador del sector físico utilizado \\
+\hline
+{\em buff} & Stream de datos que se van a escribir \\
+\hline
+{\em sector} & Número de sector lógico donde escribir \\
+\hline
+{\em count} & Número de sectores lógicos a escribir \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 222 del archivo diskio.\+c.
+
+\hypertarget{diskio_8h_a90db73e2ffb962de6891c783f62db0d0}{\index{diskio.\+h@{diskio.\+h}!Get\+Sector@{Get\+Sector}}
+\index{Get\+Sector@{Get\+Sector}!diskio.\+h@{diskio.\+h}}
+\paragraph[{Get\+Sector}]{\setlength{\rightskip}{0pt plus 5cm}uint32\+\_\+t Get\+Sector (
+\begin{DoxyParamCaption}
+\item[{uint32\+\_\+t}]{Address}
+\end{DoxyParamCaption}
+)}}\label{diskio_8h_a90db73e2ffb962de6891c783f62db0d0}
+
+
+Función que devuelve el sector al que hace referencia la dirección dada. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em Address} & Dirección de memoria \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Sector físico al que pertenece la dirección dada 
+\end{DoxyReturn}
+
+
+Definición en la línea 28 del archivo diskio.\+c.
+

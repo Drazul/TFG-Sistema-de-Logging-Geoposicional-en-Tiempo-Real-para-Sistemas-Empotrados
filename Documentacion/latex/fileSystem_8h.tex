@@ -1,0 +1,471 @@
+\hypertarget{fileSystem_8h}{\subsection{Referencia del Archivo F\+S/file\+System.h}
+\label{fileSystem_8h}\index{F\+S/file\+System.\+h@{F\+S/file\+System.\+h}}
+}
+
+
+Cabecera principal del módulo del Sistema de Archivos.  
+
+
+{\ttfamily \#include \char`\"{}integer.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}stm32f2xx.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}diskio.\+h\char`\"{}}\\*
+Dependencia gráfica adjunta para file\+System.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{fileSystem_8h__incl}
+\end{center}
+\end{figure}
+Gráfico de los archivos que directa o indirectamente incluyen a este archivo\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{fileSystem_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsubsection*{Estructuras de datos}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structFIL}{F\+I\+L}
+\begin{DoxyCompactList}\small\item\em Estructura que define un archivo. \end{DoxyCompactList}\item 
+struct \hyperlink{structFS}{F\+S}
+\begin{DoxyCompactList}\small\item\em Estructura que define el Sistema de Archivos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{'defines'}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{fileSystem_8h_a1f4f3530ff03abbd979b072536e72290}{\#define {\bfseries F\+A\+\_\+\+R\+E\+A\+D}~0x01}\label{fileSystem_8h_a1f4f3530ff03abbd979b072536e72290}
+
+\item 
+\hypertarget{fileSystem_8h_a0c5dd686b10f84c2a2b3954957a5979a}{\#define {\bfseries F\+A\+\_\+\+O\+P\+E\+N\+\_\+\+E\+X\+I\+S\+T\+I\+N\+G}~0x00}\label{fileSystem_8h_a0c5dd686b10f84c2a2b3954957a5979a}
+
+\item 
+\hypertarget{fileSystem_8h_afa366963220c89b882c0361794020c14}{\#define {\bfseries F\+A\+\_\+\+W\+R\+I\+T\+E}~0x02}\label{fileSystem_8h_afa366963220c89b882c0361794020c14}
+
+\item 
+\hypertarget{fileSystem_8h_a417bb1babd1785fd181a806b5613eba3}{\#define {\bfseries F\+A\+\_\+\+C\+R\+E\+A\+T\+E\+\_\+\+N\+E\+W}~0x04}\label{fileSystem_8h_a417bb1babd1785fd181a806b5613eba3}
+
+\item 
+\hypertarget{fileSystem_8h_afba4546b131dea4b24727fa20a80e29f}{\#define {\bfseries F\+A\+\_\+\+C\+R\+E\+A\+T\+E\+\_\+\+A\+L\+W\+A\+Y\+S}~0x08}\label{fileSystem_8h_afba4546b131dea4b24727fa20a80e29f}
+
+\item 
+\hypertarget{fileSystem_8h_a17b01553029920ac0468912b4bcb16c7}{\#define {\bfseries F\+A\+\_\+\+O\+P\+E\+N\+\_\+\+A\+L\+W\+A\+Y\+S}~0x10}\label{fileSystem_8h_a17b01553029920ac0468912b4bcb16c7}
+
+\end{DoxyCompactItemize}
+\subsubsection*{Enumeraciones}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \{ \\*
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{F\+R\+\_\+\+O\+K} = 0, 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca97dee4a6b485dc8f91f37486092dfe34}{F\+R\+\_\+\+D\+I\+S\+K\+\_\+\+E\+R\+R}, 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cab6c9903af6e9bffbb7a288705f4a6a76}{F\+R\+\_\+\+I\+N\+T\+\_\+\+E\+R\+R}, 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cac9894bed3e8632ede8d2712235fa8e45}{F\+R\+\_\+\+N\+O\+T\+\_\+\+R\+E\+A\+D\+Y}, 
+\\*
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca97da8f98fc2e66d8fa7847f9ebb19b8c}{F\+R\+\_\+\+N\+O\+\_\+\+F\+I\+L\+E}, 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cae4529c8cc8b59783d6efc9ba4f574532}{F\+R\+\_\+\+N\+O\+\_\+\+P\+A\+T\+H}, 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca83e45a4b579558c57192c0a391b9bb45}{F\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+N\+A\+M\+E}, 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca897e9f2dd7629a80f48af242d8bc1a3d}{F\+R\+\_\+\+D\+E\+N\+I\+E\+D}, 
+\\*
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca0d8f024d256df76e84782b95018a2450}{F\+R\+\_\+\+E\+X\+I\+S\+T}, 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca3dec4eba481cdf5e99d7cd6009e6dcf8}{F\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+O\+B\+J\+E\+C\+T}, 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cac3afbb423b1d4497229416812aff383b}{F\+R\+\_\+\+W\+R\+I\+T\+E\+\_\+\+P\+R\+O\+T\+E\+C\+T\+E\+D}, 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca487844af77de15f6932a3b41ef3a2d65}{F\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+D\+R\+I\+V\+E}, 
+\\*
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cafc56605c68aaffab4a428339a8bd600d}{F\+R\+\_\+\+N\+O\+T\+\_\+\+E\+N\+A\+B\+L\+E\+D}, 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca086154b5fee763f28c49fd0e2c1cb463}{F\+R\+\_\+\+N\+O\+\_\+\+F\+I\+L\+E\+S\+Y\+S\+T\+E\+M}, 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca4b02760f758f5b1a89f445244fe9fbca}{F\+R\+\_\+\+M\+K\+F\+S\+\_\+\+A\+B\+O\+R\+T\+E\+D}, 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca3f8ca7e51af8b129d14328de7243c5d4}{F\+R\+\_\+\+T\+I\+M\+E\+O\+U\+T}, 
+\\*
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca7db5afaaa2af591bd4a208b2967075d7}{F\+R\+\_\+\+L\+O\+C\+K\+E\+D}, 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44caf56a76a86602cbdeb2c4f3d00cfad21c}{F\+R\+\_\+\+N\+O\+T\+\_\+\+E\+N\+O\+U\+G\+H\+\_\+\+C\+O\+R\+E}, 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cac7926e01d7519a1a7e21a44e2dd76789}{F\+R\+\_\+\+T\+O\+O\+\_\+\+M\+A\+N\+Y\+\_\+\+F\+I\+L\+E\+S}, 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca3b89faeceab64db277d0fcdeaaa315d6}{F\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+E\+R}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeración de los estados de operación de la memoria F\+L\+A\+S\+H. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \hyperlink{fileSystem_8h_aefdef7126128d99d0b3bd82c28e54d80}{f\+\_\+open} (\hyperlink{structFIL}{F\+I\+L} $\ast$fp, const T\+C\+H\+A\+R $\ast$path, B\+Y\+T\+E mode)
+\begin{DoxyCompactList}\small\item\em Función que abre o crea un archivo. \end{DoxyCompactList}\item 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \hyperlink{fileSystem_8h_a53882db20ef4323dcfd1874d7733ffc3}{f\+\_\+close} (\hyperlink{structFIL}{F\+I\+L} $\ast$fp)
+\begin{DoxyCompactList}\small\item\em Función que cierra un archivo. \end{DoxyCompactList}\item 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \hyperlink{fileSystem_8h_ac4c3dcb6869ca252888eebabe39727b3}{f\+\_\+read} (\hyperlink{structFIL}{F\+I\+L} $\ast$fp, void $\ast$buff, U\+I\+N\+T btr, U\+I\+N\+T $\ast$br)
+\begin{DoxyCompactList}\small\item\em Función que lee de un archivo. \end{DoxyCompactList}\item 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \hyperlink{fileSystem_8h_ae6a4dfae8a9e308bdb2283a37ef680f2}{f\+\_\+write} (\hyperlink{structFIL}{F\+I\+L} $\ast$fp, const void $\ast$buff, U\+I\+N\+T btw, U\+I\+N\+T $\ast$bw)
+\begin{DoxyCompactList}\small\item\em Función que escribe de un archivo. \end{DoxyCompactList}\item 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \hyperlink{fileSystem_8h_acdcf7b6e3f54419d2612c38f83733edf}{f\+\_\+truncate\+Start} (\hyperlink{structFIL}{F\+I\+L} $\ast$fp, D\+W\+O\+R\+D ofs)
+\begin{DoxyCompactList}\small\item\em Función que elimina parte de un archivo. \end{DoxyCompactList}\item 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \hyperlink{fileSystem_8h_a5df0ac672ada972e89ef4b003e57f964}{f\+\_\+lseek} (\hyperlink{structFIL}{F\+I\+L} $\ast$fp, D\+W\+O\+R\+D ofs)
+\begin{DoxyCompactList}\small\item\em Función que mueve el puntero de lectura de un archivo. \end{DoxyCompactList}\item 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \hyperlink{fileSystem_8h_ad69c7246b122ba56a134939ee0eaf847}{f\+\_\+sync} (\hyperlink{structFIL}{F\+I\+L} $\ast$fp)
+\begin{DoxyCompactList}\small\item\em Función que sincroniza un archivo, escribe en memoria los datos que queden pendientes. \end{DoxyCompactList}\item 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \hyperlink{fileSystem_8h_ad34712146dce899b62634cbc071ff5b1}{f\+\_\+getfree} (int fs\+Index, U\+I\+N\+T $\ast$nclst)
+\begin{DoxyCompactList}\small\item\em Función que devuelve el número de sectores libres del sistema de archivos. \end{DoxyCompactList}\item 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \hyperlink{fileSystem_8h_a06b1816d729a1ee702209d4ddc1d91af}{f\+\_\+mount} (\hyperlink{structFS}{F\+S} $\ast$file\+System, int fs\+Index, B\+Y\+T\+E opt)
+\begin{DoxyCompactList}\small\item\em Función que crea la estructura necesaria para crear un sistema de archivos. \end{DoxyCompactList}\item 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \hyperlink{fileSystem_8h_a8e75c990b2a6c64fa783c75aace55059}{f\+\_\+mkfs} (int fs\+Index)
+\begin{DoxyCompactList}\small\item\em Función que crea un sistema de archivos. \end{DoxyCompactList}\item 
+\hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{F\+R\+E\+S\+U\+L\+T} \hyperlink{fileSystem_8h_afcfe716c836b3b8a019fa38faf56da96}{reset\+\_\+sector} (int fs\+Index)
+\begin{DoxyCompactList}\small\item\em Función que resetea un sector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Descripción detallada}
+Cabecera principal del módulo del Sistema de Archivos. 
+
+
+
+Definición en el archivo \hyperlink{fileSystem_8h_source}{file\+System.\+h}.
+
+
+
+\subsubsection{Documentación de las enumeraciones}
+\hypertarget{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{\index{file\+System.\+h@{file\+System.\+h}!F\+R\+E\+S\+U\+L\+T@{F\+R\+E\+S\+U\+L\+T}}
+\index{F\+R\+E\+S\+U\+L\+T@{F\+R\+E\+S\+U\+L\+T}!file\+System.\+h@{file\+System.\+h}}
+\paragraph[{F\+R\+E\+S\+U\+L\+T}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf F\+R\+E\+S\+U\+L\+T}}}\label{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}
+
+
+Enumeración de los estados de operación de la memoria F\+L\+A\+S\+H. 
+
+\begin{Desc}
+\item[Valores de enumeraciones]\par
+\begin{description}
+\index{F\+R\+\_\+\+O\+K@{F\+R\+\_\+\+O\+K}!file\+System.\+h@{file\+System.\+h}}\index{file\+System.\+h@{file\+System.\+h}!F\+R\+\_\+\+O\+K@{F\+R\+\_\+\+O\+K}}\item[{\em 
+\hypertarget{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{F\+R\+\_\+\+O\+K}\label{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}
+}](0) Éxito \index{F\+R\+\_\+\+D\+I\+S\+K\+\_\+\+E\+R\+R@{F\+R\+\_\+\+D\+I\+S\+K\+\_\+\+E\+R\+R}!file\+System.\+h@{file\+System.\+h}}\index{file\+System.\+h@{file\+System.\+h}!F\+R\+\_\+\+D\+I\+S\+K\+\_\+\+E\+R\+R@{F\+R\+\_\+\+D\+I\+S\+K\+\_\+\+E\+R\+R}}\item[{\em 
+\hypertarget{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca97dee4a6b485dc8f91f37486092dfe34}{F\+R\+\_\+\+D\+I\+S\+K\+\_\+\+E\+R\+R}\label{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca97dee4a6b485dc8f91f37486092dfe34}
+}](1) Ha ocurrido un error en la capa de abstracción de E/\+S \index{F\+R\+\_\+\+I\+N\+T\+\_\+\+E\+R\+R@{F\+R\+\_\+\+I\+N\+T\+\_\+\+E\+R\+R}!file\+System.\+h@{file\+System.\+h}}\index{file\+System.\+h@{file\+System.\+h}!F\+R\+\_\+\+I\+N\+T\+\_\+\+E\+R\+R@{F\+R\+\_\+\+I\+N\+T\+\_\+\+E\+R\+R}}\item[{\em 
+\hypertarget{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cab6c9903af6e9bffbb7a288705f4a6a76}{F\+R\+\_\+\+I\+N\+T\+\_\+\+E\+R\+R}\label{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cab6c9903af6e9bffbb7a288705f4a6a76}
+}](2) Parámetros erróneos \index{F\+R\+\_\+\+N\+O\+T\+\_\+\+R\+E\+A\+D\+Y@{F\+R\+\_\+\+N\+O\+T\+\_\+\+R\+E\+A\+D\+Y}!file\+System.\+h@{file\+System.\+h}}\index{file\+System.\+h@{file\+System.\+h}!F\+R\+\_\+\+N\+O\+T\+\_\+\+R\+E\+A\+D\+Y@{F\+R\+\_\+\+N\+O\+T\+\_\+\+R\+E\+A\+D\+Y}}\item[{\em 
+\hypertarget{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cac9894bed3e8632ede8d2712235fa8e45}{F\+R\+\_\+\+N\+O\+T\+\_\+\+R\+E\+A\+D\+Y}\label{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cac9894bed3e8632ede8d2712235fa8e45}
+}](3) Memoria ocupada \index{F\+R\+\_\+\+N\+O\+\_\+\+F\+I\+L\+E@{F\+R\+\_\+\+N\+O\+\_\+\+F\+I\+L\+E}!file\+System.\+h@{file\+System.\+h}}\index{file\+System.\+h@{file\+System.\+h}!F\+R\+\_\+\+N\+O\+\_\+\+F\+I\+L\+E@{F\+R\+\_\+\+N\+O\+\_\+\+F\+I\+L\+E}}\item[{\em 
+\hypertarget{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca97da8f98fc2e66d8fa7847f9ebb19b8c}{F\+R\+\_\+\+N\+O\+\_\+\+F\+I\+L\+E}\label{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca97da8f98fc2e66d8fa7847f9ebb19b8c}
+}](4) No se encuentra el archivo \index{F\+R\+\_\+\+N\+O\+\_\+\+P\+A\+T\+H@{F\+R\+\_\+\+N\+O\+\_\+\+P\+A\+T\+H}!file\+System.\+h@{file\+System.\+h}}\index{file\+System.\+h@{file\+System.\+h}!F\+R\+\_\+\+N\+O\+\_\+\+P\+A\+T\+H@{F\+R\+\_\+\+N\+O\+\_\+\+P\+A\+T\+H}}\item[{\em 
+\hypertarget{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cae4529c8cc8b59783d6efc9ba4f574532}{F\+R\+\_\+\+N\+O\+\_\+\+P\+A\+T\+H}\label{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cae4529c8cc8b59783d6efc9ba4f574532}
+}](5) No se encuentra la ruta \index{F\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+N\+A\+M\+E@{F\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+N\+A\+M\+E}!file\+System.\+h@{file\+System.\+h}}\index{file\+System.\+h@{file\+System.\+h}!F\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+N\+A\+M\+E@{F\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+N\+A\+M\+E}}\item[{\em 
+\hypertarget{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca83e45a4b579558c57192c0a391b9bb45}{F\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+N\+A\+M\+E}\label{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca83e45a4b579558c57192c0a391b9bb45}
+}](6) El nombre o la ruta es inválido \index{F\+R\+\_\+\+D\+E\+N\+I\+E\+D@{F\+R\+\_\+\+D\+E\+N\+I\+E\+D}!file\+System.\+h@{file\+System.\+h}}\index{file\+System.\+h@{file\+System.\+h}!F\+R\+\_\+\+D\+E\+N\+I\+E\+D@{F\+R\+\_\+\+D\+E\+N\+I\+E\+D}}\item[{\em 
+\hypertarget{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca897e9f2dd7629a80f48af242d8bc1a3d}{F\+R\+\_\+\+D\+E\+N\+I\+E\+D}\label{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca897e9f2dd7629a80f48af242d8bc1a3d}
+}](7) Acceso denegado o prohibido el acceso al directorio \index{F\+R\+\_\+\+E\+X\+I\+S\+T@{F\+R\+\_\+\+E\+X\+I\+S\+T}!file\+System.\+h@{file\+System.\+h}}\index{file\+System.\+h@{file\+System.\+h}!F\+R\+\_\+\+E\+X\+I\+S\+T@{F\+R\+\_\+\+E\+X\+I\+S\+T}}\item[{\em 
+\hypertarget{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca0d8f024d256df76e84782b95018a2450}{F\+R\+\_\+\+E\+X\+I\+S\+T}\label{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca0d8f024d256df76e84782b95018a2450}
+}](8) Acceso denegado o prohibido el acceso \index{F\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+O\+B\+J\+E\+C\+T@{F\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+O\+B\+J\+E\+C\+T}!file\+System.\+h@{file\+System.\+h}}\index{file\+System.\+h@{file\+System.\+h}!F\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+O\+B\+J\+E\+C\+T@{F\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+O\+B\+J\+E\+C\+T}}\item[{\em 
+\hypertarget{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca3dec4eba481cdf5e99d7cd6009e6dcf8}{F\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+O\+B\+J\+E\+C\+T}\label{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca3dec4eba481cdf5e99d7cd6009e6dcf8}
+}](9) El archivo o directorio es inválido \index{F\+R\+\_\+\+W\+R\+I\+T\+E\+\_\+\+P\+R\+O\+T\+E\+C\+T\+E\+D@{F\+R\+\_\+\+W\+R\+I\+T\+E\+\_\+\+P\+R\+O\+T\+E\+C\+T\+E\+D}!file\+System.\+h@{file\+System.\+h}}\index{file\+System.\+h@{file\+System.\+h}!F\+R\+\_\+\+W\+R\+I\+T\+E\+\_\+\+P\+R\+O\+T\+E\+C\+T\+E\+D@{F\+R\+\_\+\+W\+R\+I\+T\+E\+\_\+\+P\+R\+O\+T\+E\+C\+T\+E\+D}}\item[{\em 
+\hypertarget{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cac3afbb423b1d4497229416812aff383b}{F\+R\+\_\+\+W\+R\+I\+T\+E\+\_\+\+P\+R\+O\+T\+E\+C\+T\+E\+D}\label{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cac3afbb423b1d4497229416812aff383b}
+}](10) La memoria está protegida contra escrituras \index{F\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+D\+R\+I\+V\+E@{F\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+D\+R\+I\+V\+E}!file\+System.\+h@{file\+System.\+h}}\index{file\+System.\+h@{file\+System.\+h}!F\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+D\+R\+I\+V\+E@{F\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+D\+R\+I\+V\+E}}\item[{\em 
+\hypertarget{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca487844af77de15f6932a3b41ef3a2d65}{F\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+D\+R\+I\+V\+E}\label{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca487844af77de15f6932a3b41ef3a2d65}
+}](11) El identificador del medio físco es inválido \index{F\+R\+\_\+\+N\+O\+T\+\_\+\+E\+N\+A\+B\+L\+E\+D@{F\+R\+\_\+\+N\+O\+T\+\_\+\+E\+N\+A\+B\+L\+E\+D}!file\+System.\+h@{file\+System.\+h}}\index{file\+System.\+h@{file\+System.\+h}!F\+R\+\_\+\+N\+O\+T\+\_\+\+E\+N\+A\+B\+L\+E\+D@{F\+R\+\_\+\+N\+O\+T\+\_\+\+E\+N\+A\+B\+L\+E\+D}}\item[{\em 
+\hypertarget{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cafc56605c68aaffab4a428339a8bd600d}{F\+R\+\_\+\+N\+O\+T\+\_\+\+E\+N\+A\+B\+L\+E\+D}\label{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cafc56605c68aaffab4a428339a8bd600d}
+}](12) El volúmen no tiene área de trabajo \index{F\+R\+\_\+\+N\+O\+\_\+\+F\+I\+L\+E\+S\+Y\+S\+T\+E\+M@{F\+R\+\_\+\+N\+O\+\_\+\+F\+I\+L\+E\+S\+Y\+S\+T\+E\+M}!file\+System.\+h@{file\+System.\+h}}\index{file\+System.\+h@{file\+System.\+h}!F\+R\+\_\+\+N\+O\+\_\+\+F\+I\+L\+E\+S\+Y\+S\+T\+E\+M@{F\+R\+\_\+\+N\+O\+\_\+\+F\+I\+L\+E\+S\+Y\+S\+T\+E\+M}}\item[{\em 
+\hypertarget{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca086154b5fee763f28c49fd0e2c1cb463}{F\+R\+\_\+\+N\+O\+\_\+\+F\+I\+L\+E\+S\+Y\+S\+T\+E\+M}\label{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca086154b5fee763f28c49fd0e2c1cb463}
+}](13) No hay un Sistema de Archivos válido \index{F\+R\+\_\+\+M\+K\+F\+S\+\_\+\+A\+B\+O\+R\+T\+E\+D@{F\+R\+\_\+\+M\+K\+F\+S\+\_\+\+A\+B\+O\+R\+T\+E\+D}!file\+System.\+h@{file\+System.\+h}}\index{file\+System.\+h@{file\+System.\+h}!F\+R\+\_\+\+M\+K\+F\+S\+\_\+\+A\+B\+O\+R\+T\+E\+D@{F\+R\+\_\+\+M\+K\+F\+S\+\_\+\+A\+B\+O\+R\+T\+E\+D}}\item[{\em 
+\hypertarget{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca4b02760f758f5b1a89f445244fe9fbca}{F\+R\+\_\+\+M\+K\+F\+S\+\_\+\+A\+B\+O\+R\+T\+E\+D}\label{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca4b02760f758f5b1a89f445244fe9fbca}
+}](14) Abortada la creación de un Sistema de Archivos debido a parámetros erróneos \index{F\+R\+\_\+\+T\+I\+M\+E\+O\+U\+T@{F\+R\+\_\+\+T\+I\+M\+E\+O\+U\+T}!file\+System.\+h@{file\+System.\+h}}\index{file\+System.\+h@{file\+System.\+h}!F\+R\+\_\+\+T\+I\+M\+E\+O\+U\+T@{F\+R\+\_\+\+T\+I\+M\+E\+O\+U\+T}}\item[{\em 
+\hypertarget{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca3f8ca7e51af8b129d14328de7243c5d4}{F\+R\+\_\+\+T\+I\+M\+E\+O\+U\+T}\label{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca3f8ca7e51af8b129d14328de7243c5d4}
+}](15) Tiempo de espera excedido \index{F\+R\+\_\+\+L\+O\+C\+K\+E\+D@{F\+R\+\_\+\+L\+O\+C\+K\+E\+D}!file\+System.\+h@{file\+System.\+h}}\index{file\+System.\+h@{file\+System.\+h}!F\+R\+\_\+\+L\+O\+C\+K\+E\+D@{F\+R\+\_\+\+L\+O\+C\+K\+E\+D}}\item[{\em 
+\hypertarget{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca7db5afaaa2af591bd4a208b2967075d7}{F\+R\+\_\+\+L\+O\+C\+K\+E\+D}\label{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca7db5afaaa2af591bd4a208b2967075d7}
+}](16) La operación ha sido rechazada debido a las políticas de acceso \index{F\+R\+\_\+\+N\+O\+T\+\_\+\+E\+N\+O\+U\+G\+H\+\_\+\+C\+O\+R\+E@{F\+R\+\_\+\+N\+O\+T\+\_\+\+E\+N\+O\+U\+G\+H\+\_\+\+C\+O\+R\+E}!file\+System.\+h@{file\+System.\+h}}\index{file\+System.\+h@{file\+System.\+h}!F\+R\+\_\+\+N\+O\+T\+\_\+\+E\+N\+O\+U\+G\+H\+\_\+\+C\+O\+R\+E@{F\+R\+\_\+\+N\+O\+T\+\_\+\+E\+N\+O\+U\+G\+H\+\_\+\+C\+O\+R\+E}}\item[{\em 
+\hypertarget{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44caf56a76a86602cbdeb2c4f3d00cfad21c}{F\+R\+\_\+\+N\+O\+T\+\_\+\+E\+N\+O\+U\+G\+H\+\_\+\+C\+O\+R\+E}\label{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44caf56a76a86602cbdeb2c4f3d00cfad21c}
+}](17) No hay espacio disponible para guardar \index{F\+R\+\_\+\+T\+O\+O\+\_\+\+M\+A\+N\+Y\+\_\+\+F\+I\+L\+E\+S@{F\+R\+\_\+\+T\+O\+O\+\_\+\+M\+A\+N\+Y\+\_\+\+F\+I\+L\+E\+S}!file\+System.\+h@{file\+System.\+h}}\index{file\+System.\+h@{file\+System.\+h}!F\+R\+\_\+\+T\+O\+O\+\_\+\+M\+A\+N\+Y\+\_\+\+F\+I\+L\+E\+S@{F\+R\+\_\+\+T\+O\+O\+\_\+\+M\+A\+N\+Y\+\_\+\+F\+I\+L\+E\+S}}\item[{\em 
+\hypertarget{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cac7926e01d7519a1a7e21a44e2dd76789}{F\+R\+\_\+\+T\+O\+O\+\_\+\+M\+A\+N\+Y\+\_\+\+F\+I\+L\+E\+S}\label{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cac7926e01d7519a1a7e21a44e2dd76789}
+}](18) Número de archivos máximo excedido \index{F\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+E\+R@{F\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+E\+R}!file\+System.\+h@{file\+System.\+h}}\index{file\+System.\+h@{file\+System.\+h}!F\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+E\+R@{F\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+E\+R}}\item[{\em 
+\hypertarget{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca3b89faeceab64db277d0fcdeaaa315d6}{F\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+E\+R}\label{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca3b89faeceab64db277d0fcdeaaa315d6}
+}](19) El parámetro dado es inválido \end{description}
+\end{Desc}
+
+
+Definición en la línea 22 del archivo file\+System.\+h.
+
+
+
+\subsubsection{Documentación de las funciones}
+\hypertarget{fileSystem_8h_a53882db20ef4323dcfd1874d7733ffc3}{\index{file\+System.\+h@{file\+System.\+h}!f\+\_\+close@{f\+\_\+close}}
+\index{f\+\_\+close@{f\+\_\+close}!file\+System.\+h@{file\+System.\+h}}
+\paragraph[{f\+\_\+close}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+R\+E\+S\+U\+L\+T} f\+\_\+close (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+I\+L} $\ast$}]{fp}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8h_a53882db20ef4323dcfd1874d7733ffc3}
+
+
+Función que cierra un archivo. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em fp} & Parámetro de entrada en el que se especifica el fichero a cerrar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 353 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8h_ad34712146dce899b62634cbc071ff5b1}{\index{file\+System.\+h@{file\+System.\+h}!f\+\_\+getfree@{f\+\_\+getfree}}
+\index{f\+\_\+getfree@{f\+\_\+getfree}!file\+System.\+h@{file\+System.\+h}}
+\paragraph[{f\+\_\+getfree}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+R\+E\+S\+U\+L\+T} f\+\_\+getfree (
+\begin{DoxyParamCaption}
+\item[{int}]{fs\+Index, }
+\item[{U\+I\+N\+T $\ast$}]{nclst}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8h_ad34712146dce899b62634cbc071ff5b1}
+
+
+Función que devuelve el número de sectores libres del sistema de archivos. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em fs\+Index} & Identificador del sistema de archivos \\
+\hline
+{\em nclst} & Puntero donde se devuelve el valor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 504 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8h_a5df0ac672ada972e89ef4b003e57f964}{\index{file\+System.\+h@{file\+System.\+h}!f\+\_\+lseek@{f\+\_\+lseek}}
+\index{f\+\_\+lseek@{f\+\_\+lseek}!file\+System.\+h@{file\+System.\+h}}
+\paragraph[{f\+\_\+lseek}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+R\+E\+S\+U\+L\+T} f\+\_\+lseek (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+I\+L} $\ast$}]{fp, }
+\item[{D\+W\+O\+R\+D}]{ofs}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8h_a5df0ac672ada972e89ef4b003e57f964}
+
+
+Función que mueve el puntero de lectura de un archivo. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em fp} & Parámetro de entrada en el que se especifica el fichero objetivo \\
+\hline
+{\em ofs} & Cantidad de bytes a mover desde la posición actual del puntero de lectura \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 266 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8h_a8e75c990b2a6c64fa783c75aace55059}{\index{file\+System.\+h@{file\+System.\+h}!f\+\_\+mkfs@{f\+\_\+mkfs}}
+\index{f\+\_\+mkfs@{f\+\_\+mkfs}!file\+System.\+h@{file\+System.\+h}}
+\paragraph[{f\+\_\+mkfs}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+R\+E\+S\+U\+L\+T} f\+\_\+mkfs (
+\begin{DoxyParamCaption}
+\item[{int}]{fs\+Index}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8h_a8e75c990b2a6c64fa783c75aace55059}
+
+
+Función que crea un sistema de archivos. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em fs\+Index} & Identificador del sistema de archivos a crear \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 561 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8h_a06b1816d729a1ee702209d4ddc1d91af}{\index{file\+System.\+h@{file\+System.\+h}!f\+\_\+mount@{f\+\_\+mount}}
+\index{f\+\_\+mount@{f\+\_\+mount}!file\+System.\+h@{file\+System.\+h}}
+\paragraph[{f\+\_\+mount}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+R\+E\+S\+U\+L\+T} f\+\_\+mount (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+S} $\ast$}]{file\+System, }
+\item[{int}]{fs\+Index, }
+\item[{B\+Y\+T\+E}]{opt}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8h_a06b1816d729a1ee702209d4ddc1d91af}
+
+
+Función que crea la estructura necesaria para crear un sistema de archivos. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em file\+System} & Puntero de Sistema de Archivos donde devolver el valor \\
+\hline
+{\em fs\+Index} & Identificador del sistema de archivos objetivo \\
+\hline
+{\em opt} & Acepta dos opciones\+: 0, sólo crea la estructura necesaria para crear un sistema de archivos. 1, intenta montar un sistema de archivos existente \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 529 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8h_aefdef7126128d99d0b3bd82c28e54d80}{\index{file\+System.\+h@{file\+System.\+h}!f\+\_\+open@{f\+\_\+open}}
+\index{f\+\_\+open@{f\+\_\+open}!file\+System.\+h@{file\+System.\+h}}
+\paragraph[{f\+\_\+open}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+R\+E\+S\+U\+L\+T} f\+\_\+open (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+I\+L} $\ast$}]{fp, }
+\item[{const T\+C\+H\+A\+R $\ast$}]{path, }
+\item[{B\+Y\+T\+E}]{mode}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8h_aefdef7126128d99d0b3bd82c28e54d80}
+
+
+Función que abre o crea un archivo. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em fp} & Parámetro de entrada en el que se devolverá el puntero del archivo abierto \\
+\hline
+{\em path} & Nombre del archivo que queremos abrir \\
+\hline
+{\em mode} & Permisos de apertura del archivo \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 305 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8h_ac4c3dcb6869ca252888eebabe39727b3}{\index{file\+System.\+h@{file\+System.\+h}!f\+\_\+read@{f\+\_\+read}}
+\index{f\+\_\+read@{f\+\_\+read}!file\+System.\+h@{file\+System.\+h}}
+\paragraph[{f\+\_\+read}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+R\+E\+S\+U\+L\+T} f\+\_\+read (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+I\+L} $\ast$}]{fp, }
+\item[{void $\ast$}]{buff, }
+\item[{U\+I\+N\+T}]{btr, }
+\item[{U\+I\+N\+T $\ast$}]{br}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8h_ac4c3dcb6869ca252888eebabe39727b3}
+
+
+Función que lee de un archivo. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em fp} & Parámetro de entrada en el que se especifica el fichero de donde leer \\
+\hline
+{\em buff} & Buffer donde se devolverán los datos leídos \\
+\hline
+{\em btr} & Dirección de donde empezar a leer \\
+\hline
+{\em br} & Cantidad de bytes a leer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 405 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8h_ad69c7246b122ba56a134939ee0eaf847}{\index{file\+System.\+h@{file\+System.\+h}!f\+\_\+sync@{f\+\_\+sync}}
+\index{f\+\_\+sync@{f\+\_\+sync}!file\+System.\+h@{file\+System.\+h}}
+\paragraph[{f\+\_\+sync}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+R\+E\+S\+U\+L\+T} f\+\_\+sync (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+I\+L} $\ast$}]{fp}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8h_ad69c7246b122ba56a134939ee0eaf847}
+
+
+Función que sincroniza un archivo, escribe en memoria los datos que queden pendientes. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em fp} & Parámetro de entrada en el que se especifica el fichero objetivo \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 490 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8h_acdcf7b6e3f54419d2612c38f83733edf}{\index{file\+System.\+h@{file\+System.\+h}!f\+\_\+truncate\+Start@{f\+\_\+truncate\+Start}}
+\index{f\+\_\+truncate\+Start@{f\+\_\+truncate\+Start}!file\+System.\+h@{file\+System.\+h}}
+\paragraph[{f\+\_\+truncate\+Start}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+R\+E\+S\+U\+L\+T} f\+\_\+truncate\+Start (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+I\+L} $\ast$}]{fp, }
+\item[{D\+W\+O\+R\+D}]{ofs}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8h_acdcf7b6e3f54419d2612c38f83733edf}
+
+
+Función que elimina parte de un archivo. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em fp} & Parámetro de entrada en el que se especifica el fichero objetivo \\
+\hline
+{\em ofs} & Cantidad de bytes a eliminar desde la posición cero del archivo \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 473 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8h_ae6a4dfae8a9e308bdb2283a37ef680f2}{\index{file\+System.\+h@{file\+System.\+h}!f\+\_\+write@{f\+\_\+write}}
+\index{f\+\_\+write@{f\+\_\+write}!file\+System.\+h@{file\+System.\+h}}
+\paragraph[{f\+\_\+write}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+R\+E\+S\+U\+L\+T} f\+\_\+write (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+I\+L} $\ast$}]{fp, }
+\item[{const void $\ast$}]{buff, }
+\item[{U\+I\+N\+T}]{btw, }
+\item[{U\+I\+N\+T $\ast$}]{bw}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8h_ae6a4dfae8a9e308bdb2283a37ef680f2}
+
+
+Función que escribe de un archivo. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em fp} & Parámetro de entrada en el que se especifica el fichero de donde leer \\
+\hline
+{\em buff} & Stream de datos que se quieren escribir \\
+\hline
+{\em btw} & Dirección de donde empezar a escribir \\
+\hline
+{\em bw} & Cantidad de bytes a leer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 435 del archivo file\+System.\+c.
+
+\hypertarget{fileSystem_8h_afcfe716c836b3b8a019fa38faf56da96}{\index{file\+System.\+h@{file\+System.\+h}!reset\+\_\+sector@{reset\+\_\+sector}}
+\index{reset\+\_\+sector@{reset\+\_\+sector}!file\+System.\+h@{file\+System.\+h}}
+\paragraph[{reset\+\_\+sector}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+R\+E\+S\+U\+L\+T} reset\+\_\+sector (
+\begin{DoxyParamCaption}
+\item[{int}]{fs\+Index}
+\end{DoxyParamCaption}
+)}}\label{fileSystem_8h_afcfe716c836b3b8a019fa38faf56da96}
+
+
+Función que resetea un sector. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em fs\+Index} & Identificador del sistema de archivos sobre el que resetear sus sectores \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Código de estado de la operación 
+\end{DoxyReturn}
+
+
+Definición en la línea 253 del archivo file\+System.\+c.
+

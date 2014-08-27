@@ -1,0 +1,87 @@
+\hypertarget{gps__task_8c}{\subsection{Referencia del Archivo src/gps\+\_\+task.c}
+\label{gps__task_8c}\index{src/gps\+\_\+task.\+c@{src/gps\+\_\+task.\+c}}
+}
+
+
+Módulo que implementa las funciones del archivo \hyperlink{gps__task_8h}{gps\+\_\+task.\+h}.  
+
+
+{\ttfamily \#include \char`\"{}gps\+\_\+task.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}stm32f2xx.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}B\+A\+\_\+board.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}task.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+Dependencia gráfica adjunta para gps\+\_\+task.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gps__task_8c__incl}
+\end{center}
+\end{figure}
+\subsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{gps__task_8c_abdcfae3302239b75ae41f8d99d7ef7d4}{void \hyperlink{gps__task_8c_abdcfae3302239b75ae41f8d99d7ef7d4}{G\+P\+S\+Task\+Func} (void $\ast$p\+Params)}\label{gps__task_8c_abdcfae3302239b75ae41f8d99d7ef7d4}
+
+\begin{DoxyCompactList}\small\item\em Esta es la función principal de la tarea  Esta función inicializa el G\+P\+S y lanza el método que lee datos del G\+P\+S y se los manda a la tarea que gestiona el Sistema de Archivos. \end{DoxyCompactList}\item 
+\hypertarget{gps__task_8c_a6ff22959c4c93001c06b23ec016df388}{void \hyperlink{gps__task_8c_a6ff22959c4c93001c06b23ec016df388}{setup\+G\+P\+S} ()}\label{gps__task_8c_a6ff22959c4c93001c06b23ec016df388}
+
+\begin{DoxyCompactList}\small\item\em Esta es la función que inicializa el G\+P\+S. \end{DoxyCompactList}\item 
+void \hyperlink{gps__task_8c_ab5a1e3a14590de2541497dd0c38c15a8}{G\+P\+S\+Hardware\+Init} (void $\ast$p\+Param)
+\begin{DoxyCompactList}\small\item\em Esta es la función que inicializa todo el hardware que necesita la tarea. \end{DoxyCompactList}\item 
+void \hyperlink{gps__task_8c_ac8c08e783e9eabb617e98e4af988aeed}{G\+P\+S\+Start\+Task} (unsigned short n\+Stack\+Depth, unsigned port\+B\+A\+S\+E\+\_\+\+T\+Y\+P\+E n\+Priority, void $\ast$p\+Params)
+\begin{DoxyCompactList}\small\item\em Método que crea la tarea. \end{DoxyCompactList}\item 
+\hypertarget{gps__task_8c_ac0340e20d1b18f9259b07a8fd719df9f}{void \hyperlink{gps__task_8c_ac0340e20d1b18f9259b07a8fd719df9f}{parser\+\_\+\+G\+P\+S} ()}\label{gps__task_8c_ac0340e20d1b18f9259b07a8fd719df9f}
+
+\begin{DoxyCompactList}\small\item\em Esta es la función que lee datos del G\+P\+S y, cuando detecta un mensaje correcto, lo envía a la tarea que gestiona el Sistema de Archivos  Esta tarea enciende un led cada vez que envía correctamente un mensaje. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Descripción detallada}
+Módulo que implementa las funciones del archivo \hyperlink{gps__task_8h}{gps\+\_\+task.\+h}. 
+
+
+
+Definición en el archivo \hyperlink{gps__task_8c_source}{gps\+\_\+task.\+c}.
+
+
+
+\subsubsection{Documentación de las funciones}
+\hypertarget{gps__task_8c_ab5a1e3a14590de2541497dd0c38c15a8}{\index{gps\+\_\+task.\+c@{gps\+\_\+task.\+c}!G\+P\+S\+Hardware\+Init@{G\+P\+S\+Hardware\+Init}}
+\index{G\+P\+S\+Hardware\+Init@{G\+P\+S\+Hardware\+Init}!gps\+\_\+task.\+c@{gps\+\_\+task.\+c}}
+\paragraph[{G\+P\+S\+Hardware\+Init}]{\setlength{\rightskip}{0pt plus 5cm}void G\+P\+S\+Hardware\+Init (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{p\+Param}
+\end{DoxyParamCaption}
+)}}\label{gps__task_8c_ab5a1e3a14590de2541497dd0c38c15a8}
+
+
+Esta es la función que inicializa todo el hardware que necesita la tarea. 
+
+Método que inicializa el hardware de la tarea. 
+
+Definición en la línea 39 del archivo gps\+\_\+task.\+c.
+
+\hypertarget{gps__task_8c_ac8c08e783e9eabb617e98e4af988aeed}{\index{gps\+\_\+task.\+c@{gps\+\_\+task.\+c}!G\+P\+S\+Start\+Task@{G\+P\+S\+Start\+Task}}
+\index{G\+P\+S\+Start\+Task@{G\+P\+S\+Start\+Task}!gps\+\_\+task.\+c@{gps\+\_\+task.\+c}}
+\paragraph[{G\+P\+S\+Start\+Task}]{\setlength{\rightskip}{0pt plus 5cm}void G\+P\+S\+Start\+Task (
+\begin{DoxyParamCaption}
+\item[{unsigned short}]{n\+Stack\+Depth, }
+\item[{unsigned port\+B\+A\+S\+E\+\_\+\+T\+Y\+P\+E}]{n\+Priority, }
+\item[{void $\ast$}]{p\+Params}
+\end{DoxyParamCaption}
+)}}\label{gps__task_8c_ac8c08e783e9eabb617e98e4af988aeed}
+
+
+Método que crea la tarea. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em s\+Stack\+Depth} & Tamaño de la pila de memoria \\
+\hline
+{\em n\+Prioriy} & Prioridad de la tarea \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea 43 del archivo gps\+\_\+task.\+c.
+

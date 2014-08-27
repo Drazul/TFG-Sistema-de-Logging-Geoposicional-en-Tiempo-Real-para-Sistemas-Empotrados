@@ -1,0 +1,22 @@
+%\begin{tabular}{llll}
+\begin{tabular}{p{.2\textwidth}p{.2\textwidth}p{.2\textwidth}p{.2\textwidth}}
+\tabheadformat
+  \tabhead{Bloque}   &
+  \tabhead{Nombre}      &
+  \tabhead{Dirección del bloque} &
+  \tabhead{Tamaño}  \\
+\hline
+%\textbf{Bloque}                        &\textbf{Nombre}& \textbf{Dirección del bloque}& \textbf{Tamaño}    \\ \hline
+\multirow{9}{*}{Memoria principal}     & Sector 0      & 0x0800 0000\newline 0x0800 3FFF & 16 KByte  \\ \cline{2-4} 
+                                       & Sector 1      & 0x0800 4000\newline 0x0800 7FFF & 16 KByte  \\ \cline{2-4} 
+                                       & Sector 2      & 0x0800 8000\newline 0x0800 BFFF & 16 KByte  \\ \cline{2-4} 
+                                       & Sector 3      & 0x0800 C000\newline 0x0800 FFFF & 16 KByte  \\ \cline{2-4} 
+                                       & Sector 4      & 0x0801 0000\newline 0x0801 FFFF & 64 KByte  \\ \cline{2-4} 
+                                       & Sector 5      & 0x0802 0000\newline 0x0803 FFFF & 128 KByte \\ \cline{2-4} 
+                                       & Sector 6      & 0x0804 0000\newline 0x0805 FFFF & 128KByte  \\ \cline{2-4} 
+                                       & ...           & ...                       & ...       \\ \cline{2-4} 
+                                       & Sector 11     & 0x080E 0000\newline 0x080F FFFF & 128 KByte \\ \hline
+\multicolumn{2}{l}{Memoria de sistema}               & 0x1FFF 0000\newline 0x1FFF 77FF & 30 KByte  \\ \hline
+\multicolumn{2}{l}{Area OTP (one-time programmable)} & 0x1FFF 7800\newline 0x1FFF 7A0F & 528 Bytes \\ \hline
+\multicolumn{2}{l}{Bytes de opciones}                & 0x1FFF C000\newline 0x1FFF C00F & 16 Bytes  \\ \hline
+\end{tabular}

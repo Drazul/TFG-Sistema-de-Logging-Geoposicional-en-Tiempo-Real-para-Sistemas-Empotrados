@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" id="node13" href="$gps__task_8h.html" title="Cabecera de la tarea que gestiona el GPS." alt="" coords="240,83,325,112"/>
+<area shape="rect" id="node22" href="$fs__task_8h.html" title="Cabecera de la tarea que gestiona el sistema de archivos." alt="" coords="141,83,216,112"/>
+<area shape="rect" id="node16" href="$common_8h.html" title="En este archivo se definen estructuras de datos comunes para todas las tareas." alt="" coords="243,160,325,189"/>
+</map>

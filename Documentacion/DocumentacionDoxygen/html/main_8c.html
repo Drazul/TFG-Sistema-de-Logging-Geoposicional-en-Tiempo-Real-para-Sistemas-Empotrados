@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>Sistema de Logging Geoposicional en Tiempo Real para Sistemas Empotrados: Referencia del Archivo src/main.c</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Sistema de Logging Geoposicional en Tiempo Real para Sistemas Empotrados
+   
+   </div>
+   <div id="projectbrief">Trabajo Fin de Grado incluido en el proyecto Biker Assistant de la empresa SmartSoC Solutions</div>
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Generado por Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="annotated.html"><span>Estructuras&#160;de&#160;Datos</span></a></li>
+      <li class="current"><a href="files.html"><span>Archivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;archivos</span></a></li>
+      <li><a href="globals.html"><span>Globales</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funciones</a>  </div>
+  <div class="headertitle">
+<div class="title">Referencia del Archivo src/main.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Función principal.  
+<a href="#details">Más...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br/>
+<code>#include &quot;FreeRTOS.h&quot;</code><br/>
+<code>#include &quot;task.h&quot;</code><br/>
+<code>#include &quot;stm32f2xx.h&quot;</code><br/>
+<code>#include &quot;BA_board.h&quot;</code><br/>
+<code>#include &quot;<a class="el" href="gps__task_8h_source.html">gps_task.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="fs__task_8h_source.html">fs_task.h</a>&quot;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Dependencia gráfica adjunta para main.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="main_8c__incl.png" border="0" usemap="#src_2main_8c" alt=""/></div>
+<map name="src_2main_8c" id="src_2main_8c">
+<area shape="rect" id="node13" href="gps__task_8h.html" title="Cabecera de la tarea que gestiona el GPS." alt="" coords="240,83,325,112"/><area shape="rect" id="node22" href="fs__task_8h.html" title="Cabecera de la tarea que gestiona el sistema de archivos." alt="" coords="141,83,216,112"/><area shape="rect" id="node16" href="common_8h.html" title="En este archivo se definen estructuras de datos comunes para todas las tareas." alt="" coords="243,160,325,189"/></map>
+</div>
+</div>
+<p><a href="main_8c_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Funciones</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a70d35396e40a379083f623fc98817ce5">prvSetupHardware</a> (void)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Función que inicializa el hardware.  <a href="#a70d35396e40a379083f623fc98817ce5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#aa2bb3bba4ac29312751cdf8d20d86c5b">putChar</a> (int ch)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a22d2ba743406e0f67f8fa5d6df6e2891"></a><!-- doxytag: member="main.c::setupTasks" ref="a22d2ba743406e0f67f8fa5d6df6e2891" args="()" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a22d2ba743406e0f67f8fa5d6df6e2891">setupTasks</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Función que crea las tareas del Sistemas Operativo FreeRTOS. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a631058ae679448e6987400bfd4173c03"></a><!-- doxytag: member="main.c::setupQueues" ref="a631058ae679448e6987400bfd4173c03" args="()" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a631058ae679448e6987400bfd4173c03">setupQueues</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Función que crea las colas de mensajes entre tareas del Sistema Operativo FreeRTOS. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main</a> (void)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Función principal del sistema.  <a href="#a840291bc02cba5474a4cb46a9b9566fe"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a329de0f973fabef8b34da6444654295c">vApplicationStackOverflowHook</a> (xTaskHandle *pxTask, signed portCHAR *pcTaskName)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Función que crea la excepción de desbordamiento de la pila de memoria.  <a href="#a329de0f973fabef8b34da6444654295c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a9ca051aa77e17583aa5a85d5de5c199a">vApplicationTickHook</a> (void)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Función que crea la excepción del reloj.  <a href="#a9ca051aa77e17583aa5a85d5de5c199a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a7d5d5262a3c7d9c39a226ed465e347dc">Delay</a> (uint32_t t)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Función que define la función de espera.  <a href="#a7d5d5262a3c7d9c39a226ed465e347dc"></a><br/></td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Descripción detallada</h2>
+<div class="textblock"><p>Función principal. </p>
+
+<p>Definición en el archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+</div><hr/><h2>Documentación de las funciones</h2>
+<a class="anchor" id="a7d5d5262a3c7d9c39a226ed465e347dc"></a><!-- doxytag: member="main.c::Delay" ref="a7d5d5262a3c7d9c39a226ed465e347dc" args="(uint32_t t)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="main_8c.html#a7d5d5262a3c7d9c39a226ed465e347dc">Delay</a> </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Función que define la función de espera. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td>Tiempo a esperar en milisegundos </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definición en la línea <a class="el" href="main_8c_source.html#l00121">121</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a840291bc02cba5474a4cb46a9b9566fe"></a><!-- doxytag: member="main.c::main" ref="a840291bc02cba5474a4cb46a9b9566fe" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main</a> </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Función principal del sistema. </p>
+<dl class="note"><dt><b>Nota:</b></dt><dd>Esta función inicializa el hardware, crea las colas de mensajes, crea las tareas e inicializa el planificador del Sistema Operativo </dd></dl>
+
+<p>Definición en la línea <a class="el" href="main_8c_source.html#l00054">54</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a70d35396e40a379083f623fc98817ce5"></a><!-- doxytag: member="main.c::prvSetupHardware" ref="a70d35396e40a379083f623fc98817ce5" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="main_8c.html#a70d35396e40a379083f623fc98817ce5">prvSetupHardware</a> </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Función que inicializa el hardware. </p>
+<dl class="note"><dt><b>Nota:</b></dt><dd>Esta función inicializa el vector de interrupciones, configura los niveles de priporidad, establece la fuente del reloj del sistema e inicializa los leds </dd></dl>
+
+<p>Definición en la línea <a class="el" href="main_8c_source.html#l00072">72</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa2bb3bba4ac29312751cdf8d20d86c5b"></a><!-- doxytag: member="main.c::putChar" ref="aa2bb3bba4ac29312751cdf8d20d86c5b" args="(int ch)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="main_8c.html#aa2bb3bba4ac29312751cdf8d20d86c5b">putChar</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ch</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>External dependence needed by printf implementation. Write a character to standard out.</p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>Specifies the character to be written. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Returns the character written. No error conditions are managed. </dd></dl>
+
+<p>Definición en la línea <a class="el" href="main_8c_source.html#l00112">112</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a329de0f973fabef8b34da6444654295c"></a><!-- doxytag: member="main.c::vApplicationStackOverflowHook" ref="a329de0f973fabef8b34da6444654295c" args="(xTaskHandle *pxTask, signed portCHAR *pcTaskName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="main_8c.html#a329de0f973fabef8b34da6444654295c">vApplicationStackOverflowHook</a> </td>
+          <td>(</td>
+          <td class="paramtype">xTaskHandle *&#160;</td>
+          <td class="paramname"><em>pxTask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">signed portCHAR *&#160;</td>
+          <td class="paramname"><em>pcTaskName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Función que crea la excepción de desbordamiento de la pila de memoria. </p>
+<dl class="note"><dt><b>Nota:</b></dt><dd>Esta función la llama internamente el Sistema Operativo </dd></dl>
+
+<p>Definición en la línea <a class="el" href="main_8c_source.html#l00090">90</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9ca051aa77e17583aa5a85d5de5c199a"></a><!-- doxytag: member="main.c::vApplicationTickHook" ref="a9ca051aa77e17583aa5a85d5de5c199a" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="main_8c.html#a9ca051aa77e17583aa5a85d5de5c199a">vApplicationTickHook</a> </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Función que crea la excepción del reloj. </p>
+<dl class="note"><dt><b>Nota:</b></dt><dd>Esta función la llama internamente el Sistema Operativo </dd></dl>
+
+<p>Definición en la línea <a class="el" href="main_8c_source.html#l00106">106</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Estructuras de Datos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Valores de enumeraciones</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Generado el Miércoles, 2 de Julio de 2014 10:04:37 para Sistema de Logging Geoposicional en Tiempo Real para Sistemas Empotrados por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

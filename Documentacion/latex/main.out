@@ -1,0 +1,89 @@
+\BOOKMARK [0][-]{chapter*.1}{Resumen}{}% 1
+\BOOKMARK [0][-]{chapter*.4}{Abstract}{}% 2
+\BOOKMARK [0][-]{chapter*.5}{Agradecimientos}{}% 3
+\BOOKMARK [0][-]{chapter*.6}{\315ndice general}{}% 4
+\BOOKMARK [0][-]{chapter*.7}{\315ndice de tablas}{}% 5
+\BOOKMARK [0][-]{chapter*.8}{\315ndice de figuras}{}% 6
+\BOOKMARK [0][-]{chapter*.9}{\315ndice de listados}{}% 7
+\BOOKMARK [0][-]{chapter*.10}{Listado de acr\363nimos}{}% 8
+\BOOKMARK [0][-]{chapter.1}{Introducci\363n}{}% 9
+\BOOKMARK [1][-]{section.1.1}{Marco de realizaci\363n del TFG}{chapter.1}% 10
+\BOOKMARK [1][-]{section.1.2}{Motivaci\363n del presente TFG}{chapter.1}% 11
+\BOOKMARK [1][-]{section.1.3}{Subsistema de Logging Geoposicional en Tiempo Real}{chapter.1}% 12
+\BOOKMARK [1][-]{section.1.4}{Retos a afrontar}{chapter.1}% 13
+\BOOKMARK [1][-]{section.1.5}{Estructura del documento}{chapter.1}% 14
+\BOOKMARK [0][-]{chapter.2}{Objetivos}{}% 15
+\BOOKMARK [1][-]{section.2.1}{Objetivos espec\355ficos}{chapter.2}% 16
+\BOOKMARK [2][-]{subsection.2.1.1}{Comprensi\363n de la plataforma hardware}{section.2.1}% 17
+\BOOKMARK [2][-]{subsection.2.1.2}{Conocimiento software de acceso al hardware}{section.2.1}% 18
+\BOOKMARK [2][-]{subsection.2.1.3}{An\341lisis del acceso a la memoria FLASH}{section.2.1}% 19
+\BOOKMARK [2][-]{subsection.2.1.4}{An\341lisis del acceso al GPS}{section.2.1}% 20
+\BOOKMARK [2][-]{subsection.2.1.5}{Implementaci\363n de un Sistema de Ficheros}{section.2.1}% 21
+\BOOKMARK [2][-]{subsection.2.1.6}{Programaci\363n y configuraci\363n del Sistema Operativo en Tiempo Real FreeRTOS}{section.2.1}% 22
+\BOOKMARK [2][-]{subsection.2.1.7}{Dise\361o y programaci\363n del sistema final}{section.2.1}% 23
+\BOOKMARK [0][-]{chapter.3}{Antecedentes}{}% 24
+\BOOKMARK [1][-]{section.3.1}{Sistemas empotrados}{chapter.3}% 25
+\BOOKMARK [1][-]{section.3.2}{Desarrollo de sistemas empotrados}{chapter.3}% 26
+\BOOKMARK [1][-]{section.3.3}{Historia e importancia de los sistemas empotrados}{chapter.3}% 27
+\BOOKMARK [1][-]{section.3.4}{Componentes de un sistema empotrado}{chapter.3}% 28
+\BOOKMARK [1][-]{section.3.5}{Sistemas Operativos para Sistemas Empotrados}{chapter.3}% 29
+\BOOKMARK [1][-]{section.3.6}{Sistemas de Archivos}{chapter.3}% 30
+\BOOKMARK [1][-]{section.3.7}{Dispositivos GPS}{chapter.3}% 31
+\BOOKMARK [0][-]{chapter.4}{M\351todo de trabajo}{}% 32
+\BOOKMARK [1][-]{section.4.1}{Metodolog\355a de desarrollo}{chapter.4}% 33
+\BOOKMARK [2][-]{subsection.4.1.1}{Dise\361o basado en plataforma}{section.4.1}% 34
+\BOOKMARK [2][-]{subsection.4.1.2}{Desarrollo guiado por pruebas}{section.4.1}% 35
+\BOOKMARK [1][-]{section.4.2}{Tecnolog\355as y herramientas utilizadas}{chapter.4}% 36
+\BOOKMARK [2][-]{subsection.4.2.1}{Lenguaje de programaci\363n}{section.4.2}% 37
+\BOOKMARK [0][-]{chapter.5}{Desarrollo del sistema}{}% 38
+\BOOKMARK [1][-]{section.5.1}{Captura de requisitos}{chapter.5}% 39
+\BOOKMARK [1][-]{section.5.2}{Comprensi\363n de la plataforma hardware}{chapter.5}% 40
+\BOOKMARK [2][-]{subsection.5.2.1}{Memoria FLASH}{section.5.2}% 41
+\BOOKMARK [2][-]{subsection.5.2.2}{Dispositivo GPS}{section.5.2}% 42
+\BOOKMARK [2][-]{subsection.5.2.3}{Placa STMF205VGT6}{section.5.2}% 43
+\BOOKMARK [1][-]{section.5.3}{Conocimiento software de acceso al hardware}{chapter.5}% 44
+\BOOKMARK [2][-]{subsection.5.3.1}{Biblioteca de funciones de la Placa STMF205VGT6}{section.5.3}% 45
+\BOOKMARK [2][-]{subsection.5.3.2}{Biblioteca de funciones de la Memoria FLASH}{section.5.3}% 46
+\BOOKMARK [2][-]{subsection.5.3.3}{Biblioteca de funciones del dispositivo GPS}{section.5.3}% 47
+\BOOKMARK [1][-]{section.5.4}{An\341lisis del acceso a la memoria FLASH}{chapter.5}% 48
+\BOOKMARK [1][-]{section.5.5}{An\341lisis del acceso al GPS}{chapter.5}% 49
+\BOOKMARK [1][-]{section.5.6}{Implementaci\363n de un Sistema de Ficheros}{chapter.5}% 50
+\BOOKMARK [2][-]{subsection.5.6.1}{Introducci\363n y evaluaci\363n de alternativas}{section.5.6}% 51
+\BOOKMARK [2][-]{subsection.5.6.2}{Dise\361o del sistema de archivos}{section.5.6}% 52
+\BOOKMARK [2][-]{subsection.5.6.3}{Definici\363n de la biblioteca de acceso al Sistema de Archivos}{section.5.6}% 53
+\BOOKMARK [1][-]{section.5.7}{Programaci\363n y configuraci\363n del Sistema Operativo en Tiempo Real FreeRTOS}{chapter.5}% 54
+\BOOKMARK [2][-]{subsection.5.7.1}{Gesti\363n de la memoria RAM}{section.5.7}% 55
+\BOOKMARK [2][-]{subsection.5.7.2}{Gesti\363n de las tareas}{section.5.7}% 56
+\BOOKMARK [2][-]{subsection.5.7.3}{Funciones necesarias para construir una aplicaci\363n con FreeRTOS}{section.5.7}% 57
+\BOOKMARK [1][-]{section.5.8}{Dise\361o y programaci\363n del sistema final}{chapter.5}% 58
+\BOOKMARK [2][-]{subsection.5.8.1}{Tarea encargada de acceso al GPS}{section.5.8}% 59
+\BOOKMARK [2][-]{subsection.5.8.2}{Tarea encargada de acceso a la memoria FLASH}{section.5.8}% 60
+\BOOKMARK [0][-]{chapter.6}{Resultados}{}% 61
+\BOOKMARK [0][-]{chapter.7}{Conclusiones}{}% 62
+\BOOKMARK [0][-]{chapter.8}{Trabajo futuro}{}% 63
+\BOOKMARK [0][-]{appendix.Alph1}{Im\341genes del Sistema Hardware}{}% 64
+\BOOKMARK [0][-]{appendix.Alph2}{Costes del proyecto}{}% 65
+\BOOKMARK [0][-]{appendix.Alph3}{Formato de logs y almacenamiento}{}% 66
+\BOOKMARK [0][-]{appendix.Alph4}{Documentaci\363n del Sistema desarrollado \(generada con Doxygen\)}{}% 67
+\BOOKMARK [1][-]{section.Alph4.1}{\315ndice de estructura de datos}{appendix.Alph4}% 68
+\BOOKMARK [2][-]{subsection.Alph4.1.1}{Estructura de datos}{section.Alph4.1}% 69
+\BOOKMARK [1][-]{section.Alph4.2}{Indice de archivos}{appendix.Alph4}% 70
+\BOOKMARK [2][-]{subsection.Alph4.2.1}{Lista de archivos}{section.Alph4.2}% 71
+\BOOKMARK [1][-]{section.Alph4.3}{Documentaci\363n de las estructuras de datos}{appendix.Alph4}% 72
+\BOOKMARK [2][-]{subsection.Alph4.3.1}{Referencia de la Estructura FIL}{section.Alph4.3}% 73
+\BOOKMARK [2][-]{subsection.Alph4.3.2}{Referencia de la Estructura FS}{section.Alph4.3}% 74
+\BOOKMARK [2][-]{subsection.Alph4.3.3}{Referencia de la Estructura GPS\137MSG}{section.Alph4.3}% 75
+\BOOKMARK [1][-]{section.Alph4.4}{Documentaci\363n de archivos}{appendix.Alph4}% 76
+\BOOKMARK [2][-]{subsection.Alph4.4.1}{Referencia del Archivo FS/diskio.c}{section.Alph4.4}% 77
+\BOOKMARK [2][-]{subsection.Alph4.4.2}{Referencia del Archivo FS/diskio.h}{section.Alph4.4}% 78
+\BOOKMARK [2][-]{subsection.Alph4.4.3}{Referencia del Archivo FS/ffconf.h}{section.Alph4.4}% 79
+\BOOKMARK [2][-]{subsection.Alph4.4.4}{Referencia del Archivo FS/fileSystem.c}{section.Alph4.4}% 80
+\BOOKMARK [2][-]{subsection.Alph4.4.5}{Referencia del Archivo FS/fileSystem.h}{section.Alph4.4}% 81
+\BOOKMARK [2][-]{subsection.Alph4.4.6}{Referencia del Archivo FS/integer.h}{section.Alph4.4}% 82
+\BOOKMARK [2][-]{subsection.Alph4.4.7}{Referencia del Archivo src/common.h}{section.Alph4.4}% 83
+\BOOKMARK [2][-]{subsection.Alph4.4.8}{Referencia del Archivo src/fs\137task.c}{section.Alph4.4}% 84
+\BOOKMARK [2][-]{subsection.Alph4.4.9}{Referencia del Archivo src/fs\137task.h}{section.Alph4.4}% 85
+\BOOKMARK [2][-]{subsection.Alph4.4.10}{Referencia del Archivo src/gps\137task.c}{section.Alph4.4}% 86
+\BOOKMARK [2][-]{subsection.Alph4.4.11}{Referencia del Archivo src/gps\137task.h}{section.Alph4.4}% 87
+\BOOKMARK [2][-]{subsection.Alph4.4.12}{Referencia del Archivo src/main.c}{section.Alph4.4}% 88
+\BOOKMARK [0][-]{appendix*.17}{Referencias}{}% 89

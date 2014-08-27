@@ -1,0 +1,15 @@
+\chapter{Formato de logs y almacenamiento}
+\label{anexo:log}
+El nombre del archivo de log tiene un tamaño máximo de siete caracteres. El nombre del archivo utilizado es \textit{log.txt}.\\
+
+
+El formato de los mensajes almacenados en el log es el mismo que se recibe desde el dispositivo GPS. Está codificado con el estándar NMEA y se trata de una cadena de caracteres, de tamaño variable, con los datos recibidos. Se ha decidido guardar la cadena de caracteres sin ningún preprocesado debido a que en este TFG no se contempla el caso de la extracción de datos del GPS y se desconoce el formato de datos que necesitan tomar los módulos encargados de exportar los datos del log.\\
+
+
+A continuación se encuentran los dos únicos tipos de cadenas posibles que se guardan en el log. El primero de ellos se trata de una cadena de caracteres con el tamaño y formato de un mensaje completo, el segundo se trata de una cadena de caracteres con el tamaño y formato de un mensaje sin datos geoposicionales. Los mensajes sin datos geoposicionales se producen debido a un error de sincronización con los satélites GPS, ya sea por entrar en una zona cubierta o por no haber dado suficiente tiempo de espera al iniciar el sistema.\\
+
+
+\begin{itemize}
+\item \$GPGGA,064951.000,2307.1256,N,12016.4438,E,1,8,0.95,39.9,M,17.8,M,,*65
+\item \$GPGGA,064951.000,,N,,E,0,,,,M,,M,,*147
+\end{itemize}

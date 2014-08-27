@@ -1,0 +1,543 @@
+\hypertarget{fileSystem_8c_source}{\subsection{file\+System.\+c}
+\label{fileSystem_8c_source}\index{F\+S/file\+System.\+c@{F\+S/file\+System.\+c}}
+}
+
+\begin{DoxyCode}
+00001 
+00005 \textcolor{preprocessor}{#include "\hyperlink{fileSystem_8h}{fileSystem.h}"}
+00006 
+00007 \textcolor{keyword}{static} \hyperlink{structFS}{FS} *fs[2];
+00008 \textcolor{keyword}{static} \textcolor{keywordtype}{int} actual\_fs = 0;
+00009 
+\hypertarget{fileSystem_8c_source_l00015}{}\hyperlink{fileSystem_8c_a3a0f60af901aa1945ab943e63fbd06d0}{00015} uint32\_t \hyperlink{fileSystem_8c_a3a0f60af901aa1945ab943e63fbd06d0}{byte\_2\_uint32}(BYTE* src) \{
+00016 
+00017   uint32\_t dst = 0;
+00018   \textcolor{comment}{/*}
+00019 \textcolor{comment}{   dst |= (uint32\_t) src[0] << 0;}
+00020 \textcolor{comment}{   dst |= (uint32\_t) src[1] << 8;}
+00021 \textcolor{comment}{   dst |= (uint32\_t) src[2] << 16;}
+00022 \textcolor{comment}{   dst |= (uint32\_t) src[3] << 24;}
+00023 \textcolor{comment}{   */}
+00024   dst = (uint32\_t) src[0] << 24;
+00025   dst |= (uint32\_t) src[1] << 26;
+00026   dst |= (uint32\_t) src[2] << 8;
+00027   dst |= (uint32\_t) src[3] << 0;
+00028   \textcolor{keywordflow}{return} dst;
+00029 \}
+\hypertarget{fileSystem_8c_source_l00036}{}\hyperlink{fileSystem_8c_a3623bef990ae28b977811f039ee158bb}{00036} BYTE* \hyperlink{fileSystem_8c_a3623bef990ae28b977811f039ee158bb}{uint32\_2\_byte}(uint32\_t src, BYTE * dst) \{
+00037   dst[3] = (BYTE) (src >> 24);
+00038   dst[2] = (BYTE) (src >> 16);
+00039   dst[1] = (BYTE) (src >> 8);
+00040   dst[0] = (BYTE) (src >> 0);
+00041 
+00042   \textcolor{keywordflow}{return} dst;
+00043 \}
+00044 
+\hypertarget{fileSystem_8c_source_l00050}{}\hyperlink{fileSystem_8c_aaa2cbdb65e6f30c0a2a3e5761eea1ef8}{00050} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} \hyperlink{fileSystem_8c_aaa2cbdb65e6f30c0a2a3e5761eea1ef8}{check\_fs}(\textcolor{keywordtype}{int} fsIndex) \{
+00051 
+00052   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} result = \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK};
+00053   BYTE check[11] = \{ \textcolor{charliteral}{'F'}, \textcolor{charliteral}{'S'}, \textcolor{charliteral}{' '}, \textcolor{charliteral}{'C'}, \textcolor{charliteral}{'O'}, \textcolor{charliteral}{'R'}, \textcolor{charliteral}{'R'}, \textcolor{charliteral}{'E'}, \textcolor{charliteral}{'C'}, \textcolor{charliteral}{'T'}, \textcolor{charliteral}{'O'} \};
+00054   \textcolor{keywordtype}{int} i;
+00055   result = \hyperlink{diskio_8c_aa01f5479a3ee7c9aed89814238964cd2}{disk\_initialize}(fsIndex);
+00056   \textcolor{keywordflow}{if} (result != \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK})
+00057     \textcolor{keywordflow}{return} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cac9894bed3e8632ede8d2712235fa8e45}{FR\_NOT\_READY};
+00058 
+00059   result = \hyperlink{diskio_8c_a9c6f716a2119a650cf3c61bee540be85}{disk\_read}(fsIndex, fs[fsIndex]->win, 0, 1); \textcolor{comment}{/* Read sector 0 */}
+00060   \textcolor{keywordflow}{if} (result != \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK})
+00061     \textcolor{keywordflow}{return} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca97dee4a6b485dc8f91f37486092dfe34}{FR\_DISK\_ERR};
+00062 
+00063   \textcolor{keywordflow}{for} (i = 0; i < 11; i++)
+00064     \textcolor{keywordflow}{if} (fs[fsIndex]->win[i] != check[i])
+00065       \textcolor{keywordflow}{return} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca086154b5fee763f28c49fd0e2c1cb463}{FR\_NO\_FILESYSTEM};
+00066 
+00067   \textcolor{keywordflow}{return} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK};
+00068 \}
+00069 
+\hypertarget{fileSystem_8c_source_l00075}{}\hyperlink{fileSystem_8c_a2ad7019c52d78ebe461b5ba559736aa5}{00075} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} \hyperlink{fileSystem_8c_a2ad7019c52d78ebe461b5ba559736aa5}{check\_file}(\hyperlink{structFIL}{FIL} *file) \{
+00076 
+00077   \textcolor{keywordtype}{int} i;
+00078   \textcolor{comment}{/* Each file has 1 Byte validity, 4 bytes for start address, 4 bytes for end address, 7 bytes for file
+       name */}
+00079 
+00080   \textcolor{keywordflow}{if} (fs[file->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[0] != 255) \textcolor{comment}{/*Invalid entry, read next*/}
+00081     \textcolor{keywordflow}{return} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca3dec4eba481cdf5e99d7cd6009e6dcf8}{FR\_INVALID\_OBJECT}; \textcolor{comment}{/* 255 if when a byte is empty*/}
+00082 
+00083   file->\hyperlink{structFIL_a32847fe875861954ec3dc750d332a194}{dirty} = 255;
+00084 
+00085   file->\hyperlink{structFIL_a684d4d555f293b08b8396c35e20706d3}{startSector} = fs[file->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[1] << 24;
+00086   file->\hyperlink{structFIL_a684d4d555f293b08b8396c35e20706d3}{startSector} |= fs[file->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[2] << 16;
+00087   file->\hyperlink{structFIL_a684d4d555f293b08b8396c35e20706d3}{startSector} |= fs[file->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[3] << 8;
+00088   file->\hyperlink{structFIL_a684d4d555f293b08b8396c35e20706d3}{startSector} |= fs[file->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[4] << 0;
+00089 
+00090   file->\hyperlink{structFIL_a89e92b4845c72b4f9f119b38d1142a41}{writePointer} = fs[file->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[5] << 24;
+00091   file->\hyperlink{structFIL_a89e92b4845c72b4f9f119b38d1142a41}{writePointer} |= fs[file->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[6] << 16;
+00092   file->\hyperlink{structFIL_a89e92b4845c72b4f9f119b38d1142a41}{writePointer} |= fs[file->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[7] << 8;
+00093   file->\hyperlink{structFIL_a89e92b4845c72b4f9f119b38d1142a41}{writePointer} |= fs[file->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[8] << 0;
+00094 
+00095   file->\hyperlink{structFIL_ad0d1f48655e0e06936cb7883993afb1f}{readPointer} = 0;
+00096   file->\hyperlink{structFIL_ac409508881f5a16f2998ae675072b376}{flag} = 0;
+00097   file->\hyperlink{structFIL_aea440945db26de9c4a88065c0c887fda}{err} = 0;
+00098   file->\hyperlink{structFIL_a5fb6271e3cc261b9f811bb8860cb6110}{buffindex} = 0;
+00099 
+00100   \textcolor{keywordflow}{if} ((file->\hyperlink{structFIL_a684d4d555f293b08b8396c35e20706d3}{startSector} == 4294967295)
+00101       && (file->\hyperlink{structFIL_a89e92b4845c72b4f9f119b38d1142a41}{writePointer} == 4294967295)) \{ \textcolor{comment}{/* This number is if buff is empty*/}
+00102     file->\hyperlink{structFIL_aea440945db26de9c4a88065c0c887fda}{err} = 1;
+00103     \textcolor{keywordflow}{return} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca97da8f98fc2e66d8fa7847f9ebb19b8c}{FR\_NO\_FILE}; \textcolor{comment}{/* No more fat entries, no more files */}
+00104   \}
+00105 
+00106   \textcolor{keywordflow}{for} (i = 0; i < 7; i++)
+00107     file->\hyperlink{structFIL_a21240fe08417eb46f794e67519bf4a58}{name}[i] = fs[file->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[i + 9];
+00108 
+00109   \textcolor{keywordflow}{return} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK};
+00110 \}
+00111 
+\hypertarget{fileSystem_8c_source_l00118}{}\hyperlink{fileSystem_8c_a4ab6badca8cdbe971b432c8a3bb7b0b1}{00118} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} \hyperlink{fileSystem_8c_a4ab6badca8cdbe971b432c8a3bb7b0b1}{read\_file\_entry}(\hyperlink{structFIL}{FIL} *file, DWORD sector) \{
+00119 
+00120   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} result = \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK};
+00121   result = \hyperlink{diskio_8c_a9c6f716a2119a650cf3c61bee540be85}{disk\_read}(file->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}, fs[file->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}]->
+      \hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}, sector, 1);
+00122   \textcolor{keywordflow}{if} (result != \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK})
+00123     \textcolor{keywordflow}{return} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca97dee4a6b485dc8f91f37486092dfe34}{FR\_DISK\_ERR};
+00124 
+00125   result = \hyperlink{fileSystem_8c_a2ad7019c52d78ebe461b5ba559736aa5}{check\_file}(file);
+00126   \textcolor{keywordflow}{if} (result == \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK})
+00127     file->\hyperlink{structFIL_a043930088c6fdc5e523500b833106476}{descriptorSector} = sector;
+00128   \textcolor{keywordflow}{return} result;
+00129 \}
+\hypertarget{fileSystem_8c_source_l00135}{}\hyperlink{fileSystem_8c_a951ec41abe19766602d305ff1e99fd32}{00135} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} \hyperlink{fileSystem_8c_a951ec41abe19766602d305ff1e99fd32}{loading\_files}(\textcolor{keywordtype}{int} fsIndex) \{
+00136 
+00137   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} result = \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK};
+00138   DWORD sector;
+00139 
+00140   \textcolor{keywordtype}{int} nfiles = 0;
+00141   \textcolor{keywordflow}{for} (sector = fs[fsIndex]->fatbase; sector < fs[fsIndex]->\hyperlink{structFS_a727068deba19f90b5b402ae005f49b58}{database};
+00142       sector++) \{
+00143     fs[fsIndex]->\hyperlink{structFS_a5772298ea6aafc77f842037933531a02}{files}[nfiles].\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex} = fsIndex;
+00144     result = \hyperlink{fileSystem_8c_a4ab6badca8cdbe971b432c8a3bb7b0b1}{read\_file\_entry}(&fs[fsIndex]->files[nfiles], sector);
+00145     \textcolor{keywordflow}{if} (result == \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK})
+00146       nfiles++;
+00147 
+00148     \textcolor{keywordflow}{if} (result == \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca97da8f98fc2e66d8fa7847f9ebb19b8c}{FR\_NO\_FILE}) \{
+00149       fs[fsIndex]->\hyperlink{structFS_a050f921ab2140aa4eadce4a140b61fbe}{lastDescriptor} = sector;
+00150       \textcolor{keywordflow}{break}; \textcolor{comment}{/* if no more files then is the last sector */}
+00151     \}
+00152     \textcolor{keywordflow}{if} (nfiles == \_MAX\_FILES) \{
+00153       fs[fsIndex]->\hyperlink{structFS_a050f921ab2140aa4eadce4a140b61fbe}{lastDescriptor} = sector + 1;
+00154       \textcolor{keywordflow}{break}; \textcolor{comment}{/* if no more files then is the last sector */}
+00155     \}
+00156   \}
+00157   \textcolor{keywordflow}{if} (nfiles < \_MAX\_FILES)
+00158     \textcolor{keywordflow}{for} (; nfiles < \_MAX\_FILES; nfiles++) \{
+00159       fs[fsIndex]->\hyperlink{structFS_a5772298ea6aafc77f842037933531a02}{files}[nfiles].\hyperlink{structFIL_aea440945db26de9c4a88065c0c887fda}{err} = 1;
+00160     \}
+00161   \textcolor{keywordflow}{return} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK};
+00162 \}
+\hypertarget{fileSystem_8c_source_l00169}{}\hyperlink{fileSystem_8c_a2c77bece2713c99a22b9ec7d1d083b47}{00169} \textcolor{keywordtype}{int} \hyperlink{fileSystem_8c_a2c77bece2713c99a22b9ec7d1d083b47}{compare}(\textcolor{keyword}{const} TCHAR *path, TCHAR *name) \{
+00170   \textcolor{keywordtype}{int} i;
+00171   \textcolor{keywordflow}{for} (i = 0; i < 7; i++) \{ \textcolor{comment}{/* 7 is the max length of name */}
+00172     \textcolor{keywordflow}{if} (path[i] != name[i])
+00173       \textcolor{keywordflow}{return} 0;
+00174   \}
+00175 
+00176   \textcolor{keywordflow}{return} 1;
+00177 \}
+\hypertarget{fileSystem_8c_source_l00184}{}\hyperlink{fileSystem_8c_aa4ef3507a98f8090aa382f4015cebe78}{00184} \textcolor{keywordtype}{int} \hyperlink{fileSystem_8c_aa4ef3507a98f8090aa382f4015cebe78}{update\_file}(\hyperlink{structFIL}{FIL} *src, \hyperlink{structFIL}{FIL} *dst) \{
+00185   dst->\hyperlink{structFIL_a5fb6271e3cc261b9f811bb8860cb6110}{buffindex} = src->\hyperlink{structFIL_a5fb6271e3cc261b9f811bb8860cb6110}{buffindex};
+00186   dst->\hyperlink{structFIL_a043930088c6fdc5e523500b833106476}{descriptorSector} = src->\hyperlink{structFIL_a043930088c6fdc5e523500b833106476}{descriptorSector};
+00187   dst->\hyperlink{structFIL_a32847fe875861954ec3dc750d332a194}{dirty} = src->\hyperlink{structFIL_a32847fe875861954ec3dc750d332a194}{dirty};
+00188   dst->\hyperlink{structFIL_aea440945db26de9c4a88065c0c887fda}{err} = src->\hyperlink{structFIL_aea440945db26de9c4a88065c0c887fda}{err};
+00189   dst->\hyperlink{structFIL_ac409508881f5a16f2998ae675072b376}{flag} = src->\hyperlink{structFIL_ac409508881f5a16f2998ae675072b376}{flag};
+00190   dst->\hyperlink{structFIL_ad0d1f48655e0e06936cb7883993afb1f}{readPointer} = src->\hyperlink{structFIL_ad0d1f48655e0e06936cb7883993afb1f}{readPointer};
+00191   dst->\hyperlink{structFIL_a684d4d555f293b08b8396c35e20706d3}{startSector} = src->\hyperlink{structFIL_a684d4d555f293b08b8396c35e20706d3}{startSector};
+00192   dst->\hyperlink{structFIL_a89e92b4845c72b4f9f119b38d1142a41}{writePointer} = src->\hyperlink{structFIL_a89e92b4845c72b4f9f119b38d1142a41}{writePointer};
+00193   dst->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex} = src->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex};
+00194   \textcolor{keywordtype}{int} i;
+00195   \textcolor{keywordflow}{for} (i = 0; i < 7; i++)
+00196     dst->\hyperlink{structFIL_a21240fe08417eb46f794e67519bf4a58}{name}[i] = src->\hyperlink{structFIL_a21240fe08417eb46f794e67519bf4a58}{name}[i];
+00197 
+00198   \textcolor{keywordflow}{return} 1;
+00199 \}
+\hypertarget{fileSystem_8c_source_l00206}{}\hyperlink{fileSystem_8c_a8b7c0e2dcc69101a9bcec19d59480b0f}{00206} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} \hyperlink{fileSystem_8c_a8b7c0e2dcc69101a9bcec19d59480b0f}{copy\_file}(\hyperlink{structFIL}{FIL} *src, \hyperlink{structFIL}{FIL} *dst) \{
+00207   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} result = \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK};
+00208   UINT byteRead = 0, byteWrite = 0;
+00209   \hyperlink{fileSystem_8c_aefdef7126128d99d0b3bd82c28e54d80}{f\_open}(dst, (TCHAR*) src->\hyperlink{structFIL_a21240fe08417eb46f794e67519bf4a58}{name}, FA\_OPEN\_ALWAYS | FA\_READ | FA\_WRITE);
+00210 
+00211   \textcolor{keywordflow}{while} (src->\hyperlink{structFIL_ad0d1f48655e0e06936cb7883993afb1f}{readPointer} < src->\hyperlink{structFIL_a89e92b4845c72b4f9f119b38d1142a41}{writePointer}) \{ \textcolor{comment}{/* ReadPointer se actualiza al leer
+       */}
+00212     \hyperlink{fileSystem_8c_ac4c3dcb6869ca252888eebabe39727b3}{f\_read}(src, fs[src->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}, SECTOR\_SIZE, &byteRead);
+00213     \hyperlink{fileSystem_8c_ae6a4dfae8a9e308bdb2283a37ef680f2}{f\_write}(dst, fs[src->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}, byteRead, &byteWrite);
+00214   \}
+00215 
+00216   \hyperlink{fileSystem_8c_a53882db20ef4323dcfd1874d7733ffc3}{f\_close}(src);
+00217   \hyperlink{fileSystem_8c_a53882db20ef4323dcfd1874d7733ffc3}{f\_close}(dst);
+00218 
+00219   \textcolor{keywordflow}{return} result;
+00220 \}
+\hypertarget{fileSystem_8c_source_l00227}{}\hyperlink{fileSystem_8c_ac1802ff989bc875c1147d22cf93e8416}{00227} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} \hyperlink{fileSystem_8c_ac1802ff989bc875c1147d22cf93e8416}{backup\_fs}(\textcolor{keywordtype}{int} src, \textcolor{keywordtype}{int} dst) \{
+00228   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} result = \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK};
+00229   \textcolor{keywordtype}{int} i;
+00230   \textcolor{keywordflow}{for} (i = 0; i < \_MAX\_FILES; i++) \{
+00231     \textcolor{keywordflow}{if} (fs[src]->files[i].err == -1)
+00232       \textcolor{keywordflow}{break};
+00233     result = \hyperlink{fileSystem_8c_a8b7c0e2dcc69101a9bcec19d59480b0f}{copy\_file}(&fs[src]->files[i], &fs[dst]->files[i]);
+00234     \textcolor{keywordflow}{if} (result != \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK})
+00235       \textcolor{keywordflow}{return} result;
+00236   \}
+00237 
+00238   \textcolor{keywordflow}{return} result;
+00239 \}
+\hypertarget{fileSystem_8c_source_l00244}{}\hyperlink{fileSystem_8c_a7211e2f1543fb9aabc61814f9fb89546}{00244} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} \hyperlink{fileSystem_8c_a7211e2f1543fb9aabc61814f9fb89546}{close\_all\_files}() \{
+00245   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} result = \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK};
+00246   \textcolor{keywordtype}{int} i;
+00247   \textcolor{keywordflow}{for} (i = 0; i < \_MAX\_FILES; i++)
+00248     \textcolor{keywordflow}{if} (fs[actual\_fs]->files[i].err == 0)
+00249       \hyperlink{fileSystem_8c_a53882db20ef4323dcfd1874d7733ffc3}{f\_close}(&fs[actual\_fs]->files[i]);
+00250   \textcolor{keywordflow}{return} result;
+00251 \}
+00252 
+\hypertarget{fileSystem_8c_source_l00253}{}\hyperlink{fileSystem_8h_afcfe716c836b3b8a019fa38faf56da96}{00253} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} \hyperlink{fileSystem_8c_afcfe716c836b3b8a019fa38faf56da96}{reset\_sector}(\textcolor{keywordtype}{int} fsIndex) \{
+00254   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} result = \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK};
+00255   uint32\_t address;
+00256   \textcolor{keywordflow}{if} (fsIndex == 0)
+00257     address = PHYSYCAL\_START\_ADDRESS;
+00258   \textcolor{keywordflow}{else}
+00259     address = PHYSYCAL\_START\_ADDRESS2;
+00260 
+00261   result = \hyperlink{diskio_8c_a816bffc54e390c15d03f477133707de5}{disk\_ioctl}(fsIndex, CTRL\_ERASE\_SECTOR, (\textcolor{keywordtype}{void} *) address);
+00262 
+00263   \textcolor{keywordflow}{return} result;
+00264 \}
+00265 
+\hypertarget{fileSystem_8c_source_l00266}{}\hyperlink{fileSystem_8h_a5df0ac672ada972e89ef4b003e57f964}{00266} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} \hyperlink{fileSystem_8c_a5df0ac672ada972e89ef4b003e57f964}{f\_lseek}(\hyperlink{structFIL}{FIL}* fp, DWORD ofs) \{
+00267   \textcolor{keywordflow}{if} (fp->\hyperlink{structFIL_ad0d1f48655e0e06936cb7883993afb1f}{readPointer} + ofs < fp->writePointer)
+00268     fp->\hyperlink{structFIL_ad0d1f48655e0e06936cb7883993afb1f}{readPointer} += ofs;
+00269   \textcolor{keywordflow}{else}
+00270     fp->\hyperlink{structFIL_ad0d1f48655e0e06936cb7883993afb1f}{readPointer} = fp->\hyperlink{structFIL_a89e92b4845c72b4f9f119b38d1142a41}{writePointer} - 4;
+00271   \textcolor{keywordflow}{return} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK};
+00272 \}
+00273 
+\hypertarget{fileSystem_8c_source_l00279}{}\hyperlink{fileSystem_8c_a517b0da489a13124534a5eebc7af5358}{00279} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} \hyperlink{fileSystem_8c_a517b0da489a13124534a5eebc7af5358}{change\_sector}(\textcolor{keywordtype}{int} opt) \{
+00280   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} result = \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK};
+00281   \hyperlink{structFS}{FS} fs1, fs2;
+00282   \textcolor{keywordflow}{if} (actual\_fs == 0) \{
+00283     \hyperlink{fileSystem_8c_afcfe716c836b3b8a019fa38faf56da96}{reset\_sector}(1);
+00284     \hyperlink{fileSystem_8c_a06b1816d729a1ee702209d4ddc1d91af}{f\_mount}(&fs1, 1, 0);
+00285     \hyperlink{fileSystem_8c_a8e75c990b2a6c64fa783c75aace55059}{f\_mkfs}(1);
+00286     \hyperlink{fileSystem_8c_a06b1816d729a1ee702209d4ddc1d91af}{f\_mount}(&fs1, 1, 1);
+00287     \hyperlink{fileSystem_8c_a06b1816d729a1ee702209d4ddc1d91af}{f\_mount}(&fs2, 0, 1);
+00288     actual\_fs = 1;
+00289     \textcolor{keywordflow}{if} (opt == 1)
+00290       result = \hyperlink{fileSystem_8c_ac1802ff989bc875c1147d22cf93e8416}{backup\_fs}(0, 1);
+00291   \} \textcolor{keywordflow}{else} \{
+00292     \hyperlink{fileSystem_8c_afcfe716c836b3b8a019fa38faf56da96}{reset\_sector}(0);
+00293     \hyperlink{fileSystem_8c_a06b1816d729a1ee702209d4ddc1d91af}{f\_mount}(&fs1, 0, 0);
+00294     \hyperlink{fileSystem_8c_a8e75c990b2a6c64fa783c75aace55059}{f\_mkfs}(0);
+00295     \hyperlink{fileSystem_8c_a06b1816d729a1ee702209d4ddc1d91af}{f\_mount}(&fs1, 0, 1);
+00296     \hyperlink{fileSystem_8c_a06b1816d729a1ee702209d4ddc1d91af}{f\_mount}(&fs2, 1, 1);
+00297     actual\_fs = 0;
+00298     \textcolor{keywordflow}{if} (opt == 1)
+00299       result = \hyperlink{fileSystem_8c_ac1802ff989bc875c1147d22cf93e8416}{backup\_fs}(1, 0);
+00300   \}
+00301   \textcolor{keywordflow}{return} result;
+00302 \}
+00303 
+00304 \textcolor{comment}{/* Open or create a file */}
+\hypertarget{fileSystem_8c_source_l00305}{}\hyperlink{fileSystem_8h_aefdef7126128d99d0b3bd82c28e54d80}{00305} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} \hyperlink{fileSystem_8c_aefdef7126128d99d0b3bd82c28e54d80}{f\_open}(\hyperlink{structFIL}{FIL}* fp, \textcolor{comment}{/* Pointer to the blank file object */}
+00306 \textcolor{keyword}{const} TCHAR* path, \textcolor{comment}{/* Pointer to the file name */}
+00307 BYTE mode \textcolor{comment}{/* Access mode and file open mode flags */}
+00308 ) \{
+00309   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} result = \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK};
+00310   \textcolor{keywordtype}{int} i, j;
+00311   \textcolor{keywordtype}{int} find = 0;
+00312 
+00313   \textcolor{keywordflow}{if} (!fp)
+00314     \textcolor{keywordflow}{return} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca3dec4eba481cdf5e99d7cd6009e6dcf8}{FR\_INVALID\_OBJECT};
+00315   mode &= FA\_READ | FA\_WRITE | FA\_CREATE\_ALWAYS | FA\_OPEN\_ALWAYS
+00316       | FA\_CREATE\_NEW;
+00317 
+00318   \textcolor{keywordflow}{for} (i = 0; i < \_MAX\_FILES && find == 0; i++) \{
+00319     \textcolor{keywordflow}{if} (fs[actual\_fs]->files[i].err == 1)
+00320       \textcolor{keywordflow}{break};
+00321     \textcolor{keywordflow}{if} (\hyperlink{fileSystem_8c_a2c77bece2713c99a22b9ec7d1d083b47}{compare}(path, (TCHAR*) fs[actual\_fs]->files[i].name) == 1) \{
+00322       fs[actual\_fs]->\hyperlink{structFS_a5772298ea6aafc77f842037933531a02}{files}[i].\hyperlink{structFIL_ac409508881f5a16f2998ae675072b376}{flag} = mode;
+00323       find = 1;
+00324       \textcolor{keywordflow}{break};
+00325     \}
+00326   \}
+00327   \textcolor{keywordflow}{if} (i == \_MAX\_FILES && find == 0)
+00328     \textcolor{keywordflow}{return} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cac7926e01d7519a1a7e21a44e2dd76789}{FR\_TOO\_MANY\_FILES};
+00329   \textcolor{keywordflow}{if} (find == 0
+00330       && (mode & (FA\_CREATE\_ALWAYS | FA\_OPEN\_ALWAYS | FA\_CREATE\_NEW))) \{
+00331 
+00332     \textcolor{keywordflow}{for} (j = 0; j < 7; j++) \{
+00333       fs[actual\_fs]->\hyperlink{structFS_a5772298ea6aafc77f842037933531a02}{files}[i].\hyperlink{structFIL_a21240fe08417eb46f794e67519bf4a58}{name}[j] = (BYTE) path[j];
+00334     \}
+00335     fs[actual\_fs]->\hyperlink{structFS_a5772298ea6aafc77f842037933531a02}{files}[i].\hyperlink{structFIL_a32847fe875861954ec3dc750d332a194}{dirty} = 1; \textcolor{comment}{/* Created is dirty */}
+00336     fs[actual\_fs]->\hyperlink{structFS_a5772298ea6aafc77f842037933531a02}{files}[i].\hyperlink{structFIL_ac409508881f5a16f2998ae675072b376}{flag} = mode;
+00337     fs[actual\_fs]->\hyperlink{structFS_a5772298ea6aafc77f842037933531a02}{files}[i].\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex} = actual\_fs;
+00338     fs[actual\_fs]->\hyperlink{structFS_a5772298ea6aafc77f842037933531a02}{files}[i].\hyperlink{structFIL_a684d4d555f293b08b8396c35e20706d3}{startSector} = fs[actual\_fs]->
+      \hyperlink{structFS_a727068deba19f90b5b402ae005f49b58}{database} * (i + 1);
+00339     fs[actual\_fs]->\hyperlink{structFS_a5772298ea6aafc77f842037933531a02}{files}[i].\hyperlink{structFIL_ad0d1f48655e0e06936cb7883993afb1f}{readPointer} = 0;
+00340     fs[actual\_fs]->\hyperlink{structFS_a5772298ea6aafc77f842037933531a02}{files}[i].\hyperlink{structFIL_a89e92b4845c72b4f9f119b38d1142a41}{writePointer} = 0;
+00341     fs[actual\_fs]->\hyperlink{structFS_a5772298ea6aafc77f842037933531a02}{files}[i].\hyperlink{structFIL_aea440945db26de9c4a88065c0c887fda}{err} = 0;
+00342     fs[actual\_fs]->\hyperlink{structFS_a5772298ea6aafc77f842037933531a02}{files}[i].\hyperlink{structFIL_a5fb6271e3cc261b9f811bb8860cb6110}{buffindex} = 0;
+00343     fs[actual\_fs]->\hyperlink{structFS_a5772298ea6aafc77f842037933531a02}{files}[i].\hyperlink{structFIL_a043930088c6fdc5e523500b833106476}{descriptorSector} = 0;
+00344 
+00345   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (find == 0)
+00346     result = \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca97da8f98fc2e66d8fa7847f9ebb19b8c}{FR\_NO\_FILE};
+00347 
+00348   \hyperlink{fileSystem_8c_aa4ef3507a98f8090aa382f4015cebe78}{update\_file}(&fs[actual\_fs]->files[i], fp);
+00349   \textcolor{keywordflow}{return} result;
+00350 \}
+00351 
+00352 \textcolor{comment}{/* Close an open file object */}
+\hypertarget{fileSystem_8c_source_l00353}{}\hyperlink{fileSystem_8h_a53882db20ef4323dcfd1874d7733ffc3}{00353} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} \hyperlink{fileSystem_8c_a53882db20ef4323dcfd1874d7733ffc3}{f\_close}(\hyperlink{structFIL}{FIL} *fp \textcolor{comment}{/* Pointer to the file object to be closed */}) \{
+00354   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} res = \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK};
+00355   \textcolor{keywordflow}{if} (fp->\hyperlink{structFIL_a5fb6271e3cc261b9f811bb8860cb6110}{buffindex} != 0) \{
+00356     \hyperlink{fileSystem_8c_ad69c7246b122ba56a134939ee0eaf847}{f\_sync}(fp);
+00357   \}
+00358 
+00359   \textcolor{keywordflow}{if} (fp->\hyperlink{structFIL_a32847fe875861954ec3dc750d332a194}{dirty} != 255) \{
+00360     \textcolor{keywordflow}{if} (fp->\hyperlink{structFIL_a043930088c6fdc5e523500b833106476}{descriptorSector} != 0) \{ \textcolor{comment}{/* Si es 0 quiere decir que no tiene ningun descriptor
+       */}
+00361       fs[fp->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[0] = 0; \textcolor{comment}{/* Para ponerlo como invalido*/}
+00362       \hyperlink{diskio_8c_a4fc55609dc0b2fba35c679984ae7ca68}{disk\_write}(fp->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}, fs[fp->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}, fp->
+      \hyperlink{structFIL_a043930088c6fdc5e523500b833106476}{descriptorSector},
+00363           1);
+00364     \}
+00365 
+00366     fp->\hyperlink{structFIL_a9e1f6c5e0e2cd4fd3705e5a213ad2f83}{buff}[0] = 255;
+00367 
+00368     fp->\hyperlink{structFIL_a9e1f6c5e0e2cd4fd3705e5a213ad2f83}{buff}[1] = (BYTE) (fp->\hyperlink{structFIL_a684d4d555f293b08b8396c35e20706d3}{startSector} >> 24);
+00369     fp->\hyperlink{structFIL_a9e1f6c5e0e2cd4fd3705e5a213ad2f83}{buff}[2] = (BYTE) (fp->\hyperlink{structFIL_a684d4d555f293b08b8396c35e20706d3}{startSector} >> 16);
+00370     fp->\hyperlink{structFIL_a9e1f6c5e0e2cd4fd3705e5a213ad2f83}{buff}[3] = (BYTE) (fp->\hyperlink{structFIL_a684d4d555f293b08b8396c35e20706d3}{startSector} >> 8);
+00371     fp->\hyperlink{structFIL_a9e1f6c5e0e2cd4fd3705e5a213ad2f83}{buff}[4] = (BYTE) (fp->\hyperlink{structFIL_a684d4d555f293b08b8396c35e20706d3}{startSector} >> 0);
+00372 
+00373     fp->\hyperlink{structFIL_a9e1f6c5e0e2cd4fd3705e5a213ad2f83}{buff}[5] = (BYTE) (fp->\hyperlink{structFIL_a89e92b4845c72b4f9f119b38d1142a41}{writePointer} >> 24);
+00374     fp->\hyperlink{structFIL_a9e1f6c5e0e2cd4fd3705e5a213ad2f83}{buff}[6] = (BYTE) (fp->\hyperlink{structFIL_a89e92b4845c72b4f9f119b38d1142a41}{writePointer} >> 16);
+00375     fp->\hyperlink{structFIL_a9e1f6c5e0e2cd4fd3705e5a213ad2f83}{buff}[7] = (BYTE) (fp->\hyperlink{structFIL_a89e92b4845c72b4f9f119b38d1142a41}{writePointer} >> 8);
+00376     fp->\hyperlink{structFIL_a9e1f6c5e0e2cd4fd3705e5a213ad2f83}{buff}[8] = (BYTE) (fp->\hyperlink{structFIL_a89e92b4845c72b4f9f119b38d1142a41}{writePointer} >> 0);
+00377 
+00378     fp->\hyperlink{structFIL_a9e1f6c5e0e2cd4fd3705e5a213ad2f83}{buff}[9] = fp->\hyperlink{structFIL_a21240fe08417eb46f794e67519bf4a58}{name}[0];
+00379     fp->\hyperlink{structFIL_a9e1f6c5e0e2cd4fd3705e5a213ad2f83}{buff}[10] = fp->\hyperlink{structFIL_a21240fe08417eb46f794e67519bf4a58}{name}[1];
+00380     fp->\hyperlink{structFIL_a9e1f6c5e0e2cd4fd3705e5a213ad2f83}{buff}[11] = fp->\hyperlink{structFIL_a21240fe08417eb46f794e67519bf4a58}{name}[2];
+00381     fp->\hyperlink{structFIL_a9e1f6c5e0e2cd4fd3705e5a213ad2f83}{buff}[12] = fp->\hyperlink{structFIL_a21240fe08417eb46f794e67519bf4a58}{name}[3];
+00382     fp->\hyperlink{structFIL_a9e1f6c5e0e2cd4fd3705e5a213ad2f83}{buff}[13] = fp->\hyperlink{structFIL_a21240fe08417eb46f794e67519bf4a58}{name}[4];
+00383     fp->\hyperlink{structFIL_a9e1f6c5e0e2cd4fd3705e5a213ad2f83}{buff}[14] = fp->\hyperlink{structFIL_a21240fe08417eb46f794e67519bf4a58}{name}[5];
+00384     fp->\hyperlink{structFIL_a9e1f6c5e0e2cd4fd3705e5a213ad2f83}{buff}[15] = fp->\hyperlink{structFIL_a21240fe08417eb46f794e67519bf4a58}{name}[6];
+00385 
+00386     fp->\hyperlink{structFIL_a043930088c6fdc5e523500b833106476}{descriptorSector} = fs[fp->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}]->
+      \hyperlink{structFS_a050f921ab2140aa4eadce4a140b61fbe}{lastDescriptor};
+00387 
+00388     \hyperlink{diskio_8c_a4fc55609dc0b2fba35c679984ae7ca68}{disk\_write}(fp->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}, fp->\hyperlink{structFIL_a9e1f6c5e0e2cd4fd3705e5a213ad2f83}{buff}, fs[fp->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}]->
+      \hyperlink{structFS_a050f921ab2140aa4eadce4a140b61fbe}{lastDescriptor}++, 1); \textcolor{comment}{// lastDescriptor is the number of sector}
+00389 
+00390     fp->\hyperlink{structFIL_a32847fe875861954ec3dc750d332a194}{dirty} = 255;
+00391   \}
+00392 
+00393   \textcolor{keywordtype}{int} i;
+00394   \textcolor{keywordflow}{for} (i = 0; i < \_MAX\_FILES; i++) \{
+00395     \textcolor{keywordflow}{if} (\hyperlink{fileSystem_8c_a2c77bece2713c99a22b9ec7d1d083b47}{compare}((TCHAR*) fp->\hyperlink{structFIL_a21240fe08417eb46f794e67519bf4a58}{name}, (TCHAR*) fs[fp->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}]->
+      \hyperlink{structFS_a5772298ea6aafc77f842037933531a02}{files}[i].\hyperlink{structFIL_a21240fe08417eb46f794e67519bf4a58}{name})
+00396         == 1)
+00397       \textcolor{keywordflow}{break};
+00398   \}
+00399   \hyperlink{fileSystem_8c_aa4ef3507a98f8090aa382f4015cebe78}{update\_file}(fp, &fs[actual\_fs]->files[i]);
+00400 
+00401   \textcolor{keywordflow}{return} res;
+00402 \}
+00403 
+00404 \textcolor{comment}{/* Read data from a file */}
+\hypertarget{fileSystem_8c_source_l00405}{}\hyperlink{fileSystem_8h_ac4c3dcb6869ca252888eebabe39727b3}{00405} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} \hyperlink{fileSystem_8c_ac4c3dcb6869ca252888eebabe39727b3}{f\_read}(\hyperlink{structFIL}{FIL}* fp, \textcolor{comment}{/* Pointer to the file object */}
+00406 \textcolor{keywordtype}{void}* buff, \textcolor{comment}{/* Pointer to data buffer */}
+00407 UINT btr, \textcolor{comment}{/* Number of bytes to read */}
+00408 UINT* br \textcolor{comment}{/* Pointer to number of bytes read */}
+00409 ) \{
+00410   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} result = \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK};
+00411   BYTE *rbuff = (BYTE*) buff;
+00412   \textcolor{keywordflow}{if} (((fp->\hyperlink{structFIL_a89e92b4845c72b4f9f119b38d1142a41}{writePointer} + fp->\hyperlink{structFIL_a5fb6271e3cc261b9f811bb8860cb6110}{buffindex}) - fp->\hyperlink{structFIL_ad0d1f48655e0e06936cb7883993afb1f}{readPointer}) < btr)
+00413     btr = (fp->\hyperlink{structFIL_a89e92b4845c72b4f9f119b38d1142a41}{writePointer} + fp->\hyperlink{structFIL_a5fb6271e3cc261b9f811bb8860cb6110}{buffindex}) - fp->
+      \hyperlink{structFIL_ad0d1f48655e0e06936cb7883993afb1f}{readPointer};
+00414   \textcolor{keywordtype}{int} sector = fp->\hyperlink{structFIL_a684d4d555f293b08b8396c35e20706d3}{startSector} + (fp->\hyperlink{structFIL_ad0d1f48655e0e06936cb7883993afb1f}{readPointer} / SECTOR\_SIZE);
+00415   \textcolor{keywordtype}{int} offset = fp->\hyperlink{structFIL_ad0d1f48655e0e06936cb7883993afb1f}{readPointer} % SECTOR\_SIZE;
+00416   UINT counter = 0;
+00417 
+00418   \textcolor{keywordflow}{while} (counter < btr) \{
+00419     \hyperlink{diskio_8c_a9c6f716a2119a650cf3c61bee540be85}{disk\_read}(fp->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}, fs[fp->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}, sector++, 1);
+00420     \textcolor{keywordflow}{while} (offset < SECTOR\_SIZE) \{
+00421       rbuff[counter++] = fs[fp->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[offset++];
+00422       \textcolor{keywordflow}{if} (counter == btr) \{
+00423         fp->\hyperlink{structFIL_ad0d1f48655e0e06936cb7883993afb1f}{readPointer} += counter;
+00424         *br = counter;
+00425         \textcolor{keywordflow}{break};
+00426       \}
+00427     \}
+00428     offset = 0;
+00429   \}
+00430 
+00431   \textcolor{keywordflow}{return} result;
+00432 \}
+00433 
+00434 \textcolor{comment}{/* Write data to a file */}
+\hypertarget{fileSystem_8c_source_l00435}{}\hyperlink{fileSystem_8h_ae6a4dfae8a9e308bdb2283a37ef680f2}{00435} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} \hyperlink{fileSystem_8c_ae6a4dfae8a9e308bdb2283a37ef680f2}{f\_write}(\hyperlink{structFIL}{FIL}* fp, \textcolor{comment}{/* Pointer to the file object */}
+00436 \textcolor{keyword}{const} \textcolor{keywordtype}{void} *buff, \textcolor{comment}{/* Pointer to the data to be written */}
+00437 UINT btw, \textcolor{comment}{/* Number of bytes to write */}
+00438 UINT* bw \textcolor{comment}{/* Pointer to number of bytes written */}
+00439 ) \{
+00440   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} result = \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK};
+00441   BYTE *rbuff = (BYTE*) buff;
+00442   fp->\hyperlink{structFIL_a32847fe875861954ec3dc750d332a194}{dirty} = 1;
+00443   DWORD sector = fp->\hyperlink{structFIL_a684d4d555f293b08b8396c35e20706d3}{startSector} + (fp->\hyperlink{structFIL_a89e92b4845c72b4f9f119b38d1142a41}{writePointer} / SECTOR\_SIZE);
+00444   \textcolor{keywordtype}{int} index = 0, offset;
+00445   offset = fp->\hyperlink{structFIL_a89e92b4845c72b4f9f119b38d1142a41}{writePointer} % SECTOR\_SIZE;
+00446   \textcolor{comment}{/* Quiere decir que el ultimo sector escrito no esta completo.}
+00447 \textcolor{comment}{   * Si buffindex no es 0 esto ya se ha comprobado antes.}
+00448 \textcolor{comment}{   * Puede haber offset!=0 y buffindex!=0 cuando aun no hay suficiente para escribir un sector */}
+00449   \textcolor{keywordflow}{if} (offset != 0 && fp->\hyperlink{structFIL_a5fb6271e3cc261b9f811bb8860cb6110}{buffindex} == 0) \{
+00450     \hyperlink{diskio_8c_a9c6f716a2119a650cf3c61bee540be85}{disk\_read}(fp->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}, fs[fp->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}, sector, 1);
+00451     \textcolor{keywordflow}{for} (; fp->\hyperlink{structFIL_a5fb6271e3cc261b9f811bb8860cb6110}{buffindex} < SECTOR\_SIZE; fp->\hyperlink{structFIL_a5fb6271e3cc261b9f811bb8860cb6110}{buffindex}++) \{
+00452       \textcolor{keywordflow}{if} (fs[fp->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[fp->\hyperlink{structFIL_a5fb6271e3cc261b9f811bb8860cb6110}{buffindex}] == 255)
+00453         \textcolor{keywordflow}{break};
+00454       fp->\hyperlink{structFIL_a9e1f6c5e0e2cd4fd3705e5a213ad2f83}{buff}[fp->\hyperlink{structFIL_a5fb6271e3cc261b9f811bb8860cb6110}{buffindex}] = fs[fp->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[fp->
+      \hyperlink{structFIL_a5fb6271e3cc261b9f811bb8860cb6110}{buffindex}];
+00455     \}
+00456     fp->\hyperlink{structFIL_a89e92b4845c72b4f9f119b38d1142a41}{writePointer} -= offset;
+00457   \}
+00458 
+00459   \textcolor{keywordflow}{while} (index < btw) \{
+00460     fp->\hyperlink{structFIL_a9e1f6c5e0e2cd4fd3705e5a213ad2f83}{buff}[fp->\hyperlink{structFIL_a5fb6271e3cc261b9f811bb8860cb6110}{buffindex}++] = rbuff[index++];
+00461     \textcolor{keywordflow}{if} (fp->\hyperlink{structFIL_a5fb6271e3cc261b9f811bb8860cb6110}{buffindex} == SECTOR\_SIZE) \{
+00462       fp->\hyperlink{structFIL_a5fb6271e3cc261b9f811bb8860cb6110}{buffindex} = 0;
+00463       \hyperlink{diskio_8c_a4fc55609dc0b2fba35c679984ae7ca68}{disk\_write}(fp->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}, fp->\hyperlink{structFIL_a9e1f6c5e0e2cd4fd3705e5a213ad2f83}{buff}, sector++, 1);
+00464       fp->\hyperlink{structFIL_a89e92b4845c72b4f9f119b38d1142a41}{writePointer} += 16;
+00465     \}
+00466   \}
+00467 
+00468   *bw = btw;
+00469   \textcolor{keywordflow}{return} result;
+00470 \}
+00471 
+00472 \textcolor{comment}{/* Move file pointer of a file object */}
+\hypertarget{fileSystem_8c_source_l00473}{}\hyperlink{fileSystem_8h_acdcf7b6e3f54419d2612c38f83733edf}{00473} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} \hyperlink{fileSystem_8c_acdcf7b6e3f54419d2612c38f83733edf}{f\_truncateStart}(\hyperlink{structFIL}{FIL}* fp, \textcolor{comment}{/* Pointer to the file object */}
+00474 DWORD ofs \textcolor{comment}{/* File pointer from top of file */}
+00475 ) \{
+00476   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} result = \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK};
+00477 
+00478   fp->\hyperlink{structFIL_a684d4d555f293b08b8396c35e20706d3}{startSector} += ofs;
+00479   fp->\hyperlink{structFIL_a89e92b4845c72b4f9f119b38d1142a41}{writePointer} -= ofs;
+00480   \textcolor{keywordflow}{if} (fp->\hyperlink{structFIL_a89e92b4845c72b4f9f119b38d1142a41}{writePointer} < 0)
+00481     fp->\hyperlink{structFIL_a89e92b4845c72b4f9f119b38d1142a41}{writePointer} = 0;
+00482   fp->\hyperlink{structFIL_ad0d1f48655e0e06936cb7883993afb1f}{readPointer} -= ofs;
+00483   \textcolor{keywordflow}{if} (fp->\hyperlink{structFIL_ad0d1f48655e0e06936cb7883993afb1f}{readPointer} < 0)
+00484     fp->\hyperlink{structFIL_ad0d1f48655e0e06936cb7883993afb1f}{readPointer} = 0;
+00485 
+00486   \textcolor{keywordflow}{return} result;
+00487 \}
+00488 
+00489 \textcolor{comment}{/* Flush cached data of a writing file */}
+\hypertarget{fileSystem_8c_source_l00490}{}\hyperlink{fileSystem_8h_ad69c7246b122ba56a134939ee0eaf847}{00490} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} \hyperlink{fileSystem_8c_ad69c7246b122ba56a134939ee0eaf847}{f\_sync}(\hyperlink{structFIL}{FIL}* fp \textcolor{comment}{/* Pointer to the file object */}
+00491 ) \{
+00492   DRESULT result;
+00493   DWORD sector = fp->\hyperlink{structFIL_a684d4d555f293b08b8396c35e20706d3}{startSector} + (fp->\hyperlink{structFIL_a89e92b4845c72b4f9f119b38d1142a41}{writePointer} / SECTOR\_SIZE);
+00494   fp->\hyperlink{structFIL_a89e92b4845c72b4f9f119b38d1142a41}{writePointer} += fp->\hyperlink{structFIL_a5fb6271e3cc261b9f811bb8860cb6110}{buffindex};
+00495   \textcolor{keywordflow}{for} (; fp->\hyperlink{structFIL_a5fb6271e3cc261b9f811bb8860cb6110}{buffindex} < SECTOR\_SIZE; fp->\hyperlink{structFIL_a5fb6271e3cc261b9f811bb8860cb6110}{buffindex}++)
+00496     fp->\hyperlink{structFIL_a9e1f6c5e0e2cd4fd3705e5a213ad2f83}{buff}[fp->\hyperlink{structFIL_a5fb6271e3cc261b9f811bb8860cb6110}{buffindex}] = 255;
+00497 
+00498   fp->\hyperlink{structFIL_a5fb6271e3cc261b9f811bb8860cb6110}{buffindex} = 0;
+00499   result = \hyperlink{diskio_8c_a4fc55609dc0b2fba35c679984ae7ca68}{disk\_write}(fp->\hyperlink{structFIL_ab32bf8d0b478b2cef4942b2128f4f5f5}{fsIndex}, fp->\hyperlink{structFIL_a9e1f6c5e0e2cd4fd3705e5a213ad2f83}{buff}, sector, 1);
+00500   \textcolor{keywordflow}{return} result;
+00501 \}
+00502 
+00503 \textcolor{comment}{/* Get min free space for a file */}
+\hypertarget{fileSystem_8c_source_l00504}{}\hyperlink{fileSystem_8h_ad34712146dce899b62634cbc071ff5b1}{00504} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} \hyperlink{fileSystem_8c_a08c2cfaf5d5cde77fc6853ab7a11dd8a}{f\_getfree}(\textcolor{keywordtype}{int} fsIndex, \textcolor{comment}{/*Index of fileSystem */}
+00505 UINT* mnfs \textcolor{comment}{/* Pointer to a variable to return number of free sectors */}
+00506 ) \{
+00507   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} result = \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK};
+00508   \textcolor{keywordtype}{int} i, minFreeSectors = 0, freeSectors = 0;
+00509 
+00510   minFreeSectors = MAX\_FILE\_SIZE - fs[fsIndex]->\hyperlink{structFS_a050f921ab2140aa4eadce4a140b61fbe}{lastDescriptor};
+00511 
+00512   \textcolor{keywordflow}{for} (i = 0; i < \_MAX\_FILES; i++) \{
+00513     \textcolor{keywordflow}{if} (fs[fsIndex]->files[i].err != -1) \{
+00514       \textcolor{comment}{/* i+2 porque se contempla el tamaño de un archivo extra para descriptores del FS */}
+00515       freeSectors =
+00516           (MAX\_FILE\_SIZE * (i + 2))
+00517               - ((fs[fsIndex]->\hyperlink{structFS_a5772298ea6aafc77f842037933531a02}{files}[i].\hyperlink{structFIL_a684d4d555f293b08b8396c35e20706d3}{startSector}
+00518                   + fs[fsIndex]->\hyperlink{structFS_a5772298ea6aafc77f842037933531a02}{files}[i].\hyperlink{structFIL_a89e92b4845c72b4f9f119b38d1142a41}{writePointer})
+00519                   / SECTOR\_SIZE);
+00520       \textcolor{keywordflow}{if} (freeSectors < minFreeSectors)
+00521         minFreeSectors = freeSectors;
+00522     \}
+00523   \}
+00524   mnfs = (UINT*) minFreeSectors;
+00525   \textcolor{keywordflow}{return} result;
+00526 \}
+00527 
+00528 \textcolor{comment}{/* Mount/Unmount a logical drive */}
+\hypertarget{fileSystem_8c_source_l00529}{}\hyperlink{fileSystem_8h_a06b1816d729a1ee702209d4ddc1d91af}{00529} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} \hyperlink{fileSystem_8c_a06b1816d729a1ee702209d4ddc1d91af}{f\_mount}(\hyperlink{structFS}{FS} * fileSystem, \textcolor{keywordtype}{int} fsIndex, \textcolor{comment}{/*Index of fileSystem */}
+00530 BYTE opt \textcolor{comment}{/* 0:Do not mount (delayed mount), 1:Mount immediately */}
+00531 ) \{
+00532   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} result = \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK};
+00533   fs[fsIndex] = fileSystem;
+00534   \textcolor{keywordflow}{if} (fsIndex == 0)
+00535     fileSystem->\hyperlink{structFS_a22eed025311346b8029d8b445c192b95}{start\_address} = PHYSYCAL\_START\_ADDRESS;
+00536   \textcolor{keywordflow}{else}
+00537     fileSystem->\hyperlink{structFS_a22eed025311346b8029d8b445c192b95}{start\_address} = PHYSYCAL\_START\_ADDRESS2;
+00538 
+00539   fileSystem->\hyperlink{structFS_a06559d64af1c2b15af05165f30c59868}{sector\_size} = SECTOR\_SIZE;
+00540   fileSystem->\hyperlink{structFS_ab8f2ed716ba1865bff2fe82d36e90546}{fs\_size} = FS\_SIZE;
+00541   fileSystem->\hyperlink{structFS_adae8dcbe72b934a870bf663481207e3e}{free\_sector} = FS\_SIZE;
+00542   fileSystem->\hyperlink{structFS_a6b431a5035eb3bb668565772a3ecd57a}{volbase} = 0;
+00543   fileSystem->\hyperlink{structFS_a7c6676234fc0734f2139c627a0b01428}{fatbase} = 2; \textcolor{comment}{/* Because only need 1 sector for FS info */}
+00544   fileSystem->\hyperlink{structFS_a727068deba19f90b5b402ae005f49b58}{database} = FS\_SIZE / (\_MAX\_FILES + 1); \textcolor{comment}{/* Same size for fs info than file data*/}
+00545 
+00546   \textcolor{keywordflow}{if} (opt != 1)
+00547     \textcolor{keywordflow}{return} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK};
+00548 
+00549   result = \hyperlink{fileSystem_8c_aaa2cbdb65e6f30c0a2a3e5761eea1ef8}{check\_fs}(fsIndex);
+00550   \textcolor{keywordflow}{if} (result != \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK})
+00551     \textcolor{keywordflow}{return} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca086154b5fee763f28c49fd0e2c1cb463}{FR\_NO\_FILESYSTEM};
+00552 
+00553   result = \hyperlink{fileSystem_8c_a951ec41abe19766602d305ff1e99fd32}{loading\_files}(fsIndex);
+00554   \textcolor{keywordflow}{if} (result != \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK})
+00555     \textcolor{keywordflow}{return} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca97da8f98fc2e66d8fa7847f9ebb19b8c}{FR\_NO\_FILE};
+00556 
+00557   \textcolor{keywordflow}{return} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK};
+00558 \}
+00559 
+00560 \textcolor{comment}{/* Create a file system on the volume */}
+\hypertarget{fileSystem_8c_source_l00561}{}\hyperlink{fileSystem_8h_a8e75c990b2a6c64fa783c75aace55059}{00561} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} \hyperlink{fileSystem_8c_a8e75c990b2a6c64fa783c75aace55059}{f\_mkfs}(\textcolor{keywordtype}{int} fsIndex\textcolor{comment}{/*Index of fileSystem */}) \{
+00562 
+00563   \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44c}{FRESULT} result = \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK};
+00564   BYTE buff[SECTOR\_SIZE] = \{ \textcolor{charliteral}{'F'}, \textcolor{charliteral}{'S'}, \textcolor{charliteral}{' '}, \textcolor{charliteral}{'C'}, \textcolor{charliteral}{'O'}, \textcolor{charliteral}{'R'}, \textcolor{charliteral}{'R'}, \textcolor{charliteral}{'E'}, \textcolor{charliteral}{'C'}, \textcolor{charliteral}{'T'},
+00565       \textcolor{charliteral}{'O'} \};
+00566 
+00567   fs[fsIndex]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[0] = buff[0];
+00568   fs[fsIndex]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[1] = buff[1];
+00569   fs[fsIndex]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[2] = buff[2];
+00570   fs[fsIndex]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[3] = buff[3];
+00571   fs[fsIndex]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[4] = buff[4];
+00572   fs[fsIndex]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[5] = buff[5];
+00573   fs[fsIndex]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[6] = buff[6];
+00574   fs[fsIndex]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[7] = buff[7];
+00575   fs[fsIndex]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[8] = buff[8];
+00576   fs[fsIndex]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[9] = buff[9];
+00577   fs[fsIndex]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[10] = buff[10];
+00578   fs[fsIndex]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[11] = buff[11];
+00579   fs[fsIndex]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[12] = buff[12];
+00580   fs[fsIndex]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[13] = buff[13];
+00581   fs[fsIndex]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[14] = buff[14];
+00582   fs[fsIndex]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[15] = buff[15];
+00583   fs[fsIndex]->\hyperlink{structFS_a23d4e26f31e8932d8b216955e6af2130}{win}[16] = buff[16];
+00584 
+00585   result = \hyperlink{diskio_8c_aa01f5479a3ee7c9aed89814238964cd2}{disk\_initialize}(fsIndex);
+00586   \textcolor{keywordflow}{if} (result != \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK})
+00587     \textcolor{keywordflow}{return} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44cac9894bed3e8632ede8d2712235fa8e45}{FR\_NOT\_READY};
+00588 
+00589   result = \hyperlink{diskio_8c_a4fc55609dc0b2fba35c679984ae7ca68}{disk\_write}(fsIndex, fs[fsIndex]->win, 0, 1);
+00590   \textcolor{keywordflow}{if} (result != \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK})
+00591     \textcolor{keywordflow}{return} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca97dee4a6b485dc8f91f37486092dfe34}{FR\_DISK\_ERR};
+00592 
+00593   \textcolor{keywordflow}{return} \hyperlink{fileSystem_8h_a49d0171ecbd362cda5680a0d360db44ca62fce5cd9df008f8fc85f99706bda5f1}{FR\_OK};
+00594 \}
+\end{DoxyCode}

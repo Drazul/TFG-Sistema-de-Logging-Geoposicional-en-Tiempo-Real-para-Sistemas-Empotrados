@@ -1,0 +1,74 @@
+\hypertarget{fs__task_8c}{\subsection{Referencia del Archivo src/fs\+\_\+task.c}
+\label{fs__task_8c}\index{src/fs\+\_\+task.\+c@{src/fs\+\_\+task.\+c}}
+}
+
+
+Módulo que implementa las funciones del archivo \hyperlink{fs__task_8h}{fs\+\_\+task.\+h}.  
+
+
+{\ttfamily \#include \char`\"{}fs\+\_\+task.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}stm32f2xx.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}B\+A\+\_\+board.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}task.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}file\+System.\+h\char`\"{}}\\*
+Dependencia gráfica adjunta para fs\+\_\+task.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fs__task_8c__incl}
+\end{center}
+\end{figure}
+\subsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{fs__task_8c_a941f5a214539980b9c21487c9e598ed1}{void \hyperlink{fs__task_8c_a941f5a214539980b9c21487c9e598ed1}{F\+S\+Task\+Func} (void $\ast$p\+Params)}\label{fs__task_8c_a941f5a214539980b9c21487c9e598ed1}
+
+\begin{DoxyCompactList}\small\item\em Esta es la función principal de la tarea  Esta función inicializa la memoria y el sistema de archivos y lanza el método que se queda a la espera de mensajes desde el G\+P\+S. \end{DoxyCompactList}\item 
+\hypertarget{fs__task_8c_ab7f1e7392ed5dbe6c58be74746987f99}{void \hyperlink{fs__task_8c_ab7f1e7392ed5dbe6c58be74746987f99}{F\+S\+Hardware\+Init} (void $\ast$p\+Param)}\label{fs__task_8c_ab7f1e7392ed5dbe6c58be74746987f99}
+
+\begin{DoxyCompactList}\small\item\em Método que inicializa el hardware de la tarea  Esta función resetea un sector y crea en él un sistema de archivos. \end{DoxyCompactList}\item 
+void \hyperlink{fs__task_8c_a67c975ae61cf5db912f17b454b2713c7}{F\+S\+Start\+Task} (unsigned short n\+Stack\+Depth, unsigned port\+B\+A\+S\+E\+\_\+\+T\+Y\+P\+E n\+Priority, void $\ast$p\+Params)
+\begin{DoxyCompactList}\small\item\em Método que crea la tarea. \end{DoxyCompactList}\item 
+\hypertarget{fs__task_8c_a7b35ce27806462ceb0681745fc16ed0b}{void \hyperlink{fs__task_8c_a7b35ce27806462ceb0681745fc16ed0b}{read\+\_\+file} ()}\label{fs__task_8c_a7b35ce27806462ceb0681745fc16ed0b}
+
+\begin{DoxyCompactList}\small\item\em Función que lee de un archivo  Esta función no se utiliza en la implementación actual, pero se mantiene para poder ser utilizada cuando se integre en el proyecto Biker Assistant. \end{DoxyCompactList}\item 
+\hypertarget{fs__task_8c_a21257086cb63d29c4622a8a876a98413}{void \hyperlink{fs__task_8c_a21257086cb63d29c4622a8a876a98413}{Receive\+Write\+G\+P\+S} ()}\label{fs__task_8c_a21257086cb63d29c4622a8a876a98413}
+
+\begin{DoxyCompactList}\small\item\em Función que escribe en un archivo todos los mensajes recibidos desde la tarea que controla el G\+P\+S  Esta función, dentro del bucle de ejecución, enciende y apaga un led cada vez que recibe y escribe un dato. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Descripción detallada}
+Módulo que implementa las funciones del archivo \hyperlink{fs__task_8h}{fs\+\_\+task.\+h}. 
+
+
+
+Definición en el archivo \hyperlink{fs__task_8c_source}{fs\+\_\+task.\+c}.
+
+
+
+\subsubsection{Documentación de las funciones}
+\hypertarget{fs__task_8c_a67c975ae61cf5db912f17b454b2713c7}{\index{fs\+\_\+task.\+c@{fs\+\_\+task.\+c}!F\+S\+Start\+Task@{F\+S\+Start\+Task}}
+\index{F\+S\+Start\+Task@{F\+S\+Start\+Task}!fs\+\_\+task.\+c@{fs\+\_\+task.\+c}}
+\paragraph[{F\+S\+Start\+Task}]{\setlength{\rightskip}{0pt plus 5cm}void F\+S\+Start\+Task (
+\begin{DoxyParamCaption}
+\item[{unsigned short}]{n\+Stack\+Depth, }
+\item[{unsigned port\+B\+A\+S\+E\+\_\+\+T\+Y\+P\+E}]{n\+Priority, }
+\item[{void $\ast$}]{p\+Params}
+\end{DoxyParamCaption}
+)}}\label{fs__task_8c_a67c975ae61cf5db912f17b454b2713c7}
+
+
+Método que crea la tarea. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em s\+Stack\+Depth} & Tamaño de la pila de memoria \\
+\hline
+{\em n\+Prioriy} & Prioridad de la tarea \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea 27 del archivo fs\+\_\+task.\+c.
+

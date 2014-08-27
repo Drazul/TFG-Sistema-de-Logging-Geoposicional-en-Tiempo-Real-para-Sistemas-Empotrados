@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$fs__task_8h.html" title="Cabecera de la tarea que gestiona el sistema de archivos." alt="" coords="95,83,169,112"/>
+<area shape="rect" id="node21" href="$fileSystem_8h.html" title="Cabecera principal del módulo del Sistema de Archivos." alt="" coords="533,83,627,112"/>
+<area shape="rect" id="node7" href="$common_8h.html" title="En este archivo se definen estructuras de datos comunes para todas las tareas." alt="" coords="91,160,173,189"/>
+<area shape="rect" id="node23" href="$integer_8h.html" title="Tipos de datos abreviados." alt="" coords="508,237,580,267"/>
+<area shape="rect" id="node26" href="$diskio_8h.html" title="Cabecera de la capa de abstracción de operaciones a bajo nivel sobre la memoria." alt="" coords="581,160,648,189"/>
+<area shape="rect" id="node29" href="$ffconf_8h.html" title="Fichero de configuración del sistema de archivos." alt="" coords="604,237,671,267"/>
+</map>
